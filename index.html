@@ -1,1 +1,298 @@
-PLACEHOLDER_WILL_REPLACE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hambalang Search Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body, input, select, button, a { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+        :root {
+            --bg-main: #0f172a; --bg-card: #1e293b; --bg-input: #0f172a; --border: #334155;
+            --text-main: #f1f5f9; --text-muted: #94a3b8; --text-dim: #64748b; --accent: #38bdf8;
+        }
+        [data-theme="light"] {
+            --bg-main: #f8fafc; --bg-card: #ffffff; --bg-input: #ffffff; --border: #e2e8f0;
+            --text-main: #0f172a; --text-muted: #475569; --text-dim: #64748b; --accent: #0284c7;
+        }
+        body { background-color: var(--bg-main); color: var(--text-main); transition: background-color 0.2s, color 0.2s; }
+        .badge-a { background: #16a34a; color: white; }
+        .badge-n { background: #dc2626; color: white; }
+        .badge-q { background: #ca8a04; color: white; }
+    </style>
+</head>
+<body data-theme="dark" class="min-h-screen flex flex-col">
+
+    <header class="border-b sticky top-0 z-20" style="background: var(--bg-card); border-color: var(--border);">
+        <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+            <div>
+                <h1 class="text-lg font-bold tracking-tight" style="color: var(--accent);">⚡ Hambalang Search Guide</h1>
+                <p class="text-[10px]" style="color: var(--text-dim);">Arrestable • Bailable • Punishment • Multi-statute</p>
+            </div>
+            <button id="themeToggle" class="px-2.5 py-1 rounded border text-xs" style="border-color: var(--border); color: var(--text-muted); background: var(--bg-main);">☀️ Light</button>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto px-4 py-5 flex-grow w-full">
+        <div class="rounded-xl border p-4 mb-5 space-y-3" style="background: var(--bg-card); border-color: var(--border);">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label class="block text-[10px] font-semibold uppercase mb-1" style="color: var(--text-dim);">📁 Statute</label>
+                    <select id="statuteFilter" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none"
+                        style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);">
+                        <option value="all">All Statutes</option>
+                        <option value="Penal Code 1871">Penal Code 1871</option>
+                        <option value="POHA 2014">POHA 2014</option>
+                        <option value="CESOWA">CESOWA</option>
+                        <option value="GEWCA">GEWCA (Guns & Weapons)</option>
+                        <option value="GCA 2022">GCA (Gambling Control Act)</option>
+                        <option value="Miscellaneous Offences Act">MOA (Public Order & Nuisance)</option>
+                        <option value="Moneylenders Act">Moneylenders Act</option>
+                        <option value="Computer Misuse Act">Computer Misuse Act</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-semibold uppercase mb-1" style="color: var(--text-dim);">🔍 Section or Offence</label>
+                    <input type="text" id="searchBox" placeholder="e.g. 302, 332, 6, gun, gambling, stalking, UML..."
+                        class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none"
+                        style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);"
+                        autocomplete="off">
+                </div>
+            </div>
+            <p class="text-[10px] leading-relaxed" style="color: var(--text-dim);">
+                <strong>Penal Code</strong> data is taken from the CPC 2010 First Schedule (full wording).
+                Other statutes use verified Act text (key sections only). For offences under other laws not listed here, CPC applies:
+                ≥3 years imprisonment → generally <strong>May arrest without warrant</strong> + <strong>Not bailable</strong>;
+                <3 years or fine only → generally <strong>May not arrest without warrant</strong> + <strong>Bailable</strong>
+                (unless the specific Act says otherwise).
+            </p>
+        </div>
+
+        <div class="flex items-center justify-between text-[11px] mb-3 px-0.5" style="color: var(--text-dim);">
+            <span id="resultCount">Type a section or keyword to search</span>
+            <span id="loadingStatus" class="text-[10px]"></span>
+        </div>
+        <div id="offenceList" class="space-y-3"></div>
+    </main>
+
+    <footer class="border-t py-5 text-[10px] leading-relaxed" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
+        <div class="max-w-3xl mx-auto px-4 space-y-3">
+            <p class="font-semibold" style="color: var(--text-muted);">NOTE — Development in progress. Proof-of-concept only.</p>
+            <p>
+                <strong>Penal Code</strong> data is sourced from the
+                <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=Sc1-" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">First Schedule of the Criminal Procedure Code 2010</a>
+                (via <a href="https://hatsuzuki.github.io/legis/" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">hatsuzuki/legis</a>).
+                Other statutes are a curated subset of key offences only — not a full index of every section.
+            </p>
+            <p>
+                According to the CPC, offences against laws other than the Penal Code that are punishable by death or with imprisonment for 3 years and above are generally arrestable and non-bailable.
+                Offences punishable with imprisonment for less than 3 years or with fine only are generally non-arrestable and bailable, unless specified otherwise by the law offended against.
+            </p>
+            <details class="mt-2">
+                <summary class="cursor-pointer font-semibold" style="color: var(--text-muted);">Show disclaimer</summary>
+                <div class="mt-2 space-y-2 pl-1 border-l-2" style="border-color: var(--border);">
+                    <p>The information contained within this site (the "Site Information") is strictly intended as a <strong>proof-of-concept only</strong>.</p>
+                    <p><strong>If in doubt, users are strongly encouraged to double-check with AGC's website first.</strong></p>
+                    <p>While every effort has been made to ensure the accuracy of the information contained within this site, users access and utilise the Site Information solely at their own risk. This webpage's creator(s) shall not be responsible or liable for any loss, damage, injury, death, or any other consequences that may directly or indirectly result in any action or inaction taken in relation to, or as a result of, the Site Information.</p>
+                    <p>This webpage and its creator(s) are not affiliated with, nor claim any affiliation with, the Attorney-General's Chambers of the Republic of Singapore.</p>
+                    <p>Always verify the latest version on <a href="https://sso.agc.gov.sg" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">sso.agc.gov.sg</a>.</p>
+                </div>
+            </details>
+        </div>
+    </footer>
+
+    <script>
+        const extraOffences = [
+            { statute: "POHA 2014", section: "3", offence: "Intentionally causing harassment, alarm or distress", arrestable: "May not arrest without warrant (unless specifically empowered)", warrant: "Summons", bailable: "Bailable", punishment: "Fine not exceeding $5,000 or imprisonment not exceeding 6 months or both (enhanced for subsequent / vulnerable person)", link: "https://sso.agc.gov.sg/Act/PHA2014?ProvIds=pr3-" },
+            { statute: "POHA 2014", section: "4", offence: "Harassment, alarm or distress", arrestable: "May not arrest without warrant (unless specifically empowered)", warrant: "Summons", bailable: "Bailable", punishment: "Fine not exceeding $5,000 (enhanced for subsequent)", link: "https://sso.agc.gov.sg/Act/PHA2014?ProvIds=pr4-" },
+            { statute: "POHA 2014", section: "7", offence: "Unlawful stalking", arrestable: "May not arrest without warrant (unless specifically empowered)", warrant: "Summons", bailable: "Bailable", punishment: "Fine not exceeding $5,000 or imprisonment not exceeding 12 months or both (enhanced for subsequent)", link: "https://sso.agc.gov.sg/Act/PHA2014?ProvIds=pr7-" },
+            { statute: "CESOWA", section: "4", offence: "Using corrosive or explosive substance or offensive weapon to cause hurt", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment for life and caning with not less than 6 strokes", link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr4-" },
+            { statute: "CESOWA", section: "6", offence: "Carrying offensive weapons in public places", arrestable: "May arrest without warrant (expressly arrestable under s.6(4))", warrant: "Warrant", bailable: "Not bailable (expressly non-bailable under s.6(4))", punishment: "Imprisonment not exceeding 3 years and caning with not less than 6 strokes (if prohibited weapon under GEWCA: up to 5 years + caning ≥ 6 strokes)", link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr6-" },
+            { statute: "CESOWA", section: "7", offence: "Offences relating to scheduled weapons", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "See Act (scheduled weapons — serious penalties including caning)", link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr7-" },
+            { statute: "Miscellaneous Offences Act", section: "35", offence: "Fraudulent possession of property", arrestable: "May not arrest without warrant (unless specifically empowered)", warrant: "Summons", bailable: "Bailable", punishment: "Fine not exceeding $3,000 or imprisonment not exceeding 1 year or both", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr35-" },
+            { statute: "Moneylenders Act", section: "5 / 14", offence: "Unlicensed moneylending", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "1st offence: fine $30,000–$300,000 and imprisonment up to 4 years and caning up to 6 strokes; subsequent higher", link: "https://sso.agc.gov.sg/Act/MA2008?ProvIds=pr14-" },
+            { statute: "Moneylenders Act", section: "47", offence: "Harassment on behalf of unlicensed moneylender", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment up to 5 years and fine $5,000–$50,000; caning (minimum applies if damage caused)", link: "https://sso.agc.gov.sg/Act/MA2008?ProvIds=pr47-" },
+            { statute: "GEWCA", section: "11", offence: "Unauthorised possession or use of guns, major parts of guns, or gun accessories", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Prohibited gun: imprisonment up to 5 years + fine (up to $10,000 per gun / $100,000 total). Other gun: imprisonment up to 36 months + fine. See GEWCA s.17", link: "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr11-" },
+            { statute: "GEWCA", section: "12", offence: "Unauthorised manufacture, etc., of guns, major parts or gun accessories", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Same scale as s.11 — see GEWCA s.17 (up to 5 years for prohibited guns)", link: "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr12-" },
+            { statute: "GEWCA", section: "13", offence: "Unauthorised possession of digital blueprints for manufacture of guns (e.g. 3D printing)", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "See Act (serious offence relating to 3D-printed / digital gun manufacture)", link: "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr13-" },
+            { statute: "GEWCA", section: "14", offence: "Unauthorised trade in guns, major parts or gun accessories (import/export etc.)", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "See GEWCA s.17 penalty scale", link: "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr14-" },
+            { statute: "GEWCA", section: "15", offence: "Unauthorised supply or conveyance of guns, major parts or gun accessories", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "See GEWCA s.17 penalty scale", link: "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr15-" },
+            { statute: "GEWCA", section: "17", offence: "Penalties for unlicensed regulated activities involving guns, etc. (applies to ss.11–16)", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Prohibited gun: up to 5 years + fine. Other gun: up to 36 months + fine. Major parts / accessories: scaled — see Act", link: "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr17-" },
+            { statute: "GEWCA", section: "22", offence: "Unauthorised possession of explosives or explosive precursors", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable (where max ≥3 years)", punishment: "Prohibited explosive: up to 5 years + fine up to $100,000. Other explosive: up to 36 months + fine up to $50,000. Precursor: up to 24 months + fine up to $50,000", link: "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr22-" },
+            { statute: "GEWCA", section: "29", offence: "Unauthorised possession of weapons or noxious substances", arrestable: "May arrest without warrant (offences under this Part are arrestable)", warrant: "Warrant", bailable: "Not bailable (where max ≥3 years) / see CPC", punishment: "Prohibited weapon: imprisonment up to 36 months + fine up to $40,000. Other weapon / noxious substance: imprisonment up to 24 months + fine up to $20,000", link: "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr29-" },
+            { statute: "GCA 2022", section: "18", offence: "Unlawful conduct of betting operations, gaming or lotteries", arrestable: "May arrest without warrant (expressly arrestable under s.18(5))", warrant: "Warrant", bailable: "Not bailable", punishment: "Fine not exceeding $500,000 and imprisonment not exceeding 7 years (repeat: fine up to $700,000 and imprisonment up to 10 years)", link: "https://sso.agc.gov.sg/Act/GCA2022?ProvIds=pr18-" },
+            { statute: "GCA 2022", section: "19", offence: "Betting operation, gaming or lottery outside of approved gambling venue", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "See Act (serious operational offence; similar scale to s.18 for organisers)", link: "https://sso.agc.gov.sg/Act/GCA2022?ProvIds=pr19-" },
+            { statute: "GCA 2022", section: "20", offence: "Gambling with unlicensed gambling service provider or at unlawful gambling place", arrestable: "May arrest without warrant (expressly arrestable under s.20(4))", warrant: "Warrant", bailable: "Bailable", punishment: "Fine not exceeding $10,000 or imprisonment not exceeding 6 months or both", link: "https://sso.agc.gov.sg/Act/GCA2022?ProvIds=pr20-" },
+            { statute: "GCA 2022", section: "21", offence: "Having financial interest in unlawful gambling service", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "See Act (serious financial interest in unlawful gambling service)", link: "https://sso.agc.gov.sg/Act/GCA2022?ProvIds=pr21-" },
+            { statute: "GCA 2022", section: "23", offence: "Owning or allowing place to be used for unlawful gambling", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "See Act (unlawful gambling place offences)", link: "https://sso.agc.gov.sg/Act/GCA2022?ProvIds=pr23-" },
+            { statute: "GCA 2022", section: "26", offence: "Being in an unlawful gambling place", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable (generally; check Act)", punishment: "See Act (presence in unlawful gambling place)", link: "https://sso.agc.gov.sg/Act/GCA2022?ProvIds=pr26-" },
+            { statute: "GCA 2022", section: "27", offence: "Prohibited or unapproved gaming machine use", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable (where max ≥3 years) / see Act", punishment: "See Act (gaming machine-related offences)", link: "https://sso.agc.gov.sg/Act/GCA2022?ProvIds=pr27-" },
+            { statute: "GCA 2022", section: "36", offence: "Possession of unlawful gambling instruments", arrestable: "May arrest without warrant (expressly arrestable under s.36(4))", warrant: "Warrant", bailable: "Not bailable", punishment: "Fine not exceeding $500,000 and imprisonment not exceeding 7 years (repeat: fine up to $700,000 and imprisonment up to 10 years)", link: "https://sso.agc.gov.sg/Act/GCA2022?ProvIds=pr36-" },
+            { statute: "Computer Misuse Act", section: "3", offence: "Unauthorised access to computer material", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine not exceeding $5,000 or imprisonment not exceeding 2 years or both", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr3-" },
+            { statute: "Computer Misuse Act", section: "5", offence: "Unauthorised modification of computer material", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine not exceeding $10,000 or imprisonment not exceeding 3 years or both", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr5-" }
+        ];
+
+        let allData = [];
+        const searchBox = document.getElementById('searchBox');
+        const statuteFilter = document.getElementById('statuteFilter');
+        const offenceList = document.getElementById('offenceList');
+        const resultCount = document.getElementById('resultCount');
+        const loadingStatus = document.getElementById('loadingStatus');
+        const themeToggle = document.getElementById('themeToggle');
+
+        function setTheme(theme) {
+            document.body.setAttribute('data-theme', theme);
+            themeToggle.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+            localStorage.setItem('legis-theme', theme);
+        }
+        setTheme(localStorage.getItem('legis-theme') || 'dark');
+        themeToggle.addEventListener('click', () => setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+
+        function getArrestableBadge(text) {
+            if (!text) return { cls: 'badge-q', label: '?' };
+            const t = text.toLowerCase();
+            if (t.includes('may not arrest')) return { cls: 'badge-n', label: 'N' };
+            if (t.includes('may arrest without warrant')) return { cls: 'badge-a', label: 'A' };
+            return { cls: 'badge-q', label: '?' };
+        }
+
+        function getBailableDisplay(text) {
+            if (!text) return text;
+            if (text === 'Bailable') return 'Yes';
+            if (text === 'Not bailable' || (text && text.includes('Not bailable'))) return 'No';
+            return text;
+        }
+
+        function buildAgcLink(item) {
+            if (item.link) return item.link;
+            if (item.statute === 'Penal Code 1871' && item.section) {
+                const sec = String(item.section).replace(/ *\([^)]*\) */g, '');
+                return `https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr${sec}-#pr${sec}-`;
+            }
+            return 'https://sso.agc.gov.sg';
+        }
+
+        function render(data, query) {
+            offenceList.innerHTML = '';
+            resultCount.textContent = `${data.length} offence${data.length !== 1 ? 's' : ''} found`;
+
+            if (data.length === 0) {
+                let tip = 'No matching offences found in the indexed data.';
+                if (query === '17' || query === '18' || query === '19' || query === '20') {
+                    tip += ' Note: Penal Code ss.17–20 are definitions (e.g. s.17 defines “Government”), not offences, so they do not appear in the CPC First Schedule.';
+                }
+                offenceList.innerHTML = `
+                    <div class="rounded-xl border p-5 text-sm space-y-3" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
+                        <p>${tip}</p>
+                        <p class="text-xs">Try searching the official site:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query || '')}" target="_blank" rel="noopener"
+                                class="text-xs underline" style="color: var(--accent);">Search SSO for “${query || ''}”</a>
+                            <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=Sc1-" target="_blank" rel="noopener"
+                                class="text-xs underline" style="color: var(--accent);">CPC First Schedule</a>
+                        </div>
+                    </div>`;
+                return;
+            }
+
+            const display = data.slice(0, 80);
+            if (data.length > 80) resultCount.textContent += ' (showing first 80)';
+
+            display.forEach(item => {
+                const badge = getArrestableBadge(item.arrestable);
+                const bailableDisplay = getBailableDisplay(item.bailable);
+                const isConditionalBail = bailableDisplay !== 'Yes' && bailableDisplay !== 'No';
+
+                const card = document.createElement('div');
+                card.className = 'rounded-xl border p-4';
+                card.style.background = 'var(--bg-card)';
+                card.style.borderColor = 'var(--border)';
+                card.innerHTML = `
+                    <div class="flex flex-wrap items-start gap-2 mb-3">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded border shrink-0" style="color: var(--accent); border-color: var(--accent);">${item.statute}</span>
+                        <div class="flex-1 min-w-0">
+                            <div class="font-semibold text-sm leading-snug">§ ${item.section}</div>
+                            <div class="text-sm mt-0.5" style="color: var(--text-muted);">${item.offence}</div>
+                        </div>
+                        <div class="w-7 h-7 rounded flex items-center justify-center text-xs font-bold shrink-0 ${badge.cls}">${badge.label}</div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3 text-sm">
+                        <div class="rounded-lg p-2.5 border" style="background: var(--bg-main); border-color: var(--border);">
+                            <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Arrestable</div>
+                            <div class="text-xs leading-snug">${item.arrestable || '—'}</div>
+                        </div>
+                        <div class="rounded-lg p-2.5 border" style="background: var(--bg-main); border-color: var(--border);">
+                            <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Bailable</div>
+                            <div class="text-xs leading-snug ${isConditionalBail ? '' : 'font-semibold'}">${bailableDisplay}</div>
+                        </div>
+                    </div>
+                    ${item.warrant ? `<div class="mb-3"><div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Warrant / Summons</div><div class="text-xs" style="color: var(--text-muted);">${item.warrant}</div></div>` : ''}
+                    <div class="mb-3">
+                        <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Maximum Punishment</div>
+                        <div class="text-xs leading-relaxed" style="color: var(--text-muted);">${item.punishment || '—'}</div>
+                    </div>
+                    <a href="${buildAgcLink(item)}" target="_blank" rel="noopener" class="text-xs font-medium" style="color: var(--accent);">View on AGC's website →</a>
+                `;
+                offenceList.appendChild(card);
+            });
+        }
+
+        function filterData() {
+            const query = searchBox.value.toLowerCase().trim();
+            const selected = statuteFilter.value;
+
+            if (!query) {
+                offenceList.innerHTML = '';
+                resultCount.textContent = 'Type a section or keyword to search';
+                return;
+            }
+
+            let filtered = allData.filter(item => {
+                const haystack = [item.section||'', item.offence||'', item.statute||'', item.punishment||'', item.arrestable||'', item.bailable||''].join(' ').toLowerCase();
+                const matchesSearch = query.split(/\s+/).every(w => haystack.includes(w));
+                const matchesStatute = selected === 'all' || item.statute === selected;
+                return matchesSearch && matchesStatute;
+            });
+
+            filtered.sort((a, b) => {
+                const aExact = (a.section||'').toLowerCase() === query || (a.section||'').toLowerCase().startsWith(query);
+                const bExact = (b.section||'').toLowerCase() === query || (b.section||'').toLowerCase().startsWith(query);
+                return (bExact ? 1 : 0) - (aExact ? 1 : 0);
+            });
+            render(filtered, query);
+        }
+
+        async function init() {
+            loadingStatus.textContent = 'Loading Penal Code data…';
+            try {
+                let resp = await fetch('https://raw.githubusercontent.com/hatsuzuki/legis/master/data/pc.json');
+                if (!resp.ok) resp = await fetch('data/pc.json');
+                if (!resp.ok) throw new Error('Failed to load pc.json');
+                const pcData = await resp.json();
+                const normalised = pcData.map(d => ({
+                    statute: d.statute || 'Penal Code 1871',
+                    section: d.section,
+                    offence: d.offence,
+                    arrestable: d.arrestable,
+                    warrant: d.warrant,
+                    bailable: d.bailable,
+                    punishment: d.punishment
+                }));
+                allData = [...normalised, ...extraOffences];
+                loadingStatus.textContent = `${normalised.length} Penal Code + ${extraOffences.length} other (verified) loaded`;
+                filterData();
+            } catch (err) {
+                console.error(err);
+                loadingStatus.textContent = 'Error loading full PC data – using curated set only';
+                allData = [...extraOffences];
+                filterData();
+            }
+        }
+
+        searchBox.addEventListener('input', filterData);
+        statuteFilter.addEventListener('change', filterData);
+        init();
+    </script>
+</body>
+</html>
