@@ -44,31 +44,27 @@
                         <option value="all">All Statutes</option>
                         <option value="Penal Code 1871">Penal Code 1871</option>
                         <option value="POHA 2014">POHA 2014</option>
-                        <option value="GEWCA">GEWCA (Guns & Weapons)</option>
                         <option value="CESOWA">CESOWA</option>
                         <option value="Miscellaneous Offences Act">MOA (Public Order & Nuisance)</option>
                         <option value="Moneylenders Act">Moneylenders Act</option>
-                        <option value="Liquor Control Act">Liquor Control Act</option>
-                        <option value="Films Act">Films Act</option>
                         <option value="Computer Misuse Act">Computer Misuse Act</option>
                         <option value="Misuse of Drugs Act">Misuse of Drugs Act</option>
-                        <option value="CDSA">CDSA (Confiscation of Benefits)</option>
-                        <option value="Destitute Persons Act">Destitute Persons Act</option>
-                        <option value="Police Force Act">Police Force Act</option>
-                        <option value="Women's Charter">Women's Charter</option>
                     </select>
                 </div>
                 <div>
                     <label class="block text-[10px] font-semibold uppercase mb-1" style="color: var(--text-dim);">🔍 Section or Offence</label>
-                    <input type="text" id="searchBox" placeholder="e.g. 302, 332, knife, stalking, UML, liquor..."
+                    <input type="text" id="searchBox" placeholder="e.g. 302, 332, 6, stalking, UML..."
                         class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none"
                         style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);"
                         autocomplete="off">
                 </div>
             </div>
             <p class="text-[10px] leading-relaxed" style="color: var(--text-dim);">
-                Penal Code data from <strong>CPC 2010 First Schedule</strong> (full wording). 
-                Other statutes use specific Act provisions or the general CPC rule (≥3 yrs imprisonment → generally Arrestable + Non-bailable).
+                <strong>Penal Code</strong> data is taken from the CPC 2010 First Schedule (full wording).
+                Other statutes use verified Act text. For offences under other laws not listed here, CPC applies:
+                ≥3 years imprisonment → generally <strong>May arrest without warrant</strong> + <strong>Not bailable</strong>;
+                <3 years or fine only → generally <strong>May not arrest without warrant</strong> + <strong>Bailable</strong>
+                (unless the specific Act says otherwise).
             </p>
         </div>
 
@@ -81,40 +77,143 @@
 
     <footer class="border-t py-4 text-center text-[10px]" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
         <p>Proof-of-concept. Always verify the latest version on <a href="https://sso.agc.gov.sg" target="_blank" class="underline" style="color: var(--accent);">sso.agc.gov.sg</a>.</p>
-        <p class="mt-1">Penal Code structure inspired by <a href="https://hatsuzuki.github.io/legis/" target="_blank" class="underline" style="color: var(--accent);">hatsuzuki/legis</a></p>
+        <p class="mt-1">Penal Code First Schedule data inspired by <a href="https://hatsuzuki.github.io/legis/" target="_blank" class="underline" style="color: var(--accent);">hatsuzuki/legis</a></p>
     </footer>
 
     <script>
+        // Only verified entries. Act codes and punishments checked against SSO / official text.
+        // CPC default rule for other laws is applied where the Act does not expressly classify the offence.
         const extraOffences = [
-            { statute: "POHA 2014", section: "3", offence: "Intentional harassment, alarm or distress", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $5,000 and/or imprisonment up to 6 months (enhanced for subsequent)", link: "https://sso.agc.gov.sg/Act/POHA2014?ProvIds=pr3-" },
-            { statute: "POHA 2014", section: "4", offence: "Harassment, alarm or distress (threatening, abusive or insulting)", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $5,000 and/or imprisonment up to 6 months", link: "https://sso.agc.gov.sg/Act/POHA2014?ProvIds=pr4-" },
-            { statute: "POHA 2014", section: "7", offence: "Unlawful stalking", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $5,000 and/or imprisonment up to 12 months", link: "https://sso.agc.gov.sg/Act/POHA2014?ProvIds=pr7-" },
-            { statute: "GEWCA", section: "11 / 17", offence: "Unlicensed possession / dealing with gun or firearm", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment up to 5–20 years (depending on type) + fine; caning possible", link: "https://sso.agc.gov.sg/Act/GEWCA2021" },
-            { statute: "GEWCA", section: "—", offence: "Unlicensed possession of prohibited gun or major part", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment up to 5 years + fine (higher for prohibited guns)", link: "https://sso.agc.gov.sg/Act/GEWCA2021" },
-            { statute: "CESOWA", section: "3", offence: "Possession of corrosive or explosive substance for purpose of causing hurt", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment up to 10 years + caning ≥ 6 strokes", link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr3-" },
-            { statute: "CESOWA", section: "4", offence: "Using corrosive / explosive substance or offensive weapon to cause hurt", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment for life + caning ≥ 6 strokes", link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr4-" },
-            { statute: "CESOWA", section: "6", offence: "Carrying offensive weapon in public place", arrestable: "May arrest without warrant (expressly arrestable)", warrant: "Warrant", bailable: "Not bailable (expressly non-bailable)", punishment: "Imprisonment up to 3 years + caning ≥ 6 strokes", link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr6-" },
-            { statute: "CESOWA", section: "7", offence: "Offences relating to scheduled weapons", arrestable: "May arrest without warrant (expressly arrestable)", warrant: "Warrant", bailable: "Not bailable (expressly non-bailable)", punishment: "Imprisonment up to 3 years + caning ≥ 6 strokes", link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr7-" },
-            { statute: "Miscellaneous Offences Act", section: "13", offence: "Drunk and disorderly in public", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine up to $1,000 or imprisonment up to 1 month (higher for repeat)", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr13-" },
-            { statute: "Miscellaneous Offences Act", section: "14", offence: "Vandalism / defacing property", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Fine up to $2,000 or imprisonment up to 3 years + caning", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr14-" },
-            { statute: "Miscellaneous Offences Act", section: "35", offence: "Fraudulent possession of property", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $3,000 or imprisonment up to 1 year or both", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr35-" },
-            { statute: "Moneylenders Act", section: "5 / 14", offence: "Unlicensed moneylending (UML)", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "1st: fine $30k–$300k + imprisonment up to 4 years + caning ≤ 6 strokes; Repeat: up to 7 years + caning ≤ 12 strokes", link: "https://sso.agc.gov.sg/Act/MA2008?ProvIds=pr14-" },
-            { statute: "Moneylenders Act", section: "47", offence: "Harassment on behalf of unlicensed moneylender", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment up to 5 years + fine $5k–$50k + caning (min 3 strokes if damage caused)", link: "https://sso.agc.gov.sg/Act/MA2008?ProvIds=pr47-" },
-            { statute: "Liquor Control Act", section: "4", offence: "Supply of liquor without licence", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $20,000 (repeat: fine + imprisonment up to 3 months)", link: "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr4-" },
-            { statute: "Liquor Control Act", section: "12", offence: "Consumption of liquor in public place outside permitted hours / areas", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $1,000 (repeat: fine + imprisonment up to 3 months)", link: "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr12-" },
-            { statute: "Liquor Control Act", section: "14", offence: "Drunkenness in public place", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine up to $1,000 or imprisonment up to 1 month (repeat higher)", link: "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr14-" },
-            { statute: "Films Act", section: "29 / 30", offence: "Dealings in / possession of obscene films", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $40,000 or imprisonment up to 2 years or both (higher for subsequent)", link: "https://sso.agc.gov.sg/Act/FA1981" },
-            { statute: "Films Act", section: "21", offence: "Distribution or public exhibition of unclassified film", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine and/or imprisonment (see Act)", link: "https://sso.agc.gov.sg/Act/FA1981?ProvIds=pr21-" },
-            { statute: "Computer Misuse Act", section: "3", offence: "Unauthorised access to computer material", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine up to $5,000 and/or imprisonment up to 2 years", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr3-" },
-            { statute: "Computer Misuse Act", section: "5", offence: "Unauthorised modification of computer material", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine up to $10,000 and/or imprisonment up to 3 years", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr5-" },
-            { statute: "Misuse of Drugs Act", section: "5", offence: "Trafficking in controlled drugs", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Depends on drug type & quantity (can include death)", link: "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr5-" },
-            { statute: "Misuse of Drugs Act", section: "8", offence: "Possession or consumption of controlled drug", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment and/or fine (enhanced for certain drugs / repeat)", link: "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr8-" },
-            { statute: "CDSA", section: "47 / 54", offence: "Money laundering / acquiring benefits from criminal conduct", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment up to 10 years and/or fine up to $500,000", link: "https://sso.agc.gov.sg/Act/CDTA1992" },
-            { statute: "Destitute Persons Act", section: "4", offence: "Habitual begging causing annoyance / nuisance", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine or short imprisonment / placement in welfare home", link: "https://sso.agc.gov.sg/Act/DPA1989?ProvIds=pr4-" },
-            { statute: "Destitute Persons Act", section: "16", offence: "Escape from lawful custody of welfare home", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Imprisonment (short term)", link: "https://sso.agc.gov.sg/Act/DPA1989?ProvIds=pr16-" },
-            { statute: "Police Force Act", section: "—", offence: "Assaulting or obstructing a police officer in the execution of duty (often charged under Penal Code s.353 / 332)", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "See Penal Code ss.332 / 353 (up to 7 / 4 years)", link: "https://sso.agc.gov.sg/Act/PFA2004" },
-            { statute: "Women's Charter", section: "65 / 63C", offence: "Wilful breach of protection order / family violence offence", arrestable: "May arrest without warrant (family violence offences are arrestable)", warrant: "Warrant", bailable: "Bailable (generally)", punishment: "Fine up to $10,000 and/or imprisonment up to 12 months (aggravated: up to 18 months)", link: "https://sso.agc.gov.sg/Act/WC1961" },
-            { statute: "Women's Charter", section: "65(8)", offence: "Contravention of personal protection order (PPO)", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine up to $2,000 or imprisonment up to 6 months (subsequent higher)", link: "https://sso.agc.gov.sg/Act/WC1961" }
+            {
+                statute: "POHA 2014",
+                section: "3",
+                offence: "Intentionally causing harassment, alarm or distress",
+                arrestable: "May not arrest without warrant (unless specifically empowered)",
+                warrant: "Summons",
+                bailable: "Bailable",
+                punishment: "Fine not exceeding $5,000 or imprisonment not exceeding 6 months or both (enhanced for subsequent / vulnerable person)",
+                link: "https://sso.agc.gov.sg/Act/PHA2014?ProvIds=pr3-"
+            },
+            {
+                statute: "POHA 2014",
+                section: "4",
+                offence: "Harassment, alarm or distress",
+                arrestable: "May not arrest without warrant (unless specifically empowered)",
+                warrant: "Summons",
+                bailable: "Bailable",
+                punishment: "Fine not exceeding $5,000 (enhanced for subsequent)",
+                link: "https://sso.agc.gov.sg/Act/PHA2014?ProvIds=pr4-"
+            },
+            {
+                statute: "POHA 2014",
+                section: "7",
+                offence: "Unlawful stalking",
+                arrestable: "May not arrest without warrant (unless specifically empowered)",
+                warrant: "Summons",
+                bailable: "Bailable",
+                punishment: "Fine not exceeding $5,000 or imprisonment not exceeding 12 months or both (enhanced for subsequent)",
+                link: "https://sso.agc.gov.sg/Act/PHA2014?ProvIds=pr7-"
+            },
+            {
+                statute: "CESOWA",
+                section: "4",
+                offence: "Using corrosive or explosive substance or offensive weapon to cause hurt",
+                arrestable: "May arrest without warrant",
+                warrant: "Warrant",
+                bailable: "Not bailable",
+                punishment: "Imprisonment for life and caning with not less than 6 strokes",
+                link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr4-"
+            },
+            {
+                statute: "CESOWA",
+                section: "6",
+                offence: "Carrying offensive weapons in public places",
+                arrestable: "May arrest without warrant (expressly arrestable under s.6(4))",
+                warrant: "Warrant",
+                bailable: "Not bailable (expressly non-bailable under s.6(4))",
+                punishment: "Imprisonment not exceeding 3 years and caning with not less than 6 strokes (if prohibited weapon under GEWCA: up to 5 years + caning ≥ 6 strokes)",
+                link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr6-"
+            },
+            {
+                statute: "CESOWA",
+                section: "7",
+                offence: "Offences relating to scheduled weapons",
+                arrestable: "May arrest without warrant",
+                warrant: "Warrant",
+                bailable: "Not bailable",
+                punishment: "See Act (scheduled weapons — serious penalties including caning)",
+                link: "https://sso.agc.gov.sg/Act/CESOWA1958?ProvIds=pr7-"
+            },
+            {
+                statute: "Miscellaneous Offences Act",
+                section: "35",
+                offence: "Fraudulent possession of property",
+                arrestable: "May not arrest without warrant (unless specifically empowered)",
+                warrant: "Summons",
+                bailable: "Bailable",
+                punishment: "Fine not exceeding $3,000 or imprisonment not exceeding 1 year or both",
+                link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr35-"
+            },
+            {
+                statute: "Moneylenders Act",
+                section: "5 / 14",
+                offence: "Unlicensed moneylending",
+                arrestable: "May arrest without warrant",
+                warrant: "Warrant",
+                bailable: "Not bailable",
+                punishment: "1st offence: fine $30,000–$300,000 and imprisonment up to 4 years and caning up to 6 strokes; subsequent higher",
+                link: "https://sso.agc.gov.sg/Act/MA2008?ProvIds=pr14-"
+            },
+            {
+                statute: "Moneylenders Act",
+                section: "47",
+                offence: "Harassment on behalf of unlicensed moneylender",
+                arrestable: "May arrest without warrant",
+                warrant: "Warrant",
+                bailable: "Not bailable",
+                punishment: "Imprisonment up to 5 years and fine $5,000–$50,000; caning (minimum applies if damage caused)",
+                link: "https://sso.agc.gov.sg/Act/MA2008?ProvIds=pr47-"
+            },
+            {
+                statute: "Misuse of Drugs Act",
+                section: "5",
+                offence: "Trafficking in a controlled drug",
+                arrestable: "May arrest without warrant",
+                warrant: "Warrant",
+                bailable: "Not bailable",
+                punishment: "Depends on drug type and quantity (can include death for certain thresholds)",
+                link: "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr5-"
+            },
+            {
+                statute: "Misuse of Drugs Act",
+                section: "8",
+                offence: "Possession or consumption of a controlled drug",
+                arrestable: "May arrest without warrant",
+                warrant: "Warrant",
+                bailable: "Not bailable",
+                punishment: "Imprisonment and/or fine (enhanced for certain drugs and repeat offenders)",
+                link: "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr8-"
+            },
+            {
+                statute: "Computer Misuse Act",
+                section: "3",
+                offence: "Unauthorised access to computer material",
+                arrestable: "May arrest without warrant",
+                warrant: "Warrant",
+                bailable: "Bailable",
+                punishment: "Fine not exceeding $5,000 or imprisonment not exceeding 2 years or both",
+                link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr3-"
+            },
+            {
+                statute: "Computer Misuse Act",
+                section: "5",
+                offence: "Unauthorised modification of computer material",
+                arrestable: "May arrest without warrant",
+                warrant: "Warrant",
+                bailable: "Bailable",
+                punishment: "Fine not exceeding $10,000 or imprisonment not exceeding 3 years or both",
+                link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr5-"
+            }
         ];
 
         let allData = [];
@@ -144,7 +243,7 @@
         function getBailableDisplay(text) {
             if (!text) return text;
             if (text === 'Bailable') return 'Yes';
-            if (text === 'Not bailable' || text.includes('Not bailable')) return 'No';
+            if (text === 'Not bailable' || (text && text.includes('Not bailable'))) return 'No';
             return text;
         }
 
@@ -157,13 +256,29 @@
             return 'https://sso.agc.gov.sg';
         }
 
-        function render(data) {
+        function render(data, query) {
             offenceList.innerHTML = '';
             resultCount.textContent = `${data.length} offence${data.length !== 1 ? 's' : ''} found`;
+
             if (data.length === 0) {
-                offenceList.innerHTML = `<div class="rounded-xl border p-6 text-center text-sm" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">No matching offences found.</div>`;
+                let tip = 'No matching offences found in the indexed data.';
+                if (query === '17' || query === '18' || query === '19' || query === '20') {
+                    tip += ' Note: Penal Code ss.17–20 are definitions (e.g. s.17 defines “Government”), not offences, so they do not appear in the CPC First Schedule.';
+                }
+                offenceList.innerHTML = `
+                    <div class="rounded-xl border p-5 text-sm space-y-3" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
+                        <p>${tip}</p>
+                        <p class="text-xs">Try searching the official site:</p>
+                        <div class="flex flex-wrap gap-2">
+                            <a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query || '')}" target="_blank" rel="noopener"
+                                class="text-xs underline" style="color: var(--accent);">Search SSO for “${query || ''}”</a>
+                            <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=Sc1-" target="_blank" rel="noopener"
+                                class="text-xs underline" style="color: var(--accent);">CPC First Schedule</a>
+                        </div>
+                    </div>`;
                 return;
             }
+
             const display = data.slice(0, 80);
             if (data.length > 80) resultCount.textContent += ' (showing first 80)';
 
@@ -210,7 +325,6 @@
             const query = searchBox.value.toLowerCase().trim();
             const selected = statuteFilter.value;
 
-            // Show nothing until the user types a search term
             if (!query) {
                 offenceList.innerHTML = '';
                 resultCount.textContent = 'Type a section or keyword to search';
@@ -223,12 +337,13 @@
                 const matchesStatute = selected === 'all' || item.statute === selected;
                 return matchesSearch && matchesStatute;
             });
+
             filtered.sort((a, b) => {
                 const aExact = (a.section||'').toLowerCase() === query || (a.section||'').toLowerCase().startsWith(query);
                 const bExact = (b.section||'').toLowerCase() === query || (b.section||'').toLowerCase().startsWith(query);
-                return (bExact?1:0) - (aExact?1:0);
+                return (bExact ? 1 : 0) - (aExact ? 1 : 0);
             });
-            render(filtered);
+            render(filtered, query);
         }
 
         async function init() {
@@ -248,11 +363,11 @@
                     punishment: d.punishment
                 }));
                 allData = [...normalised, ...extraOffences];
-                loadingStatus.textContent = `${normalised.length} Penal Code + ${extraOffences.length} other offences loaded`;
+                loadingStatus.textContent = `${normalised.length} Penal Code + ${extraOffences.length} other (verified) loaded`;
                 filterData();
             } catch (err) {
                 console.error(err);
-                loadingStatus.textContent = 'Error loading full data – using curated set only';
+                loadingStatus.textContent = 'Error loading full PC data – using curated set only';
                 allData = [...extraOffences];
                 filterData();
             }
