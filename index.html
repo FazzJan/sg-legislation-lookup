@@ -242,8 +242,12 @@
         async function init() {
             loadingStatus.textContent = 'Loading Penal Code data…';
             try {
-                let resp = await fetch('data/pc.json');
-                if (!resp.ok) resp = await fetch('pc.json');
+                // Primary: full CPC First Schedule from hatsuzuki/legis
+                let resp = await fetch('https://raw.githubusercontent.com/hatsuzuki/legis/master/data/pc.json');
+                if (!resp.ok) {
+                    // Fallback to local copy if present
+                    resp = await fetch('data/pc.json');
+                }
                 if (!resp.ok) throw new Error('Failed to load pc.json');
 
                 const pcData = await resp.json();
