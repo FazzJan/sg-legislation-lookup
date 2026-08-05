@@ -7,104 +7,139 @@
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-body, input, select, button, a { font-family: 'JetBrains Mono', ui-monospace, monospace; }
-:root {
-  --bg-main: #0f172a; --bg-card: #1e293b; --bg-input: #0f172a; --border: #334155;
-  --text-main: #f1f5f9; --text-muted: #94a3b8; --text-dim: #64748b; --accent: #38bdf8;
-}
-[data-theme="light"] {
-  --bg-main: #f8fafc; --bg-card: #ffffff; --bg-input: #ffffff; --border: #e2e8f0;
-  --text-main: #0f172a; --text-muted: #475569; --text-dim: #64748b; --accent: #0284c7;
-}
-body { background-color: var(--bg-main); color: var(--text-main); transition: background-color 0.2s, color 0.2s; }
-.badge-a { background: #16a34a; color: white; }
-.badge-n { background: #dc2626; color: white; }
-.badge-q { background: #ca8a04; color: white; }
+  body, input, select, button, a { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+  :root {
+    --bg: #0b1220;
+    --card: #121a2b;
+    --input: #0b1220;
+    --border: #243044;
+    --text: #e8eef7;
+    --muted: #9aa8bc;
+    --dim: #6b7a90;
+    --accent: #5ec8ff;
+  }
+  [data-theme="light"] {
+    --bg: #f4f7fb;
+    --card: #ffffff;
+    --input: #ffffff;
+    --border: #d9e2ef;
+    --text: #0f172a;
+    --muted: #475569;
+    --dim: #64748b;
+    --accent: #0284c7;
+  }
+  body { background: var(--bg); color: var(--text); }
+  .pill-arrest { background: #dc2626; color: #fff; }
+  .pill-no-arrest { background: #16a34a; color: #fff; }
+  .pill-unknown { background: #a16207; color: #fff; }
+  .pill-bail-yes {
+    background: rgba(22, 163, 74, 0.15);
+    color: #4ade80;
+    border: 1px solid rgba(22, 163, 74, 0.35);
+  }
+  .pill-bail-no {
+    background: rgba(220, 38, 38, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(220, 38, 38, 0.35);
+  }
+  .pill-bail-maybe {
+    background: rgba(161, 98, 7, 0.15);
+    color: #fbbf24;
+    border: 1px solid rgba(161, 98, 7, 0.35);
+  }
+  [data-theme="light"] .pill-bail-yes { color: #15803d; }
+  [data-theme="light"] .pill-bail-no { color: #b91c1c; }
+  [data-theme="light"] .pill-bail-maybe { color: #a16207; }
+  input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 0; }
 </style>
 </head>
 <body data-theme="dark" class="min-h-screen flex flex-col">
-<header class="border-b sticky top-0 z-20" style="background: var(--bg-card); border-color: var(--border);">
-  <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+
+<header class="sticky top-0 z-20 border-b" style="background: var(--card); border-color: var(--border);">
+  <div class="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
     <div>
-      <h1 class="text-lg font-bold tracking-tight" style="color: var(--accent);">⚡ Hambalang Search Guide</h1>
-      <p class="text-[10px]" style="color: var(--text-dim);">Arrestable • Bailable • Punishment • Multi-statute</p>
+      <h1 class="text-base font-bold" style="color: var(--accent);">Hambalang Search Guide</h1>
+      <p class="text-[10px]" style="color: var(--dim);">SG offences · arrest · bail · punishment</p>
     </div>
-    <div class="flex items-center gap-2 shrink-0">
-      <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=Report%20/%20Request%3A%20&body=**Type**%3A%20(bug%20%2F%20wrong%20data%20%2F%20request%20new%20section)%0A%0A**Statute%20%26%20section**%3A%20%0A%0A**What%27s%20wrong%20or%20missing**%3A%20%0A%0A**Suggested%20fix%20(optional)**%3A%20%0A%0A---%0AFrom%20Hambalang%20Search%20Guide" target="_blank" rel="noopener"
-        class="px-2.5 py-1 rounded border text-xs no-underline"
-        style="border-color: var(--border); color: var(--text-muted); background: var(--bg-main);"
-        title="Report an error or request a section">💬 Report</a>
-      <button id="themeToggle" class="px-2.5 py-1 rounded border text-xs" style="border-color: var(--border); color: var(--text-muted); background: var(--bg-main);">☀️ Light</button>
+    <div class="flex items-center gap-2">
+      <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=Report%20/%20Request%3A%20&body=**Type**%3A%20(bug%20%2F%20wrong%20data%20%2F%20request%20new%20section)%0A%0A**Statute%20%26%20section**%3A%20%0A%0A**What%27s%20wrong%20or%20missing**%3A%20%0A%0A---%0AFrom%20Hambalang%20Search%20Guide"
+         target="_blank" rel="noopener"
+         class="text-[11px] px-2.5 py-1.5 rounded-md border no-underline"
+         style="border-color: var(--border); color: var(--muted);">Report</a>
+      <button id="themeToggle" class="text-[11px] px-2.5 py-1.5 rounded-md border"
+              style="border-color: var(--border); color: var(--muted); background: transparent;">Light</button>
     </div>
   </div>
 </header>
-<main class="max-w-3xl mx-auto px-4 py-5 flex-grow w-full">
-  <div class="rounded-xl border p-4 mb-5 space-y-3" style="background: var(--bg-card); border-color: var(--border);">
+
+<main class="max-w-2xl mx-auto px-4 py-5 flex-grow w-full">
+  <div class="rounded-xl border p-3 mb-4 space-y-3" style="background: var(--card); border-color: var(--border);">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <div>
-        <label class="block text-[10px] font-semibold uppercase mb-1" style="color: var(--text-dim);">📁 Statute</label>
-        <select id="statuteFilter" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none" style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);">
-          <option value="all">All Statutes</option>
-          <option value="Penal Code 1871">Penal Code 1871</option>
-          <option value="POHA 2014">POHA 2014</option>
-          <option value="Miscellaneous Offences Act">MOA (Public Order & Nuisance)</option>
-          <option value="GCA 2022">GCA (Gambling Control Act)</option>
-          <option value="GEWCA">GEWCA (Guns & Weapons)</option>
+        <label class="block text-[10px] uppercase tracking-wide mb-1" style="color: var(--dim);">Statute</label>
+        <select id="statuteFilter" class="w-full px-3 py-2.5 rounded-lg border text-sm"
+                style="background: var(--input); border-color: var(--border); color: var(--text);">
+          <option value="all">All statutes</option>
+          <option value="Penal Code 1871">Penal Code</option>
+          <option value="POHA 2014">POHA</option>
+          <option value="Miscellaneous Offences Act">MOA</option>
+          <option value="GCA 2022">GCA (Gambling)</option>
+          <option value="GEWCA">GEWCA (Guns)</option>
           <option value="CESOWA">CESOWA</option>
-          <option value="Liquor Control Act">LCA (Liquor Control Act)</option>
-          <option value="Destitute Persons Act">DPA (Destitute Persons Act)</option>
-          <option value="Moneylenders Act">Moneylenders Act</option>
-          <option value="Computer Misuse Act">Computer Misuse Act</option>
+          <option value="Liquor Control Act">LCA (Liquor)</option>
+          <option value="Destitute Persons Act">DPA</option>
+          <option value="Moneylenders Act">Moneylenders</option>
+          <option value="Computer Misuse Act">Computer Misuse</option>
         </select>
       </div>
       <div>
-        <label class="block text-[10px] font-semibold uppercase mb-1" style="color: var(--text-dim);">🔍 Section or Offence</label>
-        <input type="text" id="searchBox" placeholder="e.g. 14D, 17B, 302, false message, liquor..." class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none" style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);" autocomplete="off">
+        <label class="block text-[10px] uppercase tracking-wide mb-1" style="color: var(--dim);">Section or keyword</label>
+        <input type="text" id="searchBox" placeholder="e.g. 302, 14D, stalking…"
+               class="w-full px-3 py-2.5 rounded-lg border text-sm"
+               style="background: var(--input); border-color: var(--border); color: var(--text);"
+               autocomplete="off">
       </div>
     </div>
-    <p class="text-[10px] leading-relaxed" style="color: var(--text-dim);">
-      <strong>Penal Code</strong> = full CPC 2010 First Schedule. Other statutes = curated key sections.
-      If a section is not indexed, select the statute and search the section number — you still get a direct AGC link.
-      CPC default for other laws: ≥3 years → generally arrestable + non-bailable; <3 years or fine only → generally non-arrestable + bailable (unless the Act says otherwise).
-    </p>
+    <details class="text-[10px]" style="color: var(--dim);">
+      <summary class="cursor-pointer" style="color: var(--muted);">About data & CPC rules</summary>
+      <p class="mt-2 leading-relaxed">
+        Penal Code uses the full CPC First Schedule. Other Acts are key sections only.
+        For other laws not listed: max ≥3 years jail → usually <strong>arrestable + not bailable</strong>;
+        under 3 years or fine only → usually <strong>not arrestable + bailable</strong>, unless the Act says otherwise.
+      </p>
+    </details>
   </div>
-  <div class="flex items-center justify-between text-[11px] mb-3 px-0.5" style="color: var(--text-dim);">
-    <span id="resultCount">Type a section or keyword to search</span>
-    <span id="loadingStatus" class="text-[10px]"></span>
+
+  <div class="flex items-center justify-between text-[11px] mb-3" style="color: var(--dim);">
+    <span id="resultCount">Type a section or keyword</span>
+    <span id="loadingStatus"></span>
   </div>
+
   <div id="offenceList" class="space-y-3"></div>
 </main>
-<footer class="border-t py-5 text-[10px] leading-relaxed" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
-  <div class="max-w-3xl mx-auto px-4 space-y-3">
-    <p class="font-semibold" style="color: var(--text-muted);">NOTE — Development in progress. Proof-of-concept only.</p>
-    <p>
-      <strong>Penal Code</strong> from
-      <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=Sc1-" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">CPC 2010 First Schedule</a>
-      (via <a href="https://hatsuzuki.github.io/legis/" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">hatsuzuki/legis</a>).
-      Other statutes are a curated subset of key offences — not every section.
+
+<footer class="border-t py-4 text-[10px]" style="background: var(--card); border-color: var(--border); color: var(--dim);">
+  <div class="max-w-2xl mx-auto px-4 space-y-2">
+    <p>Proof-of-concept. Always verify on
+      <a href="https://sso.agc.gov.sg" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">sso.agc.gov.sg</a>.
+      Data inspired by
+      <a href="https://hatsuzuki.github.io/legis/" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">hatsuzuki/legis</a>.
     </p>
     <p>
-      According to the CPC, offences against laws other than the Penal Code punishable by death or imprisonment for 3 years and above are generally arrestable and non-bailable.
-      Offences punishable with imprisonment for less than 3 years or with fine only are generally non-arrestable and bailable, unless specified otherwise.
-    </p>
-    <p class="pt-1">
-      Found an error or want a section added?
-      <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=Report%20/%20Request%3A%20&body=**Type**%3A%20(bug%20%2F%20wrong%20data%20%2F%20request%20new%20section)%0A%0A**Statute%20%26%20section**%3A%20%0A%0A**What%27s%20wrong%20or%20missing**%3A%20%0A%0A**Suggested%20fix%20(optional)**%3A%20%0A%0A---%0AFrom%20Hambalang%20Search%20Guide" target="_blank" rel="noopener" class="underline font-semibold" style="color: var(--accent);">Report / request on GitHub</a>
+      <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">Report / request section</a>
       ·
-      <a href="https://github.com/FazzJan/sg-legislation-lookup/issues" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">View open issues</a>
+      <a href="https://github.com/FazzJan/sg-legislation-lookup/issues" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">Open issues</a>
     </p>
-    <details class="mt-2">
-      <summary class="cursor-pointer font-semibold" style="color: var(--text-muted);">Show disclaimer</summary>
-      <div class="mt-2 space-y-2 pl-1 border-l-2" style="border-color: var(--border);">
-        <p>The information on this site is strictly a <strong>proof-of-concept only</strong>.</p>
-        <p><strong>If in doubt, double-check on AGC's website first.</strong></p>
-        <p>Users access and use this information solely at their own risk. The creator(s) are not responsible or liable for any loss, damage, or consequences arising from use of this information.</p>
-        <p>Not affiliated with the Attorney-General's Chambers of Singapore.</p>
-        <p>Always verify on <a href="https://sso.agc.gov.sg" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">sso.agc.gov.sg</a>.</p>
+    <details>
+      <summary class="cursor-pointer" style="color: var(--muted);">Disclaimer</summary>
+      <div class="mt-2 space-y-1 leading-relaxed">
+        <p>For reference only. Not legal advice. Not affiliated with AGC.</p>
+        <p>Use at your own risk. Double-check the official statute text.</p>
       </div>
     </details>
   </div>
 </footer>
+
 <script>
 const extraOffences = [
   { statute: "POHA 2014", section: "3", offence: "Intentionally causing harassment, alarm, distress or humiliation", arrestable: "May not arrest without warrant (unless specifically empowered)", warrant: "Summons", bailable: "Bailable", punishment: "Fine not exceeding $5,000 or imprisonment not exceeding 6 months or both (enhanced under s.8)", link: "https://sso.agc.gov.sg/Act/PHA2014?ProvIds=pr3-" },
@@ -178,24 +213,30 @@ const themeToggle = document.getElementById('themeToggle');
 
 function setTheme(theme) {
   document.body.setAttribute('data-theme', theme);
-  themeToggle.textContent = theme === 'dark' ? '☀️ Light' : '🌙 Dark';
+  themeToggle.textContent = theme === 'dark' ? 'Light' : 'Dark';
   localStorage.setItem('legis-theme', theme);
 }
 setTheme(localStorage.getItem('legis-theme') || 'dark');
-themeToggle.addEventListener('click', () => setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+themeToggle.addEventListener('click', () =>
+  setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark')
+);
 
-function getArrestableBadge(text) {
-  if (!text) return { cls: 'badge-q', label: '?' };
+function getArrestStatus(text) {
+  if (!text) return { cls: 'pill-unknown', label: 'Unknown' };
   const t = text.toLowerCase();
-  if (t.includes('may not arrest')) return { cls: 'badge-n', label: 'N' };
-  if (t.includes('may arrest without warrant')) return { cls: 'badge-a', label: 'A' };
-  return { cls: 'badge-q', label: '?' };
+  if (t.includes('may not arrest')) return { cls: 'pill-no-arrest', label: 'Not arrestable' };
+  if (t.includes('may arrest without warrant')) return { cls: 'pill-arrest', label: 'Arrestable' };
+  return { cls: 'pill-unknown', label: 'Check Act' };
 }
-function getBailableDisplay(text) {
-  if (!text) return text;
-  if (text === 'Bailable') return 'Yes';
-  if (text === 'Not bailable' || (text && text.includes('Not bailable'))) return 'No';
-  return text;
+
+function getBailStatus(text) {
+  if (!text) return { cls: 'pill-bail-maybe', label: '—' };
+  if (text === 'Bailable' || text === 'Yes') return { cls: 'pill-bail-yes', label: 'Bailable' };
+  if (text === 'Not bailable' || (text && text.includes('Not bailable'))) return { cls: 'pill-bail-no', label: 'Not bailable' };
+  if (text.toLowerCase().includes('bailable') && !text.toLowerCase().includes('not bailable')) {
+    return { cls: 'pill-bail-yes', label: 'Bailable' };
+  }
+  return { cls: 'pill-bail-maybe', label: text };
 }
 
 function extractSectionToken(query) {
@@ -217,114 +258,83 @@ function buildAgcLink(item) {
     const sec = String(item.section).replace(/ *\([^)]*\) */g, '').replace(/\s+/g, '');
     return buildActSectionUrl(code, sec);
   }
-  if (item.statute === 'Penal Code 1871' && item.section) {
-    const sec = String(item.section).replace(/ *\([^)]*\) */g, '');
-    return `https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr${sec}-#pr${sec}-`;
-  }
   return 'https://sso.agc.gov.sg';
 }
 
 function render(data, query) {
   offenceList.innerHTML = '';
-  resultCount.textContent = `${data.length} offence${data.length !== 1 ? 's' : ''} found`;
+  resultCount.textContent = data.length ? `${data.length} result${data.length !== 1 ? 's' : ''}` : 'No results';
 
   if (data.length === 0) {
-    let tip = 'No matching offences found in the <strong>indexed</strong> data.';
-    if (['17','18','19','20'].includes(query)) {
-      tip += ' Note: Penal Code ss.17–20 are definitions (e.g. s.17 defines “Government”), not offences.';
-    }
-
     const selected = statuteFilter.value;
     const secToken = extractSectionToken(query);
     const actCode = selected !== 'all' ? ACT_CODES[selected] : null;
     const actName = selected !== 'all' ? selected : null;
 
-    let deepLinks = '';
+    let deep = '';
     if (actCode && secToken) {
       const sectionUrl = buildActSectionUrl(actCode, secToken);
       const mainUrl = buildActSectionUrl(actCode, null);
       const parentNum = secToken.match(/^(\d+)/)?.[1];
       const parentUrl = (parentNum && parentNum !== secToken) ? buildActSectionUrl(actCode, parentNum) : null;
-
-      deepLinks = `
-        <p class="text-xs font-semibold" style="color: var(--text-muted);">Open on AGC (even if not indexed here):</p>
-        <div class="flex flex-col gap-2">
-          <a href="${sectionUrl}" target="_blank" rel="noopener"
-            class="text-xs font-medium px-3 py-2 rounded-lg border text-center"
-            style="color: var(--accent); border-color: var(--accent);">
-            Try direct jump → ${actName} § ${secToken}
-          </a>
-          ${parentUrl ? `<a href="${parentUrl}" target="_blank" rel="noopener" class="text-xs underline" style="color: var(--accent);">Or open parent § ${parentNum} on AGC</a>` : ''}
-          <a href="${mainUrl}" target="_blank" rel="noopener" class="text-xs underline" style="color: var(--accent);">
-            ${actName} main page on SSO
-          </a>
-        </div>`;
+      deep = `
+        <a href="${sectionUrl}" target="_blank" rel="noopener"
+           class="block text-center text-sm font-medium px-3 py-2.5 rounded-lg border"
+           style="color: var(--accent); border-color: var(--accent);">
+          Open ${actName} § ${secToken} on AGC
+        </a>
+        ${parentUrl ? `<a href="${parentUrl}" target="_blank" rel="noopener" class="text-xs underline" style="color: var(--accent);">Or § ${parentNum}</a>` : ''}
+        <a href="${mainUrl}" target="_blank" rel="noopener" class="text-xs underline" style="color: var(--accent);">${actName} main page</a>`;
     } else if (actCode) {
-      const mainUrl = buildActSectionUrl(actCode, null);
-      deepLinks = `
-        <p class="text-xs">Statute selected — open the Act on AGC:</p>
-        <a href="${mainUrl}" target="_blank" rel="noopener"
-          class="text-xs font-medium px-3 py-2 rounded-lg border inline-block"
-          style="color: var(--accent); border-color: var(--accent);">
-          ${actName} main page →
-        </a>`;
-    } else if (secToken) {
-      deepLinks = `<p class="text-xs">Tip: select a statute (e.g. Destitute Persons Act) in the dropdown, then search the section number for a direct AGC link.</p>`;
+      deep = `<a href="${buildActSectionUrl(actCode, null)}" target="_blank" rel="noopener" class="text-sm underline" style="color: var(--accent);">Open ${actName} on AGC</a>`;
+    } else {
+      deep = `<p class="text-xs">Select a statute, then search the section number for a direct AGC link.</p>`;
     }
 
     offenceList.innerHTML = `
-      <div class="rounded-xl border p-5 text-sm space-y-3" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
-        <p>${tip}</p>
-        ${deepLinks}
-        <p class="text-xs mt-2">Other options:</p>
-        <div class="flex flex-wrap gap-2">
-          <a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query || '')}" target="_blank" rel="noopener"
-            class="text-xs underline" style="color: var(--accent);">Search SSO for “${query || ''}”</a>
-          <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=Sc1-" target="_blank" rel="noopener"
-            class="text-xs underline" style="color: var(--accent);">CPC First Schedule</a>
-          <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=${encodeURIComponent('Request section: ' + (query || '') + (actName ? ' (' + actName + ')' : ''))}&body=${encodeURIComponent('**Type**: request new section\n\n**Statute & section**: ' + (actName || '(please fill)') + ' ' + (query || '') + '\n\n**What is missing**: Not in the indexed data.\n\n---\nFrom Hambalang Search Guide')}" target="_blank" rel="noopener"
-            class="text-xs underline" style="color: var(--accent);">Request this section on GitHub</a>
+      <div class="rounded-xl border p-4 space-y-3 text-sm" style="background: var(--card); border-color: var(--border); color: var(--muted);">
+        <p>Not in the indexed set.</p>
+        <div class="flex flex-col gap-2">${deep}</div>
+        <div class="flex flex-wrap gap-3 text-xs pt-1">
+          <a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query || '')}" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">Search SSO</a>
+          <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=${encodeURIComponent('Request: ' + (query||''))}" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">Request on GitHub</a>
         </div>
       </div>`;
     return;
   }
 
-  const display = data.slice(0, 80);
-  if (data.length > 80) resultCount.textContent += ' (showing first 80)';
+  data.slice(0, 80).forEach(item => {
+    const arrest = getArrestStatus(item.arrestable);
+    const bail = getBailStatus(item.bailable);
 
-  display.forEach(item => {
-    const badge = getArrestableBadge(item.arrestable);
-    const bailableDisplay = getBailableDisplay(item.bailable);
-    const isConditionalBail = bailableDisplay !== 'Yes' && bailableDisplay !== 'No';
-    const card = document.createElement('div');
-    card.className = 'rounded-xl border p-4';
-    card.style.background = 'var(--bg-card)';
+    const card = document.createElement('article');
+    card.className = 'rounded-xl border overflow-hidden';
+    card.style.background = 'var(--card)';
     card.style.borderColor = 'var(--border)';
     card.innerHTML = `
-      <div class="flex flex-wrap items-start gap-2 mb-3">
-        <span class="text-[10px] font-bold px-2 py-0.5 rounded border shrink-0" style="color: var(--accent); border-color: var(--accent);">${item.statute}</span>
-        <div class="flex-1 min-w-0">
-          <div class="font-semibold text-sm leading-snug">§ ${item.section}</div>
-          <div class="text-sm mt-0.5" style="color: var(--text-muted);">${item.offence}</div>
+      <div class="p-4">
+        <div class="mb-2">
+          <div class="text-[10px] uppercase tracking-wide mb-0.5" style="color: var(--dim);">${item.statute}</div>
+          <div class="font-semibold text-base leading-tight">§ ${item.section}</div>
         </div>
-        <div class="w-7 h-7 rounded flex items-center justify-center text-xs font-bold shrink-0 ${badge.cls}">${badge.label}</div>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3 text-sm">
-        <div class="rounded-lg p-2.5 border" style="background: var(--bg-main); border-color: var(--border);">
-          <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Arrestable</div>
-          <div class="text-xs leading-snug">${item.arrestable || '—'}</div>
+        <p class="text-sm mb-3 leading-snug" style="color: var(--muted);">${item.offence || ''}</p>
+
+        <div class="flex flex-wrap gap-2 mb-3">
+          <span class="text-[11px] font-bold px-2.5 py-1 rounded-md ${arrest.cls}">${arrest.label}</span>
+          <span class="text-[11px] font-semibold px-2.5 py-1 rounded-md ${bail.cls}">${bail.label}</span>
         </div>
-        <div class="rounded-lg p-2.5 border" style="background: var(--bg-main); border-color: var(--border);">
-          <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Bailable</div>
-          <div class="text-xs leading-snug ${isConditionalBail ? '' : 'font-semibold'}">${bailableDisplay}</div>
+
+        <div class="text-xs space-y-2" style="color: var(--muted);">
+          ${item.warrant ? `<div><span style="color: var(--dim);">Process:</span> ${item.warrant}</div>` : ''}
+          <div>
+            <div style="color: var(--dim);" class="mb-0.5">Max punishment</div>
+            <div class="leading-relaxed">${item.punishment || '—'}</div>
+          </div>
         </div>
       </div>
-      ${item.warrant ? `<div class="mb-3"><div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Warrant / Summons</div><div class="text-xs" style="color: var(--text-muted);">${item.warrant}</div></div>` : ''}
-      <div class="mb-3">
-        <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Maximum Punishment</div>
-        <div class="text-xs leading-relaxed" style="color: var(--text-muted);">${item.punishment || '—'}</div>
-      </div>
-      <a href="${buildAgcLink(item)}" target="_blank" rel="noopener" class="text-xs font-medium" style="color: var(--accent);">View on AGC's website →</a>`;
+      <div class="px-4 py-2.5 border-t text-xs" style="border-color: var(--border);">
+        <a href="${buildAgcLink(item)}" target="_blank" rel="noopener" class="font-medium" style="color: var(--accent);">View on AGC →</a>
+      </div>`;
     offenceList.appendChild(card);
   });
 }
@@ -332,17 +342,20 @@ function render(data, query) {
 function filterData() {
   const query = searchBox.value.toLowerCase().trim();
   const selected = statuteFilter.value;
+
   if (!query) {
     offenceList.innerHTML = '';
-    resultCount.textContent = 'Type a section or keyword to search';
+    resultCount.textContent = 'Type a section or keyword';
     return;
   }
+
   let filtered = allData.filter(item => {
-    const haystack = [item.section||'', item.offence||'', item.statute||'', item.punishment||'', item.arrestable||'', item.bailable||''].join(' ').toLowerCase();
-    const matchesSearch = query.split(/\s+/).every(w => haystack.includes(w));
+    const hay = [item.section||'', item.offence||'', item.statute||'', item.punishment||'', item.arrestable||'', item.bailable||''].join(' ').toLowerCase();
+    const matchesSearch = query.split(/\s+/).every(w => hay.includes(w));
     const matchesStatute = selected === 'all' || item.statute === selected;
     return matchesSearch && matchesStatute;
   });
+
   filtered.sort((a, b) => {
     const aExact = (a.section||'').toLowerCase() === query || (a.section||'').toLowerCase().startsWith(query);
     const bExact = (b.section||'').toLowerCase() === query || (b.section||'').toLowerCase().startsWith(query);
@@ -352,11 +365,11 @@ function filterData() {
 }
 
 async function init() {
-  loadingStatus.textContent = 'Loading Penal Code data…';
+  loadingStatus.textContent = 'Loading…';
   try {
     let resp = await fetch('https://raw.githubusercontent.com/hatsuzuki/legis/master/data/pc.json');
     if (!resp.ok) resp = await fetch('data/pc.json');
-    if (!resp.ok) throw new Error('Failed to load pc.json');
+    if (!resp.ok) throw new Error('load fail');
     const pcData = await resp.json();
     const normalised = pcData.map(d => ({
       statute: d.statute || 'Penal Code 1871',
@@ -368,11 +381,11 @@ async function init() {
       punishment: d.punishment
     }));
     allData = [...normalised, ...extraOffences];
-    loadingStatus.textContent = `${normalised.length} Penal Code + ${extraOffences.length} other loaded`;
+    loadingStatus.textContent = '';
     filterData();
   } catch (err) {
     console.error(err);
-    loadingStatus.textContent = 'Error loading PC data – curated set only';
+    loadingStatus.textContent = 'Offline mode';
     allData = [...extraOffences];
     filterData();
   }
