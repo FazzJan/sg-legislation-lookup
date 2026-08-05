@@ -53,15 +53,13 @@ body { background-color: var(--bg-main); color: var(--text-main); transition: ba
       </div>
       <div>
         <label class="block text-[10px] font-semibold uppercase mb-1" style="color: var(--text-dim);">🔍 Section or Offence</label>
-        <input type="text" id="searchBox" placeholder="e.g. 14D, 302, false message, liquor, gun..." class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none" style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);" autocomplete="off">
+        <input type="text" id="searchBox" placeholder="e.g. 14D, 17B, 302, false message, liquor..." class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none" style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);" autocomplete="off">
       </div>
     </div>
     <p class="text-[10px] leading-relaxed" style="color: var(--text-dim);">
-      <strong>Penal Code</strong> = full CPC 2010 First Schedule.
-      Other statutes = curated key sections. CPC default for other laws:
-      ≥3 years imprisonment → generally <strong>May arrest without warrant</strong> + <strong>Not bailable</strong>;
-      <3 years or fine only → generally <strong>May not arrest without warrant</strong> + <strong>Bailable</strong>
-      (unless the Act says otherwise).
+      <strong>Penal Code</strong> = full CPC 2010 First Schedule. Other statutes = curated key sections.
+      If a section is not indexed, select the statute and search the section number — you still get a direct AGC link.
+      CPC default for other laws: ≥3 years → generally arrestable + non-bailable; <3 years or fine only → generally non-arrestable + bailable (unless the Act says otherwise).
     </p>
   </div>
   <div class="flex items-center justify-between text-[11px] mb-3 px-0.5" style="color: var(--text-dim);">
@@ -145,6 +143,19 @@ const extraOffences = [
   { statute: "Computer Misuse Act", section: "5", offence: "Unauthorised modification of computer material", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine not exceeding $10,000 or imprisonment not exceeding 3 years or both", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr5-" }
 ];
 
+const ACT_CODES = {
+  'Penal Code 1871': 'PC1871',
+  'POHA 2014': 'PHA2014',
+  'Miscellaneous Offences Act': 'MOPONA1906',
+  'CESOWA': 'CESOWA1958',
+  'GEWCA': 'GEWCA2021',
+  'GCA 2022': 'GCA2022',
+  'Liquor Control Act': 'LCSCA2015',
+  'Destitute Persons Act': 'DPA1989',
+  'Moneylenders Act': 'MA2008',
+  'Computer Misuse Act': 'CMA1993'
+};
+
 let allData = [];
 const searchBox = document.getElementById('searchBox');
 const statuteFilter = document.getElementById('statuteFilter');
@@ -174,8 +185,26 @@ function getBailableDisplay(text) {
   if (text === 'Not bailable' || (text && text.includes('Not bailable'))) return 'No';
   return text;
 }
+
+function extractSectionToken(query) {
+  if (!query) return null;
+  const m = String(query).trim().match(/(?:(?:section|sec|s|§)\.?\s*)?(\d+[A-Za-z]?)/i);
+  return m ? m[1].toUpperCase() : null;
+}
+
+function buildActSectionUrl(actCode, section) {
+  if (!actCode) return 'https://sso.agc.gov.sg';
+  if (!section) return `https://sso.agc.gov.sg/Act/${actCode}`;
+  return `https://sso.agc.gov.sg/Act/${actCode}?ProvIds=pr${section}-`;
+}
+
 function buildAgcLink(item) {
   if (item.link) return item.link;
+  const code = ACT_CODES[item.statute];
+  if (code && item.section) {
+    const sec = String(item.section).replace(/ *\([^)]*\) */g, '').replace(/\s+/g, '');
+    return buildActSectionUrl(code, sec);
+  }
   if (item.statute === 'Penal Code 1871' && item.section) {
     const sec = String(item.section).replace(/ *\([^)]*\) */g, '');
     return `https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr${sec}-#pr${sec}-`;
@@ -186,14 +215,69 @@ function buildAgcLink(item) {
 function render(data, query) {
   offenceList.innerHTML = '';
   resultCount.textContent = `${data.length} offence${data.length !== 1 ? 's' : ''} found`;
+
   if (data.length === 0) {
-    let tip = 'No matching offences found in the indexed data.';
-    if (['17','18','19','20'].includes(query)) tip += ' Note: Penal Code ss.17–20 are definitions, not offences.';
-    offenceList.innerHTML = `<div class="rounded-xl border p-5 text-sm space-y-3" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);"><p>${tip}</p><p class="text-xs">Try <a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query||'')}" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">SSO search</a> or <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=Sc1-" target="_blank" rel="noopener" class="underline" style="color: var(--accent);">CPC First Schedule</a>.</p></div>`;
+    let tip = 'No matching offences found in the <strong>indexed</strong> data.';
+    if (['17','18','19','20'].includes(query)) {
+      tip += ' Note: Penal Code ss.17–20 are definitions (e.g. s.17 defines “Government”), not offences.';
+    }
+
+    const selected = statuteFilter.value;
+    const secToken = extractSectionToken(query);
+    const actCode = selected !== 'all' ? ACT_CODES[selected] : null;
+    const actName = selected !== 'all' ? selected : null;
+
+    let deepLinks = '';
+    if (actCode && secToken) {
+      const sectionUrl = buildActSectionUrl(actCode, secToken);
+      const mainUrl = buildActSectionUrl(actCode, null);
+      const parentNum = secToken.match(/^(\d+)/)?.[1];
+      const parentUrl = (parentNum && parentNum !== secToken) ? buildActSectionUrl(actCode, parentNum) : null;
+
+      deepLinks = `
+        <p class="text-xs font-semibold" style="color: var(--text-muted);">Open on AGC (even if not indexed here):</p>
+        <div class="flex flex-col gap-2">
+          <a href="${sectionUrl}" target="_blank" rel="noopener"
+            class="text-xs font-medium px-3 py-2 rounded-lg border text-center"
+            style="color: var(--accent); border-color: var(--accent);">
+            Try direct jump → ${actName} § ${secToken}
+          </a>
+          ${parentUrl ? `<a href="${parentUrl}" target="_blank" rel="noopener" class="text-xs underline" style="color: var(--accent);">Or open parent § ${parentNum} on AGC</a>` : ''}
+          <a href="${mainUrl}" target="_blank" rel="noopener" class="text-xs underline" style="color: var(--accent);">
+            ${actName} main page on SSO
+          </a>
+        </div>`;
+    } else if (actCode) {
+      const mainUrl = buildActSectionUrl(actCode, null);
+      deepLinks = `
+        <p class="text-xs">Statute selected — open the Act on AGC:</p>
+        <a href="${mainUrl}" target="_blank" rel="noopener"
+          class="text-xs font-medium px-3 py-2 rounded-lg border inline-block"
+          style="color: var(--accent); border-color: var(--accent);">
+          ${actName} main page →
+        </a>`;
+    } else if (secToken) {
+      deepLinks = `<p class="text-xs">Tip: select a statute (e.g. Destitute Persons Act) in the dropdown, then search the section number for a direct AGC link.</p>`;
+    }
+
+    offenceList.innerHTML = `
+      <div class="rounded-xl border p-5 text-sm space-y-3" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
+        <p>${tip}</p>
+        ${deepLinks}
+        <p class="text-xs mt-2">Other options:</p>
+        <div class="flex flex-wrap gap-2">
+          <a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query || '')}" target="_blank" rel="noopener"
+            class="text-xs underline" style="color: var(--accent);">Search SSO for “${query || ''}”</a>
+          <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=Sc1-" target="_blank" rel="noopener"
+            class="text-xs underline" style="color: var(--accent);">CPC First Schedule</a>
+        </div>
+      </div>`;
     return;
   }
+
   const display = data.slice(0, 80);
   if (data.length > 80) resultCount.textContent += ' (showing first 80)';
+
   display.forEach(item => {
     const badge = getArrestableBadge(item.arrestable);
     const bailableDisplay = getBailableDisplay(item.bailable);
