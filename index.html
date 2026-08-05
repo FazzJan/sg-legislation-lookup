@@ -7,43 +7,56 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body, input, select, button, a { font-family: 'JetBrains Mono', monospace; }
+        body, input, select, button, a { font-family: 'JetBrains Mono', ui-monospace, monospace; }
         :root {
-            --bg-main: #0f172a; --bg-card: #1e293b; --bg-input: #0f172a; --border: #334155;
-            --text-main: #f1f5f9; --text-muted: #94a3b8; --text-dim: #64748b; --accent: #38bdf8;
-            --yes: #fbbf24; --no: #94a3b8;
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-input: #0f172a;
+            --border: #334155;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --text-dim: #64748b;
+            --accent: #38bdf8;
         }
         [data-theme="light"] {
-            --bg-main: #f8fafc; --bg-card: #ffffff; --bg-input: #ffffff; --border: #e2e8f0;
-            --text-main: #0f172a; --text-muted: #475569; --text-dim: #64748b; --accent: #0284c7;
-            --yes: #b45309; --no: #64748b;
+            --bg-main: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-input: #ffffff;
+            --border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --text-dim: #64748b;
+            --accent: #0284c7;
         }
         body { background-color: var(--bg-main); color: var(--text-main); transition: background-color 0.2s, color 0.2s; }
+        .badge-a { background: #16a34a; color: white; }
+        .badge-n { background: #dc2626; color: white; }
+        .badge-q { background: #ca8a04; color: white; }
     </style>
 </head>
 <body data-theme="dark" class="min-h-screen flex flex-col">
 
-    <header class="border-b sticky top-0 z-10" style="background: var(--bg-card); border-color: var(--border);">
-        <div class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+    <header class="border-b sticky top-0 z-20" style="background: var(--bg-card); border-color: var(--border);">
+        <div class="max-w-3xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
             <div>
-                <h1 class="text-lg sm:text-xl font-bold" style="color: var(--accent);">⚡ Legis SG</h1>
-                <p class="text-[11px]" style="color: var(--text-dim);">Arrestable • Bailable • Punishment</p>
+                <h1 class="text-lg font-bold tracking-tight" style="color: var(--accent);">⚡ Legis SG</h1>
+                <p class="text-[10px]" style="color: var(--text-dim);">CPC 2010 First Schedule • Arrestable • Bailable • Punishment</p>
             </div>
-            <button id="themeToggle" class="px-3 py-1.5 rounded-lg border text-xs font-medium"
-                style="border-color: var(--border); color: var(--text-muted); background: var(--bg-main);">☀️ Light</button>
+            <button id="themeToggle" class="px-2.5 py-1 rounded border text-xs" style="border-color: var(--border); color: var(--text-muted); background: var(--bg-main);">☀️ Light</button>
         </div>
     </header>
 
-    <main class="max-w-3xl mx-auto px-4 py-6 flex-grow w-full">
-        <div class="rounded-xl border p-4 mb-6 space-y-4" style="background: var(--bg-card); border-color: var(--border);">
+    <main class="max-w-3xl mx-auto px-4 py-5 flex-grow w-full">
+
+        <div class="rounded-xl border p-4 mb-5 space-y-3" style="background: var(--bg-card); border-color: var(--border);">
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                    <label class="block text-xs font-semibold uppercase mb-1" style="color: var(--text-dim);">📁 Statute</label>
-                    <select id="statuteFilter" class="w-full px-3 py-2.5 border rounded-lg text-sm focus:outline-none"
+                    <label class="block text-[10px] font-semibold uppercase mb-1" style="color: var(--text-dim);">📁 Statute</label>
+                    <select id="statuteFilter" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none"
                         style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);">
                         <option value="all">All Statutes</option>
-                        <option value="Penal Code">Penal Code 1871</option>
-                        <option value="POHA">POHA 2014</option>
+                        <option value="Penal Code 1871">Penal Code 1871</option>
+                        <option value="POHA 2014">POHA 2014</option>
                         <option value="Computer Misuse Act">Computer Misuse Act</option>
                         <option value="Misuse of Drugs Act">Misuse of Drugs Act</option>
                         <option value="Miscellaneous Offences Act">Miscellaneous Offences Act</option>
@@ -52,64 +65,53 @@
                     </select>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold uppercase mb-1" style="color: var(--text-dim);">🔍 Search</label>
+                    <label class="block text-[10px] font-semibold uppercase mb-1" style="color: var(--text-dim);">🔍 Section or Offence</label>
                     <input type="text" id="searchBox" placeholder="e.g. 302, 332, theft, hurt, stalking..."
-                        class="w-full px-3 py-2.5 border rounded-lg text-sm focus:outline-none"
-                        style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);">
+                        class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none"
+                        style="background: var(--bg-input); border-color: var(--border); color: var(--text-main);"
+                        autocomplete="off">
                 </div>
             </div>
-            <p class="text-[11px]" style="color: var(--text-dim);">Arrestable & Bailable for Penal Code from <strong>CPC 2010 First Schedule</strong>.</p>
+            <p class="text-[10px] leading-relaxed" style="color: var(--text-dim);">
+                Penal Code data sourced from the <strong>Criminal Procedure Code 2010 First Schedule</strong>. 
+                For other Acts the general CPC rule applies unless the specific Act provides otherwise.
+            </p>
         </div>
 
-        <div class="text-xs mb-3" style="color: var(--text-dim);"><span id="resultCount">Loading...</span></div>
+        <div class="flex items-center justify-between text-[11px] mb-3 px-0.5" style="color: var(--text-dim);">
+            <span id="resultCount">Loading data…</span>
+            <span id="loadingStatus" class="text-[10px]"></span>
+        </div>
+
         <div id="offenceList" class="space-y-3"></div>
     </main>
 
-    <footer class="border-t py-5 text-center text-xs" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
-        <p>Proof-of-concept. Always verify on <a href="https://sso.agc.gov.sg" target="_blank" class="underline" style="color: var(--accent);">sso.agc.gov.sg</a>.</p>
-        <p class="mt-1">Inspired by <a href="https://hatsuzuki.github.io/legis/" target="_blank" class="underline" style="color: var(--accent);">hatsuzuki/legis</a></p>
+    <footer class="border-t py-4 text-center text-[10px]" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">
+        <p>Proof-of-concept. Always verify the latest version on <a href="https://sso.agc.gov.sg" target="_blank" class="underline" style="color: var(--accent);">sso.agc.gov.sg</a>.</p>
+        <p class="mt-1">Penal Code data structure inspired by <a href="https://hatsuzuki.github.io/legis/" target="_blank" class="underline" style="color: var(--accent);">hatsuzuki/legis</a></p>
     </footer>
 
     <script>
-        const offences = [
-            { statute: "Penal Code", section: "302", title: "Murder", keywords: "302 murder kill", arrestable: "Yes", bailable: "No", punishment: "Death (s.300(a)); or death / life + caning (s.300(b)–(d))", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr302-" },
-            { statute: "Penal Code", section: "304", title: "Culpable homicide not amounting to murder", keywords: "304 culpable homicide", arrestable: "Yes", bailable: "No", punishment: "Up to life imprisonment (or 20 years) + fine/caning", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr304-" },
-            { statute: "Penal Code", section: "304A", title: "Causing death by rash or negligent act", keywords: "304A negligence rash", arrestable: "Yes", bailable: "Yes", punishment: "Rash: up to 5 years; Negligent: up to 2 years, or fine, or both", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr304A-" },
-            { statute: "Penal Code", section: "323", title: "Voluntarily causing hurt", keywords: "323 hurt assault", arrestable: "No", bailable: "Yes", punishment: "Imprisonment up to 3 years, or fine, or both", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr323-" },
-            { statute: "Penal Code", section: "324", title: "Voluntarily causing hurt by dangerous weapons", keywords: "324 weapon knife", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 7 years, or fine, or caning, or combination", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr324-" },
-            { statute: "Penal Code", section: "325", title: "Voluntarily causing grievous hurt", keywords: "325 grievous hurt", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 10 years and fine or caning", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr325-" },
-            { statute: "Penal Code", section: "332", title: "Voluntarily causing hurt to deter public servant", keywords: "332 public servant police", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 7 years, or fine, or caning", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr332-" },
-            { statute: "Penal Code", section: "353", title: "Assault or criminal force to deter public servant", keywords: "353 criminal force public", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 4 years, or fine, or both", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr353-" },
-            { statute: "Penal Code", section: "354", title: "Outrage of modesty", keywords: "354 outrage modesty molest", arrestable: "Yes", bailable: "Yes", punishment: "Imprisonment up to 3 years, or fine, or caning, or combination", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr354-" },
-            { statute: "Penal Code", section: "376", title: "Rape", keywords: "376 rape", arrestable: "Yes", bailable: "No", punishment: "Imprisonment 8–20 years + caning", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr376-" },
-            { statute: "Penal Code", section: "379", title: "Theft", keywords: "379 theft steal", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 3 years, or fine, or both", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr379-" },
-            { statute: "Penal Code", section: "380", title: "Theft in dwelling-house etc.", keywords: "380 theft house", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 7 years and fine", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr380-" },
-            { statute: "Penal Code", section: "392", title: "Robbery", keywords: "392 robbery", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 10 years + fine or caning", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr392-" },
-            { statute: "Penal Code", section: "406", title: "Criminal breach of trust", keywords: "406 cbt breach trust", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 7 years, or fine, or both", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr406-" },
-            { statute: "Penal Code", section: "420", title: "Cheating and dishonestly inducing delivery of property", keywords: "420 cheating scam", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 10 years and fine", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr420-" },
-            { statute: "Penal Code", section: "506", title: "Criminal intimidation", keywords: "506 intimidation threat", arrestable: "No", bailable: "Yes", punishment: "Imprisonment up to 2 years, or fine, or both", link: "https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr506-" },
-
-            { statute: "POHA", section: "3", title: "Intentional harassment, alarm or distress", keywords: "harassment alarm distress", arrestable: "Usually No*", bailable: "Yes", punishment: "Fine up to $5,000 and/or imprisonment up to 6 months", link: "https://sso.agc.gov.sg/Act/POHA2014?ProvIds=pr3-" },
-            { statute: "POHA", section: "7", title: "Unlawful stalking", keywords: "stalking stalk", arrestable: "Usually No*", bailable: "Yes", punishment: "Fine up to $5,000 and/or imprisonment up to 12 months", link: "https://sso.agc.gov.sg/Act/POHA2014?ProvIds=pr7-" },
-
-            { statute: "Computer Misuse Act", section: "3", title: "Unauthorised access to computer material", keywords: "hacking unauthorised access", arrestable: "Yes", bailable: "Yes", punishment: "Fine up to $5,000 and/or imprisonment up to 2 years", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr3-" },
-            { statute: "Computer Misuse Act", section: "5", title: "Unauthorised modification of computer material", keywords: "hacking modify malware", arrestable: "Yes", bailable: "Yes", punishment: "Fine up to $10,000 and/or imprisonment up to 3 years", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr5-" },
-
-            { statute: "Misuse of Drugs Act", section: "5", title: "Trafficking in controlled drugs", keywords: "trafficking drug", arrestable: "Yes", bailable: "No", punishment: "Depends on type & quantity (can include death)", link: "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr5-" },
-            { statute: "Misuse of Drugs Act", section: "8", title: "Possession or consumption of controlled drug", keywords: "possession consumption drug", arrestable: "Yes", bailable: "No", punishment: "Imprisonment and/or fine", link: "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr8-" },
-
-            { statute: "Miscellaneous Offences Act", section: "13", title: "Drunk and disorderly in public", keywords: "drunk disorderly", arrestable: "Yes", bailable: "Yes", punishment: "Fine up to $1,000 or imprisonment up to 1 month", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr13-" },
-            { statute: "Miscellaneous Offences Act", section: "14", title: "Vandalism / defacing property", keywords: "vandalism graffiti", arrestable: "Yes", bailable: "No", punishment: "Fine up to $2,000 or imprisonment up to 3 years + caning", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr14-" },
-            { statute: "Miscellaneous Offences Act", section: "35", title: "Fraudulent possession of property", keywords: "fraudulent possession stolen", arrestable: "No*", bailable: "Yes", punishment: "Fine up to $3,000 or imprisonment up to 1 year or both", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr35-" },
-
-            { statute: "GEWCA", section: "—", title: "Unlicensed possession of gun / firearm", keywords: "gun firearm weapon", arrestable: "Yes", bailable: "No", punishment: "Imprisonment 5–20 years + caning", link: "https://sso.agc.gov.sg/Act/GEWCA2021" },
-            { statute: "CESOWA", section: "3 / 6", title: "Carrying offensive weapon / corrosive substance", keywords: "knife weapon corrosive", arrestable: "Yes", bailable: "No", punishment: "Imprisonment up to 3 years + mandatory caning", link: "https://sso.agc.gov.sg/Act/CESOWA1958" }
+        const extraOffences = [
+            { statute: "POHA 2014", section: "3", offence: "Intentional harassment, alarm or distress", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $5,000 and/or imprisonment up to 6 months (doubled for repeat)", link: "https://sso.agc.gov.sg/Act/POHA2014?ProvIds=pr3-" },
+            { statute: "POHA 2014", section: "7", offence: "Unlawful stalking", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $5,000 and/or imprisonment up to 12 months", link: "https://sso.agc.gov.sg/Act/POHA2014?ProvIds=pr7-" },
+            { statute: "Computer Misuse Act", section: "3", offence: "Unauthorised access to computer material", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine up to $5,000 and/or imprisonment up to 2 years", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr3-" },
+            { statute: "Computer Misuse Act", section: "5", offence: "Unauthorised modification of computer material", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine up to $10,000 and/or imprisonment up to 3 years", link: "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr5-" },
+            { statute: "Misuse of Drugs Act", section: "5", offence: "Trafficking in controlled drugs", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Depends on drug type & quantity (can include death)", link: "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr5-" },
+            { statute: "Misuse of Drugs Act", section: "8", offence: "Possession or consumption of controlled drug", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment and/or fine (enhanced for certain drugs / repeat)", link: "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr8-" },
+            { statute: "Miscellaneous Offences Act", section: "13", offence: "Drunk and disorderly in public", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Bailable", punishment: "Fine up to $1,000 or imprisonment up to 1 month (higher for repeat)", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr13-" },
+            { statute: "Miscellaneous Offences Act", section: "14", offence: "Vandalism / defacing property", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Fine up to $2,000 or imprisonment up to 3 years + caning", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr14-" },
+            { statute: "Miscellaneous Offences Act", section: "35", offence: "Fraudulent possession of property", arrestable: "May not arrest without warrant*", warrant: "Summons", bailable: "Bailable", punishment: "Fine up to $3,000 or imprisonment up to 1 year or both", link: "https://sso.agc.gov.sg/Act/MOPONA1906?ProvIds=pr35-" },
+            { statute: "GEWCA", section: "—", offence: "Unlicensed possession of gun / firearm", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment 5–20 years + caning", link: "https://sso.agc.gov.sg/Act/GEWCA2021" },
+            { statute: "CESOWA", section: "3 / 6", offence: "Carrying offensive weapon or possessing corrosive substance for hurt", arrestable: "May arrest without warrant", warrant: "Warrant", bailable: "Not bailable", punishment: "Imprisonment up to 3 years + mandatory caning", link: "https://sso.agc.gov.sg/Act/CESOWA1958" }
         ];
 
+        let allData = [];
         const searchBox = document.getElementById('searchBox');
         const statuteFilter = document.getElementById('statuteFilter');
         const offenceList = document.getElementById('offenceList');
         const resultCount = document.getElementById('resultCount');
+        const loadingStatus = document.getElementById('loadingStatus');
         const themeToggle = document.getElementById('themeToggle');
 
         function setTheme(theme) {
@@ -118,47 +120,92 @@
             localStorage.setItem('legis-theme', theme);
         }
         setTheme(localStorage.getItem('legis-theme') || 'dark');
-        themeToggle.addEventListener('click', () => setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark'));
+        themeToggle.addEventListener('click', () => {
+            setTheme(document.body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+        });
+
+        function getArrestableBadge(text) {
+            if (!text) return { cls: 'badge-q', label: '?' };
+            const t = text.toLowerCase();
+            if (t.includes('may not arrest')) return { cls: 'badge-n', label: 'N' };
+            if (t.startsWith('may arrest without warrant') && !t.includes('if arrest for the offence')) return { cls: 'badge-a', label: 'A' };
+            if (t.includes('may arrest without warrant')) return { cls: 'badge-a', label: 'A' };
+            return { cls: 'badge-q', label: '?' };
+        }
+
+        function getBailableDisplay(text) {
+            if (!text) return text;
+            if (text === 'Bailable') return 'Yes';
+            if (text === 'Not bailable') return 'No';
+            return text;
+        }
+
+        function buildAgcLink(item) {
+            if (item.link) return item.link;
+            if (item.statute === 'Penal Code 1871' && item.section) {
+                const sec = item.section.replace(/ *\([^)]*\) */g, '');
+                return `https://sso.agc.gov.sg/Act/PC1871?ProvIds=pr${sec}-#pr${sec}-`;
+            }
+            return 'https://sso.agc.gov.sg';
+        }
 
         function render(data) {
             offenceList.innerHTML = '';
-            resultCount.textContent = data.length + ' offence' + (data.length !== 1 ? 's' : '') + ' found';
+            resultCount.textContent = `${data.length} offence${data.length !== 1 ? 's' : ''} found`;
 
             if (data.length === 0) {
-                offenceList.innerHTML = '<div class="rounded-xl border p-6 text-center text-sm" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">No matching offences found.</div>';
+                offenceList.innerHTML = `<div class="rounded-xl border p-6 text-center text-sm" style="background: var(--bg-card); border-color: var(--border); color: var(--text-dim);">No matching offences found.</div>`;
                 return;
             }
 
-            data.forEach(item => {
-                const isArrestable = item.arrestable.startsWith('Yes');
-                const arrestColor = isArrestable ? 'var(--yes)' : 'var(--no)';
-                const bailColor = item.bailable === 'Yes' ? 'var(--text-muted)' : 'var(--yes)';
+            const display = data.slice(0, 80);
+            if (data.length > 80) resultCount.textContent += ' (showing first 80)';
+
+            display.forEach(item => {
+                const badge = getArrestableBadge(item.arrestable);
+                const bailableDisplay = getBailableDisplay(item.bailable);
+                const isConditionalBail = bailableDisplay !== 'Yes' && bailableDisplay !== 'No';
 
                 const card = document.createElement('div');
-                card.className = 'rounded-xl border p-4 sm:p-5';
+                card.className = 'rounded-xl border p-4';
                 card.style.background = 'var(--bg-card)';
                 card.style.borderColor = 'var(--border)';
 
                 card.innerHTML = `
-                    <div class="flex flex-wrap items-center gap-2 mb-3">
-                        <span class="text-[10px] font-bold px-2 py-0.5 rounded border" style="color: var(--accent); border-color: var(--accent);">${item.statute}</span>
-                        <h3 class="font-semibold text-base">§ ${item.section} — ${item.title}</h3>
-                    </div>
-                    <div class="grid grid-cols-2 gap-3 mb-4">
-                        <div class="rounded-lg p-3 border" style="background: var(--bg-main); border-color: var(--border);">
-                            <div class="text-[10px] uppercase tracking-wider mb-1" style="color: var(--text-dim);">Arrestable</div>
-                            <div class="font-bold text-sm" style="color: ${arrestColor};">${item.arrestable}</div>
+                    <div class="flex flex-wrap items-start gap-2 mb-3">
+                        <span class="text-[10px] font-bold px-2 py-0.5 rounded border shrink-0" style="color: var(--accent); border-color: var(--accent);">${item.statute}</span>
+                        <div class="flex-1 min-w-0">
+                            <div class="font-semibold text-sm leading-snug">§ ${item.section}</div>
+                            <div class="text-sm mt-0.5" style="color: var(--text-muted);">${item.offence}</div>
                         </div>
-                        <div class="rounded-lg p-3 border" style="background: var(--bg-main); border-color: var(--border);">
-                            <div class="text-[10px] uppercase tracking-wider mb-1" style="color: var(--text-dim);">Bailable</div>
-                            <div class="font-bold text-sm" style="color: ${bailColor};">${item.bailable}</div>
+                        <div class="w-7 h-7 rounded flex items-center justify-center text-xs font-bold shrink-0 ${badge.cls}">${badge.label}</div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-3 text-sm">
+                        <div class="rounded-lg p-2.5 border" style="background: var(--bg-main); border-color: var(--border);">
+                            <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Arrestable</div>
+                            <div class="text-xs leading-snug">${item.arrestable || '—'}</div>
+                        </div>
+                        <div class="rounded-lg p-2.5 border" style="background: var(--bg-main); border-color: var(--border);">
+                            <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Bailable</div>
+                            <div class="text-xs leading-snug ${isConditionalBail ? '' : 'font-semibold'}">${bailableDisplay}</div>
                         </div>
                     </div>
-                    <div class="mb-4">
-                        <div class="text-[10px] uppercase tracking-wider mb-1" style="color: var(--text-dim);">Maximum Punishment</div>
-                        <p class="text-sm leading-relaxed" style="color: var(--text-muted);">${item.punishment}</p>
+
+                    ${item.warrant ? `
+                    <div class="mb-3">
+                        <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Warrant / Summons</div>
+                        <div class="text-xs" style="color: var(--text-muted);">${item.warrant}</div>
+                    </div>` : ''}
+
+                    <div class="mb-3">
+                        <div class="text-[10px] uppercase tracking-wider mb-0.5" style="color: var(--text-dim);">Maximum Punishment</div>
+                        <div class="text-xs leading-relaxed" style="color: var(--text-muted);">${item.punishment || '—'}</div>
                     </div>
-                    <a href="${item.link}" target="_blank" rel="noopener" class="text-xs font-medium" style="color: var(--accent);">View on AGC's website →</a>
+
+                    <a href="${buildAgcLink(item)}" target="_blank" rel="noopener" class="text-xs font-medium" style="color: var(--accent);">
+                        View on AGC's website →
+                    </a>
                 `;
                 offenceList.appendChild(card);
             });
@@ -168,8 +215,12 @@
             const query = searchBox.value.toLowerCase().trim();
             const selected = statuteFilter.value;
 
-            let filtered = offences.filter(item => {
-                const haystack = [item.title, item.section, item.punishment, item.statute, item.keywords || ''].join(' ').toLowerCase();
+            let filtered = allData.filter(item => {
+                const haystack = [
+                    item.section || '', item.offence || '', item.statute || '',
+                    item.punishment || '', item.arrestable || '', item.bailable || ''
+                ].join(' ').toLowerCase();
+
                 const matchesSearch = !query || query.split(/\s+/).every(w => haystack.includes(w));
                 const matchesStatute = selected === 'all' || item.statute === selected;
                 return matchesSearch && matchesStatute;
@@ -177,17 +228,49 @@
 
             if (query) {
                 filtered.sort((a, b) => {
-                    const aExact = a.section === query || a.section.toLowerCase() === query;
-                    const bExact = b.section === query || b.section.toLowerCase() === query;
-                    return (bExact ? 1 : 0) - (aExact ? 1 : 0);
+                    const aExact = (a.section || '').toLowerCase() === query || (a.section || '').toLowerCase().startsWith(query);
+                    const bExact = (b.section || '').toLowerCase() === query || (b.section || '').toLowerCase().startsWith(query);
+                    if (aExact && !bExact) return -1;
+                    if (!aExact && bExact) return 1;
+                    return 0;
                 });
             }
+
             render(filtered);
+        }
+
+        async function init() {
+            loadingStatus.textContent = 'Loading Penal Code data…';
+            try {
+                let resp = await fetch('data/pc.json');
+                if (!resp.ok) resp = await fetch('pc.json');
+                if (!resp.ok) throw new Error('Failed to load pc.json');
+
+                const pcData = await resp.json();
+                const normalised = pcData.map(d => ({
+                    statute: d.statute || 'Penal Code 1871',
+                    section: d.section,
+                    offence: d.offence,
+                    arrestable: d.arrestable,
+                    warrant: d.warrant,
+                    bailable: d.bailable,
+                    punishment: d.punishment
+                }));
+
+                allData = [...normalised, ...extraOffences];
+                loadingStatus.textContent = `${normalised.length} Penal Code + ${extraOffences.length} other offences loaded`;
+                filterData();
+            } catch (err) {
+                console.error(err);
+                loadingStatus.textContent = 'Error loading data – using fallback only';
+                allData = [...extraOffences];
+                filterData();
+            }
         }
 
         searchBox.addEventListener('input', filterData);
         statuteFilter.addEventListener('change', filterData);
-        filterData();
+        init();
     </script>
 </body>
 </html>
