@@ -363,8 +363,8 @@
     "statute": "Liquor Control Act",
     "section": "4",
     "offence": "Supply of liquor without licence",
-    "arrestable": "May not arrest without warrant (unless specifically empowered)",
-    "warrant": "Summons",
+    "arrestable": "May arrest without warrant (LCSCA s.30 — any offence under this Act, in officer's view)",
+    "warrant": "Warrant",
     "bailable": "Bailable",
     "punishment": "Fine not exceeding $20,000 (repeat: fine up to $20,000 or imprisonment up to 3 months or both); enhanced in Liquor Control Zone",
     "link": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr4-"
@@ -373,8 +373,8 @@
     "statute": "Liquor Control Act",
     "section": "12",
     "offence": "Prohibition against consumption of liquor in public place (outside permitted hours / places)",
-    "arrestable": "May not arrest without warrant (unless specifically empowered)",
-    "warrant": "Summons",
+    "arrestable": "May arrest without warrant (LCSCA s.30 — any offence under this Act, in officer's view)",
+    "warrant": "Warrant",
     "bailable": "Bailable",
     "punishment": "Fine not exceeding $1,000 (repeat: fine up to $2,000 or imprisonment up to 3 months or both); enhanced in Liquor Control Zone",
     "link": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr12-"
@@ -382,11 +382,31 @@
   {
     "statute": "Liquor Control Act",
     "section": "14",
-    "offence": "Drunkenness in public places (drunk and incapable of taking care of oneself)",
-    "arrestable": "May not arrest without warrant (unless specifically empowered)",
-    "warrant": "Summons",
+    "offence": "Drunkenness in public places, etc. (general — see 14(1) and 14(2))",
+    "arrestable": "May arrest without warrant (LCSCA s.30 — any offence under this Act, in officer's view)",
+    "warrant": "Warrant",
+    "bailable": "Bailable",
+    "punishment": "See subsections 14(1) and 14(2)",
+    "link": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr14-"
+  },
+  {
+    "statute": "Liquor Control Act",
+    "section": "14(1)",
+    "offence": "Drunk and incapable of taking care of oneself in any public place",
+    "arrestable": "May arrest without warrant (LCSCA s.30 — any offence under this Act, in officer's view)",
+    "warrant": "Warrant",
     "bailable": "Bailable",
     "punishment": "Fine not exceeding $1,000 or imprisonment not exceeding 1 month or both (repeat: fine up to $2,000 or imprisonment up to 3 months or both)",
+    "link": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr14-"
+  },
+  {
+    "statute": "Liquor Control Act",
+    "section": "14(2)",
+    "offence": "Whilst drunk, appears in public place or trespasses, and conducts self so as to cause annoyance",
+    "arrestable": "May arrest without warrant (LCSCA s.30 — any offence under this Act, in officer's view)",
+    "warrant": "Warrant",
+    "bailable": "Bailable",
+    "punishment": "Fine not exceeding $1,000 or imprisonment not exceeding 6 months or both (repeat: fine up to $2,000 or imprisonment up to 6 months or both)",
     "link": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr14-"
   },
   {
