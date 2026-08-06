@@ -306,20 +306,15 @@ document.addEventListener('click', (e) => {
 async function init() {
   loadingStatus.textContent = 'Loading…';
   try {
+    // Fully self-hosted — no external statute data dependency
     const [pcRes, extraRes] = await Promise.all([
-      fetch('https://raw.githubusercontent.com/hatsuzuki/legis/master/data/pc.json').catch(() => null),
+      fetch('data/pc.json'),
       fetch('data/extra.json')
     ]);
 
-    let pc = [];
-    if (pcRes && pcRes.ok) {
-      pc = await pcRes.json();
-    } else {
-      const local = await fetch('data/pc.json').catch(() => null);
-      if (local && local.ok) pc = await local.json();
-    }
-
-    const extra = extraRes && extraRes.ok ? await extraRes.json() : [];
+    if (!pcRes.ok) throw new Error('Failed to load data/pc.json');
+    const pc = await pcRes.json();
+    const extra = extraRes.ok ? await extraRes.json() : [];
 
     const normalised = (pc || []).map((d) => ({
       statute: d.statute || 'Penal Code 1871',
