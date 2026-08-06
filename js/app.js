@@ -101,19 +101,14 @@ function filterMatches(query, statute) {
   if (!q) return [];
   const words = q.split(/\s+/);
   let list = allData.filter((item) => {
-    const hay = [
-      item.section || '',
-      item.offence || '',
-      item.statute || '',
-      item.punishment || ''
-    ].join(' ').toLowerCase();
+    const hay = [item.section||'', item.offence||'', item.statute||'', item.punishment||''].join(' ').toLowerCase();
     const okSearch = words.every((w) => hay.includes(w));
     const okStat = statute === 'all' || item.statute === statute;
     return okSearch && okStat;
   });
   list.sort((a, b) => {
-    const aExact = (a.section || '').toLowerCase() === q || (a.section || '').toLowerCase().startsWith(q);
-    const bExact = (b.section || '').toLowerCase() === q || (b.section || '').toLowerCase().startsWith(q);
+    const aExact = (a.section||'').toLowerCase() === q || (a.section||'').toLowerCase().startsWith(q);
+    const bExact = (b.section||'').toLowerCase() === q || (b.section||'').toLowerCase().startsWith(q);
     return (bExact ? 1 : 0) - (aExact ? 1 : 0);
   });
   return list;
@@ -122,24 +117,14 @@ function filterMatches(query, statute) {
 function renderSuggestions(list) {
   suggestions.innerHTML = '';
   activeIndex = -1;
-  if (!list.length) {
-    suggestions.classList.remove('open');
-    return;
-  }
+  if (!list.length) { suggestions.classList.remove('open'); return; }
   const top = list.slice(0, 12);
   top.forEach((item, i) => {
     const kind = arrestKind(item.arrestable);
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'suggestion';
-    btn.dataset.index = String(i);
-    btn.innerHTML = `
-      <span class="sec">§ ${item.section}</span>
-      <span class="meta">
-        <div class="title">${item.offence || ''}</div>
-        <div class="stat">${item.statute}</div>
-      </span>
-      <span class="mini-pill ${kind}">${arrestLetter(kind)}</span>`;
+    btn.innerHTML = `<span class="sec">§ ${item.section}</span><span class="meta"><div class="title">${item.offence||''}</div><div class="stat">${item.statute}</div></span><span class="mini-pill ${kind}">${arrestLetter(kind)}</span>`;
     btn.addEventListener('mousedown', (e) => {
       e.preventDefault();
       showResult(item);
@@ -156,31 +141,22 @@ function renderSuggestions(list) {
 function showResult(item) {
   emptyBox.classList.remove('show');
   result.classList.add('show');
-
   const kind = arrestKind(item.arrestable);
   const bail = bailDisplay(item.bailable);
-
   $('resultStatute').textContent = item.statute || '';
   $('resultTitle').textContent = `§ ${item.section}`;
   $('resultOffence').textContent = item.offence || '';
-
   const banner = $('arrestBanner');
   banner.className = `arrest-banner ${kind}`;
   $('arrestLetter').textContent = arrestLetter(kind);
-  $('arrestDesc').textContent = item.arrestable
-    ? `${arrestLabel(kind)} — ${item.arrestable}`
-    : arrestLabel(kind);
-
+  $('arrestDesc').textContent = item.arrestable ? `${arrestLabel(kind)} — ${item.arrestable}` : arrestLabel(kind);
   const bailEl = $('bailableValue');
   bailEl.className = `fact-value ${bail.cls}`;
   bailEl.textContent = bail.label;
-
   $('warrantRow').style.display = item.warrant ? 'block' : 'none';
   $('warrantValue').textContent = item.warrant || '';
-
   $('punishmentValue').textContent = item.punishment || '—';
   $('agcLink').href = buildAgcLink(item);
-
   resultCount.textContent = '1 selected';
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -189,42 +165,26 @@ function showEmpty(query) {
   result.classList.remove('show');
   emptyBox.classList.add('show');
   resultCount.textContent = 'No results';
-
   const selected = statuteFilter.value;
   const secToken = extractSectionToken(query);
   const actCode = selected !== 'all' ? ACT_CODES[selected] : null;
   const actName = selected !== 'all' ? selected : null;
-
   let links = '';
   if (actCode && secToken) {
     const sectionUrl = buildActSectionUrl(actCode, secToken);
     const mainUrl = buildActSectionUrl(actCode, null);
-    const parentNum = secToken.match(/^(\d+)/)?.[1];
-    const parentUrl = parentNum && parentNum !== secToken ? buildActSectionUrl(actCode, parentNum) : null;
-    links = `
-      <p style="margin:0 0 8px">Not indexed here — open on AGC:</p>
-      <p style="margin:0 0 6px"><a href="${sectionUrl}" target="_blank" rel="noopener">${actName} § ${secToken}</a></p>
-      ${parentUrl ? `<p style="margin:0 0 6px"><a href="${parentUrl}" target="_blank" rel="noopener">Parent § ${parentNum}</a></p>` : ''}
-      <p style="margin:0 0 6px"><a href="${mainUrl}" target="_blank" rel="noopener">${actName} main page</a></p>`;
+    links = `<p style="margin:0 0 8px">Not indexed here — open on AGC:</p><p style="margin:0 0 6px"><a href="${sectionUrl}" target="_blank" rel="noopener">${actName} § ${secToken}</a></p><p style="margin:0 0 6px"><a href="${mainUrl}" target="_blank" rel="noopener">${actName} main page</a></p>`;
   } else if (actCode) {
     links = `<p style="margin:0 0 8px"><a href="${buildActSectionUrl(actCode, null)}" target="_blank" rel="noopener">Open ${actName} on AGC</a></p>`;
   } else {
     links = `<p style="margin:0 0 8px">Select a statute, then search the section for a direct AGC link.</p>`;
   }
-
-  emptyBox.innerHTML = `
-    ${links}
-    <p style="margin:10px 0 0">
-      <a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query || '')}" target="_blank" rel="noopener">Search SSO</a>
-      ·
-      <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=${encodeURIComponent('Request: ' + (query || ''))}" target="_blank" rel="noopener">Request on GitHub</a>
-    </p>`;
+  emptyBox.innerHTML = `${links}<p style="margin:10px 0 0"><a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query||'')}" target="_blank" rel="noopener">Search SSO</a> · <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new" target="_blank" rel="noopener">Request on GitHub</a></p>`;
 }
 
 function onSearchInput() {
   const query = searchBox.value;
   clearBtn.classList.toggle('show', query.length > 0);
-
   if (!query.trim()) {
     suggestions.classList.remove('open');
     result.classList.remove('show');
@@ -232,7 +192,6 @@ function onSearchInput() {
     resultCount.textContent = 'Type a section or keyword';
     return;
   }
-
   const list = filterMatches(query, statuteFilter.value);
   if (list.length) {
     emptyBox.classList.remove('show');
@@ -257,50 +216,27 @@ function clearSearch() {
 searchBox.addEventListener('input', onSearchInput);
 statuteFilter.addEventListener('change', onSearchInput);
 clearBtn.addEventListener('click', clearSearch);
-
 searchBox.addEventListener('keydown', (e) => {
   const items = suggestions._items || [];
   if (!suggestions.classList.contains('open') || !items.length) {
     if (e.key === 'Enter') {
       const list = filterMatches(searchBox.value, statuteFilter.value);
-      if (list.length) {
-        showResult(list[0]);
-        suggestions.classList.remove('open');
-      } else if (searchBox.value.trim()) {
-        showEmpty(searchBox.value);
-      }
+      if (list.length) { showResult(list[0]); suggestions.classList.remove('open'); }
+      else if (searchBox.value.trim()) showEmpty(searchBox.value);
     }
     return;
   }
-  if (e.key === 'ArrowDown') {
+  if (e.key === 'ArrowDown') { e.preventDefault(); activeIndex = Math.min(activeIndex + 1, items.length - 1); }
+  else if (e.key === 'ArrowUp') { e.preventDefault(); activeIndex = Math.max(activeIndex - 1, 0); }
+  else if (e.key === 'Enter') {
     e.preventDefault();
-    activeIndex = Math.min(activeIndex + 1, items.length - 1);
-  } else if (e.key === 'ArrowUp') {
-    e.preventDefault();
-    activeIndex = Math.max(activeIndex - 1, 0);
-  } else if (e.key === 'Enter') {
-    e.preventDefault();
-    if (activeIndex >= 0 && items[activeIndex]) {
-      showResult(items[activeIndex]);
-      searchBox.value = items[activeIndex].section;
-      suggestions.classList.remove('open');
-    } else if (items[0]) {
-      showResult(items[0]);
-      searchBox.value = items[0].section;
-      suggestions.classList.remove('open');
-    }
-  } else if (e.key === 'Escape') {
-    suggestions.classList.remove('open');
-  }
-  [...suggestions.querySelectorAll('.suggestion')].forEach((el, i) => {
-    el.classList.toggle('active', i === activeIndex);
-  });
+    const item = activeIndex >= 0 ? items[activeIndex] : items[0];
+    if (item) { showResult(item); searchBox.value = item.section; suggestions.classList.remove('open'); }
+  } else if (e.key === 'Escape') suggestions.classList.remove('open');
+  [...suggestions.querySelectorAll('.suggestion')].forEach((el, i) => el.classList.toggle('active', i === activeIndex));
 });
-
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.search-wrap')) {
-    suggestions.classList.remove('open');
-  }
+  if (!e.target.closest('.search-wrap')) suggestions.classList.remove('open');
 });
 
 async function gunzipB64(b64) {
@@ -314,39 +250,29 @@ async function gunzipB64(b64) {
 async function init() {
   loadingStatus.textContent = 'Loading…';
   try {
-    // Fully self-hosted — Penal Code embedded below (gzip+base64 of CPC First Schedule)
-    const PC_B64 = 'SEE_FILE';
+    const n = 23;
+    const texts = await Promise.all(
+      Array.from({ length: n }, (_, i) => fetch('data/c' + i + '.txt').then((r) => r.text()))
+    );
     const extraRes = await fetch('data/extra.json');
-    const compact = JSON.parse(await gunzipB64(PC_B64));
+    const compact = JSON.parse(await gunzipB64(texts.join('').trim()));
     const extra = extraRes.ok ? await extraRes.json() : [];
-
-    const expandArrest = (c) => {
-      if (c === 1) return 'May arrest without warrant';
-      if (c === 0) return 'May not arrest without warrant';
-      return c || '';
-    };
-    const expandWarrant = (c) => {
-      if (c === 1) return 'Warrant';
-      if (c === 0) return 'Summons';
-      return c || '';
-    };
-    const expandBail = (c) => {
-      if (c === 1) return 'Bailable';
-      if (c === 0) return 'Not bailable';
-      return c || '';
-    };
-    const normalised = compact.map((row) => ({
-      statute: 'Penal Code 1871',
-      section: row[0],
-      offence: row[1],
-      arrestable: expandArrest(row[2]),
-      warrant: expandWarrant(row[3]),
-      bailable: expandBail(row[4]),
-      punishment: row[5] || '',
-      link: ''
-    }));
-
-    allData = [...normalised, ...extra];
+    const expandArrest = (c) => (c === 1 ? 'May arrest without warrant' : c === 0 ? 'May not arrest without warrant' : (c || ''));
+    const expandWarrant = (c) => (c === 1 ? 'Warrant' : c === 0 ? 'Summons' : (c || ''));
+    const expandBail = (c) => (c === 1 ? 'Bailable' : c === 0 ? 'Not bailable' : (c || ''));
+    allData = [
+      ...compact.map((row) => ({
+        statute: 'Penal Code 1871',
+        section: row[0],
+        offence: row[1],
+        arrestable: expandArrest(row[2]),
+        warrant: expandWarrant(row[3]),
+        bailable: expandBail(row[4]),
+        punishment: row[5] || '',
+        link: ''
+      })),
+      ...extra
+    ];
     loadingStatus.textContent = '';
     resultCount.textContent = 'Type a section or keyword';
   } catch (err) {
