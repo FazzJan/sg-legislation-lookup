@@ -307,20 +307,17 @@ async function init() {
   loadingStatus.textContent = 'Loading…';
   try {
     // Fully self-hosted — no external statute data dependency
-    const [pcARes, pcBRes, extraRes] = await Promise.all([
-      fetch('data/pc-a.json'),
-      fetch('data/pc-b.json'),
+    const pcFiles = ['data/pc-0.json', 'data/pc-1.json', 'data/pc-2.json', 'data/pc-3.json'];
+    const [pcResponses, extraRes] = await Promise.all([
+      Promise.all(pcFiles.map((f) => fetch(f))),
       fetch('data/extra.json')
     ]);
 
-    if (!pcARes.ok || !pcBRes.ok) throw new Error('Failed to load Penal Code data');
-    const compact = [...(await pcARes.json()), ...(await pcBRes.json())];
+    if (pcResponses.some((r) => !r.ok)) throw new Error('Failed to load Penal Code data');
+    const compact = (await Promise.all(pcResponses.map((r) => r.json()))).flat();
     const extra = extraRes.ok ? await extraRes.json() : [];
 
     // Compact rows: [section, offence, arrestCode, warrantCode, bailCode, punishment]
-    // arrestCode: 1=May arrest, 0=May not arrest, string=full text
-    // warrantCode: 1=Warrant, 0=Summons, string=full text
-    // bailCode: 1=Bailable, 0=Not bailable, string=full text
     const expandArrest = (c) => {
       if (c === 1) return 'May arrest without warrant';
       if (c === 0) return 'May not arrest without warrant';
