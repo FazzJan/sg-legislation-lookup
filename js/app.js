@@ -307,24 +307,44 @@ async function init() {
   loadingStatus.textContent = 'Loading…';
   try {
     // Fully self-hosted — no external statute data dependency
-    const [pcRes, extraRes] = await Promise.all([
-      fetch('data/pc.json'),
+    const [pcARes, pcBRes, extraRes] = await Promise.all([
+      fetch('data/pc-a.json'),
+      fetch('data/pc-b.json'),
       fetch('data/extra.json')
     ]);
 
-    if (!pcRes.ok) throw new Error('Failed to load data/pc.json');
-    const pc = await pcRes.json();
+    if (!pcARes.ok || !pcBRes.ok) throw new Error('Failed to load Penal Code data');
+    const compact = [...(await pcARes.json()), ...(await pcBRes.json())];
     const extra = extraRes.ok ? await extraRes.json() : [];
 
-    const normalised = (pc || []).map((d) => ({
-      statute: d.statute || 'Penal Code 1871',
-      section: d.section,
-      offence: d.offence,
-      arrestable: d.arrestable,
-      warrant: d.warrant,
-      bailable: d.bailable,
-      punishment: d.punishment,
-      link: d.link || ''
+    // Compact rows: [section, offence, arrestCode, warrantCode, bailCode, punishment]
+    // arrestCode: 1=May arrest, 0=May not arrest, string=full text
+    // warrantCode: 1=Warrant, 0=Summons, string=full text
+    // bailCode: 1=Bailable, 0=Not bailable, string=full text
+    const expandArrest = (c) => {
+      if (c === 1) return 'May arrest without warrant';
+      if (c === 0) return 'May not arrest without warrant';
+      return c || '';
+    };
+    const expandWarrant = (c) => {
+      if (c === 1) return 'Warrant';
+      if (c === 0) return 'Summons';
+      return c || '';
+    };
+    const expandBail = (c) => {
+      if (c === 1) return 'Bailable';
+      if (c === 0) return 'Not bailable';
+      return c || '';
+    };
+    const normalised = compact.map((row) => ({
+      statute: 'Penal Code 1871',
+      section: row[0],
+      offence: row[1],
+      arrestable: expandArrest(row[2]),
+      warrant: expandWarrant(row[3]),
+      bailable: expandBail(row[4]),
+      punishment: row[5] || '',
+      link: ''
     }));
 
     allData = [...normalised, ...extra];
