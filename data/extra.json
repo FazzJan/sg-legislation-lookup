@@ -1,0 +1,90 @@
+[
+  {
+    "act": "LCSCA2015",
+    "actName": "Liquor Control (Supply and Consumption) Act 2015",
+    "sec": "14(1)",
+    "title": "Drunk and incapable of taking care of himself or herself in any public place",
+    "arrestable": true,
+    "bailable": true,
+    "punishment": "Fine ≤ $1,000 or imprisonment ≤ 1 month or both; repeat offender: Fine ≤ $2,000 or ≤ 3 months or both",
+    "note": "Arrestable without warrant per s.30 — any police officer may arrest person offending, in the officer's view, against ANY provision of this Act. Overrides CPC First Schedule term defaults (<3 yrs would otherwise be non-arrestable).",
+    "sso": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr14-"
+  },
+  {
+    "act": "LCSCA2015",
+    "actName": "Liquor Control (Supply and Consumption) Act 2015",
+    "sec": "14(2)",
+    "title": "Whilst drunk appears in public place or trespass premises and conducts self so as to cause annoyance to any person",
+    "arrestable": true,
+    "bailable": true,
+    "punishment": "Fine ≤ $1,000 or imprisonment ≤ 6 months or both; repeat offender: Fine ≤ $2,000 or ≤ 6 months or both",
+    "note": "Arrestable without warrant per LCSCA s.30. Overrides CPC defaults.",
+    "sso": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr14-"
+  },
+  {
+    "act": "LCSCA2015",
+    "actName": "Liquor Control (Supply and Consumption) Act 2015",
+    "sec": "14(4)",
+    "title": "Fails to comply with direction under s.14(3)(a) to leave the public place or premises",
+    "arrestable": true,
+    "bailable": true,
+    "punishment": "Fine ≤ $1,000 or imprisonment ≤ 6 months or both; repeat: Fine ≤ $2,000 or ≤ 6 months or both",
+    "note": "Arrestable per s.30.",
+    "sso": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr14-"
+  },
+  {
+    "act": "LCSCA2015",
+    "actName": "Liquor Control (Supply and Consumption) Act 2015",
+    "sec": "12",
+    "title": "Consumption of liquor in a public place during the no-public drinking period (subject to s.12 exceptions)",
+    "arrestable": true,
+    "bailable": true,
+    "punishment": "See Act for base penalty; enhanced up to 1.5× if in Liquor Control Zone (s.16)",
+    "note": "Arrestable per s.30. Always verify current penalty text on SSO.",
+    "sso": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr12-"
+  },
+  {
+    "act": "LCSCA2015",
+    "actName": "Liquor Control (Supply and Consumption) Act 2015",
+    "sec": "31",
+    "title": "Hinders or obstructs public officer or auxiliary police officer acting in discharge of duties under this Act",
+    "arrestable": true,
+    "bailable": true,
+    "punishment": "Fine ≤ $2,500 or imprisonment ≤ 3 months or both",
+    "note": "Arrestable per s.30.",
+    "sso": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr31-"
+  },
+  {
+    "act": "LCSCA2015",
+    "actName": "Liquor Control (Supply and Consumption) Act 2015",
+    "sec": "28",
+    "title": "Knowingly or recklessly provides false or misleading information or document in relation to application or appeal",
+    "arrestable": true,
+    "bailable": true,
+    "punishment": "Fine ≤ $5,000; repeat offender: Fine ≤ $10,000 or ≤ 3 months or both",
+    "note": "Arrestable per s.30.",
+    "sso": "https://sso.agc.gov.sg/Act/LCSCA2015?ProvIds=pr28-"
+  },
+  {
+    "act": "CMA1993",
+    "actName": "Computer Misuse Act 1993",
+    "sec": "3",
+    "title": "Unauthorised access to computer material",
+    "arrestable": true,
+    "bailable": false,
+    "punishment": "Imprisonment ≤ 2 years or fine ≤ $5,000 or both (higher for subsequent/damage)",
+    "note": "Check Act for exact; many CMA offences are arrestable by nature or CPC. Verify SSO.",
+    "sso": "https://sso.agc.gov.sg/Act/CMA1993?ProvIds=pr3-"
+  },
+  {
+    "act": "PHA2014",
+    "actName": "Protection from Harassment Act 2014",
+    "sec": "3",
+    "title": "Intentionally causing harassment, alarm or distress",
+    "arrestable": true,
+    "bailable": true,
+    "punishment": "Fine ≤ $5,000 or imprisonment ≤ 6 months or both",
+    "note": "Confirm arrest powers; many POHA are non-arrestable by default but check Act.",
+    "sso": "https://sso.agc.gov.sg/Act/PHA2014?ProvIds=pr3-"
+  }
+]
