@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hambalang Search Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="dark">
+
+  <header class="site-header">
+    <div class="inner">
+      <div>
+        <h1>Hambalang Search Guide</h1>
+        <p class="sub">SG offences · arrest · bail · punishment</p>
+      </div>
+      <div class="header-actions">
+        <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=Report%20/%20Request%3A%20" target="_blank" rel="noopener">Report</a>
+        <button type="button" id="themeToggle">Light</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="search-panel">
+      <div class="search-row">
+        <div>
+          <label for="statuteFilter">Statute</label>
+          <select id="statuteFilter">
+            <option value="all">All statutes</option>
+            <option value="Penal Code 1871">Penal Code</option>
+            <option value="POHA 2014">POHA</option>
+            <option value="Miscellaneous Offences Act">MOA</option>
+            <option value="GCA 2022">GCA (Gambling)</option>
+            <option value="GEWCA">GEWCA (Guns)</option>
+            <option value="CESOWA">CESOWA</option>
+            <option value="Liquor Control Act">LCA (Liquor)</option>
+            <option value="Vandalism Act">Vandalism Act</option>
+            <option value="Destitute Persons Act">DPA</option>
+            <option value="Moneylenders Act">Moneylenders</option>
+            <option value="Computer Misuse Act">Computer Misuse</option>
+          </select>
+        </div>
+        <div>
+          <label for="searchBox">Section or keyword</label>
+          <div class="search-wrap">
+            <input type="search" id="searchBox" placeholder="e.g. 302, 14D, stalking…" autocomplete="off">
+            <button type="button" class="clear-btn" id="clearBtn" aria-label="Clear">×</button>
+            <div class="suggestions" id="suggestions"></div>
+          </div>
+        </div>
+      </div>
+      <details class="hint">
+        <summary>About data &amp; CPC rules</summary>
+        <p>
+          Penal Code uses the full CPC First Schedule (self-hosted chunks; no third-party runtime dependency).
+          Other Acts are key sections only. If a search is not indexed, the empty state still deep-links to the AGC section page.
+        </p>
+        <p>
+          <strong>Act-specific arrest powers override CPC term defaults.</strong>
+          Example: Liquor Control (Supply and Consumption) Act 2015 s.30 — any police officer may arrest without warrant any person offending, in the officer’s view, against <em>any</em> provision of that Act. So LCA offences with max imprisonment under 3 years (e.g. s.14(2), max 6 months) are still arrestable.
+          Same idea: CMA s.19 (reasonably suspected), POHA s.18 (in view), MOA s.40 (in view), Vandalism Act s.6 (all offences arrestable and non-bailable).
+        </p>
+        <p>
+          For other laws not listed: max ≥3 years jail → usually <strong>arrestable + not bailable</strong>;
+          under 3 years or fine only → usually <strong>not arrestable + bailable</strong>, unless the Act says otherwise.
+          Always open the Act on SSO and check for a general power of arrest before applying CPC defaults.
+        </p>
+      </details>
+    </div>
+
+    <div class="status-line">
+      <span id="resultCount">Type a section or keyword</span>
+      <span id="loadingStatus"></span>
+    </div>
+
+    <article id="result">
+      <div class="result-body">
+        <div class="result-statute" id="resultStatute"></div>
+        <h2 class="result-title" id="resultTitle"></h2>
+        <p class="result-offence" id="resultOffence"></p>
+
+        <div class="arrest-banner unknown" id="arrestBanner">
+          <div class="arrest-letter" id="arrestLetter">?</div>
+          <div id="arrestDesc"></div>
+        </div>
+
+        <div class="facts">
+          <div>
+            <div class="fact-label">Bailable</div>
+            <div class="fact-value" id="bailableValue">—</div>
+          </div>
+          <div id="warrantRow">
+            <div class="fact-label">Process</div>
+            <div class="fact-value" id="warrantValue">—</div>
+          </div>
+          <div>
+            <div class="fact-label">Maximum punishment</div>
+            <div class="fact-value" id="punishmentValue">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="result-footer">
+        <a class="agc-btn" id="agcLink" href="https://sso.agc.gov.sg" target="_blank" rel="noopener">View on AGC’s website</a>
+      </div>
+    </article>
+
+    <div class="empty-box" id="emptyBox"></div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="inner">
+      <p>
+        Proof-of-concept. Always verify on
+        <a href="https://sso.agc.gov.sg" target="_blank" rel="noopener">sso.agc.gov.sg</a>.
+        Penal Code data is from the CPC 2010 First Schedule (self-hosted).
+        Layout inspired by
+        <a href="https://hatsuzuki.github.io/legis/" target="_blank" rel="noopener">hatsuzuki/legis</a>.
+      </p>
+      <p>
+        <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new" target="_blank" rel="noopener">Report / request section</a>
+        ·
+        <a href="https://github.com/FazzJan/sg-legislation-lookup/issues" target="_blank" rel="noopener">Open issues</a>
+      </p>
+      <details>
+        <summary>Disclaimer</summary>
+        <p>For reference only. Not legal advice. Not affiliated with AGC. Use at your own risk.</p>
+      </details>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
