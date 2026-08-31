@@ -255,9 +255,18 @@ async function init() {
     const texts = await Promise.all(
       Array.from({ length: n }, (_, i) => fetch('data/c' + i + '.txt').then((r) => r.text()))
     );
-    const extraRes = await fetch('data/extra.json');
     const compact = JSON.parse(await gunzipB64(texts.join('').trim()));
-    const extraRaw = extraRes.ok ? await extraRes.json() : [];
+    const extraFiles = ['data/extra.json', 'data/extra-part1.json', 'data/extra-part2.json', 'data/extra-part3.json'];
+    const extraRaw = [];
+    for (const f of extraFiles) {
+      try {
+        const extraRes = await fetch(f);
+        if (extraRes.ok) {
+          const parsed = await extraRes.json();
+          if (Array.isArray(parsed)) extraRaw.push(...parsed);
+        }
+      } catch (_) {}
+    }
     const expandArrest = (c) => (c === 1 ? 'May arrest without warrant' : c === 0 ? 'May not arrest without warrant' : (c || ''));
     const expandWarrant = (c) => (c === 1 ? 'Warrant' : c === 0 ? 'Summons' : (c || ''));
     const expandBail = (c) => (c === 1 ? 'Bailable' : c === 0 ? 'Not bailable' : (c || ''));
