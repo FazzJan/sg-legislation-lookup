@@ -1,0 +1,102 @@
+[
+  {
+    "statute": "Road Traffic Act",
+    "section": "64(5)",
+    "offence": "Reckless or dangerous driving (no death/hurt variant \u2014 contravention of s.64(1))",
+    "arrestable": "May arrest without warrant (RTA s.64(13) \u2014 any police officer; overrides CPC term defaults). Hurt/death variants under s.64(2)\u2013(4) are separate items",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default \u2014 max 12 months first / 2 years repeat, under 3 years)",
+    "punishment": "Fine not exceeding $5,000 or imprisonment not exceeding 12 months or both; repeat offender: fine not exceeding $10,000 or imprisonment not exceeding 2 years or both. Additional tiers if serious / serious-repeat offender (drink/drug related)",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr64-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "64(2)",
+    "offence": "Reckless or dangerous driving causing death",
+    "arrestable": "May arrest without warrant (RTA s.64(13) \u2014 any police officer; also CPC default as max imprisonment exceeds 3 years)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default \u2014 max 8 years first / 15 years repeat)",
+    "punishment": "Imprisonment not exceeding 8 years; repeat offender: imprisonment not less than 2 years and not more than 15 years. Additional imprisonment if serious / serious-repeat offender",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr64-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "64(3)",
+    "offence": "Reckless or dangerous driving (grievous-hurt tier under s.64(3))",
+    "arrestable": "May arrest without warrant (RTA s.64(13) \u2014 any police officer; also CPC default as max imprisonment exceeds 3 years)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default \u2014 max 5 years first / 10 years repeat)",
+    "punishment": "Imprisonment not exceeding 5 years; repeat offender: imprisonment not less than 1 year and not more than 10 years. Additional imprisonment if serious / serious-repeat offender. Confirm exact hurt threshold on SSO s.64(3)",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr64-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "65(5)",
+    "offence": "Driving without due care and attention or reasonable consideration (no death/hurt variant \u2014 contravention of s.65(1))",
+    "arrestable": "May arrest without warrant (RTA s.65(12) \u2014 any police officer who has committed or is committing an offence under this section; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default \u2014 max 6 months first / 12 months repeat, under 3 years)",
+    "punishment": "Fine not exceeding $1,500 or imprisonment not exceeding 6 months or both; repeat offender: fine not exceeding $3,000 or imprisonment not exceeding 12 months or both. Additional tiers if serious / serious-repeat offender",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr65-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "65(2)",
+    "offence": "Careless driving causing death (s.65(2))",
+    "arrestable": "May arrest without warrant (RTA s.65(12); also CPC default as max imprisonment can exceed 3 years)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default \u2014 max 3 years first / 6 years repeat)",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 3 years or both; repeat offender: fine not exceeding $20,000 or imprisonment not exceeding 6 years or both. Further serious-offender additions \u2014 confirm remaining subsections on SSO",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr65-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "65B",
+    "offence": "Use of mobile communication device while driving (holds in hand and operates a function while vehicle in motion)",
+    "arrestable": "No general RTA express arrest for s.65B. RTA s.127 is a qualified power (police in uniform; driver/person in charge; usually not exercised if licence produced or name/address given). CPC term default: non-arrestable (max 6 months first / 12 months repeat)",
+    "warrant": "Summons (typical)",
+    "bailable": "Bailable (CPC default)",
+    "punishment": "Fine not exceeding $1,000 or imprisonment not exceeding 6 months or both; repeat offender: fine not exceeding $2,000 or imprisonment not exceeding 12 months or both",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr65B-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "67",
+    "offence": "Driving while under influence of drink, a drug, a psychoactive substance or an intoxicating substance, or with alcohol exceeding the prescribed limit",
+    "arrestable": "May arrest without warrant any person committing an offence under this section (RTA s.67(3) \u2014 overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default \u2014 max 12 months first / 2 years subsequent, under 3 years)",
+    "punishment": "Fine $2,000\u2013$10,000 or imprisonment not exceeding 12 months or both; second or subsequent: fine $5,000\u2013$20,000 and imprisonment not exceeding 2 years. Mandatory disqualification (first 2 years / repeat 5 years) unless special reasons; life DQ after 2 or more earlier s.67/68 convictions unless shorter period ordered",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr67-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "68",
+    "offence": "Being in charge of a motor vehicle on a road or public place (but not driving) while unfit through drink/drug/psychoactive/intoxicating substance or over the prescribed limit",
+    "arrestable": "No section-specific arrest clause found. RTA s.127 is a qualified power for a person in charge of a motor vehicle suspected of an offence under this Act. CPC term default: non-arrestable (max 3 months first / 6 months subsequent)",
+    "warrant": "Summons (typical) / check s.127",
+    "bailable": "Bailable (CPC default)",
+    "punishment": "Fine $500\u2013$2,000 or imprisonment not exceeding 3 months; second or subsequent: fine $1,000\u2013$5,000 and imprisonment not exceeding 6 months",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr68-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "84",
+    "offence": "Duty to stop in case of accident (fail to comply with s.84)",
+    "arrestable": "No section-specific arrest clause found. RTA s.127 is a qualified power for the driver of a motor vehicle. Where s.84(8) applies (fail s.84(3) after causing serious injury or death) max 12 months / 2 years \u2014 still under 3 years so CPC default remains non-arrestable",
+    "warrant": "Summons (typical) / check s.127",
+    "bailable": "Bailable (CPC default)",
+    "punishment": "Offence under s.84(7). If failure to comply with s.84(3) and the driving caused serious injury or death: fine not exceeding $3,000 or imprisonment not exceeding 12 months or both; subsequent: fine not exceeding $5,000 or imprisonment not exceeding 2 years or both. Other s.84 failures \u2014 confirm general penalty s.131 on SSO",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr84-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "127",
+    "offence": "Power of arrest (not itself an offence) \u2014 police officer in uniform may stop/arrest in stated cases",
+    "arrestable": "s.127(1): may stop and arrest a person (not being the driver of a motor vehicle) who within the officer's view commits an offence under this Act, unless name and residence in Singapore are given and the person does not intend to abscond. s.127(6): may arrest without warrant a person in charge of or driving a motor vehicle who has committed or is suspected of having committed an offence under this Act, subject to s.127(7) (licence produced, or name and Singapore address given for non-paid / non-hire / non-goods drivers)",
+    "warrant": "See s.127(7)\u2013(8)",
+    "bailable": "Depends on the underlying RTA offence",
+    "punishment": "Not an offence section \u2014 enforcement power only",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr127-"
+  }
+]
