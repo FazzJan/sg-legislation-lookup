@@ -1,0 +1,102 @@
+[
+  {
+    "statute": "Public Order Act",
+    "section": "15(1)",
+    "offence": "Organises an assembly or procession knowing or ought reasonably to know it is prohibited by an order under s.12(1) or s.13(1) or a notification under s.13(2)",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 6 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr15-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "15(2)",
+    "offence": "Takes part in an assembly or procession knowing or ought reasonably to know it is prohibited by an order under s.12(1) or s.13(1) or a notification under s.13(2)",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $5,000",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr15-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "16(1)",
+    "offence": "Organises a public assembly or public procession without a required permit, or not in accordance with the permit / conditions on organisers",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — first: fine only; repeat: max 6 months)",
+    "punishment": "Fine not exceeding $5,000. Repeat offender: fine not exceeding $10,000 or imprisonment not exceeding 6 months or both (s.16(3)(a))",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr16-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "16(2)",
+    "offence": "Takes part in a public assembly or public procession without a required permit, or not in accordance with conditions on participants",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $3,000. Repeat offender: fine not exceeding $5,000 (s.16(3)(b))",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr16-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "16(4)",
+    "offence": "Organising or taking part in an assembly or procession and knowingly fails to comply with a senior police officer's direction under s.8(4)",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Organiser: fine not exceeding $10,000. Participant: fine not exceeding $5,000",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr16-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "18",
+    "offence": "Obstructing free passage of any ambulance, fire engine or SPF/SCDF vehicle, impeding public use of a road otherwise than as authorised by the permit, acting in a disorderly manner to prevent the assembly's business, or inciting others to do so",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 6 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr18-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "24(4)",
+    "offence": "Fails to comply with the request of a police officer or an approved person under s.24(2) (special event area)",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 6 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr24-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "25(3)",
+    "offence": "Fails to comply with the request of a police officer under s.25(2) (special event area)",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 6 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr25-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "37",
+    "offence": "Without reasonable excuse, contravenes a direction under s.36 to move on",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $20,000 or imprisonment not exceeding 12 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr37-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "39",
+    "offence": "Wilfully obstructs a police officer exercising s.29 or s.38 powers, or the Commissioner exercising s.30(11)",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $20,000 or imprisonment not exceeding 12 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr39-"
+  }
+]

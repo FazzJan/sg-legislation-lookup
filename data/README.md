@@ -1,7 +1,7 @@
 # Data
 
-- `c0.txt` … `c22.txt` — Penal Code offences from the **Criminal Procedure Code 2010 First Schedule** (477 entries after 3 Sep 2026 update, gzip+base64 split). Self-hosted so the app does not depend on third-party repos at runtime.
-- `extra.json` — empty stub (`[]`). Live non-PC rows are in `extra-part1.json` … `extra-part4.json` (POHA, MOA, GCA, GEWCA, CESOWA, LCA, Vandalism, DPA, Moneylenders, Computer Misuse, Road Traffic).
+- `c0.txt` … `c22.txt` — Penal Code offences from the **Criminal Procedure Code 2010 First Schedule** (472 First Schedule rows after decode on 7 Sep 2026, gzip+base64 split). Self-hosted so the app does not depend on third-party repos at runtime.
+- `extra.json` — empty stub (`[]`). Live non-PC rows are in `extra-part1.json` … `extra-part5.json` (POHA, MOA, GCA, GEWCA, CESOWA, LCA, Vandalism, DPA, Moneylenders, Computer Misuse, Road Traffic, Public Order Act).
 - `pc.json` / `pc-a.json` / `pc.gz.b64` / `pc1.b64` — leftover placeholders; the live loader uses `c0`–`c22` plus extra-part files.
 
 CPC First Schedule updates already encoded in the chunks:
@@ -14,16 +14,26 @@ CPC First Schedule updates already encoded in the chunks:
   Commencement: https://sso.agc.gov.sg/SL/S555-2026
   Gazette: https://assets.egazette.gov.sg/2025/Legislative%20Supplements/Acts%20Supplement/22.pdf
 
-SSO check on 3 Sep 2026: no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* Order after S 42/2026. Act 5 of 2024 CPC amendments are procedure / FME / disclosure, not First Schedule rows. Act 21 of 2025 s.24 *does* amend the First Schedule and is encoded for the rows that could be quoted from the Gazette / current Penal Code text.
+SSO check on 7 Sep 2026: no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* Order after S 42/2026. CPC timeline on SSO shows S 42/2026 (30 Jan 2026) then Act 21 of 2025 (17 Aug 2026). Act 5 of 2024 CPC amendments are procedure / FME / disclosure, not First Schedule rows. Act 21 of 2025 s.24 *does* amend the First Schedule; encoded rows that can be quoted from the current Penal Code / Gazette text are kept. No new First Schedule Order found between 3 Sep 2026 and 7 Sep 2026.
 
-Remaining First Schedule gap after Act 21/2025 s.24(b): additional 292 rows (e.g. “any other case” / “2 or more occasions” variants) may exist in the replacement table beyond 292(1A) and 292(1B). Prefer incomplete accurate rows over invented subsection labels.
+Remaining First Schedule gap after Act 21/2025 s.24(b): additional 292 rows (e.g. “any other case” / “2 or more occasions” variants) and 292B / 377BD(6)/(7) labels may exist in the replacement table beyond the encoded 292(1), 292(1A) and 377BD(2)/(3) items. Prefer incomplete accurate rows over invented subsection labels. Decoded chunk count is **472 rows** (not 477).
 
-`extra` audit 3 Sep 2026:
+Spot-check 7 Sep 2026 (CPC First Schedule values in `c0`–`c22`):
 
-- Act-specific arrest powers override CPC term defaults (LCA s.30, CMA s.19, POHA s.18, MOA s.40, VA s.6, MA s.86, RTA s.64(13) / s.65(12) / s.67(3) / qualified s.127).
-- All Liquor Control Act entries remain arrestable under LCSCA s.30 (in officer’s view, any provision). Distinct 14(1) / 14(2) / 14(4) punishments kept and re-checked against the Act text.
+- PC 302 Murder — arrestable, warrant, not bailable, death.
+- PC 332 VCH to deter public servant — arrestable, warrant, not bailable, 7 years or fine or caning.
+- PC 379 Theft — arrestable, warrant, not bailable, 3 years or fine or both.
+- PC 420(1)/420(2) present after S 818/2025.
+- PC 167 / 182 / 355 arrestable after S 42/2026.
+
+`extra` audit 7 Sep 2026:
+
+- Act-specific arrest powers override CPC term defaults (LCA s.30, CMA s.19, POHA s.18, MOA s.40, VA s.6, MA s.86, RTA s.64(13) / s.65(12) / s.67(3) / qualified s.127, **POA s.40**).
+- All Liquor Control Act entries remain arrestable under LCSCA s.30 (in officer’s view, any provision). Distinct 14(1) / 14(2) / 14(4) punishments kept and re-checked against the Act text (s.14(2) first: fine ≤ $1,000 or imprisonment ≤ 6 months or both).
 - Moneylenders: s.19 and s.47 only are expressly arrestable and non-bailable under MA s.86. s.48 left as “check Act”.
 - DPA s.16 / s.17 arrest remains narrowed to the actual s.18 condition.
-- New `extra-part4.json`: Road Traffic Act 1961 ss.64(5), 64(2), 64(3), 65(5), 65(2), 65B, 67, 68, 84, 127. RTA 64/65 hurt-tier headings should be confirmed on the live SSO section because Act 2 of 2025 rewrote the section structure.
+- POHA s.10 added. s.18(1) is in-view for any provision; s.18(2) also allows arrest without warrant of a person reasonably suspected of s.10(1) in prescribed circumstances.
+- New `extra-part5.json`: Public Order Act 2009 ss.15(1), 15(2), 16(1), 16(2), 16(4), 18, 24(4), 25(3), 37, 39. Arrest marked per POA s.40 (in officer’s view, any provision). Remaining POA special-event / organiser-direction sections not indexed.
+- RTA 64/65 hurt-tier headings should be confirmed on the live SSO section because Act 2 of 2025 rewrote the section structure.
 
 Always verify against [sso.agc.gov.sg](https://sso.agc.gov.sg).
