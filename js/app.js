@@ -13,7 +13,8 @@ const ACT_CODES = {
   'Destitute Persons Act': 'DPA1989',
   'Moneylenders Act': 'MA2008',
   'Computer Misuse Act': 'CMA1993',
-  'Road Traffic Act': 'RTA1961'
+  'Road Traffic Act': 'RTA1961',
+  'Public Order Act': 'POA2009'
 };
 
 let allData = [];
@@ -257,7 +258,7 @@ async function init() {
       Array.from({ length: n }, (_, i) => fetch('data/c' + i + '.txt').then((r) => r.text()))
     );
     const compact = JSON.parse(await gunzipB64(texts.join('').trim()));
-    const extraFiles = ['data/extra.json', 'data/extra-part1.json', 'data/extra-part2.json', 'data/extra-part3.json', 'data/extra-part4.json'];
+    const extraFiles = ['data/extra.json', 'data/extra-part1.json', 'data/extra-part2.json', 'data/extra-part3.json', 'data/extra-part4.json', 'data/extra-part5.json'];
     const extraRaw = [];
     for (const f of extraFiles) {
       try {
