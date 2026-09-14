@@ -1,0 +1,122 @@
+[
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "5",
+    "offence": "Unauthorised traffic in a controlled drug; offer to traffic; or act / offer preparatory to trafficking. Possession for the purpose of trafficking is trafficking (s.5(2))",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max imprisonment 3 years or more; death / life possible at specified quantities — see Second Schedule)",
+    "punishment": "Second Schedule via s.33 — class and quantity dependent (can include death at specified quantities). Do not use a single headline figure. Open SSO Second Schedule / s.33B for courier exceptions.",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr5-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "6",
+    "offence": "Unauthorised manufacture of a controlled drug",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max imprisonment 3 years or more; death possible for specified drugs — see Second Schedule)",
+    "punishment": "Second Schedule via s.33 — class / specified-drug dependent. Confirm the live table on SSO.",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr6-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "7",
+    "offence": "Unauthorised import into or export from Singapore of a controlled drug",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max imprisonment 3 years or more; death / life possible at specified quantities — see Second Schedule)",
+    "punishment": "Second Schedule via s.33 — class and quantity dependent (can include death at specified quantities). Also see s.33B courier exceptions.",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr7-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "8(a)",
+    "offence": "Unauthorised possession of a controlled drug",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — general max 10 years; higher quantity bands in Second Schedule exceed 3 years)",
+    "punishment": "Second Schedule general band: maximum 10 years or $20,000 or both (subject to s.33(3B)). Higher min/max and caning apply at specified quantities of named drugs — confirm the live Second Schedule on SSO.",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr8-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "8(b)",
+    "offence": "Smokes, administers to himself or herself or otherwise consumes a controlled drug (other than a specified drug) or a specified drug",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — s.33(3A) max 10 years)",
+    "punishment": "s.33(3A) (offence on or after 1 Apr 2019): imprisonment not less than 1 year and not more than 10 years, and liable to a fine not exceeding $20,000, unless punished under s.33(4)/(4AA)/(4AB) or s.33A for that same offence. Second Schedule 8(b) row was deleted by Act 1 of 2019. Confirm s.33A long-term imprisonment bands on SSO.",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr8-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "8A",
+    "offence": "Citizen or permanent resident found on s.31(4)(b) urine tests to have consumed a controlled or specified drug outside Singapore — s.8(b) has extra-territorial effect",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (same scale as s.8(b))",
+    "punishment": "Dealt with as if the s.8(b) offence were committed in Singapore — same s.33(3A) / s.33A scale.",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr8A-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "9",
+    "offence": "Unauthorised possession of any pipe, syringe, utensil, apparatus or other article intended for the smoking, administration or consumption of a controlled drug",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 3 years is '3 years or upwards')",
+    "punishment": "Second Schedule: maximum 3 years or $10,000 or both",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr9-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "10",
+    "offence": "Cultivates any plant of the genus Cannabis, Papaver somniferum, or Erythroxylon from which cocaine can be extracted",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 20 years)",
+    "punishment": "Second Schedule: maximum 20 years or $40,000 or both; minimum 3 years or $5,000 or both",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr10-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "11",
+    "offence": "Owner, tenant, occupier or person in charge permits or suffers premises to be used for consumption contrary to s.8(b), or for unlawful trafficking or manufacture of a controlled drug",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 10 years)",
+    "punishment": "Second Schedule: maximum 10 years or $40,000 or both; minimum 2 years or $4,000 or both",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr11-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "11A",
+    "offence": "Arranges or plans a gathering of 2 or more persons knowing that a controlled drug is or is to be consumed or trafficked there (guilt even if the person does not supply the drug)",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — min 3 years / max 20 years)",
+    "punishment": "Imprisonment not less than 3 years and not more than 20 years, and liable to caning of not more than 10 strokes (s.11A(1))",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr11A-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "11B",
+    "offence": "Person 21 or above: (1) knowingly or recklessly leaves controlled drug / drug paraphernalia exposed or unlocked where a child (<16) has or is likely to have access; or (2) permits or fails to take all reasonable steps to prevent a young person consuming the drug",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 10 years)",
+    "punishment": "Imprisonment not exceeding 10 years (s.11B(3)). If previous conviction under s.11B(1)/(2) or s.11N(1)/(2): imprisonment not less than 2 years and not more than 10 years (s.11B(3A))",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr11B-"
+  },
+  {
+    "statute": "Misuse of Drugs Act",
+    "section": "30",
+    "offence": "Obstructs an officer in the exercise of any power under this Act; fails to comply with a lawful requirement; without reasonable excuse fails to furnish information in possession that is required; or furnishes information known or believed to be false",
+    "arrestable": "May arrest without warrant if the person has committed or is reasonably suspected of an offence under this Act (MDA s.25 — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 3 years)",
+    "punishment": "Second Schedule: maximum 3 years or $5,000 or both; minimum 6 months or $1,000 or both",
+    "link": "https://sso.agc.gov.sg/Act/MDA1973?ProvIds=pr30-"
+  }
+]
