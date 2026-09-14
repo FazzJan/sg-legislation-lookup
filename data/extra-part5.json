@@ -98,5 +98,75 @@
     "bailable": "Bailable (CPC default — max 12 months)",
     "punishment": "Fine not exceeding $20,000 or imprisonment not exceeding 12 months or both",
     "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr39-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "26",
+    "offence": "Takes a prohibited item into a special event area without express police permission, or without lawful excuse possesses a prohibited item there (s.26(2)/(3))",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $20,000 or imprisonment not exceeding 12 months or both (s.26(5) — failure to comply with s.26(2) or (3))",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr26-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "27",
+    "offence": "Fails to comply with a request of a police officer or approved person under s.27(2) to undergo security screening at a special event area of an enhanced security special event",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 6 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr27-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "28",
+    "offence": "Fails to comply with a request of a police officer or approved person under s.28(1) to state name, residence and reason for being in or about to enter a special event area of an enhanced security special event",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $5,000",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr28-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "31",
+    "offence": "Unauthorised entry to / remaining in a special event area of an enhanced security special event, or contravenes a s.29(2) leave / no re-entry direction",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $20,000 or imprisonment not exceeding 12 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr31-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "32(1)",
+    "offence": "In a special event area of an enhanced security special event: violent behaviour; disrupts, interferes with, delays or obstructs the event or an associated activity; or otherwise interferes with another person's reasonable enjoyment of it",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 6 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr32-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "32(2)",
+    "offence": "Operates an unmanned aircraft (whether in or outside the special event area) so as to disrupt, interfere with, delay or obstruct an enhanced security special event or associated activity, or interfere with another person's reasonable enjoyment of it",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $20,000 or imprisonment not exceeding 12 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr32-"
+  },
+  {
+    "statute": "Public Order Act",
+    "section": "32A",
+    "offence": "Without reasonable excuse, contravenes a direction under s.32A(2)(a) to end the flight of an unmanned aircraft, land it safely, or fly it in the specified manner",
+    "arrestable": "May arrest without warrant if the person is offending in the officer's view (POA s.40 applies to ANY provision of this Act — overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $20,000 or imprisonment not exceeding 12 months or both",
+    "link": "https://sso.agc.gov.sg/Act/POA2009?ProvIds=pr32A-"
   }
 ]
