@@ -1,0 +1,162 @@
+[
+  {
+    "statute": "Immigration Act",
+    "section": "5",
+    "offence": "Enter or leave, or attempt to enter or leave, Singapore except at an authorised point (s.5(2)/(4)), unless compelled by accident or other reasonable cause",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (no special penalty in s.5 — general penalty s.58 max 6 months)",
+    "punishment": "s.5(5) creates the offence but states no special penalty. General penalty s.58: fine not exceeding $2,000 or imprisonment not exceeding 6 months or both",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr5-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "6(1)",
+    "offence": "Non-citizen enters or attempts to enter Singapore without a valid entry/re-entry permit, endorsed permit while in company of the holder, valid pass, or s.56 exemption",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Imprisonment not exceeding 6 months and caning of not less than 3 strokes; if not caneable under CPC s.325(1)(a) or (b), fine not exceeding $6,000 in lieu of caning (s.6(3)(a))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr6-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "6(2)",
+    "offence": "Person departing Singapore (other than a citizen or s.56-exempt person) fails, when required, to complete and submit an embarkation form",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $2,000 or imprisonment not exceeding 6 months or both (s.6(3)(b))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr6-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "9(5)",
+    "offence": "Arrives in, enters, re-enters or remains in Singapore in contravention of a Minister's prohibition/limit order under s.9(1)",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 4 years)",
+    "punishment": "Imprisonment for a presumptive minimum term of not less than 2 years and not more than 4 years, and liable to a fine not exceeding $6,000. Higher band in s.9(6) if prior qualifying conviction and different-name travel document",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr9-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "15(3)(a)",
+    "offence": "Remains in Singapore without reasonable cause after cancellation of permit/certificate, s.14(4) declaration, or expiry/cancellation of pass, or in contravention of s.62 — period not exceeding 90 days",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $4,000 or imprisonment not exceeding 6 months or both",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr15-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "15(3)(b)",
+    "offence": "Remains in Singapore without reasonable cause after cancellation of permit/certificate, s.14(4) declaration, or expiry/cancellation of pass, or in contravention of s.62 — period exceeding 90 days",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Imprisonment not exceeding 6 months and caning of not less than 3 strokes; if not caneable under CPC s.325(1)(a) or (b), fine not exceeding $6,000 in lieu of caning",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr15-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "36",
+    "offence": "Person removed from or otherwise lawfully sent out of Singapore enters or resides in Singapore without the Controller's prior written permission",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 3 years is 3 years or upwards)",
+    "punishment": "Imprisonment for a presumptive minimum term of not less than 1 year and not more than 3 years, and liable to a fine not exceeding $6,000 (s.36(2))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr36-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(a)",
+    "offence": "Attempts unlawfully to enter Singapore in contravention of any provision of this Act (other than s.6(1)) or the regulations",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default — max 2 years)",
+    "punishment": "Imprisonment not exceeding 2 years and liable to a fine not exceeding $4,000 (s.57(1AA)(a))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(aa)",
+    "offence": "Abets any person to enter Singapore in contravention of this Act or the regulations",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default — max 2 years)",
+    "punishment": "Imprisonment for a presumptive minimum term of not less than 6 months and not more than 2 years; plus caning of not less than 3 strokes if the abetment is within PC s.107(1)(b) or (c) and the offence abetted is punishable with caning; otherwise also liable to a fine not exceeding $6,000 (s.57(1AA)(b))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(c)",
+    "offence": "Engages in the business or trade of conveying to or out of Singapore any person whom he or she knows or has reasonable grounds for believing is a prohibited immigrant",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 5 years)",
+    "punishment": "Imprisonment not less than 2 years and not more than 5 years, and caning of not less than 3 strokes (s.57(1AA)(d))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(d)(i)/(ii)",
+    "offence": "Harbours a person knowing the person has acted in contravention of this Act or the regulations, or with reckless disregard as to that fact",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default — max 2 years)",
+    "punishment": "Imprisonment for a presumptive minimum term of not less than 6 months and not more than 2 years, and liable to a fine not exceeding $6,000 (s.57(1AA)(e))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(d)(iii)",
+    "offence": "Harbours a person, negligently failing to ascertain whether the person has acted in contravention of this Act or the regulations",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $6,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(f))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(e)",
+    "offence": "Employs any person who has acted in contravention of s.6(1), s.15 or s.36(1) or the regulations",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default — max 2 years)",
+    "punishment": "Imprisonment for a presumptive minimum term of not less than 6 months and not more than 2 years, and liable to a fine not exceeding $6,000 (s.57(1AA)(c), subject to s.57(1A)). Caning may apply if more than 5 immigration offenders employed at the same time — confirm s.57(1A) on SSO",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57A",
+    "offence": "Occupier of a work place who has control of access permits an immigration offender to enter or remain at the work place",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — first max 12 months / subsequent max 2 years)",
+    "punishment": "First: fine $15,000–$30,000 or imprisonment not exceeding 12 months or both, for each immigration offender found at the work place. Subsequent: fine $30,000–$60,000 or imprisonment not exceeding 2 years or both, for each such offender (s.57A(6))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57A-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57B",
+    "offence": "For or in expectation of fee, gain or reward, assists, encourages or induces another person to give shelter to an immigration offender, and shelter is given in consequence",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default — max 2 years)",
+    "punishment": "Imprisonment for a presumptive minimum term of not less than 6 months and not more than 2 years, and liable to a fine not exceeding $6,000",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57B-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57C",
+    "offence": "Marriage of convenience — contracts/enters a marriage for an immigration advantage with gratification (s.57C(1)), or arranges such a marriage (s.57C(2))",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 10 years)",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 10 years or both (s.57C(1) and (2) separately)",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57C-"
+  }
+]
