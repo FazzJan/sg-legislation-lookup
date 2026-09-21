@@ -15,7 +15,7 @@
     <div class="inner">
       <div>
         <h1>Hambalang Search Guide</h1>
-        <p class="sub">SG offences · arrest · bail · punishment</p>
+        <p class="sub">SG offences \u00b7 arrest \u00b7 bail \u00b7 punishment</p>
       </div>
       <div class="header-actions">
         <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=Report%20/%20Request%3A%20" target="_blank" rel="noopener">Report</a>
@@ -46,13 +46,14 @@
             <option value="Public Order Act">Public Order Act</option>
             <option value="Misuse of Drugs Act">Misuse of Drugs Act</option>
             <option value="Immigration Act">Immigration Act</option>
+            <option value="Maintenance of Racial Harmony Act">MRHA (Racial Harmony)</option>
           </select>
         </div>
         <div>
           <label for="searchBox">Section or keyword</label>
           <div class="search-wrap">
-            <input type="search" id="searchBox" placeholder="e.g. 302, 14D, stalking…" autocomplete="off">
-            <button type="button" class="clear-btn" id="clearBtn" aria-label="Clear">×</button>
+            <input type="search" id="searchBox" placeholder="e.g. 302, 14D, stalking\u2026" autocomplete="off">
+            <button type="button" class="clear-btn" id="clearBtn" aria-label="Clear">\u00d7</button>
             <div class="suggestions" id="suggestions"></div>
           </div>
         </div>
@@ -65,12 +66,12 @@
         </p>
         <p>
           <strong>Act-specific arrest powers override CPC term defaults.</strong>
-          Example: Liquor Control (Supply and Consumption) Act 2015 s.30 — any police officer may arrest without warrant any person offending, in the officer’s view, against <em>any</em> provision of that Act. So LCA offences with max imprisonment under 3 years (e.g. s.14(2), max 6 months) are still arrestable.
-          Same idea: CMA s.19 (reasonably suspected), POHA s.18 (in view; s.18(2) also covers suspected s.10(1) in prescribed circumstances), MOA s.40 (in view), Vandalism Act s.6 (all offences arrestable and non-bailable), Public Order Act s.40 (in view, any provision), Misuse of Drugs Act s.25 (committed or reasonably suspected — no in-view limit), Immigration Act s.51(3) (reasonably believes an offence under the Act or regulations — no in-view limit).
+          Example: Liquor Control (Supply and Consumption) Act 2015 s.30 \u2014 any police officer may arrest without warrant any person offending, in the officer\u2019s view, against <em>any</em> provision of that Act. So LCA offences with max imprisonment under 3 years (e.g. s.14(2), max 6 months) are still arrestable.
+          Same idea: CMA s.19 (reasonably suspected), POHA s.18 (in view; s.18(2) also covers suspected s.10(1) in prescribed circumstances), MOA s.40 (in view), Vandalism Act s.6 (all offences arrestable and non-bailable), Public Order Act s.40 (in view, any provision), Misuse of Drugs Act s.25 (committed or reasonably suspected \u2014 no in-view limit), Immigration Act s.51(3) (reasonably believes an offence under the Act or regulations \u2014 no in-view limit). Maintenance of Racial Harmony Act 2025 ss.39\u201340: no Act-wide arrest clause found \u2014 CPC term defaults apply (max \u22653 years \u2192 arrestable / not bailable). PC 298 / 298A First Schedule rows were deleted from 15 Sep 2026 by Act 10 of 2025 s.48(1)(b), with savings for pre-commencement offences.
         </p>
         <p>
-          For other laws not listed: max ≥3 years jail → usually <strong>arrestable + not bailable</strong>;
-          under 3 years or fine only → usually <strong>not arrestable + bailable</strong>, unless the Act says otherwise.
+          For other laws not listed: max \u22653 years jail \u2192 usually <strong>arrestable + not bailable</strong>;
+          under 3 years or fine only \u2192 usually <strong>not arrestable + bailable</strong>, unless the Act says otherwise.
           Always open the Act on SSO and check for a general power of arrest before applying CPC defaults.
         </p>
       </details>
@@ -95,20 +96,20 @@
         <div class="facts">
           <div>
             <div class="fact-label">Bailable</div>
-            <div class="fact-value" id="bailableValue">—</div>
+            <div class="fact-value" id="bailableValue">\u2014</div>
           </div>
           <div id="warrantRow">
             <div class="fact-label">Process</div>
-            <div class="fact-value" id="warrantValue">—</div>
+            <div class="fact-value" id="warrantValue">\u2014</div>
           </div>
           <div>
             <div class="fact-label">Maximum punishment</div>
-            <div class="fact-value" id="punishmentValue">—</div>
+            <div class="fact-value" id="punishmentValue">\u2014</div>
           </div>
         </div>
       </div>
       <div class="result-footer">
-        <a class="agc-btn" id="agcLink" href="https://sso.agc.gov.sg" target="_blank" rel="noopener">View on AGC’s website</a>
+        <a class="agc-btn" id="agcLink" href="https://sso.agc.gov.sg" target="_blank" rel="noopener">View on AGC\u2019s website</a>
       </div>
     </article>
 
@@ -124,7 +125,7 @@
       </p>
       <p>
         <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new" target="_blank" rel="noopener">Report / request section</a>
-        ·
+        \u00b7
         <a href="https://github.com/FazzJan/sg-legislation-lookup/issues" target="_blank" rel="noopener">Open issues</a>
       </p>
       <details>
