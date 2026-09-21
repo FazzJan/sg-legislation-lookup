@@ -1,0 +1,22 @@
+[
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "39",
+    "offence": "Urging force or violence against a person or a group distinguished by race, or urging another to engage in conduct intending force or violence, because of a belief about race (s.39(1)/(2)/(3))",
+    "arrestable": "May arrest without warrant (no Act-specific general arrest clause found \u2014 CPC default for other laws, max 10 years)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default \u2014 max 10 years)",
+    "punishment": "Fine or imprisonment not exceeding 10 years or both (s.39(7)). Prosecution only with Public Prosecutor\u2019s consent (s.44)",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr39-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "40",
+    "offence": "Inciting enmity, hatred, ill-will or hostility against, or contempt for or ridicule of, a group distinguished by race; or insulting, vilifying, denigrating, threatening or abusing another person on the basis of race (s.40(1)/(2))",
+    "arrestable": "May arrest without warrant (no Act-specific general arrest clause found \u2014 CPC default for other laws, max 5 years)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default \u2014 max 5 years)",
+    "punishment": "Fine or imprisonment not exceeding 5 years or both (s.40(7)). s.40(2) is compoundable by the person insulted (CPC Fourth Schedule Part 3A item 56A). Prosecution only with Public Prosecutor\u2019s consent (s.44)",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr40-"
+  }
+]
