@@ -14,15 +14,11 @@ CPC First Schedule updates already encoded in the chunks:
   Commencement: https://sso.agc.gov.sg/SL/S555-2026
   Gazette: https://assets.egazette.gov.sg/2025/Legislative%20Supplements/Acts%20Supplement/22.pdf
 
-SSO check on 21 Sep 2026 and re-confirmed 24 Sep 2026: still no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* **Order** after S 42/2026. CPC timeline on SSO shows S 818/2025 (30 Dec 2025), S 42/2026 (30 Jan 2026), Act 21 of 2025 (17 Aug 2026), then Act 10 of 2025 (15 Sep 2026). Act 5 of 2024 CPC amendments remain procedure / FME / disclosure, not First Schedule rows. Act 21 of 2025 s.24 *does* amend the First Schedule; encoded rows that can be quoted from the current Penal Code / Gazette text are kept.
-
-Act 10 of 2025 (Maintenance of Racial Harmony Act 2025) s.48(1)(b), in force 15 Sep 2026, is **not** an s.427 Order but it does amend the CPC First Schedule: it deletes the Chapter 15 heading and the items relating to Penal Code ss.298 and 298A. Those two rows were removed from `c0`–`c22` on 21 Sep 2026 (470 rows). Savings: Act 10 of 2025 s.48(2) keeps the old First Schedule items for offences committed under PC 298 / 298A before 15 Sep 2026 — use the live SSO historical view / Act text for those legacy charges. Replacing offences are MRHA ss.39 and 40 (see `extra-part8.json`).
-
-Do not confuse other 2026 “Amendment of First Schedule” instruments (e.g. Registration of Criminals Act S 43/2026, S 259/2026, S 423/2026, S 562/2026, S 608/2026; Online Criminal Harms Act S 257/2026) with CPC First Schedule changes.
+SSO check on 21 Sep 2026, re-confirmed 24 Sep 2026 and **1 Oct 2026**: still no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* **Order** after S 42/2026. CPC SL list on SSO (current version as at 28 Sep 2026) shows no new s.427 Order. Do not confuse Registration of Criminals Act First Schedule Orders (S 43/2026, S 259/2026, S 562/2026, etc.) or Online Criminal Harms Act instruments with CPC First Schedule changes. Act 10 of 2025 (MRHA) s.48(1)(b), in force 15 Sep 2026, is **not** an s.427 Order but it does amend the CPC First Schedule: it deletes the Chapter 15 heading and the items relating to Penal Code ss.298 and 298A. Those two rows were removed from `c0`–`c22` on 21 Sep 2026 (470 rows). Savings: Act 10 of 2025 s.48(2) keeps the old First Schedule items for offences committed under PC 298 / 298A before 15 Sep 2026.
 
 Remaining First Schedule gap after Act 21/2025 s.24(b): additional 292 rows (e.g. “any other case” / “2 or more occasions” variants) and 292B / 377BD(6)/(7) labels may exist in the replacement table beyond the encoded 292(1), 292(1A) and 377BD(2)/(3) items. Prefer incomplete accurate rows over invented subsection labels. Decoded chunk count is **470 rows** (was 472 before the 298 / 298A deletion).
 
-Spot-check 21 Sep 2026 / 24 Sep 2026 (CPC First Schedule values in `c0`–`c22`):
+Spot-check 1 Oct 2026 (CPC First Schedule values in `c0`–`c22` unchanged since 24 Sep 2026 pass):
 
 - PC 302 Murder — arrestable, warrant, not bailable, death.
 - PC 332 VCH to deter public servant — arrestable, warrant, not bailable, 7 years or fine or caning.
@@ -30,19 +26,11 @@ Spot-check 21 Sep 2026 / 24 Sep 2026 (CPC First Schedule values in `c0`–`c22`)
 - PC 420(1)/420(2) present after S 818/2025.
 - PC 167 / 182 / 355 arrestable after S 42/2026.
 
-`extra` audit 7 Sep 2026 / 14 Sep 2026 / 17 Sep 2026 / 21 Sep 2026 / 24 Sep 2026:
+`extra` audit 7 Sep 2026 / 14 Sep 2026 / 17 Sep 2026 / 21 Sep 2026 / 24 Sep 2026 / **1 Oct 2026**:
 
 - Act-specific arrest powers override CPC term defaults (LCA s.30, CMA s.19, POHA s.18, MOA s.40, VA s.6, MA s.86, RTA s.64(13) / s.65(12) / s.67(3) / qualified s.127, **POA s.40**, **MDA s.25**, **IA s.51(3)**).
-- All Liquor Control Act entries remain arrestable under LCSCA s.30 (in officer’s view, any provision). Distinct 14(1) / 14(2) / 14(4) punishments kept and re-checked against the Act text (s.14(2) first: fine ≤ $1,000 or imprisonment ≤ 6 months or both).
-- `extra-part7.json`: Immigration Act 1959 ss.5, 6(1), 6(2), 9(5), 15(3)(a), 15(3)(b), 36, 57(1)(a), 57(1)(aa), 57(1)(b), 57(1)(c), 57(1)(d)(i)/(ii), 57(1)(d)(iii), 57(1)(e), 57(1)(f)–(j), 57(1)(k), 57(1)(ka), 57(1)(l), 57(1)(m), 57(1)(n), 57A, 57B, 57C, 57D(1). Arrest marked per IA s.51(3) (reasonably believes — no in-view limit). 21 Sep 2026 pass added the remaining s.57(1) document / false-information / instrument limbs and s.57D(1). s.57D(2) and s.57D(4) manufacture/sale are noted on the s.57D(1) row rather than fully split. Remaining unindexed IA offence machinery includes some s.57 supporting subsections and regulation offences.
-- MOA s.21 punishment filled from the live Act (fine ≤ $1,000 for s.21(1)).
-- Moneylenders: s.19 and s.47 only are expressly arrestable and non-bailable under MA s.86. s.48 left as “check Act”.
-- DPA s.16 / s.17 arrest remains narrowed to the actual s.18 condition.
-- POHA s.10 added. s.18(1) is in-view for any provision; s.18(2) also allows arrest without warrant of a person reasonably suspected of s.10(1) in prescribed circumstances.
-- `extra-part5.json` Public Order Act 2009: original 15(1), 15(2), 16(1), 16(2), 16(4), 18, 24(4), 25(3), 37, 39 plus 14 Sep 2026 add of special-event ss.26, 27, 28, 31, 32(1), 32(2), 32A. Arrest marked per POA s.40 (in officer’s view, any provision). Remaining organiser-direction / s.21A declaration machinery not indexed (not all are offences).
-- New `extra-part6.json` (14 Sep 2026): Misuse of Drugs Act 1973 ss.5, 6, 7, 8(a), 8(b), 8A, 9, 10, 11, 11A, 11B, 30. Arrest marked per MDA s.25 (committed or reasonably suspected — no in-view limit). Trafficking / manufacture / import punishments left as “see Second Schedule” rather than inventing quantity bands. Consumption uses the quoted s.33(3A) scale; s.33A LT bands pointed to SSO.
-- RTA 64/65 hurt-tier headings should be confirmed on the live SSO section because Act 2 of 2025 rewrote the section structure.
+- All Liquor Control Act entries remain arrestable under LCSCA s.30 (in officer’s view, any provision). Distinct 14(1) / 14(2) / 14(4) punishments kept. s.14(2) first: fine ≤ $1,000 or imprisonment ≤ 6 months or both.
 - No hatsuzuki (or other third-party) runtime dependency. Deep-link fallback in `js/app.js` `showEmpty()` still builds `https://sso.agc.gov.sg/Act/{code}?ProvIds=pr{section}-`.
-- New `extra-part8.json` (21 Sep 2026): Maintenance of Racial Harmony Act 2025 ss.39 and 40 (in force 15 Sep 2026). No Act-wide police arrest-without-warrant clause found in the Act text reviewed; arrest/bail marked on CPC term defaults (s.39 max 10 years; s.40 max 5 years). Both require Public Prosecutor’s consent (s.44). s.40(2) is compoundable under the new CPC Fourth Schedule Part 3A item 56A. MRHA s.7 information offences and restraining-order contraventions not indexed in this pass.
+- `extra-part8.json` (21 Sep 2026 + 1 Oct 2026): MRHA ss.39 and 40 plus **s.7(1)(a), s.7(1)(b)–(d), s.7(1)(e)–(f), s.10, s.26, s.29, s.30**. No Act-wide police arrest-without-warrant clause found; arrest/bail marked on CPC term defaults. s.39/s.40 require PP consent (s.44). Remaining unindexed MRHA machinery includes other foreign-influence / designation / regulation offences (S 599/2026 and S 600/2026).
 
 Always verify against [sso.agc.gov.sg](https://sso.agc.gov.sg).
