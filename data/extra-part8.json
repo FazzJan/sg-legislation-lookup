@@ -1,23 +1,272 @@
 [
-  {"statute":"Immigration Act","section":"57(1)(b)","offence":"Abets any person to leave Singapore in contravention of this Act or the regulations","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant","bailable":"Bailable (CPC default — max 2 years)","punishment":"Imprisonment for a presumptive minimum term of not less than 6 months and not more than 2 years, and liable to a fine not exceeding $6,000 (s.57(1AA)(c), subject to s.57(1A))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(f)","offence":"Makes or causes to be made any false report, false statement or false representation in connection with any obligation imposed by this Act or the regulations","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — max 12 months)","punishment":"Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(g)","offence":"Resists or obstructs, actively or passively, any immigration officer in the execution of the immigration officer's duty","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — max 12 months)","punishment":"Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(h)","offence":"Without lawful excuse hinders or obstructs any removal under this Act","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — max 12 months)","punishment":"Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(i)","offence":"Gives, sells or parts with possession of any entry or re-entry permit, pass, Singapore visa or certificate in order that it may be used in contravention of s.57(1)(j)","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — max 12 months)","punishment":"Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(j)","offence":"Uses any entry or re-entry permit, pass, Singapore visa or certificate issued to any other person as if it had been lawfully issued to himself or herself","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — max 12 months)","punishment":"Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(k)","offence":"Knowingly obtains or attempts to obtain any entry permit, re-entry permit, pass, Singapore visa or certificate by giving information that is false or misleading in a material particular, or that omits a matter without which the information is misleading","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — max 12 months)","punishment":"Fine not exceeding $8,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(ga))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(ka)","offence":"Obtains or attempts to obtain any entry permit, re-entry permit, pass, Singapore visa or certificate by giving information that is false or misleading in a material particular, or that omits a matter without which the information is misleading (strict liability — s.57(1AAA))","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — fine only)","punishment":"Fine not exceeding $4,000 (s.57(1AA)(gb)). Strict liability offence under s.57(1AAA)","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(l)","offence":"Uses or without lawful authority has in possession any forged, unlawfully altered or irregular entry or re-entry permit, pass, Singapore visa, certificate or other document issued under this Act or the regulations, or any such document on which any endorsement has been forged or unlawfully altered","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — max 12 months)","punishment":"Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(m)","offence":"Makes or has in possession without lawful authority, or traffics in, any electronic template, stamp, seal, plate, paraphernalia or other instrument knowing it is or is intended to be used for forging or unlawfully altering an endorsement on a passport or immigration document","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant","bailable":"Not bailable (CPC default — max 5 years)","punishment":"Fine not exceeding $8,000 or imprisonment not exceeding 5 years or both (s.57(1AA)(h))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57(1)(n)","offence":"Makes or has in possession without lawful authority, or traffics in, any device, machine, paper, material or other thing knowing it is or has been specially designed or adapted for making a forged entry or re-entry permit, pass, Singapore visa or certificate or other document issued under this Act or the regulations","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant","bailable":"Not bailable (CPC default — max 5 years)","punishment":"Fine not exceeding $8,000 or imprisonment not exceeding 5 years or both (s.57(1AA)(h))","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"},
-  {"statute":"Immigration Act","section":"57D(1)","offence":"Person who is not an immigration officer wears or possesses an immigration officer uniform or uses immigration officer insignia, uses the designation or rank of an immigration officer, or represents himself or herself as an immigration officer, in the circumstances in s.57D(1)","arrestable":"May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)","warrant":"Warrant / Summons (context-dependent)","bailable":"Bailable (CPC default — max 6 months)","punishment":"Fine not exceeding $2,500 or imprisonment not exceeding 6 months or both (s.57D(1)). Separate limbs: s.57D(2) same penalty for an immigration officer wearing uniform otherwise than in the course of duty / authorised purpose; s.57D(4) manufacture/sale limb is fine not exceeding $10,000 or imprisonment not exceeding 3 years or both — confirm that limb on SSO if charging it","link":"https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57D-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"39","offence":"Urging force or violence against a person or a group distinguished by race, or urging another to engage in conduct intending force or violence, because of a belief about race (s.39(1)/(2)/(3))","arrestable":"May arrest without warrant (no Act-specific general arrest clause found — CPC default for other laws, max 10 years)","warrant":"Warrant","bailable":"Not bailable (CPC default — max 10 years)","punishment":"Fine or imprisonment not exceeding 10 years or both (s.39(7)). Prosecution only with Public Prosecutor's consent (s.44)","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr39-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"40","offence":"Inciting enmity, hatred, ill-will or hostility against, or contempt for or ridicule of, a group distinguished by race; or insulting, vilifying, denigrating, threatening or abusing another person on the basis of race (s.40(1)/(2))","arrestable":"May arrest without warrant (no Act-specific general arrest clause found — CPC default for other laws, max 5 years)","warrant":"Warrant","bailable":"Not bailable (CPC default — max 5 years)","punishment":"Fine or imprisonment not exceeding 5 years or both (s.40(7)). s.40(2) is compoundable by the person insulted (CPC Fourth Schedule Part 3A item 56A). Prosecution only with Public Prosecutor's consent (s.44)","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr40-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"7(1)(a)","offence":"Person given a notice under s.6(2) fails to comply with any requirement in the notice","arrestable":"May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default for other laws). s.7(1)(a) except a continuing offence is compoundable (S 602/2026)","warrant":"Summons","bailable":"Bailable (CPC default — fine only)","punishment":"Fine not exceeding $5,000; continuing offence: further fine not exceeding $500 for every day or part of a day after conviction (s.7(6)). Defence: took all reasonable steps to comply (s.7(2))","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr7-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"7(1)(b)-(d)","offence":"Alters, damages or destroys a document that must be given under a s.6(2) notice; or gives information or a document that is false or misleading in a material particular (or by omission)","arrestable":"May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default). Compoundable under S 602/2026","warrant":"Summons","bailable":"Bailable (CPC default — fine only)","punishment":"Fine not exceeding $5,000 (s.7(7)). Defences in s.7(3)–(5)","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr7-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"7(1)(e)-(f)","offence":"Knowingly gives information or a document in response to a s.6(2) notice that is false or misleading in a material particular (or by omission)","arrestable":"May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default)","warrant":"Summons","bailable":"Bailable (CPC default — fine only)","punishment":"Fine not exceeding $10,000; second or subsequent: fine not exceeding $20,000 (s.7(8))","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr7-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"10","offence":"Fails to comply with a racial content restraining order made against the person (including as confirmed, varied or extended)","arrestable":"May arrest without warrant on subsequent conviction (max 3 years — CPC default). First conviction max 2 years is under 3 years so CPC default would be non-arrestable; no Act-wide arrest clause found — check facts before relying on first-conviction default","warrant":"Warrant / Summons (context-dependent)","bailable":"First: bailable (max 2 years). Subsequent: not bailable (max 3 years) — CPC default for other laws","punishment":"Fine not exceeding $10,000 or imprisonment not exceeding 2 years or both; second or subsequent: fine not exceeding $20,000 or imprisonment not exceeding 3 years or both","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr10-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"26","offence":"Removal direction against a designated entity not complied with (entity and each governing-body member while non-compliance continues)","arrestable":"May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default)","warrant":"Summons","bailable":"Bailable (CPC default — fine only)","punishment":"Fine not exceeding $5,000; continuing offence: further fine of $1,000 for every day or part of a day after conviction (s.26(5)). Defences: all reasonable steps (s.26(3)/(4))","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr26-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"29","offence":"Foreign influence restraining order against a designated entity not complied with (entity and each governing-body member when / while non-compliance)","arrestable":"First conviction max 2 years — CPC default non-arrestable; subsequent max 3 years — arrestable. No Act-wide arrest clause found","warrant":"Warrant / Summons (context-dependent)","bailable":"First: bailable (max 2 years). Subsequent: not bailable (max 3 years) — CPC default","punishment":"Fine not exceeding $10,000 or imprisonment not exceeding 2 years or both; second or subsequent: fine not exceeding $20,000 or imprisonment not exceeding 3 years or both (s.29(5))","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr29-"},
-  {"statute":"Maintenance of Racial Harmony Act","section":"30","offence":"Facilitating a foreign donation prohibited by a foreign influence restraining order","arrestable":"May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default)","warrant":"Summons","bailable":"Bailable (CPC default — fine only)","punishment":"Fine not exceeding $10,000; second or subsequent: fine not exceeding $20,000 (s.30(2))","link":"https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr30-"}
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(b)",
+    "offence": "Abets any person to leave Singapore in contravention of this Act or the regulations",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default — max 2 years)",
+    "punishment": "Imprisonment for a presumptive minimum term of not less than 6 months and not more than 2 years, and liable to a fine not exceeding $6,000 (s.57(1AA)(c), subject to s.57(1A))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(f)",
+    "offence": "Makes or causes to be made any false report, false statement or false representation in connection with any obligation imposed by this Act or the regulations",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(g)",
+    "offence": "Resists or obstructs, actively or passively, any immigration officer in the execution of the immigration officer's duty",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(h)",
+    "offence": "Without lawful excuse hinders or obstructs any removal under this Act",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(i)",
+    "offence": "Gives, sells or parts with possession of any entry or re-entry permit, pass, Singapore visa or certificate in order that it may be used in contravention of s.57(1)(j)",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(j)",
+    "offence": "Uses any entry or re-entry permit, pass, Singapore visa or certificate issued to any other person as if it had been lawfully issued to himself or herself",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(k)",
+    "offence": "Knowingly obtains or attempts to obtain any entry permit, re-entry permit, pass, Singapore visa or certificate by giving information that is false or misleading in a material particular, or that omits a matter without which the information is misleading",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $8,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(ga))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(ka)",
+    "offence": "Obtains or attempts to obtain any entry permit, re-entry permit, pass, Singapore visa or certificate by giving information that is false or misleading in a material particular, or that omits a matter without which the information is misleading (strict liability — s.57(1AAA))",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $4,000 (s.57(1AA)(gb)). Strict liability offence under s.57(1AAA)",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(l)",
+    "offence": "Uses or without lawful authority has in possession any forged, unlawfully altered or irregular entry or re-entry permit, pass, Singapore visa, certificate or other document issued under this Act or the regulations, or any such document on which any endorsement has been forged or unlawfully altered",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 12 months)",
+    "punishment": "Fine not exceeding $4,000 or imprisonment not exceeding 12 months or both (s.57(1AA)(g))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(m)",
+    "offence": "Makes or has in possession without lawful authority, or traffics in, any electronic template, stamp, seal, plate, paraphernalia or other instrument knowing it is or is intended to be used for forging or unlawfully altering an endorsement on a passport or immigration document",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 5 years)",
+    "punishment": "Fine not exceeding $8,000 or imprisonment not exceeding 5 years or both (s.57(1AA)(h))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57(1)(n)",
+    "offence": "Makes or has in possession without lawful authority, or traffics in, any device, machine, paper, material or other thing knowing it is or has been specially designed or adapted for making a forged entry or re-entry permit, pass, Singapore visa or certificate or other document issued under this Act or the regulations",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 5 years)",
+    "punishment": "Fine not exceeding $8,000 or imprisonment not exceeding 5 years or both (s.57(1AA)(h))",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57-"
+  },
+  {
+    "statute": "Immigration Act",
+    "section": "57D(1)",
+    "offence": "Person who is not an immigration officer wears or possesses an immigration officer uniform or uses immigration officer insignia, uses the designation or rank of an immigration officer, or represents himself or herself as an immigration officer, in the circumstances in s.57D(1)",
+    "arrestable": "May arrest without warrant if the officer reasonably believes the person has committed an offence under this Act or the regulations (IA s.51(3) — no in-view limit; overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default — max 6 months)",
+    "punishment": "Fine not exceeding $2,500 or imprisonment not exceeding 6 months or both (s.57D(1)). Separate limbs: s.57D(2) same penalty for an immigration officer wearing uniform otherwise than in the course of duty / authorised purpose; s.57D(4) manufacture/sale limb is fine not exceeding $10,000 or imprisonment not exceeding 3 years or both — confirm that limb on SSO if charging it",
+    "link": "https://sso.agc.gov.sg/Act/IA1959?ProvIds=pr57D-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "39",
+    "offence": "Urging force or violence against a person or a group distinguished by race, or urging another to engage in conduct intending force or violence, because of a belief about race (s.39(1)/(2)/(3))",
+    "arrestable": "May arrest without warrant (no Act-specific general arrest clause found — CPC default for other laws, max 10 years)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 10 years)",
+    "punishment": "Fine or imprisonment not exceeding 10 years or both (s.39(7)). Prosecution only with Public Prosecutor's consent (s.44)",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr39-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "40",
+    "offence": "Inciting enmity, hatred, ill-will or hostility against, or contempt for or ridicule of, a group distinguished by race; or insulting, vilifying, denigrating, threatening or abusing another person on the basis of race (s.40(1)/(2))",
+    "arrestable": "May arrest without warrant (no Act-specific general arrest clause found — CPC default for other laws, max 5 years)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (CPC default — max 5 years)",
+    "punishment": "Fine or imprisonment not exceeding 5 years or both (s.40(7)). s.40(2) is compoundable by the person insulted (CPC Fourth Schedule Part 3A item 56A). Prosecution only with Public Prosecutor's consent (s.44)",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr40-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "7(1)(a)",
+    "offence": "Person given a notice under s.6(2) fails to comply with any requirement in the notice",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default for other laws). s.7(1)(a) except a continuing offence is compoundable (S 602/2026)",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $5,000; continuing offence: further fine not exceeding $500 for every day or part of a day after conviction (s.7(6)). Defence: took all reasonable steps to comply (s.7(2))",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr7-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "7(1)(b)-(d)",
+    "offence": "Alters, damages or destroys a document that must be given under a s.6(2) notice; or gives information or a document that is false or misleading in a material particular (or by omission)",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default). Compoundable under S 602/2026",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $5,000 (s.7(7)). Defences in s.7(3)–(5)",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr7-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "7(1)(e)-(f)",
+    "offence": "Knowingly gives information or a document in response to a s.6(2) notice that is false or misleading in a material particular (or by omission)",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default)",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $10,000; second or subsequent: fine not exceeding $20,000 (s.7(8))",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr7-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "10",
+    "offence": "Fails to comply with a racial content restraining order made against the person (including as confirmed, varied or extended)",
+    "arrestable": "May arrest without warrant on subsequent conviction (max 3 years — CPC default). First conviction max 2 years is under 3 years so CPC default would be non-arrestable; no Act-wide arrest clause found — check facts before relying on first-conviction default",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "First: bailable (max 2 years). Subsequent: not bailable (max 3 years) — CPC default for other laws",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 2 years or both; second or subsequent: fine not exceeding $20,000 or imprisonment not exceeding 3 years or both",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr10-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "26",
+    "offence": "Removal direction against a designated entity not complied with (entity and each governing-body member while non-compliance continues)",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default)",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $5,000; continuing offence: further fine of $1,000 for every day or part of a day after conviction (s.26(5)). Defences: all reasonable steps (s.26(3)/(4))",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr26-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "29",
+    "offence": "Foreign influence restraining order against a designated entity not complied with (entity and each governing-body member when / while non-compliance)",
+    "arrestable": "First conviction max 2 years — CPC default non-arrestable; subsequent max 3 years — arrestable. No Act-wide arrest clause found",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "First: bailable (max 2 years). Subsequent: not bailable (max 3 years) — CPC default",
+    "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 2 years or both; second or subsequent: fine not exceeding $20,000 or imprisonment not exceeding 3 years or both (s.29(5))",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr29-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "30",
+    "offence": "Facilitating a foreign donation prohibited by a foreign influence restraining order",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default)",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $10,000; second or subsequent: fine not exceeding $20,000 (s.30(2))",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr30-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "21",
+    "offence": "With intent to deceive, withholds from a designated entity information about donations, or knowingly gives the entity information about donations that is false or misleading in a material particular (identity of donor / person on whose behalf donation made / amount or value)",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default for other laws)",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $10,000; second or subsequent conviction: fine not exceeding $20,000 (s.21(3))",
+    "link": "https://sso.agc.gov.sg/Act/MRHA2025?ProvIds=pr21-"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "S600/2026 r.26",
+    "offence": "Responsible officer of a designated entity when the entity fails to submit a donations report (r.9), foreign affiliations report (r.16), or key management report (r.22 or 23) as required (strict liability)",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default for other laws) . Prescribed for MRHA s.22",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $2,000; continuing offence: further fine not exceeding $200 for every day or part of a day after conviction (S 600/2026 r.26(3)). Defence: all reasonable steps and due diligence (r.26(4))",
+    "link": "https://sso.agc.gov.sg/SL/MRHA2025-S600-2026"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "S600/2026 r.27",
+    "offence": "Responsible officer of a designated entity that fails to give the competent authority the written notice of non-compliance required under regulation 24 by the end of the specified period (strict liability)",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default for other laws) . Prescribed for MRHA s.22",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $5,000; continuing offence: further fine not exceeding $500 for every day or part of a day after conviction (S 600/2026 r.27(3)). Defence: all reasonable steps and due diligence (r.27(4))",
+    "link": "https://sso.agc.gov.sg/SL/MRHA2025-S600-2026"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "S600/2026 r.28",
+    "offence": "Responsible officer knowingly states or includes in a donations, foreign affiliations or key management report a matter that is false or misleading in a material particular, or omits a matter without which the report is false or misleading",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default for other laws) . Prescribed for MRHA s.22",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $10,000; second or subsequent conviction: fine not exceeding $20,000 (S 600/2026 r.28(2))",
+    "link": "https://sso.agc.gov.sg/SL/MRHA2025-S600-2026"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "S600/2026 r.29",
+    "offence": "Responsible officer of a designated entity when a donations, foreign affiliations or key management report contains a false or misleading material particular, or omits a matter without which the report is false or misleading (strict liability)",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default for other laws) . Prescribed for MRHA s.22",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fine not exceeding $5,000 (S 600/2026 r.29(3)). Defence: all reasonable steps and due diligence (r.29(4))",
+    "link": "https://sso.agc.gov.sg/SL/MRHA2025-S600-2026"
+  },
+  {
+    "statute": "Maintenance of Racial Harmony Act",
+    "section": "S600/2026 Sch para 13(2)",
+    "offence": "Person summoned by the Minister for a removal-direction appeal fails to comply with the summons, or produces a document that contains a false or misleading material particular or is misleading by omission",
+    "arrestable": "May not arrest without warrant (no Act-wide police arrest-without-warrant clause found; fine only — CPC default for other laws) . Compoundable under S 602/2026 reg 2(c)",
+    "warrant": "Summons",
+    "bailable": "Bailable (CPC default — fine only)",
+    "punishment": "Fail to comply with summons: fine not exceeding $2,000. False or misleading document: fine not exceeding $5,000 (S 600/2026 Schedule para 13(3))",
+    "link": "https://sso.agc.gov.sg/SL/MRHA2025-S600-2026"
+  }
 ]
