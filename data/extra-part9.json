@@ -1,0 +1,62 @@
+[
+  {
+    "statute": "Women's Charter 1961",
+    "section": "60A(6)",
+    "offence": "Knowingly contravenes a protection order (family violence offence)",
+    "arrestable": "May arrest without warrant — Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both. Aggravated if the offence involves contravention of an order protecting a vulnerable adult and the offender has been convicted of another family violence offence involving contravention of the same order or another order that also protects a vulnerable adult.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr60A-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "60B(9)",
+    "offence": "Knowingly contravenes a domestic exclusion, stay away or no contact order under s.60B(2) (family violence offence)",
+    "arrestable": "May arrest without warrant — Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr60B-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "60C(9)",
+    "offence": "Knowingly contravenes an electronic monitoring order (family violence offence)",
+    "arrestable": "May arrest without warrant — Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr60C-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "61(11)",
+    "offence": "Knowingly contravenes an expedited order (family violence offence)",
+    "arrestable": "May arrest without warrant — Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr61-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "61A(10)",
+    "offence": "Knowingly contravenes a domestic exclusion, stay away or no contact order under s.61A(2) made with an expedited order (family violence offence)",
+    "arrestable": "May arrest without warrant — Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr61A-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "62(4)",
+    "offence": "Knowingly contravenes an emergency order made by a protector (family violence offence)",
+    "arrestable": "May arrest without warrant — Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr62-"
+  }
+]

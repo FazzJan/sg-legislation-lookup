@@ -17,7 +17,8 @@ const ACT_CODES = {
   'Public Order Act': 'POA2009',
   'Misuse of Drugs Act': 'MDA1973',
   'Immigration Act': 'IA1959',
-  'Maintenance of Racial Harmony Act': 'MRHA2025'
+  'Maintenance of Racial Harmony Act': 'MRHA2025',
+  "Women's Charter 1961": 'WC1961'
 };
 
 let allData = [];
@@ -261,7 +262,7 @@ async function init() {
       Array.from({ length: n }, (_, i) => fetch('data/c' + i + '.txt').then((r) => r.text()))
     );
     const compact = JSON.parse(await gunzipB64(texts.join('').trim()));
-    const extraFiles = ['data/extra.json', 'data/extra-part1.json', 'data/extra-part2.json', 'data/extra-part3.json', 'data/extra-part4.json', 'data/extra-part5.json', 'data/extra-part6.json', 'data/extra-part7.json', 'data/extra-part8.json'];
+    const extraFiles = ['data/extra.json', 'data/extra-part1.json', 'data/extra-part2.json', 'data/extra-part3.json', 'data/extra-part4.json', 'data/extra-part5.json', 'data/extra-part6.json', 'data/extra-part7.json', 'data/extra-part8.json', 'data/extra-part9.json'];
     const extraRaw = [];
     for (const f of extraFiles) {
       try {
