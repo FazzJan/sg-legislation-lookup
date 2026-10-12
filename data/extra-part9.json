@@ -1,1 +1,21 @@
-PLACEHOLDER_EXTRA
+[{
+    "statute": "Women's Charter 1961",
+    "section": "60A(6)",
+    "offence": "Knowingly contravenes a protection order (family violence offence)",
+    "arrestable": "May arrest without warrant \u2014 Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both. Aggravated if the offence involves contravention of an order protecting a vulnerable adult and the offender has been convicted of another family violence offence involving contravention of the same order or another order that also protects a vulnerable adult.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr60A-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "140",
+    "offence": "Offences relating to prostitution (sell/hire/procure etc. woman or girl for prostitution, carnal connection with girl below 16, etc.)",
+    "arrestable": "May arrest without warrant \u2014 WC s.174(1): Director-General or authorised officer (police sergeant+, immigration officer, etc.) may arrest any person reasonably believed liable to prosecution for s.140(1) (and listed Part 11 offences). Overrides CPC term defaults. Not limited to in-view.",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 7/10 years \u2014 CPC default for other laws)",
+    "punishment": "Imprisonment not exceeding 7 years and fine not exceeding $100,000; repeat offender: imprisonment not exceeding 10 years and fine not exceeding $150,000. Male repeat offender for certain paras also liable to caning.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr140-"
+  }
+]
