@@ -1,4 +1,5 @@
-[{
+[
+  {
     "statute": "Women's Charter 1961",
     "section": "60A(6)",
     "offence": "Knowingly contravenes a protection order (family violence offence)",
@@ -10,6 +11,56 @@
   },
   {
     "statute": "Women's Charter 1961",
+    "section": "60B(9)",
+    "offence": "Knowingly contravenes a domestic exclusion, stay away or no contact order under s.60B(2) (family violence offence)",
+    "arrestable": "May arrest without warrant \u2014 Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr60B-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "60C(9)",
+    "offence": "Knowingly contravenes an electronic monitoring order (family violence offence)",
+    "arrestable": "May arrest without warrant \u2014 Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr60C-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "61(11)",
+    "offence": "Knowingly contravenes an expedited order (family violence offence)",
+    "arrestable": "May arrest without warrant \u2014 Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr61-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "61A(10)",
+    "offence": "Knowingly contravenes a domestic exclusion, stay away or no contact order under s.61A(2) made with an expedited order (family violence offence)",
+    "arrestable": "May arrest without warrant \u2014 Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr61A-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "62(4)",
+    "offence": "Knowingly contravenes an emergency order made by a protector (family violence offence)",
+    "arrestable": "May arrest without warrant \u2014 Women's Charter s.63D makes a family violence offence arrestable for the purposes of the CPC 2010 (overrides the under-3-years CPC default). Separate enforcement-officer power in s.64E (s.64E(2): entry if the officer reasonably believes the person is inside a place; check s.64E(1) on SSO for the trigger).",
+    "warrant": "Summons (bailable under CPC default for imprisonment under 3 years; arrest column overridden by s.63D)",
+    "bailable": "Bailable",
+    "punishment": "s.63C: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both; if aggravated under s.63C(2), fine not exceeding $10,000 or imprisonment not exceeding 18 months or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr62-"
+  },
+  {
+    "statute": "Women's Charter 1961",
     "section": "140",
     "offence": "Offences relating to prostitution (sell/hire/procure etc. woman or girl for prostitution, carnal connection with girl below 16, etc.)",
     "arrestable": "May arrest without warrant \u2014 WC s.174(1): Director-General or authorised officer (police sergeant+, immigration officer, etc.) may arrest any person reasonably believed liable to prosecution for s.140(1) (and listed Part 11 offences). Overrides CPC term defaults. Not limited to in-view.",
@@ -17,5 +68,55 @@
     "bailable": "Not bailable (max 7/10 years \u2014 CPC default for other laws)",
     "punishment": "Imprisonment not exceeding 7 years and fine not exceeding $100,000; repeat offender: imprisonment not exceeding 10 years and fine not exceeding $150,000. Male repeat offender for certain paras also liable to caning.",
     "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr140-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "141",
+    "offence": "Traffic in women and girls",
+    "arrestable": "May arrest without warrant \u2014 WC s.174(1): Director-General or authorised officer may arrest any person reasonably believed liable to prosecution for s.141(1). Overrides CPC term defaults.",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 7/10 years \u2014 CPC default for other laws)",
+    "punishment": "Imprisonment not exceeding 7 years and fine not exceeding $100,000; repeat offender: imprisonment not exceeding 10 years and fine not exceeding $150,000.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr141-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "142",
+    "offence": "Importation of woman or girl by false pretences",
+    "arrestable": "May arrest without warrant \u2014 WC s.174(1): Director-General or authorised officer may arrest any person reasonably believed liable to prosecution for s.142(1). Overrides CPC term defaults.",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 7 years \u2014 CPC default for other laws)",
+    "punishment": "Imprisonment not exceeding 7 years and fine not exceeding $100,000 (repeat higher \u2014 confirm exact on SSO).",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr142-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "145",
+    "offence": "Causing or encouraging prostitution of girl below 18 or sexual penetration with / indecent assault on girl below 16",
+    "arrestable": "May arrest without warrant \u2014 WC s.174(1): Director-General or authorised officer may arrest any person reasonably believed liable to prosecution for s.145(1). Overrides CPC term defaults.",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 5/7 years \u2014 CPC default for other laws)",
+    "punishment": "Fine not exceeding $100,000 or imprisonment not exceeding 5 years or both; repeat offender: fine not exceeding $150,000 or imprisonment not exceeding 7 years or both.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr145-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "146",
+    "offence": "Persons living on or trading in prostitution, etc.",
+    "arrestable": "May arrest without warrant \u2014 WC s.174(1): Director-General or authorised officer may arrest any person reasonably believed liable to prosecution for s.146(1) or (1A). Overrides CPC term defaults.",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 7/10 years \u2014 CPC default for other laws)",
+    "punishment": "Imprisonment not exceeding 7 years and fine not exceeding $100,000; repeat offender: imprisonment not exceeding 10 years and fine not exceeding $150,000.",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr146-"
+  },
+  {
+    "statute": "Women's Charter 1961",
+    "section": "146A",
+    "offence": "Remote communication service used for offering or facilitating provision of sexual services, etc.",
+    "arrestable": "May arrest without warrant \u2014 WC s.174(1): Director-General or authorised officer may arrest any person reasonably believed liable to prosecution for s.146A(1). Overrides CPC term defaults.",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (confirm max term on SSO \u2014 typically multi-year)",
+    "punishment": "Confirm exact punishment on SSO (Part 11 offence; listed in s.174).",
+    "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr146A-"
   }
 ]
