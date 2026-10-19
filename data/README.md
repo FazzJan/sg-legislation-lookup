@@ -14,13 +14,13 @@ CPC First Schedule updates already encoded in the chunks:
   Commencement: https://sso.agc.gov.sg/SL/S555-2026
   Gazette: https://assets.egazette.gov.sg/2025/Legislative%20Supplements/Acts%20Supplement/22.pdf
 
-SSO check on 21 Sep 2026, re-confirmed 24 Sep 2026, 1 Oct 2026, 5 Oct 2026, 8 Oct 2026, 12 Oct 2026 and **15 Oct 2026**: still no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* **Order** after S 42/2026. CPC current version as at 15 Oct 2026 confirms no further s.427 Order. Chunks `c0`–`c22` unchanged.
+SSO check on 21 Sep 2026, re-confirmed 24 Sep 2026, 1 Oct 2026, 5 Oct 2026, 8 Oct 2026, 12 Oct 2026, 15 Oct 2026 and **19 Oct 2026**: still no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* **Order** after S 42/2026. CPC current version as at 19 Oct 2026 confirms no further s.427 Order. Chunks `c0`–`c22` unchanged.
 
-`extra` audit / expansion **15 Oct 2026**:
+`extra` audit / expansion **19 Oct 2026**:
 - LCA entries (extra-part3) re-confirmed: all arrestable per LCSCA s.30 (any provision, in officer’s view). Distinct 14(1) (fine ≤$1,000 or ≤1 month) and 14(2) (fine ≤$1,000 or ≤6 months) kept. No CPC-default-only rows.
+- GEWCA expanded: added ss.16, 18, 19, 20, 21, 30, 36, 37. All Part 2 offences marked arrestable per GEWCA s.40 (overrides term defaults). Existing entries updated to reference s.40.
 - Spot-checks: PC 302/332/379 match First Schedule (arrestable, warrant, not bailable). Deep-link fallback in app.js intact. No hatsuzuki dependency.
-- GEWCA note: s.40 makes every offence under Part 2 arrestable for CPC purposes (overrides term defaults). Partial coverage exists; further expansion pending verified penalties from SSO.
 
-Remaining gaps: full MRHA regulations, additional WC Part 11 subsections, more RTA sections (e.g. speed, mobile device already partial), fuller GEWCA Part 2 offences. Always verify on SSO.
+Remaining gaps: full MRHA regulations, additional WC Part 11 subsections, more RTA sections (e.g. speed, mobile device already partial), fuller GEWCA Part 2 offences (further sections pending verified penalties from SSO), additional explosives/weapons trade sections. Always verify on SSO.
 
 Always verify against [sso.agc.gov.sg](https://sso.agc.gov.sg).
