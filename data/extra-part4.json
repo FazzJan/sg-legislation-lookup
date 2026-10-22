@@ -98,5 +98,55 @@
     "bailable": "Depends on the underlying RTA offence",
     "punishment": "Not an offence section \u2014 enforcement power only",
     "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr127-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "63(4)",
+    "offence": "Exceeding the speed limit (drives a motor vehicle on a road at a speed exceeding the applicable speed limit)",
+    "arrestable": "No section-specific arrest clause. RTA s.127 is a qualified power for the driver of a motor vehicle. CPC term default: non-arrestable (max imprisonment 3 months first / 6 months subsequent)",
+    "warrant": "Summons (typical) / check s.127",
+    "bailable": "Bailable (CPC default)",
+    "punishment": "Fine not exceeding $1,000 or imprisonment not exceeding 3 months or both (first offence); second or subsequent: fine not exceeding $2,000 or imprisonment not exceeding 6 months or both. Confirm exact wording and any composition rules on SSO s.63. Demerit points and composition sums enhanced from 1 Jan 2026",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr63-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "65(3)",
+    "offence": "Careless driving causing grievous hurt",
+    "arrestable": "May arrest without warrant (RTA s.65(12); overrides CPC term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default \u2014 max 2 years first / 4 years repeat, under or at 3 years boundary \u2014 confirm)",
+    "punishment": "Fine not exceeding $5,000 or imprisonment not exceeding 2 years or both (first); repeat higher. Confirm exact on SSO s.65(7) or equivalent after 2025 amendments",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr65-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "65(4)",
+    "offence": "Careless driving causing hurt",
+    "arrestable": "May arrest without warrant (RTA s.65(12); overrides CPC term defaults)",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Bailable (CPC default \u2014 max 12 months)",
+    "punishment": "Fine not exceeding $2,500 or imprisonment not exceeding 12 months or both (first); confirm exact tier on SSO",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr65-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "70",
+    "offence": "Failure to provide specimen of breath or blood for analysis (when required under the Act)",
+    "arrestable": "May arrest without warrant if the person has committed or is committing an offence under this section (check Act-specific; otherwise qualified s.127). Overrides CPC where express",
+    "warrant": "Warrant",
+    "bailable": "Bailable (CPC default \u2014 typically max under 3 years)",
+    "punishment": "Confirm exact penalty on SSO s.70 (often aligned with drink-driving scales or specific). Open SSO for current text",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr70-"
+  },
+  {
+    "statute": "Road Traffic Act",
+    "section": "116",
+    "offence": "Taking and driving away a motor vehicle without consent of owner or other lawful authority",
+    "arrestable": "Check Act. CPC term default if max <3 years: non-arrestable; if higher, arrestable. RTA s.127 qualified power applies",
+    "warrant": "Warrant / Summons (context-dependent)",
+    "bailable": "Depends on max term \u2014 confirm on SSO",
+    "punishment": "Confirm penalty on SSO s.116. Commonly fine and/or imprisonment",
+    "link": "https://sso.agc.gov.sg/Act/RTA1961?ProvIds=pr116-"
   }
 ]
