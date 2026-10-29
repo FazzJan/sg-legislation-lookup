@@ -14,14 +14,14 @@ CPC First Schedule updates already encoded in the chunks:
   Commencement: https://sso.agc.gov.sg/SL/S555-2026
   Gazette: https://assets.egazette.gov.sg/2025/Legislative%20Supplements/Acts%20Supplement/22.pdf
 
-SSO check on 21 Sep 2026, re-confirmed 24 Sep 2026, 1 Oct 2026, 5 Oct 2026, 8 Oct 2026, 12 Oct 2026, 15 Oct 2026, 19 Oct 2026, 22 Oct 2026 and **26 Oct 2026**: still no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* **Order** after S 42/2026. CPC current version as at 26 Oct 2026 confirms no further s.427 Order. Chunks `c0`–`c22` unchanged.
+SSO check on 21 Sep 2026, re-confirmed 24 Sep 2026, 1 Oct 2026, 5 Oct 2026, 8 Oct 2026, 12 Oct 2026, 15 Oct 2026, 19 Oct 2026, 22 Oct 2026, 26 Oct 2026 and **29 Oct 2026**: still no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* **Order** after S 42/2026. CPC current version as at late Oct 2026 confirms no further s.427 Order. Chunks `c0`–`c22` unchanged.
 
-`extra` audit / expansion **26 Oct 2026**:
+`extra` audit / expansion **29 Oct 2026**:
 - LCA entries (extra-part3) re-confirmed: all arrestable per LCSCA s.30 (any provision, in officer’s view). Distinct 14(1) (fine ≤$1,000 or ≤1 month) and 14(2) (fine ≤$1,000 or ≤6 months) kept. No CPC-default-only rows.
-- GEWCA expanded: added ss.23, 24, 25, 26 (explosives manufacture/trade/supply/acquisition) and ss.31, 32, 33 (weapons trade/supply/acquisition). All Part 2 offences marked arrestable per GEWCA s.40 (overrides term defaults). Penalties noted as "see Act / s.34" where exact figures require further SSO confirmation for some items.
+- GEWCA expanded previously: added ss.23, 24, 25, 26 (explosives manufacture/trade/supply/acquisition) and ss.31, 32, 33 (weapons trade/supply/acquisition). All Part 2 offences marked arrestable per GEWCA s.40 (overrides term defaults). Penalties noted as "see Act / s.34" where exact figures require further SSO confirmation for some items.
 - RTA expanded previously: s.63(4) speeding and additional common variants. Arrest powers follow Act-specific (s.64(13), s.65(12), s.67(3)) or qualified s.127; CPC defaults applied only where no Act override.
 - Spot-checks: PC 302/332/379 match First Schedule (arrestable, warrant, not bailable). Deep-link fallback in app.js intact. No hatsuzuki dependency.
 
-Remaining gaps: full MRHA regulations, additional WC Part 11 subsections, more RTA sections, fuller GEWCA Part 2 penalty details and remaining sections, additional explosives/weapons trade sections. Always verify on SSO.
+Remaining gaps: full MRHA regulations, additional WC Part 11 subsections, more RTA sections (e.g. further speeding variants, fail-to-stop variants), fuller GEWCA Part 2 penalty details and remaining sections (e.g. s.11–16 guns possession/manufacture), additional explosives/weapons trade sections. Always verify on SSO.
 
 Always verify against [sso.agc.gov.sg](https://sso.agc.gov.sg).
