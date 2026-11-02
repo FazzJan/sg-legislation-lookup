@@ -131,7 +131,7 @@ function renderSuggestions(list) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'suggestion';
-    btn.innerHTML = `<span class="sec">\u00a7 ${item.section}</span><span class="meta"><div class="title">${item.offence||''}</div><div class="stat">${item.statute}</div></span><span class="mini-pill ${kind}">${arrestLetter(kind)}</span>`;
+    btn.innerHTML = `<span class=\"sec\">\u00a7 ${item.section}</span><span class=\"meta\"><div class=\"title\">${item.offence||''}</div><div class=\"stat\">${item.statute}</div></span><span class=\"mini-pill ${kind}\">${arrestLetter(kind)}</span>`;
     btn.addEventListener('mousedown', (e) => {
       e.preventDefault();
       showResult(item);
@@ -180,13 +180,13 @@ function showEmpty(query) {
   if (actCode && secToken) {
     const sectionUrl = buildActSectionUrl(actCode, secToken);
     const mainUrl = buildActSectionUrl(actCode, null);
-    links = `<p style="margin:0 0 8px">Not indexed here \u2014 open on AGC:</p><p style="margin:0 0 6px"><a href="${sectionUrl}" target="_blank" rel="noopener">${actName} \u00a7 ${secToken}</a></p><p style="margin:0 0 6px"><a href="${mainUrl}" target="_blank" rel="noopener">${actName} main page</a></p>`;
+    links = `<p style=\"margin:0 0 8px\">Not indexed here \u2014 open on AGC:</p><p style=\"margin:0 0 6px\"><a href=\"${sectionUrl}\" target=\"_blank\" rel=\"noopener\">${actName} \u00a7 ${secToken}</a></p><p style=\"margin:0 0 6px\"><a href=\"${mainUrl}\" target=\"_blank\" rel=\"noopener\">${actName} main page</a></p>`;
   } else if (actCode) {
-    links = `<p style="margin:0 0 8px"><a href="${buildActSectionUrl(actCode, null)}" target="_blank" rel="noopener">Open ${actName} on AGC</a></p>`;
+    links = `<p style=\"margin:0 0 8px\"><a href=\"${buildActSectionUrl(actCode, null)}\" target=\"_blank\" rel=\"noopener\">Open ${actName} on AGC</a></p>`;
   } else {
-    links = `<p style="margin:0 0 8px">Select a statute, then search the section for a direct AGC link.</p>`;
+    links = `<p style=\"margin:0 0 8px\">Select a statute, then search the section for a direct AGC link.</p>`;
   }
-  emptyBox.innerHTML = `${links}<p style="margin:10px 0 0"><a href="https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query||'')}" target="_blank" rel="noopener">Search SSO</a> \u00b7 <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new" target="_blank" rel="noopener">Request on GitHub</a></p>`;
+  emptyBox.innerHTML = `${links}<p style=\"margin:10px 0 0\"><a href=\"https://sso.agc.gov.sg/Search/Content?Phrase=${encodeURIComponent(query||'')}\" target=\"_blank\" rel=\"noopener\">Search SSO</a> \u00b7 <a href=\"https://github.com/FazzJan/sg-legislation-lookup/issues/new\" target=\"_blank\" rel=\"noopener\">Request on GitHub</a></p>`;
 }
 
 function onSearchInput() {
@@ -262,7 +262,7 @@ async function init() {
       Array.from({ length: n }, (_, i) => fetch('data/c' + i + '.txt').then((r) => r.text()))
     );
     const compact = JSON.parse(await gunzipB64(texts.join('').trim()));
-    const extraFiles = ['data/extra.json', 'data/extra-part1.json', 'data/extra-part2.json', 'data/extra-part3.json', 'data/extra-part4.json', 'data/extra-part5.json', 'data/extra-part6.json', 'data/extra-part7.json', 'data/extra-part8.json', 'data/extra-part9.json'];
+    const extraFiles = ['data/extra.json', 'data/extra-part1.json', 'data/extra-part2.json', 'data/extra-part3.json', 'data/extra-part4.json', 'data/extra-part5.json', 'data/extra-part6.json', 'data/extra-part7.json', 'data/extra-part8.json', 'data/extra-part9.json', 'data/extra-part10.json'];
     const extraRaw = [];
     for (const f of extraFiles) {
       try {

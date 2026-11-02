@@ -1,7 +1,7 @@
 # Data
 
 - `c0.txt` … `c22.txt` — Penal Code offences from the **Criminal Procedure Code 2010 First Schedule** (470 First Schedule rows after decode on 21 Sep 2026, gzip+base64 split; `c22.txt` is a padding stub so `js/app.js` can keep fetching 23 chunks). Self-hosted so the app does not depend on third-party repos at runtime.
-- `extra.json` — empty stub (`[]`). Live non-PC rows are in `extra-part1.json` … `extra-part9.json` (POHA, MOA, GCA, GEWCA, CESOWA, LCA, Vandalism, DPA, Moneylenders, Computer Misuse, Road Traffic, Public Order Act, Misuse of Drugs Act, Immigration Act, Maintenance of Racial Harmony Act, Women's Charter 1961).
+- `extra.json` — empty stub (`[]`). Live non-PC rows are in `extra-part1.json` … `extra-part10.json` (POHA, MOA, GCA, GEWCA, CESOWA, LCA, Vandalism, DPA, Moneylenders, Computer Misuse, Road Traffic, Public Order Act, Misuse of Drugs Act, Immigration Act, Maintenance of Racial Harmony Act, Women's Charter 1961).
 - `pc.json` / `pc-a.json` / `pc.gz.b64` / `pc1.b64` — leftover placeholders; the live loader uses `c0`–`c22` plus extra-part files.
 
 CPC First Schedule updates already encoded in the chunks:
@@ -14,12 +14,12 @@ CPC First Schedule updates already encoded in the chunks:
   Commencement: https://sso.agc.gov.sg/SL/S555-2026
   Gazette: https://assets.egazette.gov.sg/2025/Legislative%20Supplements/Acts%20Supplement/22.pdf
 
-SSO check on 21 Sep 2026, re-confirmed 24 Sep 2026, 1 Oct 2026, 5 Oct 2026, 8 Oct 2026, 12 Oct 2026, 15 Oct 2026, 19 Oct 2026, 22 Oct 2026, 26 Oct 2026 and **29 Oct 2026**: still no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* **Order** after S 42/2026. CPC current version as at late Oct 2026 confirms no further s.427 Order. Chunks `c0`–`c22` unchanged.
+SSO check on 21 Sep 2026, re-confirmed 24 Sep 2026, 1 Oct 2026, 5 Oct 2026, 8 Oct 2026, 12 Oct 2026, 15 Oct 2026, 19 Oct 2026, 22 Oct 2026, 26 Oct 2026, 29 Oct 2026 and **2 Nov 2026**: still no later *Criminal Procedure Code 2010 (Amendment of First Schedule)* **Order** after S 42/2026. CPC current version as at early Nov 2026 confirms no further s.427 Order. Chunks `c0`–`c22` unchanged.
 
-`extra` audit / expansion **29 Oct 2026**:
+`extra` audit / expansion **2 Nov 2026**:
 - LCA entries (extra-part3) re-confirmed: all arrestable per LCSCA s.30 (any provision, in officer’s view). Distinct 14(1) (fine ≤$1,000 or ≤1 month) and 14(2) (fine ≤$1,000 or ≤6 months) kept. No CPC-default-only rows.
 - GEWCA expanded previously: added ss.23, 24, 25, 26 (explosives manufacture/trade/supply/acquisition) and ss.31, 32, 33 (weapons trade/supply/acquisition). All Part 2 offences marked arrestable per GEWCA s.40 (overrides term defaults). Penalties noted as "see Act / s.34" where exact figures require further SSO confirmation for some items.
-- RTA expanded previously: s.63(4) speeding and additional common variants. Arrest powers follow Act-specific (s.64(13), s.65(12), s.67(3)) or qualified s.127; CPC defaults applied only where no Act override.
+- RTA expanded: added s.35(1) (driving without valid licence), s.35(2) (employ/permit unlicensed driver), s.43(4) (driving while disqualified). Arrest powers follow qualified s.127 or CPC defaults (max ≥3 years → arrestable/non-bailable). Previous expansions (s.63(4) etc.) retained.
 - Spot-checks: PC 302/332/379 match First Schedule (arrestable, warrant, not bailable). Deep-link fallback in app.js intact. No hatsuzuki dependency.
 
 Remaining gaps: full MRHA regulations, additional WC Part 11 subsections, more RTA sections (e.g. further speeding variants, fail-to-stop variants), fuller GEWCA Part 2 penalty details and remaining sections (e.g. s.11–16 guns possession/manufacture), additional explosives/weapons trade sections. Always verify on SSO.
