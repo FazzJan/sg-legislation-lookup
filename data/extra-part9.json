@@ -118,5 +118,55 @@
     "bailable": "Not bailable (confirm max term on SSO \u2014 typically multi-year)",
     "punishment": "Confirm exact punishment on SSO (Part 11 offence; listed in s.174).",
     "link": "https://sso.agc.gov.sg/Act/WC1961?ProvIds=pr146A-"
+  },
+  {
+    "statute": "Guns, Explosives and Weapons Control Act",
+    "section": "11",
+    "offence": "Unauthorised possession or use of guns, major parts of guns or gun accessories",
+    "arrestable": "May arrest without warrant (GEWCA s.40: every offence under Part 2 is arrestable for CPC purposes — overrides term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 5 years for prohibited guns / major parts — CPC default)",
+    "punishment": "s.17: varies by type (prohibited gun: individual up to 5 years + fine up to $100,000 / per-gun limits; other guns up to 36 months + $50,000; major parts similar; accessories lower). See s.17 for full table.",
+    "link": "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr11-"
+  },
+  {
+    "statute": "Guns, Explosives and Weapons Control Act",
+    "section": "12",
+    "offence": "Unauthorised manufacture, disposal or taking part in manufacture of guns, major parts or gun accessories",
+    "arrestable": "May arrest without warrant (GEWCA s.40: every offence under Part 2 is arrestable for CPC purposes — overrides term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 5 years for prohibited — CPC default)",
+    "punishment": "s.17: same penalty bands as s.11 depending on whether prohibited gun/part/accessory involved. See SSO s.17.",
+    "link": "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr12-"
+  },
+  {
+    "statute": "Guns, Explosives and Weapons Control Act",
+    "section": "21",
+    "offence": "Unauthorised use of explosive or explosive precursor",
+    "arrestable": "May arrest without warrant (GEWCA s.40: every offence under Part 2 is arrestable for CPC purposes — overrides term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 5 years for prohibited explosive — CPC default)",
+    "punishment": "s.27: prohibited explosive individual up to 5 years + $100,000; other explosive up to 36 months + $50,000; precursor up to 24 months + $50,000. See SSO s.27.",
+    "link": "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr21-"
+  },
+  {
+    "statute": "Guns, Explosives and Weapons Control Act",
+    "section": "22",
+    "offence": "Unauthorised possession of explosive or explosive precursor",
+    "arrestable": "May arrest without warrant (GEWCA s.40: every offence under Part 2 is arrestable for CPC purposes — overrides term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Not bailable (max 5 years for prohibited explosive — CPC default)",
+    "punishment": "s.27: same as s.21 depending on prohibited explosive / other explosive / precursor. See SSO s.27.",
+    "link": "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr22-"
+  },
+  {
+    "statute": "Guns, Explosives and Weapons Control Act",
+    "section": "29",
+    "offence": "Unauthorised possession of weapons and noxious substances",
+    "arrestable": "May arrest without warrant (GEWCA s.40: every offence under Part 2 is arrestable for CPC purposes — overrides term defaults)",
+    "warrant": "Warrant",
+    "bailable": "Bailable or not depending on max (prohibited weapon up to 36 months; other up to 24 months — CPC default for under/at 3 years boundary)",
+    "punishment": "s.34: prohibited weapon individual up to 36 months + $40,000; other weapon or noxious substance up to 24 months + $20,000. See SSO s.34.",
+    "link": "https://sso.agc.gov.sg/Act/GEWCA2021?ProvIds=pr29-"
   }
 ]
