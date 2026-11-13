@@ -17,6 +17,17 @@
 <body>
   <div class="glow" aria-hidden="true"></div>
 
+  <div class="lock" id="lock" hidden>
+    <form class="lock-card" id="lockForm" autocomplete="off">
+      <span class="mark" aria-hidden="true">§</span>
+      <h1>Private preview</h1>
+      <p class="muted">Enter the password to open Hambalang Search Guide.</p>
+      <input type="password" id="lockInput" placeholder="Password" aria-label="Password" required>
+      <button class="btn primary" type="submit">Unlock</button>
+      <p class="lock-msg" id="lockMsg" role="status"></p>
+    </form>
+  </div>
+
   <header class="top">
     <div class="wrap top-inner">
       <a class="brand" href="./">

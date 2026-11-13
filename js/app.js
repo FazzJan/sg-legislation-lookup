@@ -257,7 +257,7 @@ window.addEventListener('popstate', showView);
 async function loadGuide() {
   guideLoaded = true;
   try {
-    const g = await fetch('data/guides/cpc-part19.json').then((r) => r.json());
+    const g = (await getBundle()).guide;
     $('exStatus').innerHTML = `<strong>${g.status === 'draft' ? 'Draft' : 'Reviewed'}</strong> · last reviewed ${esc(g.lastReviewed)} — ${esc(g.statusNote)}`;
     $('exFlow').innerHTML = g.flow.map((f) => `<li><b>${esc(f.step)}</b><span>${esc(f.text)}</span></li>`).join('');
     const label = { verified: 'Verified', partial: 'Partly verified', pending: 'Pending' };
@@ -276,10 +276,62 @@ async function loadGuide() {
 }
 
 /* ---------- load ---------- */
+/* ---------- data source: plain files (dev) or encrypted vault (published) ---------- */
+let bundlePromise = null;
+let unlockResolve;
+const unlocked = new Promise((res) => { unlockResolve = res; });
+function getBundle() { return bundlePromise || (bundlePromise = loadBundle()); }
+
+async function loadBundle() {
+  const res = await fetch('data/vault.json');
+  if (res.ok) return unlocked; // published build: wait for the password
+  const acts = await fetch('data/acts.json').then((r) => r.json());
+  const lists = await Promise.all(acts.map((a) => fetch(`data/acts/${a.id}.json`).then((r) => (r.ok ? r.json() : []))));
+  const guide = await fetch('data/guides/cpc-part19.json').then((r) => r.json());
+  return { acts, lists, guide };
+}
+
+const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
+async function decryptVault(vault, password) {
+  const base = await crypto.subtle.importKey('raw', new TextEncoder().encode(password), 'PBKDF2', false, ['deriveKey']);
+  const key = await crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt: b64(vault.salt), iterations: vault.iterations, hash: 'SHA-256' },
+    base, { name: 'AES-GCM', length: 256 }, false, ['decrypt']);
+  const plain = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: b64(vault.iv) }, key, b64(vault.data));
+  return JSON.parse(new TextDecoder().decode(plain));
+}
+
+async function setupLock() {
+  const res = await fetch('data/vault.json').catch(() => null);
+  if (!res || !res.ok) return;
+  const vault = await res.json();
+  const lock = $('lock'); const form = $('lockForm'); const input = $('lockInput'); const msg = $('lockMsg');
+  document.body.classList.add('locked');
+  lock.hidden = false;
+  const tryPw = async (pw, silent) => {
+    try {
+      const bundle = await decryptVault(vault, pw);
+      try { sessionStorage.setItem('legis-pw', pw); } catch (_) {}
+      lock.hidden = true; document.body.classList.remove('locked');
+      unlockResolve(bundle);
+      return true;
+    } catch (_) {
+      if (!silent) { msg.textContent = 'Incorrect password.'; input.select(); }
+      return false;
+    }
+  };
+  let saved = null; try { saved = sessionStorage.getItem('legis-pw'); } catch (_) {}
+  if (saved && await tryPw(saved, true)) return;
+  input.focus();
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); msg.textContent = 'Unlocking…';
+    await tryPw(input.value, false);
+  });
+}
+
 async function init() {
   try {
-    const acts = await fetch('data/acts.json').then((r) => r.json());
-    const lists = await Promise.all(acts.map((a) => fetch(`data/acts/${a.id}.json`).then((r) => (r.ok ? r.json() : []))));
+    const { acts, lists } = await getBundle();
     state.acts = acts;
     acts.forEach((a, i) => {
       state.byId[a.id] = a;
@@ -307,5 +359,6 @@ async function init() {
     els.count.textContent = 'Could not load data — please refresh.';
   }
 }
+setupLock();
 showView();
 init();
