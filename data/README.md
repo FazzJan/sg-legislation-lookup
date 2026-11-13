@@ -47,6 +47,8 @@ Run `python3 scripts/validate.py` before committing. CI runs it on every push. I
 
 ## Change log
 
+- **13 Nov 2026 (4)**: 12 more charge templates (PC 325, 326, 377BA, 380, 384, 406, 408(1), 409(1), 417, 426, 447, 448), wording from `Sources/Penal Code 1871.pdf` (in force from 15/9/2026), 22 in total. The generator now supports common intention (read with s.34), attempt (read with s.512(1) or (2), using s.512 as in that text), and a saved-charges list.
+
 - **13 Nov 2026 (3)**: Added the charge generator (`guides/charges.json`). It has 10 templates (PC 302(1), 302(2), 379, 403, 323, 324, 354(1), 411(1), 420(1), 506), with wording taken from `Sources/Penal Code 1871.pdf` (in force from 15/9/2026) and the format from CPC ss.123–124. Removed case law from the Part 19 guide.
 
 - **13 Nov 2026 (2)**:

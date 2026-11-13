@@ -12,5 +12,4 @@ All fonts are from Google Fonts via the Fontsource npm packages and are licensed
 - Nunito
 - Merriweather
 - Lora
-- Instrument Serif
 - JetBrains Mono

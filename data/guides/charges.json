@@ -24,7 +24,8 @@
    "notes": [
     "s.302(1) is for murder within s.300(a) (intention to cause death) and carries the mandatory death penalty. For s.300(b)–(d), use s.302(2).",
     "Murder is a named offence, so it may be charged by that name (CPC s.123(2), illustration (c))."
-   ]
+   ],
+   "deathOrLife": true
   },
   {
    "section": "302(2)",
@@ -56,64 +57,8 @@
    "particulars": "did commit murder by causing the death of one {victim}, to wit, by {act}, {limb}",
    "notes": [
     "Punishment: death or imprisonment for life, and if not punished with death, also liable to caning."
-   ]
-  },
-  {
-   "section": "379",
-   "title": "Theft",
-   "punishable": "section 379 of the Penal Code 1871",
-   "named": true,
-   "fields": [
-    {
-     "id": "property",
-     "label": "Property",
-     "placeholder": "one black iPhone 15 mobile phone"
-    },
-    {
-     "id": "value",
-     "label": "Value (S$)",
-     "placeholder": "1,200"
-    },
-    {
-     "id": "victim",
-     "label": "In the possession of",
-     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
-    }
    ],
-   "particulars": "did commit theft of {property}, valued at about S${value}, in the possession of one {victim}",
-   "notes": [
-    "Theft is a named offence (CPC s.123 illustration (c)). Max: 3 years, or fine, or both.",
-    "For a motor vehicle or a component part, use s.379A."
-   ]
-  },
-  {
-   "section": "403",
-   "title": "Dishonest misappropriation of property",
-   "punishable": "section 403 of the Penal Code 1871",
-   "named": false,
-   "dateRange": true,
-   "fields": [
-    {
-     "id": "property",
-     "label": "Property",
-     "placeholder": "one black iPhone 15 mobile phone"
-    },
-    {
-     "id": "value",
-     "label": "Value (S$)",
-     "placeholder": "1,200"
-    },
-    {
-     "id": "victim",
-     "label": "Belonging to",
-     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
-    }
-   ],
-   "particulars": "did dishonestly misappropriate to your own use {property}, valued at about S${value}, belonging to one {victim}",
-   "notes": [
-    "Statutory words: \"dishonestly misappropriates or converts to his own use movable property\". Max: 2 years, or fine, or both.",
-    "For s.403 a charge may state the gross sum and a date range of up to 12 months without listing each item or exact date, and is deemed one offence (CPC s.124(2)–(3)). Use the date-range option."
-   ]
+   "deathOrLife": true
   },
   {
    "section": "323",
@@ -165,6 +110,67 @@
    ]
   },
   {
+   "section": "325",
+   "title": "Voluntarily causing grievous hurt",
+   "punishable": "section 325 of the Penal Code 1871",
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "act",
+     "label": "Act done (to wit)",
+     "placeholder": "punching him on the face"
+    },
+    {
+     "id": "injury",
+     "label": "Grievous hurt caused",
+     "placeholder": "a fracture of the left cheekbone"
+    }
+   ],
+   "particulars": "did voluntarily cause grievous hurt to one {victim}, to wit, by {act}, thereby causing {injury}",
+   "notes": [
+    "Max: 10 years, and liable to fine or caning. Not for cases under s.323A, s.334A or s.335.",
+    "Grievous hurt is defined in s.320. State the specific injury."
+   ],
+   "named": false
+  },
+  {
+   "section": "326",
+   "title": "Voluntarily causing grievous hurt by dangerous weapons or means",
+   "punishable": "section 326 of the Penal Code 1871",
+   "deathOrLife": true,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "means",
+     "label": "Weapon or means",
+     "placeholder": "a knife, an instrument for cutting"
+    },
+    {
+     "id": "act",
+     "label": "Act done (to wit)",
+     "placeholder": "punching him on the face"
+    },
+    {
+     "id": "injury",
+     "label": "Grievous hurt caused",
+     "placeholder": "a deep laceration requiring surgery"
+    }
+   ],
+   "particulars": "did voluntarily cause grievous hurt to one {victim} by means of {means}, to wit, by {act}, thereby causing {injury}",
+   "notes": [
+    "Punishable with imprisonment for life, or up to 15 years, plus fine or caning. Not for cases under s.335."
+   ],
+   "named": false
+  },
+  {
    "section": "354(1)",
    "title": "Assault or criminal force to outrage modesty",
    "punishable": "section 354(1) of the Penal Code 1871",
@@ -194,6 +200,280 @@
    "notes": [
     "Statutory mental element: \"intending to outrage or knowing it to be likely that he will thereby outrage the modesty\". Pick the limb that fits the evidence.",
     "Victim below 14 years of age: use s.354(2) (max 5 years)."
+   ]
+  },
+  {
+   "section": "377BA",
+   "title": "Word or gesture intended to insult modesty",
+   "punishable": "section 377BA of the Penal Code 1871",
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "act",
+     "label": "Word, sound, gesture or object (to wit)",
+     "placeholder": "uttering the words \"...\""
+    },
+    {
+     "id": "perceive",
+     "label": "Intending that it be",
+     "type": "select",
+     "options": [
+      "such word or sound will be heard",
+      "such gesture or object will be seen"
+     ]
+    }
+   ],
+   "particulars": "did, intending to insult the modesty of one {victim}, {act}, intending that {perceive} by the said {victim}",
+   "notes": [
+    "Max: 1 year, or fine, or both. Replaces the former s.509."
+   ],
+   "named": false
+  },
+  {
+   "section": "379",
+   "title": "Theft",
+   "punishable": "section 379 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "victim",
+     "label": "In the possession of",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    }
+   ],
+   "particulars": "did commit theft of {property}, valued at about S${value}, in the possession of one {victim}",
+   "notes": [
+    "Theft is a named offence (CPC s.123 illustration (c)). Max: 3 years, or fine, or both.",
+    "For a motor vehicle or a component part, use s.379A."
+   ]
+  },
+  {
+   "section": "380",
+   "title": "Theft in dwelling house, etc.",
+   "punishable": "section 380 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "premises",
+     "label": "Building / tent / vessel",
+     "placeholder": "the residential unit at Blk 123 #01-234"
+    },
+    {
+     "id": "use",
+     "label": "Used as",
+     "type": "select",
+     "options": [
+      "a human dwelling",
+      "a place for the custody of property"
+     ]
+    },
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "victim",
+     "label": "In the possession of",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    }
+   ],
+   "particulars": "did commit theft in {premises}, a building used as {use}, of {property}, valued at about S${value}, in the possession of one {victim}",
+   "notes": [
+    "Applies to theft in any building, tent or vessel used as a human dwelling or for the custody of property. Max: 7 years, and liable to fine."
+   ]
+  },
+  {
+   "section": "384",
+   "title": "Extortion",
+   "punishable": "section 384 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "harm",
+     "label": "Harm threatened (fear of ...)",
+     "placeholder": "injury to his body"
+    },
+    {
+     "id": "property",
+     "label": "Property delivered",
+     "placeholder": "S$500 in cash"
+    },
+    {
+     "id": "recipient",
+     "label": "Delivered to",
+     "placeholder": "you"
+    }
+   ],
+   "particulars": "did commit extortion by intentionally putting one {victim} in fear of {harm}, and thereby dishonestly inducing the said {victim} to deliver {property} to {recipient}",
+   "notes": [
+    "Extortion is defined in s.383. Punishment (from 17/8/2026): imprisonment of not less than 2 and not more than 7 years, and liable to caning."
+   ]
+  },
+  {
+   "section": "403",
+   "title": "Dishonest misappropriation of property",
+   "punishable": "section 403 of the Penal Code 1871",
+   "named": false,
+   "dateRange": true,
+   "fields": [
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "victim",
+     "label": "Belonging to",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    }
+   ],
+   "particulars": "did dishonestly misappropriate to your own use {property}, valued at about S${value}, belonging to one {victim}",
+   "notes": [
+    "Statutory words: \"dishonestly misappropriates or converts to his own use movable property\". Max: 2 years, or fine, or both.",
+    "For s.403 a charge may state the gross sum and a date range of up to 12 months without listing each item or exact date, and is deemed one offence (CPC s.124(2)–(3)). Use the date-range option."
+   ]
+  },
+  {
+   "section": "406",
+   "title": "Criminal breach of trust",
+   "punishable": "section 406 of the Penal Code 1871",
+   "named": true,
+   "dateRange": true,
+   "fields": [
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "entrustedBy",
+     "label": "Entrusted by",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "mode",
+     "label": "How (dishonestly ...)",
+     "placeholder": "misappropriated the said property"
+    }
+   ],
+   "particulars": "being entrusted with {property}, valued at about S${value}, by one {entrustedBy}, did commit criminal breach of trust in respect of the said property, to wit, by dishonestly {mode}",
+   "notes": [
+    "Criminal breach of trust is defined in s.405. Max: 7 years, or fine, or both.",
+    "Gross sum and date range allowed (CPC s.124(3)(a))."
+   ]
+  },
+  {
+   "section": "408(1)",
+   "title": "Criminal breach of trust by employee",
+   "punishable": "section 408(1) of the Penal Code 1871",
+   "named": true,
+   "dateRange": true,
+   "fields": [
+    {
+     "id": "employer",
+     "label": "Employer",
+     "placeholder": "ABC Pte Ltd (UEN 201912345K)"
+    },
+    {
+     "id": "role",
+     "label": "Role",
+     "placeholder": "cashier"
+    },
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "mode",
+     "label": "How (dishonestly ...)",
+     "placeholder": "misappropriated the said sum"
+    }
+   ],
+   "particulars": "being an employee, to wit, a {role} of {employer}, and being in such capacity entrusted with {property}, valued at about S${value}, did commit criminal breach of trust in respect of the said property, to wit, by dishonestly {mode}",
+   "notes": [
+    "Max: 15 years, and liable to fine.",
+    "Gross sum and date range allowed (CPC s.124(3)(a))."
+   ]
+  },
+  {
+   "section": "409(1)",
+   "title": "Criminal breach of trust by public servant, agent, director, etc.",
+   "punishable": "section 409(1) of the Penal Code 1871",
+   "named": true,
+   "dateRange": true,
+   "fields": [
+    {
+     "id": "capacity",
+     "label": "Capacity",
+     "type": "select",
+     "options": [
+      "in your capacity as a public servant, to wit, a [designation] of [agency]",
+      "in the way of your business as an agent",
+      "in your capacity as a director of [company]",
+      "in your capacity as an officer of [association]"
+     ]
+    },
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "mode",
+     "label": "How (dishonestly ...)",
+     "placeholder": "misappropriated the said sum"
+    }
+   ],
+   "particulars": "being entrusted with {property}, valued at about S${value}, {capacity}, did commit criminal breach of trust in respect of the said property, to wit, by dishonestly {mode}",
+   "notes": [
+    "Capacities listed in s.409(1)(a)–(e): public servant; banker, merchant, factor, broker, attorney or agent; professional capacity; director of a corporation; officer of an unincorporated association. Check the current text for the punishment.",
+    "Gross sum and date range allowed (CPC s.124(3)(a))."
    ]
   },
   {
@@ -239,6 +519,34 @@
    ]
   },
   {
+   "section": "417",
+   "title": "Cheating",
+   "punishable": "section 417 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "deception",
+     "label": "Deception (\"into believing that ...\")",
+     "placeholder": "you were an officer from the bank"
+    },
+    {
+     "id": "inducement",
+     "label": "Induced to (\"to ...\")",
+     "placeholder": "disclose her online banking credentials to you"
+    }
+   ],
+   "particulars": "did cheat one {victim}, by deceiving the said {victim} into believing that {deception}, and by such manner of deception you intentionally induced the said {victim} to {inducement}, which the said {victim} would not have done if not so deceived",
+   "notes": [
+    "Cheating is defined in s.415. Max: 3 years, or fine, or both.",
+    "If the victim was induced to deliver property, use s.420."
+   ]
+  },
+  {
    "section": "420(1)",
    "title": "Cheating and dishonestly inducing delivery of property",
    "punishable": "section 420(1) of the Penal Code 1871",
@@ -269,6 +577,98 @@
    "notes": [
     "Cheating is a named offence (CPC s.123 illustration (c)). Max: 10 years, and liable to fine or caning or both.",
     "If the cheating was by remote communication, check s.420(2)."
+   ]
+  },
+  {
+   "section": "426",
+   "title": "Mischief",
+   "punishable": "section 426 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "act",
+     "label": "Act done (to wit)",
+     "placeholder": "smashing the windscreen of motor car SGX1234A with a hammer"
+    },
+    {
+     "id": "victim",
+     "label": "Property belonging to",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    }
+   ],
+   "particulars": "did commit mischief by {act}, the said property belonging to one {victim}, and thereby caused damage amounting to about S${value}",
+   "notes": [
+    "Mischief is defined in s.425. Max: 2 years, or fine, or both.",
+    "For mischief disrupting a key service or Government function, check s.427."
+   ]
+  },
+  {
+   "section": "447",
+   "title": "Criminal trespass",
+   "punishable": "section 447 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "premises",
+     "label": "Property entered",
+     "placeholder": "the residential unit at Blk 123 #01-234"
+    },
+    {
+     "id": "victim",
+     "label": "In the possession of",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "intent",
+     "label": "With intent to",
+     "placeholder": "annoy the said occupant"
+    }
+   ],
+   "particulars": "did commit criminal trespass by entering into {premises}, in the possession of one {victim}, with intent to {intent}",
+   "notes": [
+    "Criminal trespass is defined in s.441. Max: 3 months, or fine up to $1,500, or both."
+   ]
+  },
+  {
+   "section": "448",
+   "title": "House-breaking",
+   "punishable": "section 448 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "premises",
+     "label": "Building entered",
+     "placeholder": "the residential unit at Blk 123 #01-234"
+    },
+    {
+     "id": "use",
+     "label": "Building used as",
+     "type": "select",
+     "options": [
+      "a human dwelling",
+      "a place for the custody of property"
+     ]
+    },
+    {
+     "id": "victim",
+     "label": "In the possession of",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "intent",
+     "label": "With intent to",
+     "placeholder": "commit theft therein"
+    }
+   ],
+   "particulars": "did commit house-breaking by entering into {premises}, a building used as {use}, in the possession of one {victim}, with intent to {intent}",
+   "notes": [
+    "House-breaking is defined in s.442 (criminal trespass into a building, tent, container or vessel used as a human dwelling, or a building used for worship or the custody of property). Max: 3 years, or fine, or both.",
+    "For house-breaking to commit an offence punishable with death or imprisonment, see ss.449–451."
    ]
   },
   {

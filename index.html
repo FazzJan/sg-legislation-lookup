@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Hambalang</title>
-  <meta name="description" content="Singapore offences — arrestable, bailable and punishment; charge drafting guide; case property disposal (CPC Part 19).">
-  <meta name="theme-color" content="#0c0c10">
+  <meta name="description" content="Singapore offences — arrestable, bailable and punishment; charge drafting; case property (CPC Part 19).">
+  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="css/style.css">
@@ -14,7 +15,7 @@
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="Hambalang">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <script>
     try {
       const d = document.documentElement, s = localStorage;
@@ -27,48 +28,46 @@
 <body>
   <div class="lock" id="lock" hidden>
     <form class="lock-card" id="lockForm" autocomplete="off">
-      <span class="mark" aria-hidden="true">§</span>
+      <img src="icons/icon-192.png" alt="" width="64" height="64" class="lock-icon">
       <h1>Hambalang</h1>
-      <p class="muted">Enter the password to continue.</p>
+      <p class="secondary">Enter password</p>
       <input type="password" id="lockInput" placeholder="Password" aria-label="Password" required>
-      <button class="btn primary" type="submit">Unlock</button>
+      <button class="btn filled" type="submit">Unlock</button>
       <p class="lock-msg" id="lockMsg" role="status"></p>
     </form>
   </div>
 
-  <header class="top">
-    <div class="wrap top-inner">
-      <a class="brand" href="./" data-view-link="offences">
-        <span class="mark" aria-hidden="true">§</span>
-        <span class="brand-name">Hambalang</span>
-      </a>
-      <nav class="tabs" aria-label="Sections">
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="./" data-view-link="offences">Hambalang</a>
+      <nav class="segmented top-tabs" aria-label="Sections">
         <a class="tab" href="#" data-view="offences">Offences</a>
         <a class="tab" href="#charge" data-view="charge">Charge</a>
         <a class="tab" href="#exhibits" data-view="exhibits">Property</a>
       </nav>
       <details class="settings" id="settings">
-        <summary class="icon-btn" aria-label="Display settings" title="Display settings">Aa</summary>
-        <div class="settings-panel">
-          <div class="set-row">
+        <summary class="nav-btn" aria-label="Display settings" title="Display settings">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="10" cy="17" r="2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        </summary>
+        <div class="sheet">
+          <div class="sheet-row">
             <span>Text size</span>
             <div class="stepper">
-              <button type="button" id="zoomOut" aria-label="Smaller text">A−</button>
+              <button type="button" id="zoomOut" aria-label="Smaller text"><span style="font-size:12px">A</span></button>
               <output id="zoomVal">100%</output>
-              <button type="button" id="zoomIn" aria-label="Larger text">A+</button>
+              <button type="button" id="zoomIn" aria-label="Larger text"><span style="font-size:17px">A</span></button>
             </div>
           </div>
-          <label class="set-row"><span>Font</span>
-            <select id="fontSelect"></select>
-          </label>
-          <div class="set-row">
-            <span>Theme</span>
-            <div class="seg" id="themeSeg">
+          <label class="sheet-row"><span>Font</span><select id="fontSelect"></select></label>
+          <div class="sheet-row">
+            <span>Appearance</span>
+            <div class="segmented small" id="themeSeg">
+              <button type="button" data-theme-val="auto">Auto</button>
               <button type="button" data-theme-val="light">Light</button>
               <button type="button" data-theme-val="dark">Dark</button>
             </div>
           </div>
-          <button type="button" class="link-btn" id="resetDisplay">Reset display</button>
+          <button type="button" class="text-btn" id="resetDisplay">Reset</button>
         </div>
       </details>
     </div>
@@ -76,57 +75,55 @@
 
   <!-- ===================== OFFENCES ===================== -->
   <main class="wrap view" id="viewOffences">
-    <div class="page-head">
+    <div class="large-title">
       <h1>Offences</h1>
-      <p class="muted">Arrest, bail and punishment. Penal Code from the CPC 2010 First Schedule; other Acts use their own arrest power, otherwise the CPC term default.</p>
+      <p class="secondary">Arrest, bail and punishment</p>
     </div>
 
-    <section class="search-card" aria-label="Search">
-      <div class="search-field">
-        <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
-        <input type="search" id="searchBox" placeholder="Section or keyword — e.g. 379, 14D, stalking" autocomplete="off" spellcheck="false" aria-label="Section or keyword">
-      </div>
-      <div class="chips" id="statuteChips" role="tablist" aria-label="Filter by statute"></div>
-    </section>
+    <div class="searchbar">
+      <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="m20 20-4.2-4.2M10.5 17a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Z"/></svg>
+      <input type="search" id="searchBox" placeholder="Search section or keyword" autocomplete="off" spellcheck="false" aria-label="Section or keyword">
+    </div>
+    <div class="chips" id="statuteChips" role="tablist" aria-label="Filter by statute"></div>
 
-    <div class="status-row"><span id="resultCount">Loading…</span></div>
+    <p class="footnote" id="resultCount">Loading…</p>
 
     <section class="layout">
-      <div class="results" id="results" role="listbox" aria-label="Matching offences"></div>
+      <div class="group list" id="results" role="listbox" aria-label="Matching offences"></div>
 
-      <article class="detail" id="detail" hidden>
+      <article class="detail group" id="detail" hidden>
         <header class="detail-head">
-          <p class="detail-statute" id="dStatute"></p>
-          <h2 class="detail-section"><span class="sigil">§</span><span id="dSection"></span></h2>
+          <p class="caption" id="dStatute"></p>
+          <h2 id="dSectionTitle">Section <span id="dSection"></span></h2>
           <p class="detail-offence" id="dOffence"></p>
         </header>
-        <div class="tiles">
-          <div class="tile" id="tArrest"><span class="tile-label">Arrest without warrant</span><span class="tile-value" id="vArrest"></span></div>
-          <div class="tile" id="tBail"><span class="tile-label">Bailable</span><span class="tile-value" id="vBail"></span></div>
-          <div class="tile" id="tProcess"><span class="tile-label">Process</span><span class="tile-value" id="vProcess"></span></div>
+        <div class="status">
+          <div class="stat" id="tArrest"><span class="stat-label">Arrest without warrant</span><span class="stat-value" id="vArrest"></span></div>
+          <div class="stat" id="tBail"><span class="stat-label">Bailable</span><span class="stat-value" id="vBail"></span></div>
+          <div class="stat" id="tProcess"><span class="stat-label">Process</span><span class="stat-value" id="vProcess"></span></div>
         </div>
         <dl class="facts">
           <div><dt>Maximum punishment</dt><dd id="dPunishment"></dd></div>
-          <div><dt>Arrest — detail</dt><dd id="dArrestText"></dd></div>
-          <div id="bailTextRow"><dt>Bail — detail</dt><dd id="dBailText"></dd></div>
+          <div><dt>Arrest</dt><dd id="dArrestText"></dd></div>
+          <div id="bailTextRow"><dt>Bail</dt><dd id="dBailText"></dd></div>
           <div><dt>Basis</dt><dd id="dBasis"></dd></div>
-          <div id="noteRow" hidden><dt>Note</dt><dd id="dNote" class="note"></dd></div>
+          <div id="noteRow" hidden><dt>Note</dt><dd id="dNote" class="warn"></dd></div>
         </dl>
-        <footer class="detail-actions">
-          <a class="btn primary" id="ssoLink" href="https://sso.agc.gov.sg" target="_blank" rel="noopener">Open on SSO ↗</a>
-          <a class="btn" id="chargeLink" href="#charge" hidden>Draft charge</a>
-          <button type="button" class="btn" id="copyLink">Copy link</button>
+        <footer class="actions">
+          <a class="btn filled" id="chargeLink" href="#charge" hidden>Draft charge</a>
+          <a class="btn tinted" id="ssoLink" href="https://sso.agc.gov.sg" target="_blank" rel="noopener">Open on SSO</a>
+          <button type="button" class="btn tinted" id="copyLink">Copy link</button>
         </footer>
       </article>
 
-      <div class="empty" id="empty" hidden></div>
+      <div class="empty group" id="empty" hidden></div>
     </section>
 
-    <details class="fold" id="quick">
-      <summary><span><b>Not listed?</b> Quick arrest check</span></summary>
-      <div class="fold-body">
-        <p class="muted">For an offence under another written law, the CPC 2010 First Schedule default turns on the maximum punishment. The Act itself can override it.</p>
-        <div class="grid-2">
+    <details class="group disclosure" id="quick">
+      <summary>Not listed? Quick arrest check</summary>
+      <div class="disclosure-body">
+        <p class="secondary">For an offence under another written law, the CPC 2010 First Schedule default turns on the maximum punishment. The Act itself can override it.</p>
+        <div class="form-grid">
           <label>Act <select id="qAct"></select></label>
           <label>Maximum punishment
             <select id="qTerm">
@@ -141,13 +138,13 @@
       </div>
     </details>
 
-    <details class="fold">
-      <summary><span>How the status is worked out</span></summary>
-      <div class="fold-body">
-        <ol class="rules-list">
-          <li><strong>Penal Code:</strong> read straight from the CPC 2010 First Schedule (columns 3–5).</li>
-          <li><strong>Act-specific power:</strong> if the Act has its own arrest clause, it takes precedence over the term default (e.g. LCA s.30: arrestable when in an officer’s view, even with a 6-month maximum).</li>
-          <li><strong>CPC default (offences against other laws):</strong> death, or imprisonment of 3 years and upwards → may arrest without warrant, warrant, not bailable. Under 3 years or fine only → shall not arrest without warrant, summons, bailable.</li>
+    <details class="group disclosure">
+      <summary>How the status is worked out</summary>
+      <div class="disclosure-body">
+        <ol class="plain-list">
+          <li><b>Penal Code</b>: read straight from the CPC 2010 First Schedule (columns 3–5).</li>
+          <li><b>Act-specific power</b>: if the Act has its own arrest clause, it takes precedence over the term default (e.g. LCA s.30: arrestable when in an officer’s view, even with a 6-month maximum).</li>
+          <li><b>CPC default (offences against other laws)</b>: death, or imprisonment of 3 years and upwards → may arrest without warrant, warrant, not bailable. Under 3 years or fine only → shall not arrest without warrant, summons, bailable.</li>
           <li>An arrest override doesn’t change bail. Bail follows the term unless the Act says otherwise (e.g. Vandalism Act s.6).</li>
         </ol>
       </div>
@@ -156,95 +153,138 @@
 
   <!-- ===================== CHARGE ===================== -->
   <main class="wrap view" id="viewCharge" hidden>
-    <div class="page-head">
+    <div class="large-title">
       <h1>Charge</h1>
-      <p class="muted" id="cFormat"></p>
+      <p class="secondary">Drafting guide · CPC ss.123–124</p>
     </div>
 
-    <section class="card">
-      <div class="grid-2">
-        <label>Offence <select id="cTemplate"></select></label>
-        <label>Charge number <input id="cNo" placeholder="e.g. 1st" autocomplete="off"></label>
-      </div>
-      <h3 class="sub">Accused</h3>
-      <div class="grid-2">
-        <label>Name <input id="cName" placeholder="Full name as in NRIC / passport" autocomplete="off"></label>
-        <label>Identification <input id="cId" placeholder="NRIC No. S1234567A" autocomplete="off"></label>
-        <label>Age <input id="cAge" inputmode="numeric" placeholder="35" autocomplete="off"></label>
-        <label>Nationality <input id="cNat" placeholder="Singaporean" autocomplete="off"></label>
-      </div>
-      <h3 class="sub">When and where</h3>
-      <div class="grid-2">
-        <label>Date <input type="date" id="cDate"></label>
-        <label>Time <input id="cTime" placeholder="10.30 pm" autocomplete="off"></label>
-        <label class="span-2" id="cRangeWrap" hidden><span class="check"><input type="checkbox" id="cRange"> Use a date range (CPC s.124(2), max 12 months)</span></label>
-        <label id="cDate2Wrap" hidden>To date <input type="date" id="cDate2"></label>
-        <label class="span-2">Place <input id="cPlace" placeholder="Blk 123 Ang Mo Kio Avenue 3 #01-234" autocomplete="off"></label>
-      </div>
-      <h3 class="sub">Particulars</h3>
-      <div class="grid-2" id="cFields"></div>
-    </section>
+    <div class="charge-layout">
+      <div class="charge-form">
+        <p class="group-label">Offence</p>
+        <div class="group pad">
+          <div class="form-grid one">
+            <label>Template <select id="cTemplate"></select></label>
+          </div>
+          <div class="toggles">
+            <label class="toggle"><span>Common intention<small>Read with s.34</small></span><input type="checkbox" id="cS34"><i></i></label>
+            <label class="toggle"><span>Attempt<small>Read with s.512</small></span><input type="checkbox" id="cAttempt"><i></i></label>
+          </div>
+          <div class="form-grid one" id="cCoWrap" hidden>
+            <label>Co-accused <input id="cCo" placeholder="Lee Ah Huat, NRIC No. S2345678C" autocomplete="off"></label>
+          </div>
+        </div>
 
-    <section class="card charge-out">
-      <div class="charge-head">
-        <h3 class="sub">Draft</h3>
-        <div class="row-actions">
-          <button type="button" class="btn" id="cCopy">Copy</button>
-          <button type="button" class="btn" id="cClear">Clear</button>
+        <p class="group-label">Accused</p>
+        <div class="group pad">
+          <div class="form-grid">
+            <label class="span-2">Name <input id="cName" placeholder="Full name as in NRIC / passport" autocomplete="off"></label>
+            <label>Identification <input id="cId" placeholder="NRIC No. S1234567A" autocomplete="off"></label>
+            <label>Age <input id="cAge" inputmode="numeric" placeholder="35" autocomplete="off"></label>
+            <label>Nationality <input id="cNat" placeholder="Optional" autocomplete="off"></label>
+            <label>Charge no. <input id="cNo" placeholder="Optional, e.g. 1st" autocomplete="off"></label>
+          </div>
+        </div>
+
+        <p class="group-label">When and where</p>
+        <div class="group pad">
+          <div class="form-grid">
+            <label>Date <input type="date" id="cDate"></label>
+            <label>Time <input id="cTime" placeholder="10.30 pm" autocomplete="off"></label>
+            <label class="toggle span-2" id="cRangeWrap" hidden><span>Date range<small>CPC s.124(2), up to 12 months</small></span><input type="checkbox" id="cRange"><i></i></label>
+            <label id="cDate2Wrap" hidden>To date <input type="date" id="cDate2"></label>
+            <label class="span-2">Place <input id="cPlace" placeholder="Blk 123 Ang Mo Kio Avenue 3 #01-234" autocomplete="off"></label>
+          </div>
+        </div>
+
+        <p class="group-label">Particulars</p>
+        <div class="group pad">
+          <div class="form-grid" id="cFields"></div>
         </div>
       </div>
-      <div class="charge-text" id="cOut" aria-live="polite"></div>
-      <ul class="notes" id="cNotes"></ul>
-      <p class="muted small" id="cDisclaimer"></p>
-    </section>
+
+      <div class="charge-preview">
+        <p class="group-label">Draft</p>
+        <div class="group pad">
+          <div class="charge-text" id="cOut" aria-live="polite"></div>
+          <div class="actions tight">
+            <button type="button" class="btn filled" id="cSave">Add to list</button>
+            <button type="button" class="btn tinted" id="cCopy">Copy</button>
+            <button type="button" class="btn plain" id="cClear">Clear</button>
+          </div>
+        </div>
+        <ul class="notes" id="cNotes"></ul>
+
+        <div id="savedWrap" hidden>
+          <p class="group-label row-between"><span>Saved charges (<span id="savedCount">0</span>)</span>
+            <span><button type="button" class="text-btn" id="savedCopy">Copy all</button> <button type="button" class="text-btn danger" id="savedClear">Clear</button></span></p>
+          <div class="group list" id="savedList"></div>
+        </div>
+        <p class="footnote" id="cDisclaimer"></p>
+      </div>
+    </div>
   </main>
 
   <!-- ===================== CASE PROPERTY ===================== -->
   <main class="wrap view" id="viewExhibits" hidden>
-    <div class="page-head">
+    <div class="large-title">
       <h1>Case property</h1>
-      <p class="muted">CPC 2010 Part 19 (ss.364–372): reporting seized property to court, and what the court can order.</p>
+      <p class="secondary">CPC 2010 Part 19 · ss.364–372</p>
     </div>
-    <div class="banner" id="exStatus"></div>
+    <p class="footnote" id="exStatus"></p>
 
-    <details class="fold">
-      <summary><span><b>Application helper</b> — return or dispose of an exhibit</span></summary>
-      <div class="fold-body" id="helper">
-        <p class="muted" id="hIntro"></p>
-        <div class="grid-2">
+    <details class="group disclosure">
+      <summary>Application helper</summary>
+      <div class="disclosure-body" id="helper">
+        <p class="secondary" id="hIntro"></p>
+        <div class="form-grid">
           <label>Situation <select id="hScenario"></select></label>
           <label>Date of seizure <input type="date" id="hDate"></label>
         </div>
         <div class="deadline" id="hDeadline" hidden></div>
         <ol class="steps" id="hSteps"></ol>
-        <details class="template">
+        <details class="inner-disclosure">
           <summary>Notes template for the report</summary>
-          <p class="muted small">Not an official form. A checklist of what to gather before you draft.</p>
+          <p class="secondary small">Not an official form. A checklist of what to gather before you draft.</p>
           <pre id="hTemplate"></pre>
-          <button type="button" class="btn" id="hCopy">Copy template</button>
+          <button type="button" class="btn tinted" id="hCopy">Copy template</button>
         </details>
       </div>
     </details>
 
-    <details class="fold">
-      <summary><span><b>The process</b> — from seizure to court order</span></summary>
-      <div class="fold-body"><ol class="flow" id="exFlow"></ol></div>
+    <details class="group disclosure">
+      <summary>The process</summary>
+      <div class="disclosure-body"><ol class="flow" id="exFlow"></ol></div>
     </details>
 
-    <details class="fold">
-      <summary><span><b>Section by section</b> — ss.364–372</span></summary>
-      <div class="fold-body"><div class="sec-list" id="exSections"></div></div>
+    <details class="group disclosure">
+      <summary>Section by section</summary>
+      <div class="disclosure-body flush"><div class="list" id="exSections"></div></div>
     </details>
-    <p class="muted small" id="exCaveat"></p>
+    <p class="footnote" id="exCaveat"></p>
   </main>
 
   <footer class="foot">
     <div class="wrap foot-inner">
       <p class="sign">Habis kuku</p>
-      <p class="muted">As of <span id="asOf">13/11/2026</span> · <span id="dataStats"></span></p>
-      <p class="muted small">Reference only, not legal advice. Not affiliated with AGC. Always verify on <a href="https://sso.agc.gov.sg" target="_blank" rel="noopener">sso.agc.gov.sg</a>.</p>
+      <p>As of <span id="asOf">13/11/2026</span> · <span id="dataStats"></span></p>
+      <p>Reference only, not legal advice. Not affiliated with AGC. Verify on <a href="https://sso.agc.gov.sg" target="_blank" rel="noopener">sso.agc.gov.sg</a>.</p>
     </div>
   </footer>
+
+  <nav class="tabbar" aria-label="Sections">
+    <a class="tabbar-item" href="#" data-view="offences">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m20 20-4.2-4.2M10.5 17a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Z"/></svg>
+      <span>Offences</span>
+    </a>
+    <a class="tabbar-item" href="#charge" data-view="charge">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+      <span>Charge</span>
+    </a>
+    <a class="tabbar-item" href="#exhibits" data-view="exhibits">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5v-9Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m3 7.5 9 4.5 9-4.5M12 12v9"/></svg>
+      <span>Property</span>
+    </a>
+  </nav>
 
   <script src="js/app.js"></script>
 </body>
