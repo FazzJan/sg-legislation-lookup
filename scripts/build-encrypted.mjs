@@ -15,7 +15,9 @@ const lists = acts.map((a) => read(`data/acts/${a.id}.json`));
 const guide = read('data/guides/cpc-part19.json');
 const charges = read('data/guides/charges.json');
 const meta = read('data/meta.json');
-const plain = new TextEncoder().encode(JSON.stringify({ acts, lists, guide, charges, meta }));
+const npcGeo = read('data/geo/npc.json');
+const npcNames = read('data/geo/npc-names.json');
+const plain = new TextEncoder().encode(JSON.stringify({ acts, lists, guide, charges, meta, npcGeo, npcNames }));
 
 const iterations = 600000;
 const salt = crypto.getRandomValues(new Uint8Array(16));

@@ -292,6 +292,7 @@ let chargeLoaded = false;
 function currentView() {
   const h = location.hash;
   if (h === '#exhibits') return 'exhibits';
+  if (h === '#npc') return 'npc';
   if (h === '#charge' || h.startsWith('#charge/')) return 'charge';
   return 'offences';
 }
@@ -300,9 +301,11 @@ function showView() {
   $('viewOffences').hidden = v !== 'offences';
   $('viewCharge').hidden = v !== 'charge';
   $('viewExhibits').hidden = v !== 'exhibits';
+  $('viewNpc').hidden = v !== 'npc';
   document.querySelectorAll('[data-view]').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.view === v)));
   if (v === 'exhibits' && !guideLoaded) loadGuide();
   if (v === 'charge') loadCharge();
+  if (v === 'npc') loadNpc();
 }
 document.querySelectorAll('[data-view], [data-view-link]').forEach((t) => t.addEventListener('click', (e) => {
   e.preventDefault();
@@ -459,6 +462,105 @@ function chargePlain() {
   return el.textContent.trim();
 }
 
+/* ---------- NPC finder ---------- */
+let npc = null;
+async function loadNpc() {
+  if (npc) return;
+  const b = await getBundle();
+  npc = { geo: b.npcGeo, names: b.npcNames };
+  $('npcMeta').textContent = `Boundaries: ${npc.geo.source}, updated ${npc.geo.sourceUpdated}. NPC names are expanded from the codes in that file; codes without a confirmed name are shown as-is.`;
+  $('npcForm').addEventListener('submit', (e) => { e.preventDefault(); npcSearch($('npcInput').value); });
+  $('npcStatus').textContent = 'Enter a 6-digit postal code, an address, or coordinates.';
+}
+function inRing(x, y, r) {
+  let c = false;
+  for (let i = 0, j = r.length - 1; i < r.length; j = i++) {
+    const [xi, yi] = r[i], [xj, yj] = r[j];
+    if ((yi > y) !== (yj > y) && x < ((xj - xi) * (y - yi)) / (yj - yi) + xi) c = !c;
+  }
+  return c;
+}
+function edgeDistM(lat, lng, poly) {
+  const kx = 111320 * Math.cos((lat * Math.PI) / 180), ky = 110574;
+  let best = Infinity;
+  for (const ring of poly) {
+    for (let i = 1; i < ring.length; i++) {
+      const ax = (ring[i - 1][0] - lng) * kx, ay = (ring[i - 1][1] - lat) * ky;
+      const bx = (ring[i][0] - lng) * kx, by = (ring[i][1] - lat) * ky;
+      const dx = bx - ax, dy = by - ay, L = dx * dx + dy * dy;
+      const t = L ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / L)) : 0;
+      best = Math.min(best, Math.hypot(ax + t * dx, ay + t * dy));
+    }
+  }
+  return best;
+}
+function locate(lat, lng) {
+  const hits = [];
+  for (const f of npc.geo.features) {
+    for (const poly of f.polys) {
+      if (inRing(lng, lat, poly[0]) && !poly.slice(1).some((h) => inRing(lng, lat, h))) {
+        hits.push({ f, dist: edgeDistM(lat, lng, poly) });
+      }
+    }
+  }
+  return hits;
+}
+function npcLabel(f) {
+  const code = f.npc || f.division || 'Unknown';
+  const name = npc.names.npcs[code];
+  const div = f.div ? (npc.names.divisions[f.div] || `${f.div} Division`) : '';
+  return { title: name || code, code: name ? code : '', div, sector: !f.npc };
+}
+function renderNpcRows(items) {
+  $('npcResults').innerHTML = items.map((it) => {
+    const hits = locate(it.lat, it.lng);
+    const maps = `https://www.google.com/maps?q=${it.lat},${it.lng}`;
+    let body;
+    if (!hits.length) {
+      body = '<div class="npc-name">Outside mapped NPC boundaries</div><div class="warn">This point is not inside any boundary in the data file. Check the location.</div>';
+    } else {
+      body = hits.map((h) => {
+        const l = npcLabel(h.f);
+        return `<div class="npc-name">${esc(l.title)}</div>
+          <div class="npc-sub">${[l.code, l.div].filter(Boolean).map(esc).join(' · ') || '&nbsp;'}</div>
+          ${l.sector ? '<div class="warn">This area is a sector in the boundary data, with no NPC named.</div>' : ''}
+          ${h.dist < 50 ? `<div class="warn">About ${Math.round(h.dist)} m from a boundary. Confirm the exact location.</div>` : ''}`;
+      }).join('');
+      if (hits.length > 1) body += '<div class="warn">This point falls inside more than one boundary.</div>';
+    }
+    return `<div class="npc-row"><div class="npc-addr">${esc(it.label)}</div>${body}
+      <div class="links"><a href="${maps}" target="_blank" rel="noopener">View on map</a><span class="secondary">${it.lat.toFixed(5)}, ${it.lng.toFixed(5)}</span></div></div>`;
+  }).join('');
+}
+async function npcSearch(q) {
+  q = q.trim();
+  if (!q) return;
+  const m = q.match(/^(-?\d+(?:\.\d+)?)\s*,\s*(-?\d+(?:\.\d+)?)$/);
+  if (m) {
+    const lat = +m[1], lng = +m[2];
+    $('npcStatus').textContent = 'Coordinates entered';
+    renderNpcRows([{ label: `${lat}, ${lng}`, lat, lng }]);
+    return;
+  }
+  $('npcStatus').textContent = 'Searching OneMap…';
+  $('npcResults').innerHTML = '';
+  try {
+    const url = `https://www.onemap.gov.sg/api/common/elastic/search?searchVal=${encodeURIComponent(q)}&returnGeom=Y&getAddrDetails=Y&pageNum=1`;
+    const res = await fetch(url, { headers: { Accept: 'application/json' } });
+    if (!res.ok) throw new Error(`OneMap returned ${res.status}`);
+    const data = await res.json();
+    const items = (data.results || []).slice(0, 8).map((r) => ({
+      label: r.ADDRESS || r.SEARCHVAL, lat: parseFloat(r.LATITUDE), lng: parseFloat(r.LONGITUDE),
+    })).filter((r) => Number.isFinite(r.lat) && Number.isFinite(r.lng));
+    if (!items.length) { $('npcStatus').textContent = `No address found for “${q}”.`; return; }
+    $('npcStatus').textContent = `${data.found > items.length ? `Showing ${items.length} of ${data.found}` : `${items.length} result${items.length === 1 ? '' : 's'}`} from OneMap`;
+    renderNpcRows(items);
+  } catch (err) {
+    console.warn(err);
+    $('npcStatus').innerHTML = 'Could not reach OneMap. You need internet for address search. Offline, enter coordinates instead, e.g. <code>1.3691, 103.8483</code>.';
+  }
+}
+
 /* ---------- exhibit application helper ---------- */
 function renderHelper(h) {
   if (!h) { $('helper').hidden = true; return; }
@@ -502,9 +604,9 @@ async function loadBundle() {
   if (res.ok) return unlocked; // published build: wait for the password
   const acts = await fetch('data/acts.json').then((r) => r.json());
   const lists = await Promise.all(acts.map((a) => fetch(`data/acts/${a.id}.json`).then((r) => (r.ok ? r.json() : []))));
-  const [guide, charges, meta] = await Promise.all(['data/guides/cpc-part19.json', 'data/guides/charges.json', 'data/meta.json']
+  const [guide, charges, meta, npcGeo, npcNames] = await Promise.all(['data/guides/cpc-part19.json', 'data/guides/charges.json', 'data/meta.json', 'data/geo/npc.json', 'data/geo/npc-names.json']
     .map((u) => fetch(u).then((r) => r.json())));
-  return { acts, lists, guide, charges, meta };
+  return { acts, lists, guide, charges, meta, npcGeo, npcNames };
 }
 
 const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));

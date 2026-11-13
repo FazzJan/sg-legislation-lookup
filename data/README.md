@@ -7,6 +7,8 @@ All data is plain, human-readable JSON so every change shows up clearly in a dif
 | `acts.json` | One entry per statute: SSO code, names, and the Act's **arrest power** (`arrestPower.type` = `schedule`, `all`, `conditional`, `listed` or `none`). |
 | `guides/charges.json` | Charge-drafting templates (Penal Code wording, CPC ss.123–124 format). |
 | `guides/cpc-part19.json` | Case property guide (CPC Part 19). |
+| `geo/npc.json` | NPC boundaries, simplified from `Sources/SingaporePoliceForceNPCBoundary.geojson` by `scripts/build_npc.py`. Re-run the script when the source is replaced. |
+| `geo/npc-names.json` | Display names for NPC and Division codes (editable). |
 | `meta.json` | `asOf` date shown in the footer; update it when the data is reviewed. |
 | `acts/<ID>.json` | The offence rows for that statute. `PC1871.json` is the Penal Code part of the CPC 2010 First Schedule (470 rows). |
 
@@ -46,6 +48,8 @@ Run `python3 scripts/validate.py` before committing. CI runs it on every push. I
 `Sources/` holds PDF consolidations downloaded from SSO by the owner. SSO can't be reached from the cloud sessions, so these are the reference texts for verification. Extract text with `pdftotext -layout "Sources/<Act>.pdf" -`. Each PDF states its "version in force from" date on every page.
 
 ## Change log
+
+- **13 Nov 2026 (5)**: NPC finder tab. Boundaries come from data.gov.sg "Singapore Police Force NPC Boundary" (source updated 30/06/2026), 141 shapes simplified to about 1 m. Addresses are found with the OneMap search API in the browser. NPC names for 26 codes plus APD; BD, BK, JE, SK and WL are shown as codes until confirmed.
 
 - **13 Nov 2026 (4)**: 12 more charge templates (PC 325, 326, 377BA, 380, 384, 406, 408(1), 409(1), 417, 426, 447, 448), wording from `Sources/Penal Code 1871.pdf` (in force from 15/9/2026), 22 in total. The generator now supports common intention (read with s.34), attempt (read with s.512(1) or (2), using s.512 as in that text), and a saved-charges list.
 
