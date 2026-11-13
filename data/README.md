@@ -5,6 +5,9 @@ All data is plain, human-readable JSON so every change shows up clearly in a dif
 | File | What it holds |
 | --- | --- |
 | `acts.json` | One entry per statute: SSO code, names, and the Act's **arrest power** (`arrestPower.type` = `schedule`, `all`, `conditional`, `listed` or `none`). |
+| `guides/charges.json` | Charge-drafting templates (Penal Code wording, CPC ss.123–124 format). |
+| `guides/cpc-part19.json` | Case property guide (CPC Part 19). |
+| `meta.json` | `asOf` date shown in the footer; update it when the data is reviewed. |
 | `acts/<ID>.json` | The offence rows for that statute. `PC1871.json` is the Penal Code part of the CPC 2010 First Schedule (470 rows). |
 
 ## Row fields
@@ -43,6 +46,8 @@ Run `python3 scripts/validate.py` before committing. CI runs it on every push. I
 `Sources/` holds PDF consolidations downloaded from SSO by the owner. SSO can't be reached from the cloud sessions, so these are the reference texts for verification. Extract text with `pdftotext -layout "Sources/<Act>.pdf" -`. Each PDF states its "version in force from" date on every page.
 
 ## Change log
+
+- **13 Nov 2026 (3)**: Added the charge generator (`guides/charges.json`). It has 10 templates (PC 302(1), 302(2), 379, 403, 323, 324, 354(1), 411(1), 420(1), 506), with wording taken from `Sources/Penal Code 1871.pdf` (in force from 15/9/2026) and the format from CPC ss.123–124. Removed case law from the Part 19 guide.
 
 - **13 Nov 2026 (2)**:
   - CPC Part 19 guide (`data/guides/cpc-part19.json`): ss.364–372 checked against `Sources/Criminal Procedure Code 2010.pdf` (in force from 15/9/2026). Corrections: the s.370 report goes to the *relevant court* (trial or inquiry court, else a Magistrate's Court); s.370 as amended by Act 24 of 2024 (absconded persons, continued seizure); s.371 (48-hour notice, $500 threshold); s.372 (6-month public notice, $1,000 Gazette and sale thresholds).

@@ -1,7 +1,7 @@
 {
  "title": "Disposal of case property — CPC 2010 Part 19 (ss.364–372)",
  "status": "reviewed",
- "statusNote": "Section text checked against the CPC 2010 (2020 Rev Ed) informal consolidation in force from 15 Sep 2026, uploaded to Sources/. The case law below has not yet been read in full and predates the Act 24 of 2024 amendments (in force 14 Nov 2024).",
+ "statusNote": "Section text checked against the CPC 2010 (2020 Rev Ed) informal consolidation in force from 15 Sep 2026, uploaded to Sources/.",
  "lastReviewed": "2026-11-13",
  "source": "Sources/Criminal Procedure Code 2010.pdf — version in force from 15/9/2026",
  "flow": [
@@ -86,27 +86,7 @@
    "summary": "The court may direct that the property stay in the custody of the law enforcement agency. The head of that agency must then issue a public notice listing the items and inviting claims to the court within 6 months. The notice must be published in the Gazette or a daily newspaper if the property is worth $1,000 or more. Perishable property, property worth under $1,000, or property expensive or inconvenient to keep may be sold at any time. If no one establishes a claim within 6 months, the property or its proceeds vest in the Government. Items of no appreciable value, or too small in value to sell or keep, may be destroyed or otherwise disposed of at any time (s.372(7))."
   }
  ],
- "cases": [
-  {
-   "name": "Mustafa Ahunbay v Public Prosecutor",
-   "cite": "[2015] SGCA 10",
-   "point": "Court of Appeal on the s.370 procedure, including who may be heard. Decided under the pre-31 Oct 2018 version of s.370. Not yet read in full.",
-   "url": "https://www.elitigation.sg/gd/s/2015_SGCA_10"
-  },
-  {
-   "name": "Lee Chen Seong Jeremy v Public Prosecutor",
-   "cite": "[2019] SGHC 48",
-   "point": "The s.370 hearing is confined to the material in the s.370 report, and continued seizure needs a reasonable basis that the property is relevant. Not yet read in full.",
-   "url": "https://www.elitigation.sg/gd/s/2019_SGHC_48"
-  },
-  {
-   "name": "Magistrate's Court decision",
-   "cite": "[2026] SGMC 96",
-   "point": "Discusses a 'one-report' rule limiting the factual case the Prosecution may advance after filing its seizure report. Not yet read in full.",
-   "url": "https://www.elitigation.sg/gd/s/2026_SGMC_96"
-  }
- ],
- "caveat": "Statute text verified against the uploaded consolidation (in force from 15/9/2026). Check SSO for any later amendment. Case summaries come from search results, not the judgments themselves.",
+ "caveat": "Statute text verified against the uploaded consolidation (in force from 15/9/2026). Check SSO for any later amendment.",
  "helper": {
   "intro": "Pick the situation that matches your exhibit. Every step cites the CPC provision it comes from (version in force from 15 Sep 2026). Steps marked \"Practice tip\" are practical suggestions, not statutory requirements.",
   "scenarios": [
@@ -257,7 +237,7 @@
       "status": "verified"
      },
      {
-      "text": "Put everything you rely on in the report. Case law suggests the hearing is confined to the report's material (Lee Chen Seong Jeremy v PP [2019] SGHC 48, not yet read in full).",
+      "text": "Put everything you rely on in the report.",
       "status": "tip"
      }
     ]

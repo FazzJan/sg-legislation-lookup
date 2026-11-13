@@ -17,16 +17,62 @@ const BAIL_LABEL = { yes: 'Bailable', no: 'Not bailable', depends: 'Depends', ch
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-/* ---------- theme ---------- */
-function setTheme(t) {
-  document.documentElement.dataset.theme = t;
-  try { localStorage.setItem('legis-theme', t); } catch (_) {}
+/* ---------- display settings: theme, font, text size ---------- */
+const FONTS = [
+  ['Inter', "'Inter', system-ui, sans-serif"],
+  ['Roboto', "'Roboto', system-ui, sans-serif"],
+  ['Open Sans', "'Open Sans', system-ui, sans-serif"],
+  ['Lato', "'Lato', system-ui, sans-serif"],
+  ['Source Sans 3', "'Source Sans 3', system-ui, sans-serif"],
+  ['IBM Plex Sans', "'IBM Plex Sans', system-ui, sans-serif"],
+  ['Atkinson Hyperlegible', "'Atkinson Hyperlegible', system-ui, sans-serif"],
+  ['Nunito', "'Nunito', system-ui, sans-serif"],
+  ['Merriweather (serif)', "'Merriweather', Georgia, serif"],
+  ['Lora (serif)', "'Lora', Georgia, serif"],
+];
+const ZOOMS = [0.85, 0.9, 1, 1.1, 1.2, 1.35, 1.5];
+const root = document.documentElement;
+const store = {
+  get: (k) => { try { return localStorage.getItem(k); } catch (_) { return null; } },
+  set: (k, v) => { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (_) {} },
+};
+function currentTheme() {
+  return root.dataset.theme || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
 }
-$('themeToggle').addEventListener('click', () => {
-  const cur = document.documentElement.dataset.theme
-    || (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-  setTheme(cur === 'dark' ? 'light' : 'dark');
-});
+function applyTheme(t) {
+  root.dataset.theme = t; store.set('legis-theme', t);
+  document.querySelectorAll('#themeSeg button').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.themeVal === t)));
+}
+function applyFont(stack) {
+  root.style.setProperty('--sans', stack); store.set('legis-font', stack);
+  $('fontSelect').value = stack;
+}
+function applyZoom(z) {
+  root.style.setProperty('--zoom', z); store.set('legis-zoom', String(z));
+  $('zoomVal').textContent = `${Math.round(z * 100)}%`;
+}
+function initSettings() {
+  $('fontSelect').innerHTML = FONTS.map(([n, st]) => `<option value="${esc(st)}" style="font-family:${esc(st)}">${esc(n)}</option>`).join('');
+  $('fontSelect').value = store.get('legis-font') || FONTS[0][1];
+  $('fontSelect').addEventListener('change', (e) => applyFont(e.target.value));
+  let z = parseFloat(store.get('legis-zoom')) || 1;
+  applyZoom(z);
+  const step = (d) => {
+    const i = ZOOMS.findIndex((x) => Math.abs(x - z) < 0.001);
+    z = ZOOMS[Math.min(ZOOMS.length - 1, Math.max(0, (i < 0 ? 2 : i) + d))];
+    applyZoom(z);
+  };
+  $('zoomIn').addEventListener('click', () => step(1));
+  $('zoomOut').addEventListener('click', () => step(-1));
+  document.querySelectorAll('#themeSeg button').forEach((b) => b.addEventListener('click', () => applyTheme(b.dataset.themeVal)));
+  applyTheme(currentTheme());
+  $('resetDisplay').addEventListener('click', () => {
+    z = 1; applyZoom(1); applyFont(FONTS[0][1]);
+    store.set('legis-theme', null); delete root.dataset.theme; applyTheme(currentTheme()); store.set('legis-theme', null);
+  });
+  document.addEventListener('click', (e) => { if (!e.target.closest('#settings')) $('settings').open = false; });
+}
+initSettings();
 
 /* ---------- links ---------- */
 function baseSection(sec) {
@@ -108,9 +154,10 @@ function showEmpty(q) {
   links.push(`<a class="btn" href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=${encodeURIComponent('Add: ' + (act ? act.short + ' ' : '') + q)}" target="_blank" rel="noopener">Request this section</a>`);
   els.empty.innerHTML = `<h3>Not indexed yet</h3>
     <p>${act ? `Nothing in ${esc(act.name)} matches “${esc(q)}”.` : `Nothing matches “${esc(q)}”. Pick a statute above to get a direct SSO link.`}
-    You can use the <a href="#quick">quick arrest check</a> below with the maximum punishment.</p>
+    Try the <a href="#" id="openQuick">quick arrest check</a> below with the maximum punishment.</p>
     <div class="links">${links.join('')}</div>`;
   els.empty.hidden = false;
+  $('openQuick').addEventListener('click', (e) => { e.preventDefault(); $('quick').open = true; $('quick').scrollIntoView({ behavior: 'smooth' }); });
 }
 
 /* ---------- detail ---------- */
@@ -149,6 +196,9 @@ function select(r, fromClick) {
   $('noteRow').hidden = !r.note;
   $('dNote').textContent = r.note || '';
   $('ssoLink').href = r.link || ssoUrl(r.act, r.section);
+  const tpl = r.act.id === 'PC1871' && findTemplate(r.section);
+  $('chargeLink').hidden = !tpl;
+  if (tpl) $('chargeLink').href = `#charge/${encodeURIComponent(tpl.section)}`;
   history.replaceState(null, '', `#${r.act.id}/${encodeURIComponent(r.section)}`);
   [...els.results.querySelectorAll('.row')].forEach((b) => b.setAttribute('aria-selected', String(state.matches[+b.dataset.i] === r)));
   if (fromClick && matchMedia('(max-width: 860px)').matches) els.detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -240,20 +290,31 @@ els.qTerm.addEventListener('change', renderQuick);
 
 /* ---------- views ---------- */
 let guideLoaded = false;
-function showView() {
-  const ex = location.hash === '#exhibits';
-  $('viewOffences').hidden = ex;
-  $('viewExhibits').hidden = !ex;
-  document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String((t.dataset.view === 'exhibits') === ex)));
-  if (ex && !guideLoaded) loadGuide();
+let chargeLoaded = false;
+function currentView() {
+  const h = location.hash;
+  if (h === '#exhibits') return 'exhibits';
+  if (h === '#charge' || h.startsWith('#charge/')) return 'charge';
+  return 'offences';
 }
-document.querySelectorAll('.tab').forEach((t) => t.addEventListener('click', (e) => {
+function showView() {
+  const v = currentView();
+  $('viewOffences').hidden = v !== 'offences';
+  $('viewCharge').hidden = v !== 'charge';
+  $('viewExhibits').hidden = v !== 'exhibits';
+  document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.view === v)));
+  if (v === 'exhibits' && !guideLoaded) loadGuide();
+  if (v === 'charge') loadCharge();
+}
+document.querySelectorAll('.tab, [data-view-link]').forEach((t) => t.addEventListener('click', (e) => {
   e.preventDefault();
-  history.pushState(null, '', t.dataset.view === 'exhibits' ? '#exhibits' : location.pathname);
+  const v = t.dataset.view || t.dataset.viewLink;
+  history.pushState(null, '', v === 'offences' ? location.pathname : `#${v}`);
   showView();
   window.scrollTo({ top: 0 });
 }));
 window.addEventListener('popstate', showView);
+window.addEventListener('hashchange', showView);
 
 async function loadGuide() {
   guideLoaded = true;
@@ -263,13 +324,11 @@ async function loadGuide() {
     $('exStatus').innerHTML = `<strong>${g.status === 'draft' ? 'Draft' : 'Verified'}</strong> · last reviewed ${esc(g.lastReviewed)} — ${esc(g.statusNote)}`;
     $('exFlow').innerHTML = g.flow.map((f) => `<li><b>${esc(f.step)}</b><span>${esc(f.text)}</span></li>`).join('');
     const label = { verified: 'Verified', partial: 'Partly verified', pending: 'Pending' };
-    $('exSections').innerHTML = g.sections.map((x) => `<article class="sec">
-      <div class="sec-top"><span class="sec-num">s.${esc(x.s)}</span><span class="pill ${x.status}">${label[x.status]}</span></div>
-      <h3>${esc(x.heading || 'Heading not yet verified')}</h3>
-      <p>${esc(x.summary)}</p>
-      <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=pr${esc(x.s)}-#pr${esc(x.s)}-" target="_blank" rel="noopener">Read on SSO ↗</a>
-    </article>`).join('');
-    $('exCases').innerHTML = g.cases.map((c) => `<div class="case"><b>${esc(c.name)}</b><i>${esc(c.cite)}</i><p>${esc(c.point)} <a href="${esc(c.url)}" target="_blank" rel="noopener">Judgment ↗</a></p></div>`).join('');
+    $('exSections').innerHTML = g.sections.map((x) => `<details class="sec">
+      <summary><span class="sec-num">s.${esc(x.s)}</span><h3>${esc(x.heading || 'Heading not yet verified')}</h3></summary>
+      <div class="sec-body"><p>${esc(x.summary)}</p>
+      <span class="pill ${x.status}">${label[x.status]}</span> &nbsp;<a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=pr${esc(x.s)}-#pr${esc(x.s)}-" target="_blank" rel="noopener">Read on SSO ↗</a></div>
+    </details>`).join('');
     $('exCaveat').textContent = g.caveat;
     renderHelper(g.helper);
   } catch (err) {
@@ -278,7 +337,87 @@ async function loadGuide() {
   }
 }
 
-/* ---------- load ---------- */
+/* ---------- charge generator ---------- */
+let charges = null;
+function findTemplate(section) {
+  if (!charges) return null;
+  const s = String(section);
+  return charges.templates.find((t) => t.section === s)
+    || charges.templates.find((t) => t.section.replace(/\(.*$/, '') === s)
+    || charges.templates.find((t) => t.section === `${s}(1)`) || null;
+}
+const ORD = (n) => { const v = n % 100; return n + (['th', 'st', 'nd', 'rd'][(v - 20) % 10] || ['th', 'st', 'nd', 'rd'][v] || 'th'); };
+function fmtDate(v) {
+  if (!v) return '';
+  const [y, m, d] = v.split('-').map(Number);
+  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  return `${ORD(d)} ${months[m - 1]} ${y}`;
+}
+const CHARGE_FIELDS = ['cNo', 'cName', 'cId', 'cAge', 'cNat', 'cDate', 'cDate2', 'cTime', 'cPlace'];
+async function loadCharge() {
+  if (!chargeLoaded) {
+    chargeLoaded = true;
+    charges = (await getBundle()).charges;
+    $('cFormat').textContent = charges.format;
+    $('cDisclaimer').textContent = `${charges.disclaimer} Source: ${charges.source}.`;
+    $('cTemplate').innerHTML = charges.templates.map((t) => `<option value="${esc(t.section)}">s.${esc(t.section)} — ${esc(t.title)}</option>`).join('');
+    $('cTemplate').addEventListener('change', () => { renderChargeFields(); history.replaceState(null, '', `#charge/${encodeURIComponent($('cTemplate').value)}`); });
+    CHARGE_FIELDS.forEach((id) => $(id).addEventListener('input', renderCharge));
+    $('cRange').addEventListener('change', () => { $('cDate2Wrap').hidden = !$('cRange').checked; renderCharge(); });
+    $('cCopy').addEventListener('click', async () => {
+      try { await navigator.clipboard.writeText($('cOut').innerText); toast('Charge copied'); } catch (_) { toast('Copy failed'); }
+    });
+    $('cClear').addEventListener('click', () => {
+      CHARGE_FIELDS.forEach((id) => { $(id).value = ''; });
+      $('cFields').querySelectorAll('input').forEach((i) => { i.value = ''; });
+      renderCharge();
+    });
+  }
+  const m = location.hash.match(/^#charge\/(.+)$/);
+  const want = m && findTemplate(decodeURIComponent(m[1]));
+  if (want) $('cTemplate').value = want.section;
+  renderChargeFields();
+}
+function renderChargeFields() {
+  const t = findTemplate($('cTemplate').value) || charges.templates[0];
+  $('cFields').innerHTML = t.fields.map((f) => f.type === 'select'
+    ? `<label class="span-2">${esc(f.label)}<select data-f="${esc(f.id)}">${f.options.map((o) => `<option value="${esc(o)}">${esc(o.replace(/the said \{\w+\}/g, 'the victim').replace(/\{\w+\}/g, 'the victim'))}</option>`).join('')}</select></label>`
+    : `<label>${esc(f.label)}<input data-f="${esc(f.id)}" placeholder="${esc(f.placeholder || '')}" autocomplete="off"></label>`).join('');
+  $('cFields').querySelectorAll('[data-f]').forEach((el) => el.addEventListener('input', renderCharge));
+  $('cRangeWrap').hidden = !t.dateRange;
+  if (!t.dateRange) { $('cRange').checked = false; $('cDate2Wrap').hidden = true; }
+  $('cNotes').innerHTML = t.notes.map((n) => `<li>${esc(n)}</li>`).join('');
+  renderCharge();
+}
+function renderCharge() {
+  const t = findTemplate($('cTemplate').value) || charges.templates[0];
+  const val = (id, ph) => { const v = $(id).value.trim(); return v ? esc(v) : `<span class="fill">[${ph}]</span>`; };
+  const vals = {};
+  $('cFields').querySelectorAll('[data-f]').forEach((el) => { vals[el.dataset.f] = el.value.trim(); });
+  const fill = (str) => str.replace(/\{(\w+)\}/g, (_, k) => {
+    const f = t.fields.find((x) => x.id === k);
+    const v = vals[k];
+    if (v) return f && f.type === 'select' ? fill(esc(v)) : esc(v);
+    return `<span class="fill">[${esc(f ? f.label : k)}]</span>`;
+  });
+  const range = t.dateRange && $('cRange').checked;
+  const d1 = $('cDate').value ? esc(fmtDate($('cDate').value)) : '<span class="fill">[date]</span>';
+  const d2 = $('cDate2').value ? esc(fmtDate($('cDate2').value)) : '<span class="fill">[to date]</span>';
+  let rangeWarn = '';
+  if (range && $('cDate').value && $('cDate2').value) {
+    const [a, b] = [new Date($('cDate').value), new Date($('cDate2').value)];
+    const lim = new Date(a); lim.setFullYear(lim.getFullYear() + 1);
+    if (b < a) rangeWarn = 'The end date is before the start date.';
+    else if (b >= lim) rangeWarn = 'CPC s.124(2)(a)(ii): the period must not exceed 12 months.';
+  }
+  const when = range ? `between ${d1} and ${d2}` : `on ${d1}${$('cTime').value.trim() ? `, at about ${esc($('cTime').value.trim())}` : ', at about <span class="fill">[time]</span>'}`;
+  const nat = $('cNat').value.trim() ? `${esc($('cNat').value.trim())}, ` : '';
+  const head = $('cNo').value.trim() ? `${esc($('cNo').value.trim().toUpperCase())} CHARGE\n\n` : '';
+  $('cOut').innerHTML = `${head}You, ${val('cName', 'name')}, ${val('cId', 'NRIC / FIN / passport no.')}, ${nat}${val('cAge', 'age')} years old,
+are charged that you, ${when}, at ${val('cPlace', 'place')}, Singapore, ${fill(t.particulars)}, and you have thereby committed an offence punishable under ${esc(t.punishable)}.`;
+  if (rangeWarn) $('cOut').insertAdjacentHTML('beforeend', `<div class="fill" style="margin-top:12px;font-family:var(--sans);font-size:13px">⚠ ${esc(rangeWarn)}</div>`);
+}
+
 /* ---------- exhibit application helper ---------- */
 function renderHelper(h) {
   if (!h) { $('helper').hidden = true; return; }
@@ -322,8 +461,9 @@ async function loadBundle() {
   if (res.ok) return unlocked; // published build: wait for the password
   const acts = await fetch('data/acts.json').then((r) => r.json());
   const lists = await Promise.all(acts.map((a) => fetch(`data/acts/${a.id}.json`).then((r) => (r.ok ? r.json() : []))));
-  const guide = await fetch('data/guides/cpc-part19.json').then((r) => r.json());
-  return { acts, lists, guide };
+  const [guide, charges, meta] = await Promise.all(['data/guides/cpc-part19.json', 'data/guides/charges.json', 'data/meta.json']
+    .map((u) => fetch(u).then((r) => r.json())));
+  return { acts, lists, guide, charges, meta };
 }
 
 const b64 = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
@@ -366,7 +506,9 @@ async function setupLock() {
 
 async function init() {
   try {
-    const { acts, lists } = await getBundle();
+    const { acts, lists, charges: ch, meta } = await getBundle();
+    charges = ch;
+    if (meta && meta.asOf) $('asOf').textContent = meta.asOf;
     state.acts = acts;
     acts.forEach((a, i) => {
       state.byId[a.id] = a;
@@ -381,7 +523,7 @@ async function init() {
     els.qAct.innerHTML = '<option value="">Another Act (not listed)</option>'
       + acts.filter((a) => a.id !== 'PC1871').map((a) => `<option value="${a.id}">${esc(a.name)}</option>`).join('');
     renderQuick();
-    els.stats.textContent = `${state.rows.length.toLocaleString()} offences across ${acts.length} statutes.`;
+    els.stats.textContent = `${state.rows.length.toLocaleString()} offences across ${acts.length} statutes`;
     const m = location.hash.match(/^#([A-Z0-9]+)\/(.+)$/);
     if (m) {
       const sec = decodeURIComponent(m[2]);

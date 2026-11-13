@@ -13,7 +13,9 @@ const read = (p) => JSON.parse(readFileSync(p, 'utf8'));
 const acts = read('data/acts.json');
 const lists = acts.map((a) => read(`data/acts/${a.id}.json`));
 const guide = read('data/guides/cpc-part19.json');
-const plain = new TextEncoder().encode(JSON.stringify({ acts, lists, guide }));
+const charges = read('data/guides/charges.json');
+const meta = read('data/meta.json');
+const plain = new TextEncoder().encode(JSON.stringify({ acts, lists, guide, charges, meta }));
 
 const iterations = 600000;
 const salt = crypto.getRandomValues(new Uint8Array(16));
@@ -29,6 +31,7 @@ cpSync('index.html', 'dist/index.html');
 cpSync('css', 'dist/css', { recursive: true });
 cpSync('js', 'dist/js', { recursive: true });
 cpSync('icons', 'dist/icons', { recursive: true });
+cpSync('fonts', 'dist/fonts', { recursive: true });
 cpSync('manifest.webmanifest', 'dist/manifest.webmanifest');
 cpSync('sw.js', 'dist/sw.js');
 writeFileSync('dist/data/vault.json', JSON.stringify({ v: 1, iterations, salt: b64(salt), iv: b64(iv), data: b64(data) }));
