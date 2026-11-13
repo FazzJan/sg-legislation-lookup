@@ -1,0 +1,30 @@
+{
+ "title": "Disposal of case property — CPC 2010 Part 19 (ss.364–372)",
+ "status": "draft",
+ "statusNote": "Draft. Only the points marked Verified come from a cited source. Sections marked Pending have not yet been read against the live SSO text and must not be relied on.",
+ "lastReviewed": "2026-11-13",
+ "flow": [
+  {"step": "Seize", "text": "Police seize property under CPC s.35 (power to seize property in certain circumstances) or s.78 (search warrant / search)."},
+  {"step": "Hold while relevant", "text": "Police keep the property while it is relevant to an investigation, inquiry, trial or other proceeding."},
+  {"step": "Report to Magistrate", "text": "s.370(1): the officer must report the seizure to a Magistrate at the earlier of (a) when the property is no longer relevant, or (b) one year after the seizure. One year is the long-stop date."},
+  {"step": "Court order", "text": "s.370(2): on receiving the report, the Magistrate must make an order for the property (e.g. release to the person entitled, or another order permitted by the section)."},
+  {"step": "Relevance bar", "text": "s.370(3): the Magistrate must not dispose of property the court is satisfied is still relevant to an investigation, inquiry, trial or proceeding."}
+ ],
+ "sections": [
+  {"s": "364", "heading": "Order for disposal of property by court", "status": "pending", "summary": "Heading confirmed from the current Act's table of contents. Text not yet verified."},
+  {"s": "365", "heading": "Direction instead of order", "status": "pending", "summary": "Heading confirmed from the current Act's table of contents. Text not yet verified."},
+  {"s": "366", "heading": "", "status": "pending", "summary": "Not yet verified."},
+  {"s": "367", "heading": "Stay of order", "status": "pending", "summary": "Heading confirmed from the current Act's table of contents. Text not yet verified."},
+  {"s": "368", "heading": "", "status": "pending", "summary": "Not yet verified."},
+  {"s": "369", "heading": "", "status": "pending", "summary": "Not yet verified."},
+  {"s": "370", "heading": "Procedure governing seizure of property", "status": "partial", "summary": "Report seizures under ss.35/78 to a Magistrate at the earlier of no-longer-relevant or one year after seizure (s.370(1)). The Magistrate must then make an order (s.370(2)) but must not dispose of property still relevant to an investigation, inquiry or trial (s.370(3)). Full subsection text pending."},
+  {"s": "371", "heading": "Procedure when person entitled to property is known", "status": "pending", "summary": "Heading confirmed from the current Act's table of contents. Text not yet verified."},
+  {"s": "372", "heading": "", "status": "pending", "summary": "Not yet verified."}
+ ],
+ "cases": [
+  {"name": "Mustafa Ahunbay v Public Prosecutor", "cite": "[2015] SGCA 10", "point": "Court of Appeal on the s.370 procedure, including who may be heard at a s.370 hearing.", "url": "https://www.elitigation.sg/gd/s/2015_SGCA_10"},
+  {"name": "Lee Chen Seong Jeremy v Public Prosecutor", "cite": "[2019] SGHC 48", "point": "The s.370 hearing is confined to the material in the s.370 report. Continued seizure needs a reasonable basis that the property is relevant.", "url": "https://www.elitigation.sg/gd/s/2019_SGHC_48"},
+  {"name": "Magistrate's Court decision", "cite": "[2026] SGMC 96", "point": "Discusses the 'one-report' rule, which limits the factual case the Prosecution may advance after filing its seizure report.", "url": "https://www.elitigation.sg/gd/s/2026_SGMC_96"}
+ ],
+ "caveat": "Many decisions cite the 2012 Revised Edition or the 2018 version. Check the current numbering and wording on SSO before relying on any point."
+}

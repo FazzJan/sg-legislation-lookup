@@ -237,6 +237,44 @@ document.addEventListener('keydown', (e) => {
 els.qAct.addEventListener('change', renderQuick);
 els.qTerm.addEventListener('change', renderQuick);
 
+/* ---------- views ---------- */
+let guideLoaded = false;
+function showView() {
+  const ex = location.hash === '#exhibits';
+  $('viewOffences').hidden = ex;
+  $('viewExhibits').hidden = !ex;
+  document.querySelectorAll('.tab').forEach((t) => t.setAttribute('aria-selected', String((t.dataset.view === 'exhibits') === ex)));
+  if (ex && !guideLoaded) loadGuide();
+}
+document.querySelectorAll('.tab').forEach((t) => t.addEventListener('click', (e) => {
+  e.preventDefault();
+  history.pushState(null, '', t.dataset.view === 'exhibits' ? '#exhibits' : location.pathname);
+  showView();
+  window.scrollTo({ top: 0 });
+}));
+window.addEventListener('popstate', showView);
+
+async function loadGuide() {
+  guideLoaded = true;
+  try {
+    const g = await fetch('data/guides/cpc-part19.json').then((r) => r.json());
+    $('exStatus').innerHTML = `<strong>${g.status === 'draft' ? 'Draft' : 'Reviewed'}</strong> · last reviewed ${esc(g.lastReviewed)} — ${esc(g.statusNote)}`;
+    $('exFlow').innerHTML = g.flow.map((f) => `<li><b>${esc(f.step)}</b><span>${esc(f.text)}</span></li>`).join('');
+    const label = { verified: 'Verified', partial: 'Partly verified', pending: 'Pending' };
+    $('exSections').innerHTML = g.sections.map((x) => `<article class="sec">
+      <div class="sec-top"><span class="sec-num">s.${esc(x.s)}</span><span class="pill ${x.status}">${label[x.status]}</span></div>
+      <h3>${esc(x.heading || 'Heading not yet verified')}</h3>
+      <p>${esc(x.summary)}</p>
+      <a href="https://sso.agc.gov.sg/Act/CPC2010?ProvIds=pr${esc(x.s)}-#pr${esc(x.s)}-" target="_blank" rel="noopener">Read on SSO ↗</a>
+    </article>`).join('');
+    $('exCases').innerHTML = g.cases.map((c) => `<div class="case"><b>${esc(c.name)}</b><i>${esc(c.cite)}</i><p>${esc(c.point)} <a href="${esc(c.url)}" target="_blank" rel="noopener">Judgment ↗</a></p></div>`).join('');
+    $('exCaveat').textContent = g.caveat;
+  } catch (err) {
+    console.error(err);
+    $('exStatus').textContent = 'Could not load the guide — please refresh.';
+  }
+}
+
 /* ---------- load ---------- */
 async function init() {
   try {
@@ -269,4 +307,5 @@ async function init() {
     els.count.textContent = 'Could not load data — please refresh.';
   }
 }
+showView();
 init();

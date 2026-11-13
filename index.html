@@ -24,6 +24,10 @@
         <span>Hambalang <em>Search Guide</em></span>
       </a>
       <nav class="top-actions">
+        <div class="tabs" role="tablist">
+          <a class="tab" href="#" data-view="offences" role="tab">Offences</a>
+          <a class="tab" href="#exhibits" data-view="exhibits" role="tab">Case property</a>
+        </div>
         <a class="ghost" href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=Report%20%2F%20Request%3A%20" target="_blank" rel="noopener">Report</a>
         <button type="button" class="ghost icon" id="themeToggle" aria-label="Toggle colour theme">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
@@ -32,7 +36,7 @@
     </div>
   </header>
 
-  <main class="wrap">
+  <main class="wrap" id="viewOffences">
     <section class="hero">
       <p class="eyebrow">Singapore · Arrest · Bail · Punishment</p>
       <h1>Find an offence.<br><em>Know the powers.</em></h1>
@@ -129,6 +133,31 @@
           <li>An arrest override doesn’t change bail. Bail still follows the term unless the Act says otherwise (e.g. Vandalism Act s.6).</li>
         </ol>
       </details>
+    </section>
+  </main>
+
+  <main class="wrap" id="viewExhibits" hidden>
+    <section class="hero">
+      <p class="eyebrow">CPC 2010 · Part 19 · ss.364–372</p>
+      <h1>Case property.<br><em>Return or dispose.</em></h1>
+      <p class="lede">How police-seized exhibits end up before a Magistrate, and what the court can order.</p>
+    </section>
+    <div class="banner" id="exStatus"></div>
+    <section class="panel" style="margin-top:16px">
+      <p class="eyebrow">The process</p>
+      <h2>From seizure to court order</h2>
+      <ol class="flow" id="exFlow"></ol>
+    </section>
+    <section class="panel">
+      <p class="eyebrow">Section by section</p>
+      <h2>ss.364–372</h2>
+      <div class="sec-grid" id="exSections"></div>
+    </section>
+    <section class="panel">
+      <p class="eyebrow">Case law</p>
+      <h2>Key decisions</h2>
+      <div class="cases" id="exCases"></div>
+      <p class="muted small" id="exCaveat"></p>
     </section>
   </main>
 
