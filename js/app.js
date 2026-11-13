@@ -71,6 +71,7 @@ function initSettings() {
   document.addEventListener('click', (e) => { if (!e.target.closest('#settings')) $('settings').open = false; });
 }
 initSettings();
+$('reloadLatest').addEventListener('click', () => forceUpdate());
 
 /* ---------- links ---------- */
 function baseSection(sec) {
@@ -464,13 +465,29 @@ function chargePlain() {
 
 /* ---------- NPC finder ---------- */
 let npc = null;
+let npcBound = false;
 async function loadNpc() {
+  if (!npcBound) {
+    npcBound = true;
+    $('npcForm').addEventListener('submit', (e) => { e.preventDefault(); if (npc) npcSearch($('npcInput').value); else outdated(); });
+  }
   if (npc) return;
   const b = await getBundle();
+  if (!b.npcGeo || !b.npcNames) { outdated(); return; }
   npc = { geo: b.npcGeo, names: b.npcNames };
   $('npcMeta').textContent = `Boundaries: ${npc.geo.source}, updated ${npc.geo.sourceUpdated}. NPC names are expanded from the codes in that file; codes without a confirmed name are shown as-is.`;
-  $('npcForm').addEventListener('submit', (e) => { e.preventDefault(); npcSearch($('npcInput').value); });
   $('npcStatus').textContent = 'Enter a 6-digit postal code, an address, or coordinates.';
+}
+function outdated() {
+  $('npcStatus').innerHTML = 'This copy of the app is out of date. <button type="button" class="text-btn" id="forceUpdate">Update now</button>';
+  $('forceUpdate').addEventListener('click', forceUpdate);
+}
+async function forceUpdate() {
+  try {
+    if ('caches' in window) await Promise.all((await caches.keys()).map((k) => caches.delete(k)));
+    if (navigator.serviceWorker) await Promise.all((await navigator.serviceWorker.getRegistrations()).map((r) => r.unregister()));
+  } catch (_) {}
+  location.reload();
 }
 function inRing(x, y, r) {
   let c = false;
@@ -600,7 +617,7 @@ const unlocked = new Promise((res) => { unlockResolve = res; });
 function getBundle() { return bundlePromise || (bundlePromise = loadBundle()); }
 
 async function loadBundle() {
-  const res = await fetch('data/vault.json');
+  const res = await fetch('data/vault.json', { cache: 'no-cache' });
   if (res.ok) return unlocked; // published build: wait for the password
   const acts = await fetch('data/acts.json').then((r) => r.json());
   const lists = await Promise.all(acts.map((a) => fetch(`data/acts/${a.id}.json`).then((r) => (r.ok ? r.json() : []))));
@@ -620,7 +637,7 @@ async function decryptVault(vault, password) {
 }
 
 async function setupLock() {
-  const res = await fetch('data/vault.json').catch(() => null);
+  const res = await fetch('data/vault.json', { cache: 'no-cache' }).catch(() => null);
   if (!res || !res.ok) return;
   const vault = await res.json();
   const lock = $('lock'); const form = $('lockForm'); const input = $('lockInput'); const msg = $('lockMsg');
@@ -680,7 +697,14 @@ async function init() {
   }
 }
 if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  // When a new version takes over, reload once so the page and its data match.
+  const hadController = !!navigator.serviceWorker.controller;
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (hadController && !reloaded) { reloaded = true; location.reload(); }
+  });
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js', { updateViaCache: 'none' })
+    .then((r) => r.update()).catch(() => {}));
 }
 setupLock();
 showView();
