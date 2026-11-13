@@ -1,0 +1,32 @@
+[
+ {
+  "section": "4",
+  "offence": "Using corrosive or explosive substance or offensive weapon to cause hurt",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable",
+  "punishment": "Imprisonment for life and caning with not less than 6 strokes"
+ },
+ {
+  "section": "6",
+  "offence": "Carrying offensive weapons in public places",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (expressly arrestable under s.6(4))",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (expressly non-bailable under s.6(4))",
+  "punishment": "Imprisonment not exceeding 3 years and caning with not less than 6 strokes (prohibited weapon under GEWCA: up to 5 years + caning >= 6 strokes)"
+ },
+ {
+  "section": "7",
+  "offence": "Offences relating to scheduled weapons",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable",
+  "punishment": "See Act (scheduled weapons — serious penalties including caning)"
+ }
+]

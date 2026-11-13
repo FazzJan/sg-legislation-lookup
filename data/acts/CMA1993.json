@@ -1,0 +1,102 @@
+[
+ {
+  "section": "3",
+  "offence": "Unauthorised access to computer material",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "yes",
+  "bailText": "Bailable for basic first offence (max 2 years); not bailable if damage caused (max 7 years) — CPC default for other laws",
+  "punishment": "1st: fine not exceeding $5,000 or imprisonment not exceeding 2 years or both; subsequent: fine not exceeding $10,000 or 3 years or both; if damage caused: fine not exceeding $50,000 or 7 years or both"
+ },
+ {
+  "section": "4",
+  "offence": "Access with intent to commit or facilitate commission of an offence",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 10 years — CPC default for other laws)",
+  "punishment": "Fine not exceeding $50,000 or imprisonment not exceeding 10 years or both"
+ },
+ {
+  "section": "5",
+  "offence": "Unauthorised modification of computer material",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years / 5 years subsequent / 7 years if damage — CPC default)",
+  "punishment": "1st: fine not exceeding $10,000 or imprisonment not exceeding 3 years or both; subsequent: fine not exceeding $20,000 or 5 years or both; if damage caused: fine not exceeding $50,000 or 7 years or both"
+ },
+ {
+  "section": "6",
+  "offence": "Unauthorised use or interception of computer service",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years / 5 years subsequent / 7 years if damage — CPC default)",
+  "punishment": "1st: fine not exceeding $10,000 or imprisonment not exceeding 3 years or both; subsequent: fine not exceeding $20,000 or 5 years or both; if damage caused: fine not exceeding $50,000 or 7 years or both"
+ },
+ {
+  "section": "7",
+  "offence": "Unauthorised obstruction of use of computer",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years / 5 years subsequent / 7 years if damage — CPC default)",
+  "punishment": "1st: fine not exceeding $10,000 or imprisonment not exceeding 3 years or both; subsequent: fine not exceeding $20,000 or 5 years or both; if damage caused: fine not exceeding $50,000 or 7 years or both"
+ },
+ {
+  "section": "8",
+  "offence": "Unauthorised disclosure of access code",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years first / 5 years subsequent — CPC default)",
+  "punishment": "1st: fine not exceeding $10,000 or imprisonment not exceeding 3 years or both; subsequent: fine not exceeding $20,000 or imprisonment not exceeding 5 years or both"
+ },
+ {
+  "section": "8A",
+  "offence": "User of the national digital identity service discloses password/access code or other means of access knowing or having reasonable grounds to believe it is for committing or facilitating an offence",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years — CPC default for other laws)",
+  "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 3 years or both"
+ },
+ {
+  "section": "8B",
+  "offence": "Obtaining or retaining, or supplying / offering to supply / transmitting / making available, any credential of another person in relation to the national digital identity service",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years first / 5 years subsequent — CPC default for other laws)",
+  "punishment": "1st: fine not exceeding $10,000 or imprisonment not exceeding 3 years or both; subsequent: fine not exceeding $20,000 or imprisonment not exceeding 5 years or both"
+ },
+ {
+  "section": "9",
+  "offence": "Supplying, etc., personal information obtained in contravention of certain provisions",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years first / 5 years subsequent — CPC default)",
+  "punishment": "1st: fine not exceeding $10,000 or imprisonment not exceeding 3 years or both; subsequent: fine not exceeding $20,000 or imprisonment not exceeding 5 years or both"
+ },
+ {
+  "section": "10",
+  "offence": "Obtaining or supplying items for use in offences under ss.3-7",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant if reasonably suspected of committing an offence under this Act (CMA s.19 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years first / 5 years subsequent — CPC default)",
+  "punishment": "1st: fine not exceeding $10,000 or imprisonment not exceeding 3 years or both; subsequent: fine not exceeding $20,000 or imprisonment not exceeding 5 years or both"
+ }
+]

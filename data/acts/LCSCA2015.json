@@ -1,0 +1,162 @@
+[
+ {
+  "section": "4",
+  "offence": "Supply of liquor without a liquor licence",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $20,000; repeat offender: fine not exceeding $20,000 or imprisonment not exceeding 3 months or both (enhanced up to 1.5x if in a Liquor Control Zone — s.16)"
+ },
+ {
+  "section": "5",
+  "offence": "Licensee supplies liquor otherwise than at the licensed premises specified in the liquor licence",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $10,000"
+ },
+ {
+  "section": "6",
+  "offence": "Licensee supplies, etc., liquor outside trading hours specified in the liquor licence or applicable order",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $10,000"
+ },
+ {
+  "section": "7",
+  "offence": "Unlicensed person exhibits sign or notice that liquor is supplied at any premises",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $10,000"
+ },
+ {
+  "section": "12",
+  "offence": "Consumption of liquor in a public place during a prescribed no-public drinking period",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $1,000; repeat offender: fine not exceeding $2,000 or imprisonment not exceeding 3 months or both (enhanced up to 1.5x if in a Liquor Control Zone — s.16)"
+ },
+ {
+  "section": "14",
+  "offence": "Drunkenness in public places, etc. (see 14(1) incapable / 14(2) annoyance / 14(4) fail to leave)",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "See 14(1), 14(2) and 14(4); enhanced up to 1.5x if in a Liquor Control Zone (s.16)"
+ },
+ {
+  "section": "14(1)",
+  "offence": "Drunk and incapable of taking care of himself or herself in any public place",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $1,000 or imprisonment not exceeding 1 month or both; repeat offender: fine not exceeding $2,000 or imprisonment not exceeding 3 months or both"
+ },
+ {
+  "section": "14(2)",
+  "offence": "Whilst drunk, appears in a public place or trespasses premises and conducts himself or herself so as to cause annoyance to any person",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $1,000 or imprisonment not exceeding 6 months or both; repeat offender: fine not exceeding $2,000 or imprisonment not exceeding 6 months or both"
+ },
+ {
+  "section": "14(4)",
+  "offence": "Fails to comply with a direction under s.14(3)(a) to leave the public place or premises",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $1,000 or imprisonment not exceeding 6 months or both; repeat offender: fine not exceeding $2,000 or imprisonment not exceeding 6 months or both"
+ },
+ {
+  "section": "17",
+  "offence": "Fails to comply with an order to cease business activities at premises within a Liquor Control Zone",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $10,000"
+ },
+ {
+  "section": "19",
+  "offence": "Contravening a Liquor Control Zone banning notice (enter/remain or attempt to, without reasonable excuse)",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $2,500 or imprisonment not exceeding 3 months or both"
+ },
+ {
+  "section": "20",
+  "offence": "Entrant without reasonable excuse contravenes a direction by a police officer or approved person under s.20(2) (Liquor Control Zone)",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $2,500 or imprisonment not exceeding 3 months or both"
+ },
+ {
+  "section": "21",
+  "offence": "Fails to comply with a request of a police officer or approved person under s.21(1)",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $2,500 or imprisonment not exceeding 3 months or both"
+ },
+ {
+  "section": "22",
+  "offence": "Fails to comply with a request of a police officer or approved person under s.22(1)",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $2,500 or imprisonment not exceeding 3 months or both"
+ },
+ {
+  "section": "28",
+  "offence": "Knowingly or recklessly providing false or misleading information or document in relation to an application or appeal",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $5,000; repeat offender: fine not exceeding $10,000 or imprisonment not exceeding 3 months or both"
+ },
+ {
+  "section": "31",
+  "offence": "Hinders or obstructs a public officer or auxiliary police officer acting in the discharge of duties under this Act",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if the person is offending in the officer's view (LCSCA s.30 applies to ANY provision of this Act — overrides CPC term defaults)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $2,500 or imprisonment not exceeding 3 months or both"
+ }
+]

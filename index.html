@@ -4,135 +4,139 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hambalang Search Guide</title>
+  <meta name="description" content="Singapore offences — arrestable, bailable and maximum punishment, from the CPC 2010 First Schedule and Act-specific arrest powers.">
+  <meta name="theme-color" content="#0c0c10">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    try { const t = localStorage.getItem('legis-theme'); if (t) document.documentElement.dataset.theme = t; } catch (_) {}
+  </script>
 </head>
-<body data-theme="dark">
+<body>
+  <div class="glow" aria-hidden="true"></div>
 
-  <header class="site-header">
-    <div class="inner">
-      <div>
-        <h1>Hambalang Search Guide</h1>
-        <p class="sub">SG offences \u00b7 arrest \u00b7 bail \u00b7 punishment</p>
-      </div>
-      <div class="header-actions">
-        <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=Report%20/%20Request%3A%20" target="_blank" rel="noopener">Report</a>
-        <button type="button" id="themeToggle">Light</button>
-      </div>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="./">
+        <span class="mark" aria-hidden="true">§</span>
+        <span>Hambalang <em>Search Guide</em></span>
+      </a>
+      <nav class="top-actions">
+        <a class="ghost" href="https://github.com/FazzJan/sg-legislation-lookup/issues/new?title=Report%20%2F%20Request%3A%20" target="_blank" rel="noopener">Report</a>
+        <button type="button" class="ghost icon" id="themeToggle" aria-label="Toggle colour theme">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9Z"/></svg>
+        </button>
+      </nav>
     </div>
   </header>
 
-  <main>
-    <div class="search-panel">
-      <div class="search-row">
-        <div>
-          <label for="statuteFilter">Statute</label>
-          <select id="statuteFilter">
-            <option value="all">All statutes</option>
-            <option value="Penal Code 1871">Penal Code</option>
-            <option value="POHA 2014">POHA</option>
-            <option value="Miscellaneous Offences Act">MOA</option>
-            <option value="GCA 2022">GCA (Gambling)</option>
-            <option value="GEWCA">GEWCA (Guns)</option>
-            <option value="CESOWA">CESOWA</option>
-            <option value="Liquor Control Act">LCA (Liquor)</option>
-            <option value="Vandalism Act">Vandalism Act</option>
-            <option value="Destitute Persons Act">DPA</option>
-            <option value="Moneylenders Act">Moneylenders</option>
-            <option value="Computer Misuse Act">Computer Misuse</option>
-            <option value="Road Traffic Act">Road Traffic Act</option>
-            <option value="Public Order Act">Public Order Act</option>
-            <option value="Misuse of Drugs Act">Misuse of Drugs Act</option>
-            <option value="Immigration Act">Immigration Act</option>
-            <option value="Maintenance of Racial Harmony Act">MRHA (Racial Harmony)</option>
-            <option value="Women's Charter 1961">Women's Charter</option>
+  <main class="wrap">
+    <section class="hero">
+      <p class="eyebrow">Singapore · Arrest · Bail · Punishment</p>
+      <h1>Find an offence.<br><em>Know the powers.</em></h1>
+      <p class="lede">Penal Code entries come straight from the CPC 2010 First Schedule. Other Acts show the Act’s own arrest power where one exists, and otherwise apply the CPC default based on the maximum term.</p>
+    </section>
+
+    <section class="search-card" aria-label="Search">
+      <div class="search-field">
+        <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m21 21-4.3-4.3M10.5 18a7.5 7.5 0 1 1 0-15 7.5 7.5 0 0 1 0 15Z"/></svg>
+        <input type="search" id="searchBox" placeholder="Section or keyword — e.g. 379, 14D, stalking" autocomplete="off" spellcheck="false" aria-label="Section or keyword">
+        <kbd class="kbd" aria-hidden="true">/</kbd>
+      </div>
+      <div class="chips" id="statuteChips" role="tablist" aria-label="Filter by statute"></div>
+    </section>
+
+    <div class="status-row">
+      <span id="resultCount">Loading data…</span>
+      <span id="loadingStatus" class="muted"></span>
+    </div>
+
+    <section class="layout">
+      <div class="results" id="results" role="listbox" aria-label="Matching offences"></div>
+
+      <article class="detail" id="detail" hidden>
+        <header class="detail-head">
+          <p class="detail-statute" id="dStatute"></p>
+          <h2 class="detail-section"><span class="sigil">§</span><span id="dSection"></span></h2>
+          <p class="detail-offence" id="dOffence"></p>
+        </header>
+
+        <div class="tiles">
+          <div class="tile" id="tArrest">
+            <span class="tile-label">Arrest without warrant</span>
+            <span class="tile-value" id="vArrest"></span>
+          </div>
+          <div class="tile" id="tBail">
+            <span class="tile-label">Bailable</span>
+            <span class="tile-value" id="vBail"></span>
+          </div>
+          <div class="tile" id="tProcess">
+            <span class="tile-label">Process</span>
+            <span class="tile-value" id="vProcess"></span>
+          </div>
+        </div>
+
+        <dl class="facts">
+          <div><dt>Maximum punishment</dt><dd id="dPunishment"></dd></div>
+          <div><dt>Arrest — detail</dt><dd id="dArrestText"></dd></div>
+          <div id="bailTextRow"><dt>Bail — detail</dt><dd id="dBailText"></dd></div>
+          <div><dt>Basis</dt><dd id="dBasis"></dd></div>
+          <div id="noteRow" hidden><dt>Note</dt><dd id="dNote" class="note"></dd></div>
+        </dl>
+
+        <footer class="detail-actions">
+          <a class="btn primary" id="ssoLink" href="https://sso.agc.gov.sg" target="_blank" rel="noopener">Open on SSO
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M7 17 17 7M9 7h8v8"/></svg>
+          </a>
+          <button type="button" class="btn" id="copyLink">Copy link</button>
+        </footer>
+      </article>
+
+      <div class="empty" id="empty" hidden></div>
+    </section>
+
+    <section class="panel" id="quick" aria-labelledby="quickTitle">
+      <div class="panel-head">
+        <p class="eyebrow">Not listed?</p>
+        <h2 id="quickTitle">Quick arrest check</h2>
+        <p class="muted">For an offence under another written law, the CPC 2010 First Schedule default turns on the maximum punishment. The Act itself can override that, so check its arrest clause.</p>
+      </div>
+      <div class="quick-grid">
+        <label>Act
+          <select id="qAct"></select>
+        </label>
+        <label>Maximum punishment
+          <select id="qTerm">
+            <option value="death">Death or life imprisonment</option>
+            <option value="3plus" selected>Imprisonment 3 years or more</option>
+            <option value="under3">Imprisonment under 3 years</option>
+            <option value="fine">Fine only</option>
           </select>
-        </div>
-        <div>
-          <label for="searchBox">Section or keyword</label>
-          <div class="search-wrap">
-            <input type="search" id="searchBox" placeholder="e.g. 302, 14D, stalking\u2026" autocomplete="off">
-            <button type="button" class="clear-btn" id="clearBtn" aria-label="Clear">\u00d7</button>
-            <div class="suggestions" id="suggestions"></div>
-          </div>
-        </div>
+        </label>
       </div>
-      <details class="hint">
-        <summary>About data & CPC rules</summary>
-        <p>
-          Penal Code uses the full CPC First Schedule (self-hosted chunks; no third-party runtime dependency).
-          Other Acts are key sections only. If a search is not indexed, the empty state still deep-links to the AGC section page.
-        </p>
-        <p>
-          <strong>Act-specific arrest powers override CPC term defaults.</strong>
-          Example: Liquor Control (Supply and Consumption) Act 2015 s.30 \u2014 any police officer may arrest without warrant any person offending, in the officer\u2019s view, against <em>any</em> provision of that Act. So LCA offences with max imprisonment under 3 years (e.g. s.14(2), max 6 months) are still arrestable.
-          Same idea: CMA s.19 (reasonably suspected), POHA s.18 (in view; s.18(2) also covers suspected s.10(1) in prescribed circumstances), MOA s.40 (in view), Vandalism Act s.6 (all offences arrestable and non-bailable), Public Order Act s.40 (in view, any provision), Misuse of Drugs Act s.25 (committed or reasonably suspected \u2014 no in-view limit), Immigration Act s.51(3) (reasonably believes an offence under the Act or regulations \u2014 no in-view limit). Women's Charter 1961 s.63D: a family violence offence is arrestable for the CPC 2010 (so ss.60A(6), 60B(9), 60C(9), 61(11), 61A(10) and 62(4) are arrestable even though s.63C max is 12 or 18 months). Maintenance of Racial Harmony Act 2025 ss.39\u201340: no Act-wide arrest clause found \u2014 CPC term defaults apply (max \u22653 years \u2192 arrestable / not bailable). PC 298 / 298A First Schedule rows were deleted from 15 Sep 2026 by Act 10 of 2025 s.48(1)(b), with savings for pre-commencement offences.
-        </p>
-        <p>
-          For other laws not listed: max \u22653 years jail \u2192 usually <strong>arrestable + not bailable</strong>;
-          under 3 years or fine only \u2192 usually <strong>not arrestable + bailable</strong>, unless the Act says otherwise.
-          Always open the Act on SSO and check for a general power of arrest before applying CPC defaults.
-        </p>
+      <div class="quick-out" id="quickOut"></div>
+    </section>
+
+    <section class="panel rules">
+      <details>
+        <summary>How the status is worked out</summary>
+        <ol>
+          <li><strong>Penal Code:</strong> read straight from the CPC 2010 First Schedule (columns 3–5).</li>
+          <li><strong>Act-specific power:</strong> if the Act has its own arrest clause, it takes precedence over the term default. Example: LCA s.30 makes any offence under that Act arrestable when committed in an officer’s view, even when the maximum is 6 months.</li>
+          <li><strong>CPC default (offences against other laws):</strong> death, or imprisonment of 3 years and upwards → may arrest without warrant, warrant, not bailable. Under 3 years or fine only → shall not arrest without warrant, summons, bailable.</li>
+          <li>An arrest override doesn’t change bail. Bail still follows the term unless the Act says otherwise (e.g. Vandalism Act s.6).</li>
+        </ol>
       </details>
-    </div>
-
-    <div class="status-line">
-      <span id="resultCount">Type a section or keyword</span>
-      <span id="loadingStatus"></span>
-    </div>
-
-    <article id="result">
-      <div class="result-body">
-        <div class="result-statute" id="resultStatute"></div>
-        <h2 class="result-title" id="resultTitle"></h2>
-        <p class="result-offence" id="resultOffence"></p>
-
-        <div class="arrest-banner unknown" id="arrestBanner">
-          <div class="arrest-letter" id="arrestLetter">?</div>
-          <div id="arrestDesc"></div>
-        </div>
-
-        <div class="facts">
-          <div>
-            <div class="fact-label">Bailable</div>
-            <div class="fact-value" id="bailableValue">\u2014</div>
-          </div>
-          <div id="warrantRow">
-            <div class="fact-label">Process</div>
-            <div class="fact-value" id="warrantValue">\u2014</div>
-          </div>
-          <div>
-            <div class="fact-label">Maximum punishment</div>
-            <div class="fact-value" id="punishmentValue">\u2014</div>
-          </div>
-        </div>
-      </div>
-      <div class="result-footer">
-        <a class="agc-btn" id="agcLink" href="https://sso.agc.gov.sg" target="_blank" rel="noopener">View on AGC\u2019s website</a>
-      </div>
-    </article>
-
-    <div class="empty-box" id="emptyBox"></div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="inner">
-      <p>
-        Proof-of-concept. Always verify on
-        <a href="https://sso.agc.gov.sg" target="_blank" rel="noopener">sso.agc.gov.sg</a>.
-        Penal Code data is from the CPC 2010 First Schedule (self-hosted). No third-party runtime data source.
-      </p>
-      <p>
-        <a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new" target="_blank" rel="noopener">Report / request section</a>
-        \u00b7
-        <a href="https://github.com/FazzJan/sg-legislation-lookup/issues" target="_blank" rel="noopener">Open issues</a>
-      </p>
-      <details>
-        <summary>Disclaimer</summary>
-        <p>For reference only. Not legal advice. Not affiliated with AGC. Use at your own risk.</p>
-      </details>
+  <footer class="foot">
+    <div class="wrap foot-inner">
+      <p id="dataStats" class="muted"></p>
+      <p class="muted">Reference only, not legal advice. Not affiliated with AGC. Always verify on <a href="https://sso.agc.gov.sg" target="_blank" rel="noopener">sso.agc.gov.sg</a>.</p>
+      <p><a href="https://github.com/FazzJan/sg-legislation-lookup/issues/new" target="_blank" rel="noopener">Request a section</a> · <a href="https://github.com/FazzJan/sg-legislation-lookup" target="_blank" rel="noopener">Source</a></p>
     </div>
   </footer>
 

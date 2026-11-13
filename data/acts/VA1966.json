@@ -1,0 +1,22 @@
+[
+ {
+  "section": "3",
+  "offence": "Committing, attempting or causing an act of vandalism",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (VA s.6 — every offence under this Act is arrestable and non-bailable for CPC purposes)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (VA s.6)",
+  "punishment": "Fine not exceeding $2,000 or imprisonment not exceeding 3 years; and (subject to CPC ss.325(1) and 330(1)) caning 3-8 strokes, except caning is not imposed on a first conviction for delible marking under s.2(a)(i) or for s.2(a)(ii)/(iii) poster/banner-type acts"
+ },
+ {
+  "section": "4",
+  "offence": "Fails, refuses or neglects to produce written authority or written consent on demand",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (VA s.6 — every offence under this Act is arrestable and non-bailable for CPC purposes)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (VA s.6 — every offence under the Act)",
+  "punishment": "Fine not exceeding $500"
+ }
+]
