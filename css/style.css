@@ -112,6 +112,8 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 /* Exhibits guide */
 .banner { border: 1px solid color-mix(in srgb, var(--amber) 40%, transparent); background: var(--amber-soft); color: var(--text); border-radius: 14px; padding: 14px 18px; font-size: 14px; }
 .banner strong { color: var(--amber); }
+.banner.reviewed { border-color: color-mix(in srgb, var(--green) 40%, transparent); background: var(--green-soft); }
+.banner.reviewed strong { color: var(--green); }
 .flow { list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 0; counter-reset: f; }
 .flow li { position: relative; padding: 0 0 22px 52px; counter-increment: f; }
 .flow li::before { content: counter(f); position: absolute; left: 0; top: 0; width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: 600 13px var(--mono); color: var(--gold); border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); background: var(--gold-soft); }
@@ -127,6 +129,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .sec a { font-size: 13px; margin-top: auto; }
 .pill.verified, .pill.partial { color: var(--green); background: var(--green-soft); }
 .pill.pending { color: var(--amber); background: var(--amber-soft); }
+.pill.tip { color: var(--gold); background: var(--gold-soft); }
 .cases { display: grid; gap: 10px; margin-top: 20px; }
 .case { border-left: 2px solid var(--gold); padding: 4px 0 4px 16px; }
 .case b { font-weight: 600; } .case i { color: var(--gold); font-style: normal; font-family: var(--mono); font-size: 13px; margin-left: 6px; }

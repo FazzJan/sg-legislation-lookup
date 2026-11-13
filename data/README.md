@@ -38,7 +38,18 @@ All data is plain, human-readable JSON so every change shows up clearly in a dif
 
 Run `python3 scripts/validate.py` before committing. CI runs it on every push. It fails on broken JSON, missing fields or bad values, including unexpanded `$(...)` shell text (the bug that wiped files in Oct–Nov 2026). It also warns where a row's arrest or bail status disagrees with the CPC term default and no Act override explains it.
 
+## Sources
+
+`Sources/` holds PDF consolidations downloaded from SSO by the owner. SSO can't be reached from the cloud sessions, so these are the reference texts for verification. Extract text with `pdftotext -layout "Sources/<Act>.pdf" -`. Each PDF states its "version in force from" date on every page.
+
 ## Change log
+
+- **13 Nov 2026 (2)**:
+  - CPC Part 19 guide (`data/guides/cpc-part19.json`): ss.364–372 checked against `Sources/Criminal Procedure Code 2010.pdf` (in force from 15/9/2026). Corrections: the s.370 report goes to the *relevant court* (trial or inquiry court, else a Magistrate's Court); s.370 as amended by Act 24 of 2024 (absconded persons, continued seizure); s.371 (48-hour notice, $500 threshold); s.372 (6-month public notice, $1,000 Gazette and sale thresholds).
+  - Arrest provisions in `acts.json` checked against the Source PDFs for PHA, MOA, CESOWA, GEWCA, GCA, LCSCA, VA, DPA, MA, CMA, POA, IA, MRHA and WC. Each entry is now marked `verified`.
+  - MOA: also records s.22(2), s.28, s.34 and s.39I.
+  - CESOWA: express arrest clauses are ss.6–8.
+  - Not yet checked row by row: individual offence rows (punishments).
 
 - **13 Nov 2026** — Converted the gzip/base64 chunks and `extra-part*.json` files to per-Act JSON. Restored rows lost by earlier automated commits: GCA 2022 ss.18–36 (8 rows), GEWCA ss.13–16, 18, 19, 30, 36, 37, and RTA ss.35(1), 35(2), 43(4). Restored rows carry a `note` asking for re-verification. Dropped GEWCA ss.17 and 20 as standalone rows; they are penalty sections, not offences.
 

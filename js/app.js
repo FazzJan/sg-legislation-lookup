@@ -117,8 +117,9 @@ function showEmpty(q) {
 function basisText(r) {
   const p = r.act.arrestPower;
   if (r.act.id === 'PC1871') return 'CPC 2010 First Schedule entry for this Penal Code section.';
-  if (p.type === 'none') return `${p.summary}`;
-  return `${r.act.short} ${p.provision}: ${p.summary}`;
+  const v = p.verified ? ` (Arrest provision checked: ${p.verified}.)` : ' (Arrest provision not yet checked against the Act text.)';
+  if (p.type === 'none') return `${p.summary}${v}`;
+  return `${r.act.short} ${p.provision}: ${p.summary}${v}`;
 }
 
 function setTile(id, valueId, kind, label) {
@@ -258,7 +259,8 @@ async function loadGuide() {
   guideLoaded = true;
   try {
     const g = (await getBundle()).guide;
-    $('exStatus').innerHTML = `<strong>${g.status === 'draft' ? 'Draft' : 'Reviewed'}</strong> · last reviewed ${esc(g.lastReviewed)} — ${esc(g.statusNote)}`;
+    $('exStatus').className = `banner ${g.status}`;
+    $('exStatus').innerHTML = `<strong>${g.status === 'draft' ? 'Draft' : 'Verified'}</strong> · last reviewed ${esc(g.lastReviewed)} — ${esc(g.statusNote)}`;
     $('exFlow').innerHTML = g.flow.map((f) => `<li><b>${esc(f.step)}</b><span>${esc(f.text)}</span></li>`).join('');
     const label = { verified: 'Verified', partial: 'Partly verified', pending: 'Pending' };
     $('exSections').innerHTML = g.sections.map((x) => `<article class="sec">
@@ -280,7 +282,7 @@ async function loadGuide() {
 /* ---------- exhibit application helper ---------- */
 function renderHelper(h) {
   if (!h) { $('helper').hidden = true; return; }
-  const label = { verified: 'Verified', pending: 'Check CPC text' };
+  const label = { verified: 'Verified', pending: 'Check CPC text', tip: 'Practice tip' };
   $('hIntro').textContent = h.intro;
   $('hScenario').innerHTML = h.scenarios.map((x) => `<option value="${esc(x.id)}">${esc(x.label)}</option>`).join('');
   const steps = () => {
@@ -297,7 +299,7 @@ function renderHelper(h) {
     const days = Math.round((due - t) / 864e5);
     const fmt = due.toLocaleDateString('en-SG', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
     box.className = `deadline ${days < 0 ? 'past' : days <= 60 ? 'soon' : ''}`;
-    box.innerHTML = `<span>One-year long-stop for the s.370(1) report</span><b>${fmt}</b><span>${days < 0 ? `${-days} days overdue` : days === 0 ? 'Due today' : `${days} days left`} · report earlier if the item stops being relevant</span>`;
+    box.innerHTML = `<span>Latest date for the s.370(1)(b) report to court</span><b>${fmt}</b><span>${days < 0 ? `${-days} days overdue` : days === 0 ? 'Due today' : `${days} days left`} · report earlier if the item stops being relevant</span>`;
     box.hidden = false;
   };
   $('hScenario').addEventListener('change', steps);
