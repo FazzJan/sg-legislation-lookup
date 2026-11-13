@@ -1,0 +1,318 @@
+{
+ "source": "Penal Code 1871 (in force from 15/9/2026)",
+ "format": "Follows CPC 2010 ss.123–124 (in force from 15/9/2026): the charge states the offence (by name where the law gives one), the provision it is punishable under, and details of time, place and the person or thing involved.",
+ "disclaimer": "Drafting guide only. Not the prescribed form. Check the wording against the evidence and the current Act before use.",
+ "templates": [
+  {
+   "section": "302(1)",
+   "title": "Murder — s.300(a), intention to cause death",
+   "punishable": "section 302(1) of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Deceased (name and ID)",
+     "placeholder": "Lim Ah Seng, NRIC No. S7654321B"
+    },
+    {
+     "id": "act",
+     "label": "Act causing death (to wit)",
+     "placeholder": "stabbing him multiple times with a knife"
+    }
+   ],
+   "particulars": "did commit murder by causing the death of one {victim}, to wit, by {act}, with the intention of causing death",
+   "notes": [
+    "s.302(1) is for murder within s.300(a) (intention to cause death) and carries the mandatory death penalty. For s.300(b)–(d), use s.302(2).",
+    "Murder is a named offence, so it may be charged by that name (CPC s.123(2), illustration (c))."
+   ]
+  },
+  {
+   "section": "302(2)",
+   "title": "Murder — s.300(b), (c) or (d)",
+   "punishable": "section 302(2) of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Deceased (name and ID)",
+     "placeholder": "Lim Ah Seng, NRIC No. S7654321B"
+    },
+    {
+     "id": "act",
+     "label": "Act causing death (to wit)",
+     "placeholder": "striking his head with a metal pipe"
+    },
+    {
+     "id": "limb",
+     "label": "Limb of s.300",
+     "type": "select",
+     "options": [
+      "with the intention of causing such bodily injury as you knew to be likely to cause death (s.300(b))",
+      "with the intention of causing bodily injury which was sufficient in the ordinary course of nature to cause death (s.300(c))",
+      "with knowledge that the act was so imminently dangerous that it must in all probability cause death or such bodily injury as is likely to cause death (s.300(d))"
+     ]
+    }
+   ],
+   "particulars": "did commit murder by causing the death of one {victim}, to wit, by {act}, {limb}",
+   "notes": [
+    "Punishment: death or imprisonment for life, and if not punished with death, also liable to caning."
+   ]
+  },
+  {
+   "section": "379",
+   "title": "Theft",
+   "punishable": "section 379 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "victim",
+     "label": "In the possession of",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    }
+   ],
+   "particulars": "did commit theft of {property}, valued at about S${value}, in the possession of one {victim}",
+   "notes": [
+    "Theft is a named offence (CPC s.123 illustration (c)). Max: 3 years, or fine, or both.",
+    "For a motor vehicle or a component part, use s.379A."
+   ]
+  },
+  {
+   "section": "403",
+   "title": "Dishonest misappropriation of property",
+   "punishable": "section 403 of the Penal Code 1871",
+   "named": false,
+   "dateRange": true,
+   "fields": [
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "victim",
+     "label": "Belonging to",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    }
+   ],
+   "particulars": "did dishonestly misappropriate to your own use {property}, valued at about S${value}, belonging to one {victim}",
+   "notes": [
+    "Statutory words: \"dishonestly misappropriates or converts to his own use movable property\". Max: 2 years, or fine, or both.",
+    "For s.403 a charge may state the gross sum and a date range of up to 12 months without listing each item or exact date, and is deemed one offence (CPC s.124(2)–(3)). Use the date-range option."
+   ]
+  },
+  {
+   "section": "323",
+   "title": "Voluntarily causing hurt",
+   "punishable": "section 323 of the Penal Code 1871",
+   "named": false,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "act",
+     "label": "Act done (to wit)",
+     "placeholder": "punching him on the face"
+    }
+   ],
+   "particulars": "did voluntarily cause hurt to one {victim}, to wit, by {act}",
+   "notes": [
+    "Max: 3 years, or fine up to $5,000, or both. Not for cases under s.323A (grievous hurt caused) or s.334 (grave and sudden provocation)."
+   ]
+  },
+  {
+   "section": "324",
+   "title": "Voluntarily causing hurt by dangerous weapons or means",
+   "punishable": "section 324 of the Penal Code 1871",
+   "named": false,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "means",
+     "label": "Weapon or means",
+     "placeholder": "a knife, an instrument for cutting"
+    },
+    {
+     "id": "act",
+     "label": "Act done (to wit)",
+     "placeholder": "punching him on the face"
+    }
+   ],
+   "particulars": "did voluntarily cause hurt to one {victim} by means of {means}, to wit, by {act}",
+   "notes": [
+    "s.324 covers instruments for shooting, stabbing or cutting, instruments likely to cause death if used as a weapon, fire or heated substances, poison, corrosive or explosive substances, harmful substances, and animals. Max: 7 years, or fine, or caning, or any combination."
+   ]
+  },
+  {
+   "section": "354(1)",
+   "title": "Assault or criminal force to outrage modesty",
+   "punishable": "section 354(1) of the Penal Code 1871",
+   "named": false,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "act",
+     "label": "Act done (to wit)",
+     "placeholder": "touching her buttocks with your hand"
+    },
+    {
+     "id": "force",
+     "label": "Assault or criminal force",
+     "type": "select",
+     "options": [
+      "use criminal force on",
+      "assault"
+     ]
+    }
+   ],
+   "particulars": "did {force} one {victim}, to wit, by {act}, intending to outrage the modesty of the said {victim}",
+   "notes": [
+    "Statutory mental element: \"intending to outrage or knowing it to be likely that he will thereby outrage the modesty\". Pick the limb that fits the evidence.",
+    "Victim below 14 years of age: use s.354(2) (max 5 years)."
+   ]
+  },
+  {
+   "section": "411(1)",
+   "title": "Receiving or retaining stolen property",
+   "punishable": "section 411(1) of the Penal Code 1871",
+   "named": false,
+   "dateRange": true,
+   "fields": [
+    {
+     "id": "mode",
+     "label": "Receive or retain",
+     "type": "select",
+     "options": [
+      "receive",
+      "retain"
+     ]
+    },
+    {
+     "id": "property",
+     "label": "Property",
+     "placeholder": "one black iPhone 15 mobile phone"
+    },
+    {
+     "id": "value",
+     "label": "Value (S$)",
+     "placeholder": "1,200"
+    },
+    {
+     "id": "origin",
+     "label": "Property obtained through",
+     "type": "select",
+     "options": [
+      "stolen property",
+      "property obtained in whole or in part through an offence involving fraud or dishonesty"
+     ]
+    }
+   ],
+   "particulars": "did {mode} {property}, valued at about S${value}, knowing or having reason to believe the same to be {origin}",
+   "notes": [
+    "Statutory words: \"receives or retains any property, knowing or having reason to believe the property to be stolen property or property obtained in whole or in part through an offence involving fraud or dishonesty\". Max: 5 years, or fine, or both.",
+    "Gross sum and date range allowed (CPC s.124(3)(a))."
+   ]
+  },
+  {
+   "section": "420(1)",
+   "title": "Cheating and dishonestly inducing delivery of property",
+   "punishable": "section 420(1) of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "deception",
+     "label": "Deception (\"into believing that ...\")",
+     "placeholder": "you would deliver a Rolex watch to her upon payment"
+    },
+    {
+     "id": "property",
+     "label": "Property delivered",
+     "placeholder": "S$3,500 in cash"
+    },
+    {
+     "id": "recipient",
+     "label": "Delivered to",
+     "placeholder": "you"
+    }
+   ],
+   "particulars": "did cheat one {victim}, by deceiving the said {victim} into believing that {deception}, and by such manner of deception you dishonestly induced the said {victim} to deliver {property} to {recipient}",
+   "notes": [
+    "Cheating is a named offence (CPC s.123 illustration (c)). Max: 10 years, and liable to fine or caning or both.",
+    "If the cheating was by remote communication, check s.420(2)."
+   ]
+  },
+  {
+   "section": "506",
+   "title": "Criminal intimidation",
+   "punishable": "section 506 of the Penal Code 1871",
+   "named": true,
+   "fields": [
+    {
+     "id": "victim",
+     "label": "Victim (name and ID)",
+     "placeholder": "Tan Ah Kow, NRIC No. S1234567A"
+    },
+    {
+     "id": "threat",
+     "label": "Threat (to wit)",
+     "placeholder": "saying to him \"I will kill you\""
+    },
+    {
+     "id": "injury",
+     "label": "Injury threatened to",
+     "type": "select",
+     "options": [
+      "the person",
+      "the reputation",
+      "the property"
+     ]
+    },
+    {
+     "id": "intent",
+     "label": "Intent",
+     "type": "select",
+     "options": [
+      "to cause alarm to the said {victim}",
+      "to cause the said {victim} to do an act which the said {victim} was not legally bound to do",
+      "to cause the said {victim} to omit to do an act which the said {victim} was legally entitled to do"
+     ]
+    }
+   ],
+   "particulars": "did commit criminal intimidation by threatening one {victim} with injury to {injury} of the said {victim}, to wit, by {threat}, with intent {intent}",
+   "notes": [
+    "Criminal intimidation is a named offence (CPC s.123 illustration (c)). Max: 2 years, or fine, or both. If the threat is to cause death or grievous hurt, destruction of property by fire, or an offence punishable with death or 7 years or more: max 10 years.",
+    "Check the s.503 definition for threats to a person in whom the victim is interested."
+   ]
+  }
+ ]
+}

@@ -1,11 +1,15 @@
 // Offline support. Bump VERSION whenever the app shell changes.
-const VERSION = 'v1';
+const VERSION = 'v2';
 const SHELL = `shell-${VERSION}`;
 const DATA = 'data';
-const SHELL_FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png'];
+const SHELL_FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'fonts/fonts.css'];
 
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(SHELL).then((c) => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()));
+  e.waitUntil(Promise.all([
+    caches.open(SHELL).then((c) => c.addAll(SHELL_FILES)),
+    // Published build: keep the encrypted data available offline from the first visit.
+    caches.open(DATA).then((c) => c.add('data/vault.json')).catch(() => {}),
+  ]).then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (e) => {
@@ -29,7 +33,7 @@ self.addEventListener('fetch', (e) => {
   }
 
   // App shell and fonts: cache first, refresh in the background.
-  if (url.origin === location.origin || /fonts\.(googleapis|gstatic)\.com$/.test(url.hostname)) {
+  if (url.origin === location.origin) {
     e.respondWith(caches.match(req).then((cached) => {
       const net = fetch(req).then((res) => {
         if (res.ok || res.type === 'opaque') { const copy = res.clone(); caches.open(SHELL).then((c) => c.put(req, copy)); }
