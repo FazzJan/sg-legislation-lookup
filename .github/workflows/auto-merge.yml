@@ -1,0 +1,76 @@
+name: Auto-merge data review
+
+# The scheduled Claude review pushes to a claude/data-review-* branch.
+# If the data checks pass, this merges the branch into main and deploys.
+# Anything that fails a check stays unmerged for the owner to look at.
+on:
+  push:
+    branches: ['claude/data-review-**']
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to merge (claude/data-review-...)'
+        required: true
+
+permissions:
+  contents: write
+  actions: write
+  pull-requests: write
+
+concurrency:
+  group: auto-merge
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    env:
+      BRANCH: ${{ github.event.inputs.branch || github.ref_name }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BRANCH }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Only claude/data-review-* branches
+        run: |
+          case "$BRANCH" in claude/data-review-*) ;; *) echo "Refusing to auto-merge $BRANCH"; exit 1;; esac
+
+      - name: Merge latest main into the branch (must be conflict-free)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main
+          git merge --no-edit origin/main
+
+      - name: Data validation
+        run: python3 scripts/validate.py --quiet
+
+      - name: Safety check against main
+        run: python3 scripts/safety_check.py origin/main
+
+      - name: Encrypted build works
+        env:
+          SITE_PASSWORD: ci-build-check-only
+        run: node scripts/build-encrypted.mjs
+
+      - name: Merge into main
+        run: |
+          git checkout -B main origin/main
+          git merge --no-ff --no-edit "origin/$BRANCH" -m "Auto-merge $BRANCH (checks passed)"
+          git push origin main
+
+      - name: Note on the pull request, if one was opened
+        run: |
+          pr=$(gh pr list --head "$BRANCH" --state open --json number --jq '.[0].number' || true)
+          if [ -n "$pr" ]; then gh pr comment "$pr" --body "Merged automatically into main after validation and safety checks passed." || true; fi
+
+      - name: Deploy the site
+        run: gh workflow run deploy.yml --ref main
