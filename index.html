@@ -44,6 +44,7 @@
         <a class="tab" href="#" data-view="offences">Offences</a>
         <a class="tab" href="#charge" data-view="charge">Charge</a>
         <a class="tab" href="#exhibits" data-view="exhibits">Property</a>
+        <a class="tab" href="#npc" data-view="npc">NPC</a>
       </nav>
       <details class="settings" id="settings">
         <summary class="nav-btn" aria-label="Display settings" title="Display settings">
@@ -263,6 +264,36 @@
     <p class="footnote" id="exCaveat"></p>
   </main>
 
+  <!-- ===================== NPC ===================== -->
+  <main class="wrap view" id="viewNpc" hidden>
+    <div class="large-title">
+      <h1>NPC finder</h1>
+      <p class="secondary">Which Neighbourhood Police Centre covers an address</p>
+    </div>
+
+    <form class="searchbar with-btn" id="npcForm" autocomplete="off">
+      <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="m20 20-4.2-4.2M10.5 17a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Z"/></svg>
+      <input type="search" id="npcInput" placeholder="Postal code, address, or lat, lng" inputmode="search" spellcheck="false" aria-label="Postal code or address">
+      <button type="submit" class="btn filled">Find</button>
+    </form>
+    <p class="footnote" id="npcStatus"></p>
+
+    <div class="group list" id="npcResults"></div>
+
+    <details class="group disclosure">
+      <summary>How this works</summary>
+      <div class="disclosure-body">
+        <ol class="plain-list">
+          <li>The postal code or address is looked up on <b>OneMap</b> (Singapore Land Authority) to get its location. Only what you type is sent, and this step needs internet.</li>
+          <li>The location is checked against the <b>SPF NPC boundary</b> map from data.gov.sg, on your device.</li>
+          <li>You can also enter coordinates directly (e.g. <code>1.3691, 103.8483</code>), which works offline.</li>
+          <li>Results within 50 m of a boundary are flagged. Check the exact location in those cases.</li>
+        </ol>
+        <p class="secondary small" id="npcMeta"></p>
+      </div>
+    </details>
+  </main>
+
   <footer class="foot">
     <div class="wrap foot-inner">
       <p class="sign">Habis kuku</p>
@@ -283,6 +314,10 @@
     <a class="tabbar-item" href="#exhibits" data-view="exhibits">
       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M3 7.5 12 3l9 4.5v9L12 21l-9-4.5v-9Z"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="m3 7.5 9 4.5 9-4.5M12 12v9"/></svg>
       <span>Property</span>
+    </a>
+    <a class="tabbar-item" href="#npc" data-view="npc">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+      <span>NPC</span>
     </a>
   </nav>
 

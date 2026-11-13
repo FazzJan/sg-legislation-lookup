@@ -111,7 +111,7 @@ b, strong { font-weight: 600; }
     backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
     border-top: 0.5px solid var(--sep); padding: 6px 0 calc(6px + env(safe-area-inset-bottom));
   }
-  .tabbar-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--tertiary); font-size: 10.5px; font-weight: 500; }
+  .tabbar-item { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--tertiary); font-size: 10.5px; font-weight: 500; }
   .tabbar-item:hover { text-decoration: none; }
   .tabbar-item[aria-selected='true'] { color: var(--blue); }
   body { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
@@ -313,6 +313,23 @@ select:focus, input:focus { box-shadow: 0 0 0 3px var(--blue-tint); }
 .sec-body { padding: 0 16px 14px 74px; font-size: 15px; color: var(--secondary); }
 .sec-body p { margin: 0 0 8px; }
 @media (max-width: 560px) { .sec-body { padding-left: 16px; } }
+
+/* NPC finder */
+.searchbar.with-btn { gap: 8px; }
+.searchbar.with-btn #npcInput {
+  flex: 1; height: 40px; border: 0; border-radius: 11px; background: var(--fill); color: var(--label);
+  font: 400 17px var(--sans); letter-spacing: -0.02em; padding: 0 12px 0 34px; outline: none; min-width: 0;
+}
+.searchbar.with-btn #npcInput:focus { box-shadow: 0 0 0 3px var(--blue-tint); }
+.searchbar.with-btn .btn { height: 40px; border-radius: 11px; }
+.npc-row { position: relative; padding: 14px 16px; display: grid; gap: 6px; }
+.npc-row + .npc-row::before { content: ''; position: absolute; top: 0; left: 16px; right: 0; border-top: 0.5px solid var(--sep); }
+.npc-addr { font-size: 13px; color: var(--secondary); }
+.npc-name { font-size: 20px; font-weight: 700; letter-spacing: -0.02em; }
+.npc-sub { font-size: 15px; }
+.npc-row .warn { color: var(--orange); font-size: 13px; }
+.npc-row .links { display: flex; gap: 14px; font-size: 14px; }
+code { font: 13px var(--mono); background: var(--fill); padding: 1px 5px; border-radius: 5px; }
 
 /* footer */
 .foot { margin-top: 40px; padding: 20px 0 32px; font-size: 13px; color: var(--secondary); }

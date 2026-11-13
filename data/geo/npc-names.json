@@ -1,0 +1,42 @@
+{
+ "note": "Display names for the codes in the SPF boundary file. Codes not listed here are shown as-is. Edit to correct or add names.",
+ "divisions": {
+  "A": "Central Division",
+  "D": "Clementi Division",
+  "E": "Tanglin Division",
+  "F": "Ang Mo Kio Division",
+  "G": "Bedok Division",
+  "J": "Jurong Division",
+  "L": "Woodlands Division",
+  "P": "Airport Police Division"
+ },
+ "npcs": {
+  "AN-NPC": "Ang Mo Kio North NPC",
+  "AS-NPC": "Ang Mo Kio South NPC",
+  "BE-NPC": "Bukit Merah East NPC",
+  "BM-NPC": "Bukit Merah West NPC",
+  "BI-NPC": "Bishan NPC",
+  "CG-NPC": "Changi NPC",
+  "CK-NPC": "Choa Chu Kang NPC",
+  "CL-NPC": "Clementi NPC",
+  "GL-NPC": "Geylang NPC",
+  "JW-NPC": "Jurong West NPC",
+  "KJ-NPC": "Kampong Java NPC",
+  "MB-NPC": "Marina Bay NPC",
+  "MP-NPC": "Marine Parade NPC",
+  "NY-NPC": "Nanyang NPC",
+  "OR-NPC": "Orchard NPC",
+  "PG-NPC": "Punggol NPC",
+  "PR-NPC": "Pasir Ris NPC",
+  "QT-NPC": "Queenstown NPC",
+  "RC-NPC": "Rochor NPC",
+  "SG-NPC": "Sengkang NPC",
+  "SW-NPC": "Sembawang NPC",
+  "TP-NPC": "Tampines NPC",
+  "TY-NPC": "Toa Payoh NPC",
+  "WE-NPC": "Woodlands East NPC",
+  "WW-NPC": "Woodlands West NPC",
+  "YI-NPC": "Yishun NPC",
+  "APD": "Airport Police Division"
+ }
+}

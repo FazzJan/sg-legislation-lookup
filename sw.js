@@ -1,5 +1,5 @@
 // Offline support. Bump VERSION whenever the app shell changes.
-const VERSION = 'v3';
+const VERSION = 'v4';
 const SHELL = `shell-${VERSION}`;
 const DATA = 'data';
 const SHELL_FILES = ['./', 'index.html', 'css/style.css', 'js/app.js', 'manifest.webmanifest', 'icons/icon-192.png', 'icons/icon-512.png', 'fonts/fonts.css'];
