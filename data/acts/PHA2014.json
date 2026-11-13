@@ -1,0 +1,62 @@
+[
+ {
+  "section": "3",
+  "offence": "Intentionally causing harassment, alarm, distress or humiliation",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (PHA s.18(1)). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $5,000 or imprisonment not exceeding 6 months or both (enhanced under s.8)"
+ },
+ {
+  "section": "4",
+  "offence": "Harassment, alarm, distress or humiliation",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (PHA s.18(1)). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $5,000 (enhanced under s.8)"
+ },
+ {
+  "section": "5",
+  "offence": "Fear, provocation or facilitation of violence",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (PHA s.18(1)). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $5,000 or imprisonment not exceeding 12 months or both"
+ },
+ {
+  "section": "6",
+  "offence": "Offences in relation to public servant or public service worker",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (PHA s.18(1)). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $5,000 or imprisonment not exceeding 12 months or both"
+ },
+ {
+  "section": "7",
+  "offence": "Unlawful stalking",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (PHA s.18(1)). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $5,000 or imprisonment not exceeding 12 months or both (enhanced for subsequent)"
+ },
+ {
+  "section": "10",
+  "offence": "Without reasonable excuse, fails to comply with an order under s.12(2) or (2E) or s.13(1) or (1B) (exceptions in s.10(1))",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant if committed in a police officer's view (PHA s.18(1)). Also may arrest without warrant a person reasonably suspected of s.10(1) in circumstances prescribed in regulations (PHA s.18(2))",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $5,000 or imprisonment not exceeding 6 months or both; subsequent s.10 conviction: fine not exceeding $10,000 or imprisonment not exceeding 12 months or both (s.8)"
+ }
+]

@@ -1,0 +1,122 @@
+[
+ {
+  "section": "6",
+  "offence": "Burning material or discharging firearm / missile in or near public road",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $1,000"
+ },
+ {
+  "section": "11",
+  "offence": "Nuisances (defacing property, spitting, ferocious dog at large, etc.)",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Typically fine (see Act)"
+ },
+ {
+  "section": "14",
+  "offence": "Excessive noise",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $1,000"
+ },
+ {
+  "section": "14A",
+  "offence": "Making of harassing or obscene telephone calls to emergency telephone numbers",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view (max 1 year)",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $5,000 or imprisonment not exceeding 1 year or both"
+ },
+ {
+  "section": "14D",
+  "offence": "Communicating false message (transmits or causes to be transmitted a message known to be false or fabricated)",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (max imprisonment 3 years — CPC default for other laws; also MOA s.40 if in view)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (max 3 years — CPC default)",
+  "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 3 years or both. Defence if legitimate purpose related to public order, public safety, national security, or prevention/investigation/prosecution of offences"
+ },
+ {
+  "section": "19",
+  "offence": "Soliciting in public place",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $1,000; subsequent: fine not exceeding $2,000 or imprisonment not exceeding 6 months or both"
+ },
+ {
+  "section": "20",
+  "offence": "Riotous, disorderly or indecent behaviour in public place / near court, police station, place of worship, etc.",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $2,000 or imprisonment not exceeding 6 months or both (subsequent: fine up to $5,000 or imprisonment up to 12 months or both)"
+ },
+ {
+  "section": "21",
+  "offence": "Wilful trespass on property",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable (fine only)",
+  "punishment": "Fine not exceeding $1,000 (s.21(1) — no actual / more than nominal damage cases)"
+ },
+ {
+  "section": "22",
+  "offence": "Loitering in place, vessel, etc., without satisfactory explanation (reputed thief / unable to account for presence)",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (expressly arrestable under s.22(2) — no in-view limit)",
+  "process": "Warrant",
+  "bail": "yes",
+  "bailText": "Bailable (max 6 months)",
+  "punishment": "Imprisonment not exceeding 6 months"
+ },
+ {
+  "section": "27",
+  "offence": "Rogues and vagabonds (various idle/disorderly conduct)",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $2,000 or imprisonment not exceeding 3 months or both"
+ },
+ {
+  "section": "27A",
+  "offence": "Appearing nude in public or private place exposed to public view",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if committed in a police officer's view (MOA s.40). Not a general warrantless-arrest offence if not in view",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $2,000 or imprisonment not exceeding 3 months or both"
+ },
+ {
+  "section": "35",
+  "offence": "Fraudulent possession of property",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (CPC s.64(1)(d) — possession of anything reasonably suspected to be stolen or fraudulently obtained; also MOA s.40 if in officer's view)",
+  "process": "Warrant",
+  "bail": "yes",
+  "bailText": "Bailable (max 1 year)",
+  "punishment": "Fine not exceeding $3,000 or imprisonment not exceeding 1 year or both"
+ }
+]

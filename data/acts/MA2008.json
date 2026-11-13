@@ -1,0 +1,32 @@
+[
+ {
+  "section": "19",
+  "offence": "Unlicensed moneylending (contravenes or assists in contravention of the prohibition on carrying on moneylending except under licence / excluded / exempt)",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (expressly arrestable and non-bailable under MA s.86 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (expressly under MA s.86)",
+  "punishment": "Individual 1st: fine $30,000-$300,000 and imprisonment not exceeding 4 years; also liable to caning not more than 6 strokes (higher mandatory strokes if damage or hurt caused). Subsequent: fine $30,000-$300,000 and imprisonment not exceeding 7 years. Body corporate: fine $50,000-$500,000"
+ },
+ {
+  "section": "47",
+  "offence": "Harassment on behalf of unlicensed moneylender",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (expressly arrestable and non-bailable under MA s.86 — no in-view limit; overrides CPC term defaults)",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (expressly under MA s.86)",
+  "punishment": "Imprisonment up to 5 years and fine $5,000-$50,000; caning (minimum applies if damage caused)"
+ },
+ {
+  "section": "48",
+  "offence": "Abetment of s.47 (instructions, transport, lookout, or verifying a s.47(1) act)",
+  "arrest": "check",
+  "arrestText": "s.86 expressly deems only s.19 and s.47 arrestable and non-bailable. Abetment of s.47 is punishable under PC Chapter 5 — confirm on SSO",
+  "process": "Warrant",
+  "bail": "check",
+  "bailText": "Check Act (s.86 names s.19 and s.47 only)",
+  "punishment": "Punishable as abetment of s.47 under Penal Code Chapter 5 — see Act"
+ }
+]

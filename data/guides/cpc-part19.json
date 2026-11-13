@@ -1,0 +1,282 @@
+{
+ "title": "Disposal of case property — CPC 2010 Part 19 (ss.364–372)",
+ "status": "reviewed",
+ "statusNote": "Section text checked against the CPC 2010 (2020 Rev Ed) informal consolidation in force from 15 Sep 2026, uploaded to Sources/. The case law below has not yet been read in full and predates the Act 24 of 2024 amendments (in force 14 Nov 2024).",
+ "lastReviewed": "2026-11-13",
+ "source": "Sources/Criminal Procedure Code 2010.pdf — version in force from 15/9/2026",
+ "flow": [
+  {
+   "step": "Seize",
+   "text": "A police officer seizes the property under s.35 (property in respect of which an offence is suspected, used or intended for an offence, or evidence of an offence) or s.78 (search of an arrested person, items placed in safe custody)."
+  },
+  {
+   "step": "Hold while relevant",
+   "text": "Keep the property while it is relevant to any investigation, inquiry, trial or other proceeding under any written law."
+  },
+  {
+   "step": "Report to the relevant court",
+   "text": "s.370(1): report the seizure to the relevant court at the earlier of (a) when the officer considers the property no longer relevant and no s.370(3)(c) investigation needs it (or continued seizure is no longer required), or (b) one year after the date of seizure. The relevant court is the trial or inquiry court if the property was seized for that case, otherwise a Magistrate's Court (s.370(6))."
+  },
+  {
+   "step": "Court makes an order",
+   "text": "s.370(2): the court must make the applicable order: (a) computer data deleted and the computer returned; (b) or (c) any order it thinks fit for property involved in an offence, or what it was converted into; (d) any order it thinks fit if the person entitled consents to compensation, restitution or forfeiture; (e) otherwise, delivery to the person entitled, or custody and production if they cannot be ascertained or found. This is subject to forfeiture or confiscation provisions in other written law."
+  },
+  {
+   "step": "Bars on disposal",
+   "text": "s.370(3): the court must not dispose of the property if (a) a court proceeding about it is pending, (b) it is relevant to any investigation, inquiry, trial or proceeding, or (c) the officer applies for continued seizure and there is a pending investigation to trace the person entitled, or into an absconded suspect, and continued seizure will not cause injustice."
+  },
+  {
+   "step": "Hand over or sell",
+   "text": "Owner known (s.371): the court serves notice to collect within at least 48 hours, and may sell if not collected one month after that period. Owner unknown or not found (s.372): public notice with a 6-month claim period, after which the property or its proceeds vest in the Government."
+  }
+ ],
+ "sections": [
+  {
+   "s": "364",
+   "heading": "Order for disposal of property by court",
+   "status": "verified",
+   "summary": "During or at the end of any inquiry or trial, the court may order disposal of property produced before it. Under s.364(2) it can also deal with property involved in an offence, or which is evidence of one, even if the property is held by police rather than produced in court. This is subject to forfeiture or confiscation rules in other written law. Where an appeal lies, the order is not carried out until the appeal period lapses or the appeal is dealt with, unless the property is perishable (s.364(3)). \"Property\" includes what it was converted or exchanged into (s.364(4))."
+  },
+  {
+   "s": "365",
+   "heading": "Direction instead of order",
+   "status": "verified",
+   "summary": "Instead of making a s.364 order itself, a court may direct the property to be delivered to a Magistrate, who then deals with it under s.364."
+  },
+  {
+   "s": "366",
+   "heading": "Payment to innocent person of money in possession of convicted person",
+   "status": "verified",
+   "summary": "Where someone is convicted of theft or receiving stolen property and an innocent buyer bought the stolen item from them, the court may, on the buyer's application and after returning the item to its owner, pay the buyer up to the price paid out of the convicted person's money. Civil claims are treated as satisfied to the extent of that payment."
+  },
+  {
+   "s": "367",
+   "heading": "Stay of order",
+   "status": "verified",
+   "summary": "The General Division of the High Court may stay a Magistrate's or District Court order under s.364, 365 or 366 pending its consideration, and may modify, alter or annul it."
+  },
+  {
+   "s": "368",
+   "heading": "Destruction of libellous and other matter",
+   "status": "verified",
+   "summary": "On conviction under PC ss.292, 293, 500, 501 or 502 (obscene or defamatory material), the court may order destruction of the material, including copies in any media. On conviction under PC ss.272–275 (adulterated food, drink or drugs), it may order destruction of those items."
+  },
+  {
+   "s": "369",
+   "heading": "Restoration of possession of immovable property",
+   "status": "verified",
+   "summary": "On conviction for an offence involving criminal force by which someone was dispossessed of immovable property (e.g. land or a flat), the court may order possession restored. Civil rights are unaffected."
+  },
+  {
+   "s": "370",
+   "heading": "Procedure governing seizure of property",
+   "status": "verified",
+   "summary": "The core police provision. A law enforcement officer who seizes property under s.35 or s.78 must report the seizure to the relevant court at the earlier of: no longer relevant, or one year after seizure (s.370(1)). The court must then make an applicable s.370(2) order, but must not dispose of property while proceedings are pending, while it is relevant, or while a continued seizure is justified under s.370(3)(c). An absconded suspect (not found, apprehended or extradited 6 months after investigations began) cannot claim the property, and the court cannot order delivery to them, unless they personally present themselves to a law enforcement officer (ss.370(3A), (3B), (6)). In deciding entitlement, the court may consider legitimate sources of funds and treat gifts from an absconded suspect with caution (s.370(7))."
+  },
+  {
+   "s": "371",
+   "heading": "Procedure when person entitled to property is known",
+   "status": "verified",
+   "summary": "The court serves a notice on the person entitled to collect the property within a stated period of at least 48 hours, served as for a summons under s.116. If they do not collect, the court may sell the property after one month from the end of that period. Perishable items, or items the court values under $500, may be sold at any time. Net proceeds are paid to the person entitled on demand."
+  },
+  {
+   "s": "372",
+   "heading": "Procedure when person entitled to property cannot be ascertained or cannot be found",
+   "status": "verified",
+   "summary": "The court may direct that the property stay in the custody of the law enforcement agency. The head of that agency must then issue a public notice listing the items and inviting claims to the court within 6 months. The notice must be published in the Gazette or a daily newspaper if the property is worth $1,000 or more. Perishable property, property worth under $1,000, or property expensive or inconvenient to keep may be sold at any time. If no one establishes a claim within 6 months, the property or its proceeds vest in the Government. Items of no appreciable value, or too small in value to sell or keep, may be destroyed or otherwise disposed of at any time (s.372(7))."
+  }
+ ],
+ "cases": [
+  {
+   "name": "Mustafa Ahunbay v Public Prosecutor",
+   "cite": "[2015] SGCA 10",
+   "point": "Court of Appeal on the s.370 procedure, including who may be heard. Decided under the pre-31 Oct 2018 version of s.370. Not yet read in full.",
+   "url": "https://www.elitigation.sg/gd/s/2015_SGCA_10"
+  },
+  {
+   "name": "Lee Chen Seong Jeremy v Public Prosecutor",
+   "cite": "[2019] SGHC 48",
+   "point": "The s.370 hearing is confined to the material in the s.370 report, and continued seizure needs a reasonable basis that the property is relevant. Not yet read in full.",
+   "url": "https://www.elitigation.sg/gd/s/2019_SGHC_48"
+  },
+  {
+   "name": "Magistrate's Court decision",
+   "cite": "[2026] SGMC 96",
+   "point": "Discusses a 'one-report' rule limiting the factual case the Prosecution may advance after filing its seizure report. Not yet read in full.",
+   "url": "https://www.elitigation.sg/gd/s/2026_SGMC_96"
+  }
+ ],
+ "caveat": "Statute text verified against the uploaded consolidation (in force from 15/9/2026). Check SSO for any later amendment. Case summaries come from search results, not the judgments themselves.",
+ "helper": {
+  "intro": "Pick the situation that matches your exhibit. Every step cites the CPC provision it comes from (version in force from 15 Sep 2026). Steps marked \"Practice tip\" are practical suggestions, not statutory requirements.",
+  "scenarios": [
+   {
+    "id": "owner-known",
+    "label": "No longer needed — owner known",
+    "steps": [
+     {
+      "text": "Confirm the property is not relevant to any investigation, inquiry, trial or other proceeding under any written law, and that no s.370(3)(c) investigation needs it (s.370(1)(a)).",
+      "status": "verified"
+     },
+     {
+      "text": "Report the seizure to the relevant court now. Don't wait for the one-year mark (s.370(1)). The relevant court is the trial or inquiry court if the property was seized for that case, otherwise a Magistrate's Court (s.370(6)).",
+      "status": "verified"
+     },
+     {
+      "text": "The court will usually order delivery to the person entitled to possession (s.370(2)(e)(i)).",
+      "status": "verified"
+     },
+     {
+      "text": "The court serves notice on the owner to collect within at least 48 hours (s.371(1)). If they don't collect, the court may sell after one month from the end of that period (s.371(3)). Perishable items, or items worth under $500, may be sold at any time (s.371(4)). Proceeds go to the owner on demand (s.371(5)).",
+      "status": "verified"
+     },
+     {
+      "text": "Put proof of ownership (receipts, registration, statements) in the report. The court may consider whether the property was acquired from legitimate sources (s.370(7)(a)).",
+      "status": "tip"
+     }
+    ]
+   },
+   {
+    "id": "owner-unknown",
+    "label": "Owner unknown or cannot be found",
+    "steps": [
+     {
+      "text": "Report to the relevant court (s.370(1)). If the owner cannot be ascertained or found, the court orders custody and production (s.370(2)(e)(ii)).",
+      "status": "verified"
+     },
+     {
+      "text": "The court may direct the property to stay in your agency's custody. The head of the agency must then issue a public notice listing the items and inviting claims within 6 months (s.372(1)).",
+      "status": "verified"
+     },
+     {
+      "text": "If the property is worth $1,000 or more, the notice must be published in the Gazette or a daily newspaper (s.372(2)).",
+      "status": "verified"
+     },
+     {
+      "text": "If no valid claim is made within 6 months, the court must order the property (or its sale proceeds) to vest in the Government (s.372(5)).",
+      "status": "verified"
+     },
+     {
+      "text": "If the property has no appreciable value, or is too low in value to sell or keep, the court may order it destroyed or otherwise disposed of at any time (s.372(7)).",
+      "status": "verified"
+     },
+     {
+      "text": "Record every step taken to trace the owner. An ongoing tracing investigation is a ground for continued seizure (s.370(3)(c)(i)).",
+      "status": "tip"
+     }
+    ]
+   },
+   {
+    "id": "perishable",
+    "label": "Perishable, low value or costly to keep",
+    "steps": [
+     {
+      "text": "Owner known: the court may sell perishable property, or property it values under $500, at any time (s.371(4)).",
+      "status": "verified"
+     },
+     {
+      "text": "Owner unknown: perishable property, property worth under $1,000 in the agency head's opinion, or property that is unreasonably expensive or inconvenient to keep may be sold at any time. The s.372 process then applies to the net proceeds (s.372(4)).",
+      "status": "verified"
+     },
+     {
+      "text": "After a court order (s.364), perishable property can be dealt with even while an appeal is still possible (s.364(3)).",
+      "status": "verified"
+     },
+     {
+      "text": "Photograph and record the condition, quantity and value before any sale.",
+      "status": "tip"
+     }
+    ]
+   },
+   {
+    "id": "unlawful",
+    "label": "Used in or the subject of an offence (incl. contraband)",
+    "steps": [
+     {
+      "text": "First check the specific Act (e.g. MDA, GEWCA, GCA) for its own forfeiture, confiscation or destruction provision. s.370(2) is subject to those (s.370(2)).",
+      "status": "verified"
+     },
+     {
+      "text": "If the court is satisfied an offence was committed in respect of the property, or it was used or intended to be used for an offence, it may make any disposal order it thinks fit, e.g. forfeiture or destruction (s.370(2)(b)). The same applies to what the property was converted or exchanged into (s.370(2)(c)).",
+      "status": "verified"
+     },
+     {
+      "text": "Computers: if the data was the subject of, or used for, an offence, the court can order the data deleted and the computer returned (s.370(2)(a)).",
+      "status": "verified"
+     },
+     {
+      "text": "After conviction: obscene or defamatory material (PC ss.292, 293, 500–502) and adulterated food or drugs (PC ss.272–275) can be ordered destroyed (s.368).",
+      "status": "verified"
+     }
+    ]
+   },
+   {
+    "id": "cash",
+    "label": "Cash, bank funds or converted property",
+    "steps": [
+     {
+      "text": "Funds in a bank account or safe deposit box can be seized or frozen by written order of an Inspector or above (s.35(2)).",
+      "status": "verified"
+     },
+     {
+      "text": "Money or assets that offence property was converted or exchanged into can be the subject of a disposal order (ss.364(4), 370(2)(c)).",
+      "status": "verified"
+     },
+     {
+      "text": "If the owner consents to the property being used for compensation or restitution, or to its forfeiture, the court may make any disposal order it thinks fit (s.370(2)(d)).",
+      "status": "verified"
+     },
+     {
+      "text": "Innocent purchaser of stolen goods: after the goods are returned to the owner, the court may repay the purchaser out of the convicted person's money (s.366).",
+      "status": "verified"
+     },
+     {
+      "text": "The court may weigh whether a claimant acquired the property from legitimate sources. A gift from an absconded suspect is not enough on its own to prove entitlement (s.370(7)).",
+      "status": "verified"
+     }
+    ]
+   },
+   {
+    "id": "still-needed",
+    "label": "Still needed, but the 1-year mark is near",
+    "steps": [
+     {
+      "text": "The report is due no later than one year after the date of seizure, even if the case is ongoing (s.370(1)(b)).",
+      "status": "verified"
+     },
+     {
+      "text": "In the report, explain why the property is still relevant. The court must not dispose of it while it is relevant to any investigation, inquiry, trial or other proceeding, or while a related court proceeding is pending (s.370(3)(a)–(b)).",
+      "status": "verified"
+     },
+     {
+      "text": "If you need it held for a tracing investigation or an investigation into an absconded suspect, apply for continued seizure and show it won't cause injustice to the person entitled (s.370(3)(c)).",
+      "status": "verified"
+     },
+     {
+      "text": "An absconded suspect (not found, apprehended or extradited 6 months after investigations began) cannot claim the property, and it cannot be delivered to them, unless they personally present themselves to a law enforcement officer (ss.370(3A), (3B), (6)).",
+      "status": "verified"
+     },
+     {
+      "text": "Put everything you rely on in the report. Case law suggests the hearing is confined to the report's material (Lee Chen Seong Jeremy v PP [2019] SGHC 48, not yet read in full).",
+      "status": "tip"
+     }
+    ]
+   }
+  ],
+  "template": [
+   "Case / IP reference",
+   "Exhibit number(s) and description",
+   "Date of seizure (one-year report date = same date next year)",
+   "Power used to seize (CPC s.35 / s.78 / other Act)",
+   "Place of seizure and seizing officer",
+   "Relevant court (trial or inquiry court, or Magistrate's Court)",
+   "Status: still relevant (why) / no longer relevant",
+   "Pending s.370(3)(c) investigation? (tracing owner / absconded suspect)",
+   "Person(s) believed entitled, basis, legitimate source of funds",
+   "Competing claims, if any",
+   "Order sought under s.370(2)(a)–(e)",
+   "Estimated value (relevant to s.371(4) $500 and s.372(2), (4) $1,000 thresholds)",
+   "Attachments (photos, receipts, statements)"
+  ]
+ }
+}

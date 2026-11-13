@@ -1,0 +1,90 @@
+[
+ {
+  "section": "18",
+  "offence": "Unlawful conduct of betting operations, gaming or lotteries",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (expressly arrestable under s.18(5))",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable",
+  "punishment": "Fine not exceeding $500,000 and imprisonment not exceeding 7 years (repeat: fine up to $700,000 and imprisonment up to 10 years)",
+  "note": "Restored from history after accidental deletion; re-verify on SSO."
+ },
+ {
+  "section": "19",
+  "offence": "Betting operation, gaming or lottery outside of approved gambling venue",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable",
+  "punishment": "See Act (similar scale to s.18 for organisers)",
+  "note": "Restored from history after accidental deletion; re-verify on SSO."
+ },
+ {
+  "section": "20",
+  "offence": "Gambling with unlicensed gambling service provider or at unlawful gambling place",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (expressly arrestable under s.20(4))",
+  "process": "Warrant",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $10,000 or imprisonment not exceeding 6 months or both",
+  "note": "Restored from history after accidental deletion; re-verify on SSO."
+ },
+ {
+  "section": "21",
+  "offence": "Having financial interest in unlawful gambling service",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable",
+  "punishment": "See Act",
+  "note": "Restored from history after accidental deletion; re-verify on SSO."
+ },
+ {
+  "section": "23",
+  "offence": "Owning or allowing place to be used for unlawful gambling",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable",
+  "punishment": "See Act",
+  "note": "Restored from history after accidental deletion; re-verify on SSO."
+ },
+ {
+  "section": "26",
+  "offence": "Being in an unlawful gambling place",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant",
+  "process": "Warrant",
+  "bail": "yes",
+  "bailText": "Bailable (generally; check Act)",
+  "punishment": "See Act",
+  "note": "Restored from history after accidental deletion; re-verify on SSO."
+ },
+ {
+  "section": "27",
+  "offence": "Prohibited or unapproved gaming machine use",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable (where max >=3 years) / see Act",
+  "punishment": "See Act",
+  "note": "Restored from history after accidental deletion; re-verify on SSO."
+ },
+ {
+  "section": "36",
+  "offence": "Possession of unlawful gambling instruments",
+  "arrest": "yes",
+  "arrestText": "May arrest without warrant (expressly arrestable under s.36(4))",
+  "process": "Warrant",
+  "bail": "no",
+  "bailText": "Not bailable",
+  "punishment": "Fine not exceeding $500,000 and imprisonment not exceeding 7 years (repeat higher)",
+  "note": "Restored from history after accidental deletion; re-verify on SSO."
+ }
+]

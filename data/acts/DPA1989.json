@@ -1,0 +1,32 @@
+[
+ {
+  "section": "4",
+  "offence": "Penalty for begging (habitual beggar causing annoyance / nuisance in public place)",
+  "arrest": "no",
+  "arrestText": "May not arrest without warrant (no general Act arrest power for s.4; max 2 years — CPC default for other laws). s.3 allows taking a destitute person into charge for welfare-home inquiry, which is not the s.4 offence power",
+  "process": "Summons",
+  "bail": "yes",
+  "bailText": "Bailable",
+  "punishment": "Fine not exceeding $3,000 or imprisonment not exceeding 2 years"
+ },
+ {
+  "section": "16",
+  "offence": "Escape from lawful custody of welfare home / police under the Act",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if reasonably suspected of s.16 or s.17 and refuses or fails to accompany a police officer to, or appear before, a Magistrate's Court (DPA s.18). Not a general warrantless-arrest offence",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable (max 6 months — CPC default for other laws)",
+  "punishment": "Imprisonment not exceeding 6 months"
+ },
+ {
+  "section": "17",
+  "offence": "Behaving in disorderly manner in welfare home",
+  "arrest": "conditional",
+  "arrestText": "May arrest without warrant only if reasonably suspected of s.16 or s.17 and refuses or fails to accompany a police officer to, or appear before, a Magistrate's Court (DPA s.18). Not a general warrantless-arrest offence",
+  "process": "Warrant / Summons (context-dependent)",
+  "bail": "yes",
+  "bailText": "Bailable (max 2 years — CPC default for other laws)",
+  "punishment": "Fine not exceeding $3,000 or imprisonment not exceeding 2 years"
+ }
+]

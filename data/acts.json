@@ -1,0 +1,255 @@
+[
+ {
+  "id": "PC1871",
+  "code": "PC1871",
+  "name": "Penal Code 1871",
+  "short": "Penal Code",
+  "aliases": [
+   "Penal Code 1871"
+  ],
+  "arrestPower": {
+   "type": "schedule",
+   "provision": "CPC 2010 First Schedule",
+   "summary": "Arrest, process and bail are read from the CPC 2010 First Schedule entry for each Penal Code section."
+  }
+ },
+ {
+  "id": "PHA2014",
+  "code": "PHA2014",
+  "name": "Protection from Harassment Act 2014",
+  "short": "POHA",
+  "aliases": [
+   "POHA 2014"
+  ],
+  "arrestPower": {
+   "type": "conditional",
+   "provision": "s.18",
+   "summary": "s.18(1): any police officer may arrest without warrant any person offending in the officer's view against any provision of the Act. s.18(2): may also arrest without warrant a person reasonably suspected of a s.10(1) offence in the circumstances prescribed by regulations.",
+   "verified": "Sources PDF, in force from 17/8/2026"
+  }
+ },
+ {
+  "id": "MOPONA1906",
+  "code": "MOPONA1906",
+  "name": "Miscellaneous Offences (Public Order and Nuisance) Act 1906",
+  "short": "MOA",
+  "aliases": [
+   "Miscellaneous Offences Act"
+  ],
+  "arrestPower": {
+   "type": "conditional",
+   "provision": "ss.22(2), 28, 34, 39I, 40",
+   "summary": "s.40(1): any police officer may arrest without warrant any person offending in the officer's view against any provision of the Act. Also: s.22 offences are deemed arrestable (s.22(2)); any person may arrest anyone found offending against Part 4 (vagrancy, ss.26–27A) (s.28); Part 5 touting offences (s.34) and Part 6A SIM-card offences (s.39I) are deemed arrestable.",
+   "verified": "Sources PDF, in force from 17/8/2026"
+  }
+ },
+ {
+  "id": "CESOWA1958",
+  "code": "CESOWA1958",
+  "name": "Corrosive and Explosive Substances and Offensive Weapons Act 1958",
+  "short": "CESOWA",
+  "aliases": [
+   "CESOWA"
+  ],
+  "arrestPower": {
+   "type": "listed",
+   "provision": "ss.6, 7, 8",
+   "summary": "Offences under ss.6, 7 and 8 are expressly arrestable and non-bailable. Other offences follow the CPC term default.",
+   "verified": "Sources PDF, in force from 17/8/2026"
+  }
+ },
+ {
+  "id": "GEWCA2021",
+  "code": "GEWCA2021",
+  "name": "Guns, Explosives and Weapons Control Act 2021",
+  "short": "GEWCA",
+  "aliases": [
+   "GEWCA",
+   "Guns, Explosives and Weapons Control Act"
+  ],
+  "arrestPower": {
+   "type": "all",
+   "provision": "s.40",
+   "summary": "Every offence under Part 2 is arrestable for the CPC. Bail still follows the maximum term unless the Act says otherwise.",
+   "verified": "Sources PDF"
+  }
+ },
+ {
+  "id": "GCA2022",
+  "code": "GCA2022",
+  "name": "Gambling Control Act 2022",
+  "short": "GCA",
+  "aliases": [
+   "GCA 2022"
+  ],
+  "arrestPower": {
+   "type": "listed",
+   "provision": "Section-specific",
+   "summary": "Most offence sections in ss.18–29 and 36–39 state that the offence is an arrestable offence (e.g. s.18(5), s.26(4), s.36(4)). Check the specific section; others follow the CPC term default.",
+   "verified": "Sources PDF"
+  }
+ },
+ {
+  "id": "LCSCA2015",
+  "code": "LCSCA2015",
+  "name": "Liquor Control (Supply and Consumption) Act 2015",
+  "short": "LCA",
+  "aliases": [
+   "Liquor Control Act"
+  ],
+  "arrestPower": {
+   "type": "conditional",
+   "provision": "s.30",
+   "summary": "Any police officer may arrest without warrant any person offending in the officer's view against any provision of the Act, even where the maximum term is under 3 years. Bail is unaffected.",
+   "verified": "Sources PDF"
+  }
+ },
+ {
+  "id": "VA1966",
+  "code": "VA1966",
+  "name": "Vandalism Act 1966",
+  "short": "Vandalism",
+  "aliases": [
+   "Vandalism Act"
+  ],
+  "arrestPower": {
+   "type": "all",
+   "provision": "s.6",
+   "summary": "Every offence under the Act is arrestable and non-bailable for the CPC.",
+   "verified": "Sources PDF"
+  }
+ },
+ {
+  "id": "DPA1989",
+  "code": "DPA1989",
+  "name": "Destitute Persons Act 1989",
+  "short": "DPA",
+  "aliases": [
+   "Destitute Persons Act"
+  ],
+  "arrestPower": {
+   "type": "listed",
+   "provision": "s.18",
+   "summary": "A person reasonably suspected of an offence under s.16 or s.17 who refuses or fails to go with a police officer to, or appear before, a Magistrate's Court when required may be arrested without warrant. Other offences follow the CPC term default.",
+   "verified": "Sources PDF, in force from 1/7/2026"
+  }
+ },
+ {
+  "id": "MA2008",
+  "code": "MA2008",
+  "name": "Moneylenders Act 2008",
+  "short": "Moneylenders",
+  "aliases": [
+   "Moneylenders Act"
+  ],
+  "arrestPower": {
+   "type": "listed",
+   "provision": "s.86",
+   "summary": "Every offence under s.19 (unlicensed moneylending) or s.47 (harassment) is deemed arrestable and non-bailable. Others follow the CPC term default.",
+   "verified": "Sources PDF, in force from 16/10/2026"
+  }
+ },
+ {
+  "id": "CMA1993",
+  "code": "CMA1993",
+  "name": "Computer Misuse Act 1993",
+  "short": "CMA",
+  "aliases": [
+   "Computer Misuse Act"
+  ],
+  "arrestPower": {
+   "type": "conditional",
+   "provision": "s.19",
+   "summary": "Any police officer may arrest without warrant any person reasonably suspected of committing an offence under the Act.",
+   "verified": "Sources PDF, in force from 30/12/2025"
+  }
+ },
+ {
+  "id": "RTA1961",
+  "code": "RTA1961",
+  "name": "Road Traffic Act 1961",
+  "short": "RTA",
+  "aliases": [
+   "Road Traffic Act"
+  ],
+  "arrestPower": {
+   "type": "listed",
+   "provision": "ss.64(13), 65(12), 67, 70, 127",
+   "summary": "Several sections carry their own arrest power; s.127 is a qualified power. Otherwise CPC term defaults apply."
+  }
+ },
+ {
+  "id": "POA2009",
+  "code": "POA2009",
+  "name": "Public Order Act 2009",
+  "short": "POA",
+  "aliases": [
+   "Public Order Act"
+  ],
+  "arrestPower": {
+   "type": "conditional",
+   "provision": "s.40",
+   "summary": "Any police officer may arrest without warrant any person offending in the officer's view against any provision of the Act.",
+   "verified": "Sources PDF, in force from 1/10/2025"
+  }
+ },
+ {
+  "id": "MDA1973",
+  "code": "MDA1973",
+  "name": "Misuse of Drugs Act 1973",
+  "short": "MDA",
+  "aliases": [
+   "Misuse of Drugs Act"
+  ],
+  "arrestPower": {
+   "type": "conditional",
+   "provision": "s.25",
+   "summary": "CNB or police officers may arrest without warrant a person who has committed or is reasonably suspected of committing an offence under the Act — no in-view limit."
+  }
+ },
+ {
+  "id": "IA1959",
+  "code": "IA1959",
+  "name": "Immigration Act 1959",
+  "short": "Immigration",
+  "aliases": [
+   "Immigration Act"
+  ],
+  "arrestPower": {
+   "type": "conditional",
+   "provision": "s.51(3)",
+   "summary": "Any police, immigration or customs officer may arrest without warrant any person the officer reasonably believes has committed an offence under the Act or regulations.",
+   "verified": "Sources PDF, in force from 30/9/2026"
+  }
+ },
+ {
+  "id": "MRHA2025",
+  "code": "MRHA2025",
+  "name": "Maintenance of Racial Harmony Act 2025",
+  "short": "MRHA",
+  "aliases": [
+   "Maintenance of Racial Harmony Act"
+  ],
+  "arrestPower": {
+   "type": "none",
+   "provision": "None found",
+   "summary": "No arrest provision found in the Act. CPC term defaults apply.",
+   "verified": "Sources PDF"
+  }
+ },
+ {
+  "id": "WC1961",
+  "code": "WC1961",
+  "name": "Women's Charter 1961",
+  "short": "Women's Charter",
+  "aliases": [
+   "Women's Charter 1961"
+  ],
+  "arrestPower": {
+   "type": "listed",
+   "provision": "ss.63D, 64E, 174",
+   "summary": "s.63D: a family violence offence is arrestable for the CPC. s.64E: enforcement officers' power of arrest without warrant. s.174(1): the Director-General, or an authorised police officer (sergeant or above), immigration officer or departmental officer, may arrest a person reasonably believed liable for an offence under ss.140–148 (listed subsections).",
+   "verified": "Sources PDF, in force from 17/8/2026"
+  }
+ }
+]
