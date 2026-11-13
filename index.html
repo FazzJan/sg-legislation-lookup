@@ -10,6 +10,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Hambalang">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <script>
     try { const t = localStorage.getItem('legis-theme'); if (t) document.documentElement.dataset.theme = t; } catch (_) {}
   </script>
@@ -159,6 +165,28 @@
       <h2>From seizure to court order</h2>
       <ol class="flow" id="exFlow"></ol>
     </section>
+    <section class="panel" id="helper">
+      <p class="eyebrow">Application helper</p>
+      <h2>Return or dispose of an exhibit</h2>
+      <p class="muted" id="hIntro"></p>
+      <div class="quick-grid">
+        <label>Situation
+          <select id="hScenario"></select>
+        </label>
+        <label>Date of seizure
+          <input type="date" id="hDate" class="date-input">
+        </label>
+      </div>
+      <div class="deadline" id="hDeadline" hidden></div>
+      <ol class="steps" id="hSteps"></ol>
+      <details class="template">
+        <summary>Notes template for the report</summary>
+        <p class="muted small">Not an official form. A checklist of what to gather before you draft.</p>
+        <pre id="hTemplate"></pre>
+        <button type="button" class="btn" id="hCopy">Copy template</button>
+      </details>
+    </section>
+
     <section class="panel">
       <p class="eyebrow">Section by section</p>
       <h2>ss.364–372</h2>

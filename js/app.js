@@ -269,6 +269,7 @@ async function loadGuide() {
     </article>`).join('');
     $('exCases').innerHTML = g.cases.map((c) => `<div class="case"><b>${esc(c.name)}</b><i>${esc(c.cite)}</i><p>${esc(c.point)} <a href="${esc(c.url)}" target="_blank" rel="noopener">Judgment ↗</a></p></div>`).join('');
     $('exCaveat').textContent = g.caveat;
+    renderHelper(g.helper);
   } catch (err) {
     console.error(err);
     $('exStatus').textContent = 'Could not load the guide — please refresh.';
@@ -276,6 +277,38 @@ async function loadGuide() {
 }
 
 /* ---------- load ---------- */
+/* ---------- exhibit application helper ---------- */
+function renderHelper(h) {
+  if (!h) { $('helper').hidden = true; return; }
+  const label = { verified: 'Verified', pending: 'Check CPC text' };
+  $('hIntro').textContent = h.intro;
+  $('hScenario').innerHTML = h.scenarios.map((x) => `<option value="${esc(x.id)}">${esc(x.label)}</option>`).join('');
+  const steps = () => {
+    const sc = h.scenarios.find((x) => x.id === $('hScenario').value) || h.scenarios[0];
+    $('hSteps').innerHTML = sc.steps.map((st) => `<li><p>${esc(st.text)}</p><span class="pill ${st.status}">${label[st.status]}</span></li>`).join('');
+  };
+  const deadline = () => {
+    const v = $('hDate').value; const box = $('hDeadline');
+    if (!v) { box.hidden = true; return; }
+    const [y, m, d] = v.split('-').map(Number);
+    const due = new Date(Date.UTC(y + 1, m - 1, d));
+    if (due.getUTCMonth() !== m - 1) due.setUTCDate(0); // 29 Feb -> 28 Feb
+    const today = new Date(); const t = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+    const days = Math.round((due - t) / 864e5);
+    const fmt = due.toLocaleDateString('en-SG', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+    box.className = `deadline ${days < 0 ? 'past' : days <= 60 ? 'soon' : ''}`;
+    box.innerHTML = `<span>One-year long-stop for the s.370(1) report</span><b>${fmt}</b><span>${days < 0 ? `${-days} days overdue` : days === 0 ? 'Due today' : `${days} days left`} · report earlier if the item stops being relevant</span>`;
+    box.hidden = false;
+  };
+  $('hScenario').addEventListener('change', steps);
+  $('hDate').addEventListener('input', deadline);
+  $('hTemplate').textContent = h.template.map((f) => `${f}:\n`).join('\n');
+  $('hCopy').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText($('hTemplate').textContent); toast('Template copied'); } catch (_) { toast('Copy failed'); }
+  });
+  steps();
+}
+
 /* ---------- data source: plain files (dev) or encrypted vault (published) ---------- */
 let bundlePromise = null;
 let unlockResolve;
@@ -358,6 +391,9 @@ async function init() {
     console.error(err);
     els.count.textContent = 'Could not load data — please refresh.';
   }
+}
+if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+  window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
 setupLock();
 showView();

@@ -318,3 +318,20 @@ body.locked > :not(.lock):not(.glow) { display: none !important; }
 .lock-card input:focus { border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-soft); }
 .lock-card .btn { justify-content: center; }
 .lock-msg { min-height: 20px; font-size: 13px; color: var(--amber); }
+
+/* Application helper */
+.date-input { height: 46px; border-radius: 11px; border: 1px solid var(--line-2); background: var(--bg-2); color: var(--text); font: 500 14px var(--sans); padding: 0 14px; width: 100%; color-scheme: inherit; }
+.date-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px var(--gold-soft); }
+.deadline { margin-top: 14px; border-radius: 14px; padding: 14px 16px; border: 1px solid var(--line-2); background: var(--bg-2); display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; }
+.deadline b { font: 400 26px/1.1 var(--serif); }
+.deadline.soon { border-color: color-mix(in srgb, var(--amber) 45%, transparent); background: var(--amber-soft); }
+.deadline.past { border-color: color-mix(in srgb, var(--red) 45%, transparent); background: var(--red-soft); }
+.deadline span { color: var(--muted); font-size: 13.5px; }
+.steps { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 4px 12px; padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-2); }
+.steps li::before { content: counter(s); font: 600 13px var(--mono); color: var(--gold); padding-top: 1px; }
+.steps p { margin: 0; font-size: 14.5px; }
+.steps .pill { grid-column: 2; justify-self: start; }
+.template { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 14px; }
+.template summary { cursor: pointer; font-weight: 600; }
+.template pre { white-space: pre-wrap; font: 13px/1.7 var(--mono); background: var(--bg-2); border: 1px solid var(--line); border-radius: 12px; padding: 14px; color: var(--muted); }
