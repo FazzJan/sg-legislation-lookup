@@ -22,3 +22,13 @@ One-time setup:
 3. Merge to `main`. The workflow deploys the encrypted site.
 
 What this protects: the deployed website. What it does not protect: this repository's source and its git history. Make the repository private if those must be hidden too (Pages from a private repo requires a paid GitHub plan).
+
+## Automatic updates
+
+A scheduled Claude review runs every Monday and Thursday (2:37pm SGT) and pushes its changes to a `claude/data-review-<date>` branch. `.github/workflows/auto-merge.yml` then merges that branch into `main` and redeploys the site, but only if every check passes:
+
+1. `scripts/validate.py`: data is well-formed.
+2. `scripts/safety_check.py`: nothing deleted, no statute removed, no Act losing more than 5% of its rows, no drop in charge templates or NPC boundaries, no placeholder text.
+3. The encrypted build succeeds.
+
+If any check fails, the branch is left unmerged and the failed run shows in the Actions tab. To stop auto-merging, delete `.github/workflows/auto-merge.yml` or disable it under Actions.
