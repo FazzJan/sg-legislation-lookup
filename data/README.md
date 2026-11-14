@@ -5,7 +5,7 @@ All data is plain, human-readable JSON so every change shows up clearly in a dif
 | File | What it holds |
 | --- | --- |
 | `acts.json` | One entry per statute: SSO code, names, and the Act's **arrest power** (`arrestPower.type` = `schedule`, `all`, `conditional`, `listed` or `none`). |
-| `guides/charges.json` | Charge-drafting templates (Penal Code wording, CPC ss.123–124 format). |
+| `guides/charges.json` | Charge-drafting templates (statutory wording, CPC ss.123–124 format). Penal Code by default; a template for another Act sets `"act": "<id from acts.json>"`. Every offence row gets a draft charge even without a template; a template supplies the full particulars. |
 | `guides/cpc-part19.json` | Case property guide (CPC Part 19). |
 | `geo/npc.json` | NPC boundaries, simplified from `Sources/SingaporePoliceForceNPCBoundary.geojson` by `scripts/build_npc.py`. Re-run the script when the source is replaced. |
 | `geo/npc-names.json` | Display names for NPC and Division codes (editable). |

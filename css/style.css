@@ -449,3 +449,4 @@ body {
 @media (prefers-reduced-transparency: reduce) {
   .nav, .tabbar, .chip, .segmented, .sheet, .toast, #searchBox, #cSearch, .searchbar.with-btn input { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--card); }
 }
+.toggle:has(input:disabled) { opacity: 0.5; cursor: not-allowed; }
