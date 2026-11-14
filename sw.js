@@ -1,7 +1,7 @@
 // Offline support. Online: always fetch the latest files (revalidated with the
 // server, so it's fast). Offline: fall back to the last saved copy.
 // Bump VERSION whenever the app shell changes.
-const VERSION = 'v6';
+const VERSION = 'v7';
 const CACHE = `hambalang-${VERSION}`;
 const PRECACHE = ['./', 'index.html', 'css/style.css', 'js/app.js', 'js/osint.js', 'js/osint-phone.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'fonts/fonts.css', 'data/vault.json'];

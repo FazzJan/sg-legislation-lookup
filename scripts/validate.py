@@ -86,6 +86,32 @@ for act in acts:
         if r["bail"] in ("yes", "no") and r["bail"] != default_bail and power != "all" and not r.get("bailBasis"):
             warnings.append(f"{where}: bail={r['bail']} but CPC default for max {yrs:g}y is {default_bail} — confirm an Act-specific bail rule")
 
+# Charge templates: Penal Code unless "act" names another Act in acts.json.
+try:
+    tpls = json.loads((ROOT / "guides" / "charges.json").read_text())["templates"]
+except (OSError, json.JSONDecodeError, KeyError) as e:
+    errors.append(f"guides/charges.json: unreadable ({e})")
+    tpls = []
+seen_tpl = set()
+for t in tpls:
+    act_id = t.get("act", "PC1871")
+    where = f"charges.json {act_id} s.{t.get('section', '?')}"
+    for k in ("section", "title", "punishable", "particulars", "fields", "notes"):
+        if k not in t:
+            errors.append(f"{where}: missing '{k}'")
+    if act_id not in ids:
+        errors.append(f"{where}: act '{act_id}' is not in acts.json")
+    if (act_id, t.get("section")) in seen_tpl:
+        errors.append(f"{where}: duplicate template")
+    seen_tpl.add((act_id, t.get("section")))
+    field_ids = {f.get("id") for f in t.get("fields", [])}
+    used = set(re.findall(r"\{(\w+)\}", t.get("particulars", "") + " ".join(o for f in t.get("fields", []) for o in f.get("options", []))))
+    for u in used - field_ids:
+        errors.append(f"{where}: particulars use {{{u}}} but no field has that id")
+    for f in t.get("fields", []):
+        if f.get("type") == "select" and not f.get("options"):
+            errors.append(f"{where}: select field '{f.get('id')}' has no options")
+
 for f in (ROOT / "acts").glob("*.json"):
     if f.stem not in ids:
         errors.append(f"{f.name}: not listed in acts.json")

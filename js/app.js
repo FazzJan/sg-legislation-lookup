@@ -349,12 +349,14 @@ async function loadGuide() {
 /* ---------- charge generator ---------- */
 // Type an offence code; get a draft with [placeholders] and a filled-in sample, both copyable.
 let charges = null;
-function findTemplate(section) {
+function findTemplate(section, actId = 'PC1871') {
+  // Templates are Penal Code unless they name another Act with "act".
   if (!charges) return null;
   const s = String(section);
-  return charges.templates.find((t) => t.section === s)
-    || charges.templates.find((t) => t.section.replace(/\(.*$/, '') === s)
-    || charges.templates.find((t) => t.section === `${s}(1)`) || null;
+  const list = charges.templates.filter((t) => (t.act || 'PC1871') === actId);
+  return list.find((t) => t.section === s)
+    || list.find((t) => t.section.replace(/\(.*$/, '') === s)
+    || list.find((t) => t.section === `${s}(1)`) || null;
 }
 const ORD = (n) => { const v = n % 100; return n + (['th', 'st', 'nd', 'rd'][(v - 20) % 10] || ['th', 'st', 'nd', 'rd'][v] || 'th'); };
 async function copyText(t, msg) { try { await navigator.clipboard.writeText(t); toast(msg); } catch (_) { toast('Copy failed'); } }
@@ -382,6 +384,7 @@ async function loadCharge() {
     });
     $('cS34').addEventListener('change', renderCharge);
     $('cAttempt').addEventListener('change', renderCharge);
+    $('cAmalg').addEventListener('change', renderCharge);
     $('cCopy').addEventListener('click', () => copyText(plainOf('cOut'), 'Draft copied'));
     $('cCopySample').addEventListener('click', () => copyText(plainOf('cSample'), 'Sample copied'));
   }
@@ -402,7 +405,7 @@ function renderChargeResults(keepSelection) {
   const list = q.trim() ? chargeSearch(q) : [];
   $('cResults').innerHTML = '';
   if (!q.trim()) {
-    $('cStatus').textContent = `${state.rows.length.toLocaleString()} offences · charges with a full template: ${charges.templates.length} Penal Code sections`;
+    $('cStatus').textContent = `${state.rows.length.toLocaleString()} offences · ${charges.templates.length} with full charge wording`;
     if (keepSelection !== true) { chargeRow = null; $('cDraftWrap').hidden = true; }
     return;
   }
@@ -412,7 +415,7 @@ function renderChargeResults(keepSelection) {
     const b = document.createElement('button');
     b.type = 'button'; b.className = 'row'; b.setAttribute('role', 'option');
     b.setAttribute('aria-selected', String(chargeRow === r));
-    const tpl = r.act.id === 'PC1871' && findTemplate(r.section);
+    const tpl = findTemplate(r.section, r.act.id);
     b.innerHTML = `<span class="row-sec">${esc(r.section)}</span>
       <span><div class="row-title">${esc(r.offence)}</div><div class="row-act">${esc(r.act.short)}${tpl ? ' · full template' : ''}</div></span>
       <span class="badge ${r.arrest}">${ARREST_LABEL[r.arrest]}</span>`;
@@ -425,8 +428,13 @@ function selectCharge(r) {
   $('cDraftWrap').hidden = false;
   $('cAct').textContent = r.act.name;
   $('cTitle').textContent = `s.${r.section} · ${r.offence}`;
-  $('cToggles').hidden = r.act.id !== 'PC1871';
-  $('cS34').checked = false; $('cAttempt').checked = false;
+  const pc = r.act.id === 'PC1871';
+  $('tS34').hidden = !pc; $('tAttempt').hidden = !pc;
+  // CPC s.124(4)(a)(iii): an amalgamated charge cannot specify an offence punishable with death.
+  const death = /death/i.test(r.punishment || '');
+  $('cAmalg').disabled = death;
+  $('amalgHint').textContent = death ? 'Not allowed: punishable with death · CPC s.124(4)(a)(iii)' : 'Several incidents in one charge · CPC s.124(4)';
+  $('cS34').checked = false; $('cAttempt').checked = false; $('cAmalg').checked = false;
   history.replaceState(null, '', `#charge/${r.act.id}/${encodeURIComponent(r.section)}`);
   renderCharge();
   $('cDraftWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -434,11 +442,12 @@ function selectCharge(r) {
 const SAMPLE = {
   name: 'Ahmad Faizal bin Ismail', id: 'NRIC No. S9012345D', age: '32', date: '1st January 2026', time: '10.30 pm',
   place: 'Blk 123 Ang Mo Kio Avenue 3 #01-234', co: 'Lee Ah Huat, NRIC No. S2345678C',
+  count: '5', from: '1st January 2026', to: '31st March 2026', places: 'various locations in Ang Mo Kio',
 };
 function buildCharge(r, sample) {
   const ph = (label) => `<span class="fill">[${esc(label)}]</span>`;
   const F = (label, ex) => (sample ? esc(ex) : ph(label));
-  const t = r.act.id === 'PC1871' ? findTemplate(r.section) : null;
+  const t = findTemplate(r.section, r.act.id);
   const notes = [];
   let particulars;
   let punishable;
@@ -465,7 +474,7 @@ function buildCharge(r, sample) {
     punishable = r.act.id === 'PC1871'
       ? `section ${esc(r.section)} of the Penal Code 1871`
       : null;
-    notes.push('There is no full template for this offence yet, so the particulars are left for you to write. Use the words of the section on SSO.');
+    notes.push('There is no full wording for this offence yet, so the particulars are left for you to write. Use the words of the section on SSO.');
     if (r.act.id !== 'PC1871') notes.push(`Check which section of the ${r.act.name} sets the punishment (often a separate penalty section) and fill it in.`);
   }
   const reads = [];
@@ -487,8 +496,22 @@ function buildCharge(r, sample) {
   const ending = punishable
     ? `and you have thereby committed an offence punishable under ${punishable}.`
     : `and you have thereby committed an offence under section ${esc(r.section)} of the ${esc(r.act.name)}, punishable under ${ph('penalty section')} of the ${esc(r.act.name)}.`;
-  const html = `You, ${F('name of accused', SAMPLE.name)}, ${F('NRIC / FIN / passport no.', SAMPLE.id)}, ${F('age', SAMPLE.age)} years old,
+  const accused = `You, ${F('name of accused', SAMPLE.name)}, ${F('NRIC / FIN / passport no.', SAMPLE.id)}, ${F('age', SAMPLE.age)} years old,`;
+  let html;
+  if ($('cAmalg').checked && !$('cAmalg').disabled) {
+    // CPC s.124(4)(a)(i): (A) say it is amalgamated, (B) the number of incidents (or the aggregate outcome),
+    // (C) that they amount to a course of conduct, (D) the dates between which they happened.
+    html = `${accused}
+are charged, in this amalgamated charge under section 124(4) of the Criminal Procedure Code 2010, that you, ${together}on not less than ${F('number of', SAMPLE.count)} occasions between ${F('start date', SAMPLE.from)} and ${F('end date', SAMPLE.to)}, at ${F('place or places', SAMPLE.places)}, Singapore, ${particulars}, which incidents taken together amount to a course of conduct, ${ending}`;
+    notes.unshift(
+      'Amalgamated charge (CPC s.124(4)): every incident must be the same offence with the same maximum punishment, and the incidents together must amount to a course of conduct, e.g. same victim or class of victims, same or similar method, same or nearby places, or within 12 months (s.124(5)).',
+      'State the number of incidents, or for an offence defined by its outcome (e.g. value stolen), the total outcome across all incidents. No need to give each date: the period between the first and last is enough.',
+      'On conviction the court may impose up to twice the maximum for one incident (s.124(8)(a)(ii)); caning stays within s.328. Not available if the accused relies on a different defence for each incident (s.124(7)).',
+    );
+  } else {
+    html = `${accused}
 are charged that you, ${together}on ${F('date', SAMPLE.date)}, at about ${F('time', SAMPLE.time)}, at ${F('place', SAMPLE.place)}, Singapore, ${particulars}, ${ending}`;
+  }
   return { html, notes };
 }
 function renderCharge() {
