@@ -87,13 +87,19 @@ function ssoUrl(act, section) {
 /* ---------- search ---------- */
 function normalise(s) { return String(s).toLowerCase().replace(/^(section|sec|s)\.?\s*/i, '').trim(); }
 
-function search(query) {
+function search(query, filter = state.filter) {
+  // "PC 379" / "POHA 4": a leading Act code or short name narrows the search to that Act.
+  const parts = String(query).trim().split(/\s+/);
+  if (parts.length > 1 && filter === 'all') {
+    const act = actFromToken(parts[0]);
+    if (act) { filter = act.id; query = parts.slice(1).join(' '); }
+  }
   const q = normalise(query);
   if (!q) return [];
   const words = q.split(/\s+/);
   const out = [];
   for (const r of state.rows) {
-    if (state.filter !== 'all' && r.act.id !== state.filter) continue;
+    if (filter !== 'all' && r.act.id !== filter) continue;
     const sec = r.section.toLowerCase();
     let score;
     if (sec === q) score = 0;
@@ -195,9 +201,8 @@ function select(r, fromClick) {
   $('noteRow').hidden = !r.note;
   $('dNote').textContent = r.note || '';
   $('ssoLink').href = r.link || ssoUrl(r.act, r.section);
-  const tpl = r.act.id === 'PC1871' && findTemplate(r.section);
-  $('chargeLink').hidden = !tpl;
-  if (tpl) $('chargeLink').href = `#charge/${encodeURIComponent(tpl.section)}`;
+  $('chargeLink').hidden = false;
+  $('chargeLink').href = `#charge/${r.act.id}/${encodeURIComponent(r.section)}`;
   history.replaceState(null, '', `#${r.act.id}/${encodeURIComponent(r.section)}`);
   [...els.results.querySelectorAll('.row')].forEach((b) => b.setAttribute('aria-selected', String(state.matches[+b.dataset.i] === r)));
   if (fromClick && matchMedia('(max-width: 860px)').matches) els.detail.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -294,6 +299,7 @@ function currentView() {
   const h = location.hash;
   if (h === '#exhibits') return 'exhibits';
   if (h === '#npc') return 'npc';
+  if (h === '#osint' || h.startsWith('#osint/')) return 'osint';
   if (h === '#charge' || h.startsWith('#charge/')) return 'charge';
   return 'offences';
 }
@@ -303,10 +309,12 @@ function showView() {
   $('viewCharge').hidden = v !== 'charge';
   $('viewExhibits').hidden = v !== 'exhibits';
   $('viewNpc').hidden = v !== 'npc';
+  $('viewOsint').hidden = v !== 'osint';
   document.querySelectorAll('[data-view]').forEach((t) => t.setAttribute('aria-selected', String(t.dataset.view === v)));
   if (v === 'exhibits' && !guideLoaded) loadGuide();
   if (v === 'charge') loadCharge();
   if (v === 'npc') loadNpc();
+  if (v === 'osint' && window.loadOsint) window.loadOsint();
 }
 document.querySelectorAll('[data-view], [data-view-link]').forEach((t) => t.addEventListener('click', (e) => {
   e.preventDefault();
@@ -339,6 +347,7 @@ async function loadGuide() {
 }
 
 /* ---------- charge generator ---------- */
+// Type an offence code; get a draft with [placeholders] and a filled-in sample, both copyable.
 let charges = null;
 function findTemplate(section) {
   if (!charges) return null;
@@ -348,120 +357,148 @@ function findTemplate(section) {
     || charges.templates.find((t) => t.section === `${s}(1)`) || null;
 }
 const ORD = (n) => { const v = n % 100; return n + (['th', 'st', 'nd', 'rd'][(v - 20) % 10] || ['th', 'st', 'nd', 'rd'][v] || 'th'); };
-function fmtDate(v) {
-  if (!v) return '';
-  const [y, m, d] = v.split('-').map(Number);
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-  return `${ORD(d)} ${months[m - 1]} ${y}`;
-}
-const CHARGE_FIELDS = ['cNo', 'cName', 'cId', 'cAge', 'cNat', 'cDate', 'cDate2', 'cTime', 'cPlace', 'cCo'];
-let saved = [];
-try { saved = JSON.parse(localStorage.getItem('legis-charges') || '[]'); } catch (_) { saved = []; }
-function persistSaved() { try { localStorage.setItem('legis-charges', JSON.stringify(saved)); } catch (_) {} renderSaved(); }
-function renderSaved() {
-  $('savedWrap').hidden = !saved.length;
-  $('savedCount').textContent = saved.length;
-  $('savedList').innerHTML = saved.map((c, i) => `<div class="saved-item"><header><span>${i + 1}. s.${esc(c.section)}</span>
-    <span><button type="button" class="text-btn" data-copy="${i}">Copy</button><button type="button" class="text-btn danger" data-del="${i}">Remove</button></span></header><p>${esc(c.text)}</p></div>`).join('');
-  $('savedList').querySelectorAll('[data-copy]').forEach((b) => b.addEventListener('click', () => copyText(saved[+b.dataset.copy].text, 'Charge copied')));
-  $('savedList').querySelectorAll('[data-del]').forEach((b) => b.addEventListener('click', () => { saved.splice(+b.dataset.del, 1); persistSaved(); }));
-}
 async function copyText(t, msg) { try { await navigator.clipboard.writeText(t); toast(msg); } catch (_) { toast('Copy failed'); } }
+
+// "PC 379", "poha 3", "379": an optional Act code or short name, then the section or keywords.
+function actFromToken(tok) {
+  const t = tok.toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (t.length < 2) return null;
+  return state.acts.find((a) => [a.code, a.short, ...(a.aliases || [])].some((n) => {
+    const x = String(n).toLowerCase().replace(/[^a-z0-9]/g, '');
+    return x === t || (t.length >= 2 && /^[a-z]+$/.test(t) && x.replace(/\d+$/, '') === t);
+  })) || null;
+}
+function chargeSearch(q) { return search(q, 'all'); }
+
+let chargeRow = null;
 async function loadCharge() {
   if (!chargeLoaded) {
     chargeLoaded = true;
     charges = (await getBundle()).charges;
     $('cDisclaimer').textContent = `${charges.disclaimer} Source: ${charges.source}.`;
-    $('cTemplate').innerHTML = charges.templates.map((t) => `<option value="${esc(t.section)}">s.${esc(t.section)} — ${esc(t.title)}</option>`).join('');
-    $('cTemplate').addEventListener('change', () => { renderChargeFields(); history.replaceState(null, '', `#charge/${encodeURIComponent($('cTemplate').value)}`); });
-    CHARGE_FIELDS.forEach((id) => $(id).addEventListener('input', renderCharge));
-    $('cRange').addEventListener('change', () => { $('cDate2Wrap').hidden = !$('cRange').checked; renderCharge(); });
-    $('cS34').addEventListener('change', () => { $('cCoWrap').hidden = !$('cS34').checked; renderCharge(); });
+    $('cSearch').addEventListener('input', renderChargeResults);
+    $('cSearch').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { const first = $('cResults').querySelector('.row'); if (first) first.click(); }
+    });
+    $('cS34').addEventListener('change', renderCharge);
     $('cAttempt').addEventListener('change', renderCharge);
-    $('cCopy').addEventListener('click', () => copyText(chargePlain(), 'Charge copied'));
-    $('cSave').addEventListener('click', () => {
-      const text = chargePlain();
-      if (/\[[^\]]+\]/.test(text) && !confirm('Some fields are still blank. Save anyway?')) return;
-      saved.push({ section: $('cTemplate').value, text }); persistSaved(); toast(`Saved (${saved.length})`);
-    });
-    $('savedCopy').addEventListener('click', () => copyText(saved.map((c, i) => `${ORD(i + 1).toUpperCase()} CHARGE\n\n${c.text}`).join('\n\n\n'), 'All charges copied'));
-    $('savedClear').addEventListener('click', () => { if (confirm('Remove all saved charges?')) { saved = []; persistSaved(); } });
-    renderSaved();
-    $('cClear').addEventListener('click', () => {
-      CHARGE_FIELDS.forEach((id) => { $(id).value = ''; });
-      $('cS34').checked = false; $('cAttempt').checked = false; $('cCoWrap').hidden = true;
-      $('cFields').querySelectorAll('input').forEach((i) => { i.value = ''; });
-      renderCharge();
-    });
+    $('cCopy').addEventListener('click', () => copyText(plainOf('cOut'), 'Draft copied'));
+    $('cCopySample').addEventListener('click', () => copyText(plainOf('cSample'), 'Sample copied'));
   }
-  const m = location.hash.match(/^#charge\/(.+)$/);
-  const want = m && findTemplate(decodeURIComponent(m[1]));
-  if (want) $('cTemplate').value = want.section;
-  renderChargeFields();
+  await rowsReady;
+  // #charge/PC1871/379 (from the Offences tab) or the older #charge/379.
+  const m = location.hash.match(/^#charge\/(?:([A-Z0-9]+)\/)?(.+)$/);
+  if (m) {
+    const sec = decodeURIComponent(m[2]);
+    const act = m[1] || 'PC1871';
+    const r = state.rows.find((x) => x.act.id === act && x.section === sec)
+      || state.rows.find((x) => x.act.id === act && baseSection(x.section) === baseSection(sec));
+    if (r) { $('cSearch').value = `${r.act.short} ${r.section}`; selectCharge(r); $('cResults').innerHTML = ''; $('cStatus').textContent = ''; return; }
+  }
+  renderChargeResults();
 }
-function renderChargeFields() {
-  const t = findTemplate($('cTemplate').value) || charges.templates[0];
-  $('cFields').innerHTML = t.fields.map((f) => f.type === 'select'
-    ? `<label class="span-2">${esc(f.label)}<select data-f="${esc(f.id)}">${f.options.map((o) => `<option value="${esc(o)}">${esc(o.replace(/the said \{\w+\}/g, 'the victim').replace(/\{\w+\}/g, 'the victim'))}</option>`).join('')}</select></label>`
-    : `<label>${esc(f.label)}<input data-f="${esc(f.id)}" placeholder="${esc(f.placeholder || '')}" autocomplete="off"></label>`).join('');
-  $('cFields').querySelectorAll('[data-f]').forEach((el) => el.addEventListener('input', renderCharge));
-  $('cRangeWrap').hidden = !t.dateRange;
-  if (!t.dateRange) { $('cRange').checked = false; $('cDate2Wrap').hidden = true; }
-  $('cNotes').innerHTML = t.notes.map((n) => `<li>${esc(n)}</li>`).join('');
-  renderCharge();
-}
-function renderCharge() {
-  const t = findTemplate($('cTemplate').value) || charges.templates[0];
-  const val = (id, ph) => { const v = $(id).value.trim(); return v ? esc(v) : `<span class="fill">[${ph}]</span>`; };
-  const vals = {};
-  $('cFields').querySelectorAll('[data-f]').forEach((el) => { vals[el.dataset.f] = el.value.trim(); });
-  const fill = (str) => str.replace(/\{(\w+)\}/g, (_, k) => {
-    const f = t.fields.find((x) => x.id === k);
-    const v = vals[k];
-    if (v) return f && f.type === 'select' ? fill(esc(v)) : esc(v);
-    return `<span class="fill">[${esc(f ? f.label : k)}]</span>`;
+function renderChargeResults(keepSelection) {
+  const q = $('cSearch').value;
+  const list = q.trim() ? chargeSearch(q) : [];
+  $('cResults').innerHTML = '';
+  if (!q.trim()) {
+    $('cStatus').textContent = `${state.rows.length.toLocaleString()} offences · charges with a full template: ${charges.templates.length} Penal Code sections`;
+    if (keepSelection !== true) { chargeRow = null; $('cDraftWrap').hidden = true; }
+    return;
+  }
+  $('cStatus').textContent = list.length ? `${list.length} match${list.length === 1 ? '' : 'es'}` : 'No matches. Try the section number, e.g. 379 or POHA 3.';
+  if (keepSelection === true && chargeRow) return;
+  list.slice(0, 8).forEach((r) => {
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'row'; b.setAttribute('role', 'option');
+    b.setAttribute('aria-selected', String(chargeRow === r));
+    const tpl = r.act.id === 'PC1871' && findTemplate(r.section);
+    b.innerHTML = `<span class="row-sec">${esc(r.section)}</span>
+      <span><div class="row-title">${esc(r.offence)}</div><div class="row-act">${esc(r.act.short)}${tpl ? ' · full template' : ''}</div></span>
+      <span class="badge ${r.arrest}">${ARREST_LABEL[r.arrest]}</span>`;
+    b.addEventListener('click', () => { selectCharge(r); $('cResults').innerHTML = ''; $('cSearch').value = `${r.act.short} ${r.section}`; $('cStatus').textContent = ''; });
+    $('cResults').appendChild(b);
   });
-  const range = t.dateRange && $('cRange').checked;
-  const d1 = $('cDate').value ? esc(fmtDate($('cDate').value)) : '<span class="fill">[date]</span>';
-  const d2 = $('cDate2').value ? esc(fmtDate($('cDate2').value)) : '<span class="fill">[to date]</span>';
-  let rangeWarn = '';
-  if (range && $('cDate').value && $('cDate2').value) {
-    const [a, b] = [new Date($('cDate').value), new Date($('cDate2').value)];
-    const lim = new Date(a); lim.setFullYear(lim.getFullYear() + 1);
-    if (b < a) rangeWarn = 'The end date is before the start date.';
-    else if (b >= lim) rangeWarn = 'CPC s.124(2)(a)(ii): the period must not exceed 12 months.';
+}
+function selectCharge(r) {
+  chargeRow = r;
+  $('cDraftWrap').hidden = false;
+  $('cAct').textContent = r.act.name;
+  $('cTitle').textContent = `s.${r.section} · ${r.offence}`;
+  $('cToggles').hidden = r.act.id !== 'PC1871';
+  $('cS34').checked = false; $('cAttempt').checked = false;
+  history.replaceState(null, '', `#charge/${r.act.id}/${encodeURIComponent(r.section)}`);
+  renderCharge();
+  $('cDraftWrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+const SAMPLE = {
+  name: 'Ahmad Faizal bin Ismail', id: 'NRIC No. S9012345D', age: '32', date: '1st January 2026', time: '10.30 pm',
+  place: 'Blk 123 Ang Mo Kio Avenue 3 #01-234', co: 'Lee Ah Huat, NRIC No. S2345678C',
+};
+function buildCharge(r, sample) {
+  const ph = (label) => `<span class="fill">[${esc(label)}]</span>`;
+  const F = (label, ex) => (sample ? esc(ex) : ph(label));
+  const t = r.act.id === 'PC1871' ? findTemplate(r.section) : null;
+  const notes = [];
+  let particulars;
+  let punishable;
+  if (t) {
+    // In the sample, "the said {victim}" repeats just the name, not the name and ID.
+    const shortName = (k) => { const f = t.fields.find((x) => x.id === k); return f && f.placeholder ? esc(f.placeholder.split(',')[0]) : null; };
+    const fill = (str) => str.replace(/the said \{(\w+)\}/g, (m, k) => (sample && shortName(k) ? `the said ${shortName(k)}` : m)).replace(/\{(\w+)\}/g, (_, k) => {
+      const f = t.fields.find((x) => x.id === k);
+      if (!f) return ph(k);
+      if (f.type === 'select') {
+        if (sample) return fill(esc(f.options[0]));
+        const opts = f.options.map((o) => o.replace(/the said \{\w+\}/g, 'the victim').replace(/\{\w+\}/g, 'the victim'));
+        if (opts.join(' / ').length <= 70) return ph(opts.join(' / '));
+        notes.push(`${f.label}, choose one: ${opts.map((o, i) => `(${i + 1}) ${o}`).join('; ')}.`);
+        return ph(`${f.label}: see options below`);
+      }
+      return sample ? esc(f.placeholder || f.label) : ph(f.label);
+    });
+    particulars = fill(t.particulars);
+    punishable = esc(t.punishable);
+    notes.push(...t.notes);
+  } else {
+    particulars = ph(`particulars: what the accused did that amounts to “${r.offence}”`);
+    punishable = r.act.id === 'PC1871'
+      ? `section ${esc(r.section)} of the Penal Code 1871`
+      : null;
+    notes.push('There is no full template for this offence yet, so the particulars are left for you to write. Use the words of the section on SSO.');
+    if (r.act.id !== 'PC1871') notes.push(`Check which section of the ${r.act.name} sets the punishment (often a separate penalty section) and fill it in.`);
   }
-  const when = range ? `between ${d1} and ${d2}` : `on ${d1}${$('cTime').value.trim() ? `, at about ${esc($('cTime').value.trim())}` : ', at about <span class="fill">[time]</span>'}`;
-  const nat = $('cNat').value.trim() ? `${esc($('cNat').value.trim())}, ` : '';
-  const head = $('cNo').value.trim() ? `${esc($('cNo').value.trim().toUpperCase())} CHARGE\n\n` : '';
-  let particulars = fill(t.particulars);
-  let punishable = esc(t.punishable);
-  let together = '';
   const reads = [];
-  if ($('cAttempt').checked) {
-    particulars = particulars.replace(/^did /, 'did attempt to ').replace(/^being /, 'being ');
+  let together = '';
+  if (r.act.id === 'PC1871' && $('cAttempt').checked) {
+    particulars = particulars.replace(/^did /, 'did attempt to ');
     if (!/^did attempt to /.test(particulars)) particulars = particulars.replace(/, did /, ', did attempt to ');
-    reads.push(t.deathOrLife ? '512(1)' : '512(2)');
+    const grave = t ? t.deathOrLife : /death|imprisonment for life/i.test(r.punishment || '');
+    reads.push(grave ? '512(1)' : '512(2)');
   }
-  if ($('cS34').checked) {
-    const co = $('cCo').value.trim() ? esc($('cCo').value.trim()) : '<span class="fill">[co-accused]</span>';
-    together = `together with ${co}, and in furtherance of the common intention of you both, `;
+  if (r.act.id === 'PC1871' && $('cS34').checked) {
+    together = `together with ${F('co-accused name and ID', SAMPLE.co)}, and in furtherance of the common intention of you both, `;
     reads.unshift('34');
   }
-  if (reads.length) {
+  if (reads.length && punishable) {
     const rw = reads.length === 1 ? `section ${reads[0]}` : `sections ${reads.join(' and ')}`;
     punishable = punishable.replace(' of the Penal Code 1871', ` read with ${rw} of the Penal Code 1871`);
   }
-  $('cOut').innerHTML = `${head}You, ${val('cName', 'name')}, ${val('cId', 'NRIC / FIN / passport no.')}, ${nat}${val('cAge', 'age')} years old,
-are charged that you, ${together}${when}, at ${val('cPlace', 'place')}, Singapore, ${particulars}, and you have thereby committed an offence punishable under ${punishable}.`;
-  if (rangeWarn) $('cOut').insertAdjacentHTML('beforeend', `<span class="warn">${esc(rangeWarn)}</span>`);
+  const ending = punishable
+    ? `and you have thereby committed an offence punishable under ${punishable}.`
+    : `and you have thereby committed an offence under section ${esc(r.section)} of the ${esc(r.act.name)}, punishable under ${ph('penalty section')} of the ${esc(r.act.name)}.`;
+  const html = `You, ${F('name of accused', SAMPLE.name)}, ${F('NRIC / FIN / passport no.', SAMPLE.id)}, ${F('age', SAMPLE.age)} years old,
+are charged that you, ${together}on ${F('date', SAMPLE.date)}, at about ${F('time', SAMPLE.time)}, at ${F('place', SAMPLE.place)}, Singapore, ${particulars}, ${ending}`;
+  return { html, notes };
 }
-
-function chargePlain() {
-  const el = $('cOut').cloneNode(true);
-  el.querySelectorAll('.warn').forEach((w) => w.remove());
-  return el.textContent.trim();
+function renderCharge() {
+  if (!chargeRow) return;
+  const d = buildCharge(chargeRow, false);
+  $('cOut').innerHTML = d.html;
+  $('cSample').innerHTML = buildCharge(chargeRow, true).html;
+  $('cNotes').innerHTML = d.notes.map((n) => `<li>${esc(n)}</li>`).join('');
 }
+function plainOf(id) { return $(id).textContent.replace(/[ \t]+\n/g, '\n').trim(); }
 
 /* ---------- NPC finder ---------- */
 let npc = null;
@@ -664,6 +701,8 @@ async function setupLock() {
   });
 }
 
+let rowsReadyResolve;
+const rowsReady = new Promise((res) => { rowsReadyResolve = res; });
 async function init() {
   try {
     const { acts, lists, charges: ch, meta } = await getBundle();
@@ -675,10 +714,11 @@ async function init() {
       lists[i].forEach((row) => {
         row.act = a;
         row._order = state.rows.length;
-        row._hay = [row.section, row.offence, row.punishment, a.short, a.name].join(' ').toLowerCase();
+        row._hay = [row.section, row.offence, row.punishment, a.short, a.name, a.code, ...(a.aliases || [])].join(' ').toLowerCase();
         state.rows.push(row);
       });
     });
+    rowsReadyResolve();
     renderChips();
     els.qAct.innerHTML = '<option value="">Another Act (not listed)</option>'
       + acts.filter((a) => a.id !== 'PC1871').map((a) => `<option value="${a.id}">${esc(a.name)}</option>`).join('');

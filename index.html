@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Hambalang</title>
-  <meta name="description" content="Singapore offences — arrestable, bailable and punishment; charge drafting; case property (CPC Part 19).">
+  <meta name="description" content="Singapore offences — arrestable, bailable and punishment; charge drafting; case property (CPC Part 19); NPC finder; OSINT checks.">
   <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)">
+  <meta name="color-scheme" content="light dark">
   <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
   <meta name="robots" content="noindex">
   <link rel="stylesheet" href="fonts/fonts.css">
@@ -45,6 +46,7 @@
         <a class="tab" href="#charge" data-view="charge">Charge</a>
         <a class="tab" href="#exhibits" data-view="exhibits">Property</a>
         <a class="tab" href="#npc" data-view="npc">NPC</a>
+        <a class="tab" href="#osint" data-view="osint">OSINT</a>
       </nav>
       <details class="settings" id="settings">
         <summary class="nav-btn" aria-label="Display settings" title="Display settings">
@@ -157,73 +159,41 @@
   <main class="wrap view" id="viewCharge" hidden>
     <div class="large-title">
       <h1>Charge</h1>
-      <p class="secondary">Drafting guide · CPC ss.123–124</p>
+      <p class="secondary">Type an offence code for a draft charge · CPC ss.123–124</p>
     </div>
 
-    <div class="charge-layout">
-      <div class="charge-form">
-        <p class="group-label">Offence</p>
-        <div class="group pad">
-          <div class="form-grid one">
-            <label>Template <select id="cTemplate"></select></label>
-          </div>
-          <div class="toggles">
-            <label class="toggle"><span>Common intention<small>Read with s.34</small></span><input type="checkbox" id="cS34"><i></i></label>
-            <label class="toggle"><span>Attempt<small>Read with s.512</small></span><input type="checkbox" id="cAttempt"><i></i></label>
-          </div>
-          <div class="form-grid one" id="cCoWrap" hidden>
-            <label>Co-accused <input id="cCo" placeholder="Lee Ah Huat, NRIC No. S2345678C" autocomplete="off"></label>
-          </div>
-        </div>
+    <div class="searchbar">
+      <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="m20 20-4.2-4.2M10.5 17a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Z"/></svg>
+      <input type="search" id="cSearch" placeholder="Offence code, e.g. 379, PC 420, POHA 3" autocomplete="off" spellcheck="false" aria-label="Offence code or keyword">
+    </div>
+    <p class="footnote" id="cStatus">Loading…</p>
+    <div class="group list" id="cResults" role="listbox" aria-label="Matching offences"></div>
 
-        <p class="group-label">Accused</p>
-        <div class="group pad">
-          <div class="form-grid">
-            <label class="span-2">Name <input id="cName" placeholder="Full name as in NRIC / passport" autocomplete="off"></label>
-            <label>Identification <input id="cId" placeholder="NRIC No. S1234567A" autocomplete="off"></label>
-            <label>Age <input id="cAge" inputmode="numeric" placeholder="35" autocomplete="off"></label>
-            <label>Nationality <input id="cNat" placeholder="Optional" autocomplete="off"></label>
-            <label>Charge no. <input id="cNo" placeholder="Optional, e.g. 1st" autocomplete="off"></label>
-          </div>
-        </div>
-
-        <p class="group-label">When and where</p>
-        <div class="group pad">
-          <div class="form-grid">
-            <label>Date <input type="date" id="cDate"></label>
-            <label>Time <input id="cTime" placeholder="10.30 pm" autocomplete="off"></label>
-            <label class="toggle span-2" id="cRangeWrap" hidden><span>Date range<small>CPC s.124(2), up to 12 months</small></span><input type="checkbox" id="cRange"><i></i></label>
-            <label id="cDate2Wrap" hidden>To date <input type="date" id="cDate2"></label>
-            <label class="span-2">Place <input id="cPlace" placeholder="Blk 123 Ang Mo Kio Avenue 3 #01-234" autocomplete="off"></label>
-          </div>
-        </div>
-
-        <p class="group-label">Particulars</p>
-        <div class="group pad">
-          <div class="form-grid" id="cFields"></div>
+    <div id="cDraftWrap" hidden>
+      <div class="group pad charge-head">
+        <p class="caption" id="cAct"></p>
+        <h2 class="charge-title" id="cTitle"></h2>
+        <div class="toggles" id="cToggles">
+          <label class="toggle"><span>Common intention<small>Read with s.34</small></span><input type="checkbox" id="cS34"><i></i></label>
+          <label class="toggle"><span>Attempt<small>Read with s.512</small></span><input type="checkbox" id="cAttempt"><i></i></label>
         </div>
       </div>
 
-      <div class="charge-preview">
-        <p class="group-label">Draft</p>
-        <div class="group pad">
-          <div class="charge-text" id="cOut" aria-live="polite"></div>
-          <div class="actions tight">
-            <button type="button" class="btn filled" id="cSave">Add to list</button>
-            <button type="button" class="btn tinted" id="cCopy">Copy</button>
-            <button type="button" class="btn plain" id="cClear">Clear</button>
-          </div>
-        </div>
-        <ul class="notes" id="cNotes"></ul>
-
-        <div id="savedWrap" hidden>
-          <p class="group-label row-between"><span>Saved charges (<span id="savedCount">0</span>)</span>
-            <span><button type="button" class="text-btn" id="savedCopy">Copy all</button> <button type="button" class="text-btn danger" id="savedClear">Clear</button></span></p>
-          <div class="group list" id="savedList"></div>
-        </div>
-        <p class="footnote" id="cDisclaimer"></p>
+      <p class="group-label row-between"><span>Draft</span><span class="legend"><span class="fill">[ ]</span> to fill in</span></p>
+      <div class="group pad">
+        <div class="charge-text" id="cOut" aria-live="polite"></div>
+        <div class="actions tight"><button type="button" class="btn filled" id="cCopy">Copy draft</button></div>
       </div>
+
+      <p class="group-label">Sample</p>
+      <div class="group pad">
+        <div class="charge-text sample" id="cSample"></div>
+        <div class="actions tight"><button type="button" class="btn tinted" id="cCopySample">Copy sample</button></div>
+      </div>
+
+      <ul class="notes" id="cNotes"></ul>
     </div>
+    <p class="footnote" id="cDisclaimer"></p>
   </main>
 
   <!-- ===================== CASE PROPERTY ===================== -->
@@ -295,6 +265,49 @@
     </details>
   </main>
 
+<!-- ===================== OSINT ===================== -->
+  <main class="wrap view" id="viewOsint" hidden>
+    <div class="large-title">
+      <h1>OSINT</h1>
+      <p class="secondary">Phone, IP, domain, email, username, image and business checks</p>
+    </div>
+    <div class="chips osint-tabs" id="osintTabs" role="tablist" aria-label="OSINT tools"></div>
+
+    <form class="searchbar with-btn" id="osintForm" autocomplete="off">
+      <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" d="m20 20-4.2-4.2M10.5 17a6.5 6.5 0 1 1 0-13 6.5 6.5 0 0 1 0 13Z"/></svg>
+      <input type="search" id="osintInput" autocapitalize="off" spellcheck="false" aria-label="Search">
+      <button type="submit" class="btn filled" id="osintGo">Check</button>
+    </form>
+
+    <div id="osintImage" hidden>
+      <label class="group pad osint-drop">
+        <input type="file" id="osintFile" accept="image/*">
+        <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 7h3l2-3h6l2 3h3v12H4V7Z"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+        <span><b>Choose a photo</b><br><small class="secondary">Read its camera details and location, then reverse search it</small></span>
+      </label>
+      <form class="searchbar with-btn" id="osintImgUrlForm" autocomplete="off">
+        <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+        <input type="url" id="osintImgUrl" placeholder="…or paste an image web address" spellcheck="false" aria-label="Image web address">
+        <button type="submit" class="btn filled">Search</button>
+      </form>
+    </div>
+
+    <p class="footnote" id="osintStatus" role="status"></p>
+    <div id="osintOut"></div>
+
+    <details class="group disclosure">
+      <summary>About these checks</summary>
+      <div class="disclosure-body">
+        <ol class="plain-list">
+          <li>Phone checks run on your device from Google's phone-number data. Nothing is sent anywhere.</li>
+          <li>IP, domain, email and business checks ask free public services (ipinfo.io, proxycheck.io, the Tor directory, RDAP, Google DNS, crt.sh, data.gov.sg) directly from your phone. Only what you type is sent to them.</li>
+          <li>Photos are read on your device. A photo leaves your phone only when you press a reverse-search button.</li>
+          <li>Buttons open other sites in a new tab. Results are leads to verify, not proof.</li>
+        </ol>
+      </div>
+    </details>
+  </main>
+
   <footer class="foot">
     <div class="wrap foot-inner">
       <p class="sign">Habis kuku</p>
@@ -320,8 +333,14 @@
       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
       <span>NPC</span>
     </a>
+    <a class="tabbar-item" href="#osint" data-view="osint">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg>
+      <span>OSINT</span>
+    </a>
   </nav>
 
-  <script src="js/app.js"></script>
+  <script src="js/osint-phone.js" defer></script>
+  <script src="js/osint.js" defer></script>
+  <script src="js/app.js" defer></script>
 </body>
 </html>
