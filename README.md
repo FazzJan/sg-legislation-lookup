@@ -5,6 +5,17 @@ Singapore offence lookup: arrestable, bailable, process and maximum punishment, 
 - **Penal Code:** the CPC 2010 First Schedule.
 - **Other Acts:** the Act's own arrest power where one exists, otherwise the CPC First Schedule default for offences against other laws (≥3 years → arrestable, not bailable).
 - **Quick arrest check:** for offences not yet indexed, pick the Act and maximum punishment.
+- **Charge:** type an offence code (`379`, `PC 420`, `POHA 3`) for a draft charge with `[placeholders]` and a filled-in sample, both copyable.
+- **OSINT:** phone, IP / VPN / Tor, domain, email, username, image and UEN / ACRA checks.
+
+## OSINT tab
+
+Runs entirely in the browser; there is no server.
+
+- **Phone:** offline, from Google's libphonenumber data in `js/osint-phone.js` (country, line type, the telco a number block was first issued to). Rebuild with `pip install phonenumbers && python3 scripts/build_osint_phone.py`.
+- **IP / VPN / Tor, domain, email, UEN:** free public services that allow browser requests: ipinfo.io, proxycheck.io, the Tor directory (Onionoo), RDAP, Google DNS-over-HTTPS, crt.sh, data.gov.sg (ACRA open data), and the X4BNet VPN and datacentre lists on GitHub. Only what the user types is sent to them; if one does not answer, the result says so.
+- **Image:** camera details and GPS are read on the device. Reverse search opens Google Lens, Bing, Yandex or TinEye.
+- **Username:** link-outs only. Sites block other pages from checking profiles, so bulk checks go through WhatsMyName and similar free sites.
 
 Static site with no build step and no runtime dependencies. Open `index.html` through any static server (`python3 -m http.server`).
 
